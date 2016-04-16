@@ -10,8 +10,9 @@ global Debug
 global charActive := false
 
 isLowHp() {
+	charActive := isCharacterActive()
 	PixelGetColor, lowHpColor, 124, 1005
-	return isCharacterActive() and getColor(lowHpColor) != "r" 
+	return charActive and getColor(lowHpColor) != "r" 
 }
 
 isCharacterActive() {
@@ -21,13 +22,17 @@ isCharacterActive() {
 	colorManaBorderSat := getColor(colorTopManaBorder)
 	newCharActiveStatus := colorManaBorderSat == "grey" and colorShopSat == "g"
 	if (not charActive and newCharActiveStatus) {
-		sleep 1000 ; delay if it wasn't active for outside functions like @isLowHp()
+		sleep 300 ; delay if it wasn't active for outside functions like @isLowHp()
 	}
 	charActive := newCharActiveStatus
 	return charActive
 }
 
 getColor(color) {
+	return getColorDebug(color, false)
+}
+
+getColorDebug(color, printDebug) {
 	Blue:="0x" SubStr(color,3,2) ;substr is to get the piece
 	Blue:=Blue+0 ;add 0 is to convert it to the current number format
 	Green:="0x" SubStr(color,5,2)
@@ -42,6 +47,8 @@ getColor(color) {
 		colorReal := "white" 
 	} else if (diff < 8) {
 		colorReal := "grey"
+	} else if (blue < 10 and green > 40 and green < 60 and red > 100 and red < 200) {
+		colorReal := "brown"
 	} else if (blue + satur < red and green + satur < red) {
 		colorReal := "r"
 	} else if (red + satur < green and blue + satur < green) {
@@ -50,6 +57,9 @@ getColor(color) {
 		colorReal := "b"
 	} else {
 		colorReal := "u" ;unknown
+	}
+	if (printDebug) {
+		DebugAppend( "R:" red ";G:" green ";B:" blue )
 	}
 	return colorReal
 }
@@ -70,6 +80,50 @@ $F2::DrinkFlask()
 $F3::SwitchBoth()
 $F4::OpenPortal()
 $f12::reload
+$`::PhaseRun()
+$A::IceCrash()
+
+IceCrash() {
+	if (isPoeClosed() or isChatOpen()) {
+		send {a}
+		return
+	}
+	PixelGetColor, qSkillColor, 1453, 1056
+	rgbQSkill := getColor(qSkillColor)
+	DebugAppend(rgbQSkill)
+	if (rgbQSkill == "g") {
+		send {x}
+		sleep 100
+		send {q}
+	} else if (rgbQSkill == "b") {
+		send {q}
+	}
+}
+
+
+isChatOpen() {
+	PixelGetColor, XChatColor, 679, 392
+	PixelGetColor, afterChatTypeColor, 80, 790
+	rgbX := getColor(XChatColor)
+	rgbName := getColor(afterChatTypeColor)
+	return rgbX == "brown" and rgbName == "black"
+}
+
+PhaseRun() {
+	if (isPoeClosed()  or isChatOpen()) {
+		send {`}
+		return
+	}
+	PixelGetColor, qSkillColor, 1453, 1056
+	rgbQSkill := getColor(qSkillColor)
+	if (rgbQSkill == "g") {
+		send {q}
+	} else if (rgbQSkill == "b") {
+		send {x}
+		sleep 100
+		send {q}
+	}
+}
 
 Remaining() {
 	if (isPoeClosed()) {
@@ -174,5 +228,4 @@ DrinkFlask() {
 	Send {4}
 	Send {5}
 }
-
 

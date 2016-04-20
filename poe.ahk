@@ -8,6 +8,7 @@ Loop {
 global debugInited := false
 global Debug
 global charActive := false
+global lolka := 1
 
 isLowHp() {
 	charActive := isCharacterActive()
@@ -79,9 +80,9 @@ $F1::Remaining()
 $F2::DrinkFlask()
 $F3::SwitchBoth()
 $F4::OpenPortal()
-$f12::reload
-$`::PhaseRun()
-$A::IceCrash()
+;$f12::reload
+;$`::PhaseRun()
+;$A::IceCrash()
 
 IceCrash() {
 	if (isPoeClosed() or isChatOpen()) {
@@ -164,6 +165,7 @@ OpenInventory() {
 	PixelGetColor, colorKaomBack, 1581, 366
 	if (colorKaomBack != 0x200706) {
 		Send {i}
+		Sleep 30
 		return true
 	} else {
 		return false
@@ -175,24 +177,43 @@ SwitchBoth() {
 		send {f3}
 		return
 	}
+	yBottomGems := 825
+	squareDimension := 54
+	firstBottomGemX := 1719
+	secondBottomGemX := firstBottomGemX + squareDimension
+	thirdBottomGemX := firstBottomGemX + squareDimension * 2
+	
 	MouseGetPos, xpos, ypox
 	BlockInput On
 	closeInvAfter := OpenInventory()
-	Click left 1877, 776
-	Sleep 1
 	PixelGetColor, middleLeftSocketColor, 1350, 225
-	if (getColor(middleLeftSocketColor) != "r") {
+	middleLeftSocketColorRgb := getColor(middleLeftSocketColor)
+	if (middleLeftSocketColorRgb != "r") {
 		send {x}
 		sleep 50
 	}
-	Click left 1405, 226
+	Click left %firstBottomGemX%, %yBottomGems%
 	Sleep 1
-	Click left 1877, 776
-	Click left 1819, 776
+	Click left 1353, 173 ; top left staff
 	Sleep 1
-	Click left 1482, 370
+	Click left %firstBottomGemX%, %yBottomGems%
 	Sleep 1
-	Click left 1819, 776
+	
+	Click left %secondBottomGemX%, %yBottomGems%
+	Sleep 1
+	Click left 1557, 189 ; top left staff
+	Sleep 1
+	Click left %secondBottomGemX%, %yBottomGems%
+	Sleep 1
+	
+	Click left %thirdBottomGemX%, %yBottomGems%
+	Sleep 1
+	Click left 1478, 371
+	Sleep 1
+	Click left %thirdBottomGemX%, %yBottomGems%
+	Sleep 1
+	
+	
 	if (closeInvAfter) {
 		Send {i}
 	}

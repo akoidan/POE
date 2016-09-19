@@ -1,5 +1,3 @@
-var uniqueIgn = {};
-var outStr = "";
 var escaper = (function() {
     const escapeMap = {
         '"': '""',
@@ -13,16 +11,42 @@ var escaper = (function() {
     }
     return this;
 })();
-function getLocalStorage(key) {
-    var value = localStorage.getItem(key);
-    return value ? JSON.parse(value) : [];
-}
-function setLocalStorage(key, value) {
-    localStorage.setItem(key, JSON.stringify(value));
-}
-var blockPesonlist = getLocalStorage('blockedPerma')
-var blockedToday = getLocalStorage('blockedToday');
-function execute() {
+
+var ls = (function() {
+	const LOCAL_STORAGE_PERMA_BLOCK = 'blockedPerma';
+	const LOCAL_STORAGE_TODAY_BLOCK = 'blockedToday';
+	this.getLocalStorage = function(key) {
+		var value = localStorage.getItem(key);
+		return value ? JSON.parse(value) : [];
+	}
+	this.setLocalStorage = function(key, value) {
+		localStorage.setItem(key, JSON.stringify(value));
+	}
+	this.blockPerson = function(name) {
+		var list = getLocalStorage(LOCAL_STORAGE_PERMA_BLOCK);
+		list.push(name);
+		setLocalStorage(LOCAL_STORAGE_PERMA_BLOCK, list);
+	}
+	this.blockToday = function(name) {
+		var list = getLocalStorage(LOCAL_STORAGE_TODAY_BLOCK);
+		list.push(name);
+		setLocalStorage(LOCAL_STORAGE_TODAY_BLOCK, list);
+	}
+	this.getPermaBlock = function(value) {
+		return this.getLocalStorage(LOCAL_STORAGE_PERMA_BLOCK);
+	}
+	this.getTodayBlock = function() {
+		return this.getLocalStorage(LOCAL_STORAGE_TODAY_BLOCK);
+	}
+	this.set
+	return this;
+})();
+
+(function () {
+	var blockPesonlist = ls.getPermaBlock();
+	var blockedToday = ls.getTodayBlock();
+	var outStr = "";
+	var uniqueIgn = {};
     var ign = document.querySelectorAll('[data-ign]');
     [].filter.call(ign, function(el) {
         return !document.querySelector('#' + el.id + ' .currency');
@@ -31,7 +55,7 @@ function execute() {
     }).forEach(function(el) {
         var name = el.getAttribute('data-ign');
         if (blockPesonlist.indexOf(name) < 0 && blockedToday.indexOf(name) < 0) {
-            blockedToday.push(name);
+            ls.blockToday(name);
             uniqueIgn[name] = {
                 tabName: el.getAttribute('data-tab'),
                 top: el.getAttribute('data-y'),
@@ -45,10 +69,14 @@ function execute() {
         var tabInfo = el.tabName ? ' (stash tab ""' + escaper.encode(el.tabName) + '""; position: left ' + el.left + ", top " + el.top + ')' : '';
         outStr += 'o.Insert("@' + name + ' Hi, I would like to buy your Twice Enchanted in Standard' + tabInfo + '. My offer is 8 chaos")\n';
     }
-}
-execute();
-console.log(outStr);
-setLocalStorage('blockedToday', blockedToday);
+    if (outStr) {
+    	console.log(outStr);
+    } else {
+    	console.error("No new entries found");
+    }
+    
+})();
+
 /*
 printMessage() {
 	o := Object()

@@ -1,6 +1,27 @@
 var uniqueIgn = {};
 var outStr = "";
-var blockPesonlist = ["SsenseChampion", "MajsanIBajsan", "Luciferr", "BlowUpEarth", "TimothySanchez", "BVarianCream", "Sprooce", "AssSense", "Drugbabe", "NiknonUltraShield", "DAMN_SHES_HOT", "CapBigode", "Streeze", "LibritanniaCS", "SnKCreepingDeath", "OBAFGKM", "AntiBvortex", "Krhuljcina", "EssenceBug", "Loirinhadobanheiro", "ФобияБоли", "Злая_Тетька", "Yagul", "AtlasTrickster", "Atlas_saltA", "Keledrain", "SlingshotEssence", "DerpiusMinimus", "kushivthejag", "MickGordon", "Aoobixofeio", "JasonKnox", "Quintileous", "Fapioh", "JesseWeNeedToCook", "ETHERNALBOB", "King_Slayer_Lannister", "MmmToasty", "MikaCrush", "RAGNARNJORD", "Gt_pedrerão_GT", "NothingLowerThanOneEx", "HoneydewBlatex", "Grahnmaw", "A_AurorA", "WTBooMiner", "TrzesienieMajtek"];
+var escaper = (function() {
+    const escapeMap = {
+        '"': '""',
+        '#': '"#'
+    };
+    var replaceHtmlRegex = new RegExp("[" + Object.keys(escapeMap).join("") + "]","g");
+    this.encode = function(html) {
+        return html.replace(replaceHtmlRegex, function(s) {
+            return escapeMap[s];
+        });
+    }
+    return this;
+})();
+function getLocalStorage(key) {
+    var value = localStorage.getItem(key);
+    return value ? JSON.parse(value) : [];
+}
+function setLocalStorage(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+}
+var blockPesonlist = getLocalStorage('blockedPerma')
+var blockedToday = getLocalStorage('blockedToday');
 function execute() {
     var ign = document.querySelectorAll('[data-ign]');
     [].filter.call(ign, function(el) {
@@ -9,7 +30,8 @@ function execute() {
         return $('#' + el.id + ':contains("Merciless Difficulty")').length > 0;
     }).forEach(function(el) {
         var name = el.getAttribute('data-ign');
-        if (blockPesonlist.indexOf(name) < 0) {
+        if (blockPesonlist.indexOf(name) < 0 && blockedToday.indexOf(name) < 0) {
+            blockedToday.push(name);
             uniqueIgn[name] = {
                 tabName: el.getAttribute('data-tab'),
                 top: el.getAttribute('data-y'),
@@ -18,13 +40,15 @@ function execute() {
         }
     });
     for (var name in uniqueIgn) {
-        if (!uniqueIgn.hasOwnProperty(name)) continue;
-        var el = uniqueIgn[name];
-        outStr += 'o.Insert("@' + name + ' Hi, I would like to buy your Twice Enchanted in Standard (stash tab "' + el.tabName + '"; position: left ' + el.left + ", top " + el.top + ')\n';
+        if (!uniqueIgn.hasOwnProperty(name))
+            continue;var el = uniqueIgn[name];
+        var tabInfo = el.tabName ? ' (stash tab ""' + escaper.encode(el.tabName) + '""; position: left ' + el.left + ", top " + el.top + ')' : '';
+        outStr += 'o.Insert("@' + name + ' Hi, I would like to buy your Twice Enchanted in Standard' + tabInfo + '. My offer is 8 chaos")\n';
     }
 }
 execute();
 console.log(outStr);
+setLocalStorage('blockedToday', blockedToday);
 /*
 printMessage() {
 	o := Object()

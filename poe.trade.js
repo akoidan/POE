@@ -11,42 +11,40 @@ var escaper = (function() {
     }
     return this;
 })();
-
 var ls = (function() {
-	const LOCAL_STORAGE_PERMA_BLOCK = 'blockedPerma';
-	const LOCAL_STORAGE_TODAY_BLOCK = 'blockedToday';
-	this.getLocalStorage = function(key) {
-		var value = localStorage.getItem(key);
-		return value ? JSON.parse(value) : [];
-	}
-	this.setLocalStorage = function(key, value) {
-		localStorage.setItem(key, JSON.stringify(value));
-	}
-	this.blockPerson = function(name) {
-		var list = getLocalStorage(LOCAL_STORAGE_PERMA_BLOCK);
-		list.push(name);
-		setLocalStorage(LOCAL_STORAGE_PERMA_BLOCK, list);
-	}
-	this.blockToday = function(name) {
-		var list = getLocalStorage(LOCAL_STORAGE_TODAY_BLOCK);
-		list.push(name);
-		setLocalStorage(LOCAL_STORAGE_TODAY_BLOCK, list);
-	}
-	this.getPermaBlock = function(value) {
-		return this.getLocalStorage(LOCAL_STORAGE_PERMA_BLOCK);
-	}
-	this.getTodayBlock = function() {
-		return this.getLocalStorage(LOCAL_STORAGE_TODAY_BLOCK);
-	}
-	this.set
-	return this;
+    const LOCAL_STORAGE_PERMA_BLOCK = 'blockedPerma';
+    const LOCAL_STORAGE_TODAY_BLOCK = 'blockedToday';
+    this.getLocalStorage = function(key) {
+        var value = localStorage.getItem(key);
+        return value ? JSON.parse(value) : [];
+    }
+    this.setLocalStorage = function(key, value) {
+        localStorage.setItem(key, JSON.stringify(value));
+    }
+    this.blockPerson = function(name) {
+        var list = getLocalStorage(LOCAL_STORAGE_PERMA_BLOCK);
+        list.push(name);
+        setLocalStorage(LOCAL_STORAGE_PERMA_BLOCK, list);
+    }
+    this.blockToday = function(name) {
+        var list = getLocalStorage(LOCAL_STORAGE_TODAY_BLOCK);
+        list.push(name);
+        setLocalStorage(LOCAL_STORAGE_TODAY_BLOCK, list);
+    }
+    this.getPermaBlock = function(value) {
+        return this.getLocalStorage(LOCAL_STORAGE_PERMA_BLOCK);
+    }
+    this.getTodayBlock = function() {
+        return this.getLocalStorage(LOCAL_STORAGE_TODAY_BLOCK);
+    }
+    this.set
+    return this;
 })();
-
-(function () {
-	var blockPesonlist = ls.getPermaBlock();
-	var blockedToday = ls.getTodayBlock();
-	var outStr = "";
-	var uniqueIgn = {};
+(function() {
+    var blockPesonlist = ls.getPermaBlock();
+    var blockedToday = ls.getTodayBlock();
+    var outStr = "";
+    var uniqueIgn = {};
     var ign = document.querySelectorAll('[data-ign]');
     [].filter.call(ign, function(el) {
         return !document.querySelector('#' + el.id + ' .currency');
@@ -70,13 +68,11 @@ var ls = (function() {
         outStr += 'o.Insert("@' + name + ' Hi, I would like to buy your Twice Enchanted in Standard' + tabInfo + '. My offer is 8 chaos")\n';
     }
     if (outStr) {
-    	console.log(outStr);
+        console.log(outStr);
     } else {
-    	console.error("No new entries found");
+        console.error("No new entries found");
     }
-    
 })();
-
 /*
 printMessage() {
 	o := Object()

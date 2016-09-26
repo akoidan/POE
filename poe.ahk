@@ -25,7 +25,8 @@ global winX
 global winY
 global winWidth := 0
 global winHeight
-
+global printScreamMessage := false
+global printScreamMessageInited := false
 
 isLowHp() {
 	charActive := isCharacterActive()
@@ -44,8 +45,27 @@ Loop
 	}
 }
 printMessage() {
-	
 o := Object()
+
+o.Insert("@_Rua_ Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""Flasks""; position: left 3, top 4). My offer is 40 chaos")
+o.Insert("@kinxsas Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""rampage 6""; position: left 1, top 6). My offer is 40 chaos")
+o.Insert("@___Jackal___ Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""GG Items""; position: left 6, top 0). My offer is 40 chaos")
+o.Insert("@BuddyMcBudTheThird Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""sss""; position: left 1, top 4). My offer is 40 chaos")
+o.Insert("@GoldenArmadaForever Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""surgeon flasks""; position: left 8, top 0). My offer is 40 chaos")
+o.Insert("@PowerCreepBalanceIssues Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard. My offer is 40 chaos")
+o.Insert("@DvaergeKasteren Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""H""; position: left 0, top 2). My offer is 40 chaos")
+o.Insert("@Quang_ge Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""卖""; position: left 8, top 8). My offer is 40 chaos")
+o.Insert("@EmptyBRF Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""Gems""; position: left 0, top 6). My offer is 40 chaos")
+o.Insert("@FearWillBeMyCloseFriend Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""Cards&Surgeon's""; position: left 8, top 10). My offer is 40 chaos")
+o.Insert("@BigManTingZ Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""b/o""; position: left 11, top 4). My offer is 40 chaos")
+o.Insert("@GODsFinder Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""Flask""; position: left 4, top 2). My offer is 40 chaos")
+o.Insert("@ToxicBladefall Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""Legacy""; position: left 2, top 0). My offer is 40 chaos")
+o.Insert("@Cospri_Herself Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""SHOP""; position: left 11, top 4). My offer is 40 chaos")
+o.Insert("@FireHC Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""legacy surgeon - make offer""; position: left 10, top 6). My offer is 40 chaos")
+o.Insert("@HateItOrLoveIt Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""SUPER EX 2""; position: left 11, top 0). My offer is 40 chaos")
+o.Insert("@DieForBloodline Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""EK""; position: left 2, top 9). My offer is 40 chaos")
+o.Insert("@Carotton Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""mjolner""; position: left 8, top 7). My offer is 40 chaos")
+o.Insert("@LFM Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""Flasks 1""; position: left 9, top 8). My offer is 40 chaos")
 
 for index, element in o ; Recommended approach in most cases.
 	{
@@ -83,27 +103,50 @@ calcY(y) {
 }
 
 screamTrade() {
-	Loop {
-		Loop, 3 {
-			send {enter}
-			sleep 20
-			send ^A
-			send {BS}
-			send /trade  %A_Index% {enter}
-			sleep 2000
-			send {enter}
-			sleep 200
-			send {Up}
-			sleep 200
-			send {Up}
-			sleep 200
-			send {enter}
+	loop {
+		Loop, 180 {
+			if (A_Index == 1) {
+				Loop, 3 {
+					send {enter}
+					sleep 20
+					send ^A
+					send {BS}
+					send /trade  %A_Index% {enter}
+					sleep 2000
+					send {enter}
+					sleep 200
+					send {Up}
+					sleep 200
+					send {Up}
+					sleep 200
+					send ^A
+					sleep 100
+					send ^C
+					if InStr(Clipboard, "Morbid Mantle, Vaal Regalia") {
+						send {enter}
+					} else { 
+						return
+					}
+					sleep 1000
+				}
+			}
+			if (not printScreamMessage) {
+				return
+			}
 			sleep 1000
 		}
-		sleep 180000
 	}
-
 }
+
+startScream() {
+	if ( printScreamMessage ) {
+		printScreamMessage := false
+	} else {
+		screamTrade()
+		printScreamMessage := true
+	}
+}
+
 getColorDebug(color, printDebug) {
 	Blue:="0x" SubStr(color,3,2) ;substr is to get the piece
 	Blue:=Blue+0 ;add 0 is to convert it to the current number format
@@ -151,8 +194,8 @@ DebugAppend(Data) {
 $F2::DrinkFlask()
 $F1::OpenHideout()
 $F4::OpenPortal()
-$F5::testLol()
-;$F5::screamTrade()
+
+$F5::startScream()
 $F3::FastLogOut()
 ;$f12::reload
 ;$`::PhaseRun()

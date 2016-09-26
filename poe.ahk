@@ -186,7 +186,6 @@ $F3::FastLogOut()
 
 
 RunWaitOne(command) {
-
 	dhw := A_DetectHiddenWindows
 	DetectHiddenWindows On
 	Run "%ComSpec%" /k,, Hide, pid
@@ -206,13 +205,13 @@ RunWaitOne(command) {
 	return strLine
 }
 
+
 getPrice() {
 	send ^C
 	sleep 20
-	startStr := InStr(Clipboard,"`r",,,1)+2
-	endStr := InStr(Clipboard,"--------")-1
-	item_name := SubStr(Clipboard,startStr,endStr-startStr) 
-	MsgBox % RunWaitOne("python" " C:\Users\Andrew\Documents\djangochat\sd.py """ item_name """")
+	FileDelete, e:\clip.txt
+	Fileappend,%clipboard%, e:\clip.txt
+	MsgBox % RunWaitOne("python" " C:\Users\Andrew\Documents\djangochat\sd.py")
 }
 OpenHideout() {
 	send {Enter}

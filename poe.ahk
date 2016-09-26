@@ -47,25 +47,6 @@ Loop
 printMessage() {
 o := Object()
 
-o.Insert("@_Rua_ Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""Flasks""; position: left 3, top 4). My offer is 40 chaos")
-o.Insert("@kinxsas Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""rampage 6""; position: left 1, top 6). My offer is 40 chaos")
-o.Insert("@___Jackal___ Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""GG Items""; position: left 6, top 0). My offer is 40 chaos")
-o.Insert("@BuddyMcBudTheThird Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""sss""; position: left 1, top 4). My offer is 40 chaos")
-o.Insert("@GoldenArmadaForever Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""surgeon flasks""; position: left 8, top 0). My offer is 40 chaos")
-o.Insert("@PowerCreepBalanceIssues Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard. My offer is 40 chaos")
-o.Insert("@DvaergeKasteren Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""H""; position: left 0, top 2). My offer is 40 chaos")
-o.Insert("@Quang_ge Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""卖""; position: left 8, top 8). My offer is 40 chaos")
-o.Insert("@EmptyBRF Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""Gems""; position: left 0, top 6). My offer is 40 chaos")
-o.Insert("@FearWillBeMyCloseFriend Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""Cards&Surgeon's""; position: left 8, top 10). My offer is 40 chaos")
-o.Insert("@BigManTingZ Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""b/o""; position: left 11, top 4). My offer is 40 chaos")
-o.Insert("@GODsFinder Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""Flask""; position: left 4, top 2). My offer is 40 chaos")
-o.Insert("@ToxicBladefall Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""Legacy""; position: left 2, top 0). My offer is 40 chaos")
-o.Insert("@Cospri_Herself Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""SHOP""; position: left 11, top 4). My offer is 40 chaos")
-o.Insert("@FireHC Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""legacy surgeon - make offer""; position: left 10, top 6). My offer is 40 chaos")
-o.Insert("@HateItOrLoveIt Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""SUPER EX 2""; position: left 11, top 0). My offer is 40 chaos")
-o.Insert("@DieForBloodline Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""EK""; position: left 2, top 9). My offer is 40 chaos")
-o.Insert("@Carotton Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""mjolner""; position: left 8, top 7). My offer is 40 chaos")
-o.Insert("@LFM Hi, I would like to buy your Surgeon's Ruby Flask of Heat in Standard (stash tab ""Flasks 1""; position: left 9, top 8). My offer is 40 chaos")
 
 for index, element in o ; Recommended approach in most cases.
 	{
@@ -104,9 +85,9 @@ calcY(y) {
 
 screamTrade() {
 	loop {
-		Loop, 180 {
-			if (A_Index == 1) {
-				Loop, 3 {
+		Loop, 300 {
+			if (A_Index = 1) {
+				Loop, 4 {
 					send {enter}
 					sleep 20
 					send ^A
@@ -125,9 +106,11 @@ screamTrade() {
 					if InStr(Clipboard, "Morbid Mantle, Vaal Regalia") {
 						send {enter}
 					} else { 
+						send {enter}
+						printScreamMessage := false
 						return
 					}
-					sleep 1000
+					sleep 100
 				}
 			}
 			if (not printScreamMessage) {
@@ -142,8 +125,8 @@ startScream() {
 	if ( printScreamMessage ) {
 		printScreamMessage := false
 	} else {
-		screamTrade()
 		printScreamMessage := true
+		screamTrade()
 	}
 }
 
@@ -194,13 +177,43 @@ DebugAppend(Data) {
 $F2::DrinkFlask()
 $F1::OpenHideout()
 $F4::OpenPortal()
-
+$f6::getPrice()
 $F5::startScream()
 $F3::FastLogOut()
 ;$f12::reload
 ;$`::PhaseRun()
 ;$A::IceCrash()
 
+
+RunWaitOne(command) {
+
+	dhw := A_DetectHiddenWindows
+	DetectHiddenWindows On
+	Run "%ComSpec%" /k,, Hide, pid
+	while !(hConsole := WinExist("ahk_pid" pid))
+		Sleep 10
+	DllCall("AttachConsole", "UInt", pid)
+	DetectHiddenWindows %dhw%
+	objShell := ComObjCreate("WScript.Shell")
+	objExec := objShell.Exec(command)
+	While !objExec.Status
+		Sleep 100
+	strLine := objExec.StdOut.ReadAll() ;read the output at once
+	DllCall("FreeConsole")
+	Process Exist, %pid%
+	if (ErrorLevel == pid)
+		Process Close, %pid%
+	return strLine
+}
+
+getPrice() {
+	send ^C
+	sleep 20
+	startStr := InStr(Clipboard,"`r",,,1)+2
+	endStr := InStr(Clipboard,"--------")-1
+	item_name := SubStr(Clipboard,startStr,endStr-startStr) 
+	MsgBox % RunWaitOne("python" " C:\Users\Andrew\Documents\djangochat\sd.py """ item_name """")
+}
 OpenHideout() {
 	send {Enter}
 	send ^A

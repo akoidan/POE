@@ -1,14 +1,31 @@
-Loop {
-	if (not isPoeClosed() and isLowHp()) {
-		send {1}
-	}
-	Sleep, 100
-}
+global chrNum := 1
+
+;Loop {
+;	if (not isPoeClosed()) {
+;		if (isLowHp()) {
+;			send {1}
+;		}
+;		;Transform, globChar, zChr, % chrNum++
+;		;if (chrNum > 10) {
+;		;ImageSearch, OutputVarX, OutputVarY, 0, 0, 1409, 80, C:\poe\ahk\endurance.png
+;		;if (OutputVarX > 0 and OutputVarY > 0) {
+;		;	sleep 1
+;		;	DebugAppend("lasdsad")
+;		;} else {
+;		;	sleep 2
+;		;}
+;		Sleep, 100
+;	}
+;}
 
 global debugInited := false
 global Debug
 global charActive := false
-global lolka := 1
+global winX 
+global winY
+global winWidth := 0
+global winHeight
+
 
 isLowHp() {
 	charActive := isCharacterActive()
@@ -16,6 +33,29 @@ isLowHp() {
 	return charActive and getColor(lowHpColor) != "r" 
 }
 
+PrintLol() {
+Loop
+{
+	send /trade 1
+	sleep 100
+	send, %element%
+	send {Enter}
+	sleep 100
+	}
+}
+printMessage() {
+	
+o := Object()
+
+for index, element in o ; Recommended approach in most cases.
+	{
+	send {Enter}
+	sleep 100
+	send, %element%
+	send {Enter}
+	sleep 100
+	}
+}
 isCharacterActive() {
 	PixelGetColor, colorTopManaBorder, 1890, 913
 	PixelGetColor, colorShop, 1458, 1000
@@ -33,6 +73,37 @@ getColor(color) {
 	return getColorDebug(color, false)
 }
 
+
+calcX(x) {
+	return winX + round(1920 * x / winWidth)
+}
+
+calcY(y) {
+	return winY + round(1920 * y / winHeight)
+}
+
+screamTrade() {
+	Loop {
+		Loop, 3 {
+			send {enter}
+			sleep 20
+			send ^A
+			send {BS}
+			send /trade  %A_Index% {enter}
+			sleep 2000
+			send {enter}
+			sleep 200
+			send {Up}
+			sleep 200
+			send {Up}
+			sleep 200
+			send {enter}
+			sleep 1000
+		}
+		sleep 180000
+	}
+
+}
 getColorDebug(color, printDebug) {
 	Blue:="0x" SubStr(color,3,2) ;substr is to get the piece
 	Blue:=Blue+0 ;add 0 is to convert it to the current number format
@@ -76,14 +147,24 @@ DebugAppend(Data) {
 }
 
 
-$F1::Remaining()
+
 $F2::DrinkFlask()
-$F3::SwitchBoth()
+$F1::OpenHideout()
 $F4::OpenPortal()
+$F5::testLol()
+;$F5::screamTrade()
+$F3::FastLogOut()
 ;$f12::reload
 ;$`::PhaseRun()
 ;$A::IceCrash()
 
+OpenHideout() {
+	send {Enter}
+	send ^A
+	send {BS}
+	send /hideout
+	send {Enter}
+}
 IceCrash() {
 	if (isPoeClosed() or isChatOpen()) {
 		send {a}
@@ -147,6 +228,7 @@ FastLogOut(){
 	BlockInput On
 	SetDefaultMouseSpeed 0
 	sendinput {esc}
+	sleep 1
 	MouseClick, left, 959, 432, 1, 1
 	BlockInput Off
 	return
@@ -158,12 +240,16 @@ isPoeClosed() {
 	IfWinNotActive , Path of Exile 
 	{ 
 		return true
+	} else if (winWidth = 0) { 
+		WinGetPos , winX, winY, winWidth, winHeight,,,, 
+	} else {
+		sleep 10
 	}
 }
 
 OpenInventory() {
 	PixelGetColor, colorKaomBack, 1581, 366
-	if (colorKaomBack != 0x200706) {
+	if (colorKaomBack != 0x1A181C) {
 		Send {i}
 		Sleep 30
 		return true
@@ -172,16 +258,63 @@ OpenInventory() {
 	}
 }
 
-SwitchBoth() {
-	if (isPoeClosed()) {
-		send {f3}
-		return
+SwitchConc() {
+	concX := 1877
+	concY := 615
+	
+	MouseGetPos, xpos, ypox
+	BlockInput On
+	closeInvAfter := OpenInventory()
+	
+	Click left %concX%, %concY%
+	Sleep 1
+	;Click left 1613, 305
+	Click left 1607, 522
+	Sleep 1
+	Click left %concX%, %concY%
+	Sleep 1
+	
+	if (closeInvAfter) {
+		Send {i}
 	}
+	MouseMove xpos, ypox 
+	BlockInput Off
+	return
+}
+
+
+SwitchCurse() {
 	yBottomGems := 825
 	squareDimension := 54
-	firstBottomGemX := 1719
-	secondBottomGemX := firstBottomGemX + squareDimension
-	thirdBottomGemX := firstBottomGemX + squareDimension * 2
+	leftBottomSquareX := 1870
+	warlMarkX := leftBottomSquareX -  squareDimension
+	
+	MouseGetPos, xpos, ypox
+	BlockInput On
+	closeInvAfter := OpenInventory()
+	
+	Click left %warlMarkX%, %yBottomGems%
+	Sleep 1
+	Click left 1485, 371 
+	Sleep 1
+	Click left %warlMarkX%, %yBottomGems%
+	Sleep 1
+	
+	if (closeInvAfter) {
+		Send {i}
+	}
+	MouseMove xpos, ypox 
+	BlockInput Off
+	return
+}
+
+
+SwitchRarity() {
+	yBottomGems := 825
+	squareDimension := 54
+	leftBottomSquareX := 1870
+	IIRX := leftBottomSquareX -  squareDimension*5
+	IIQX := leftBottomSquareX - squareDimension*6
 	
 	MouseGetPos, xpos, ypox
 	BlockInput On
@@ -192,25 +325,20 @@ SwitchBoth() {
 		send {x}
 		sleep 50
 	}
-	Click left %firstBottomGemX%, %yBottomGems%
+
+	
+	Click left %IIRX%, %yBottomGems%
 	Sleep 1
-	Click left 1353, 173 ; top left staff
+	Click left 1406, 228 ; top left staff
 	Sleep 1
-	Click left %firstBottomGemX%, %yBottomGems%
+	Click left %IIRX%, %yBottomGems%
 	Sleep 1
 	
-	Click left %secondBottomGemX%, %yBottomGems%
+	Click left %IIQX%, %yBottomGems%
 	Sleep 1
-	Click left 1557, 189 ; top left staff
+	Click left 1355, 176
 	Sleep 1
-	Click left %secondBottomGemX%, %yBottomGems%
-	Sleep 1
-	
-	Click left %thirdBottomGemX%, %yBottomGems%
-	Sleep 1
-	Click left 1478, 371
-	Sleep 1
-	Click left %thirdBottomGemX%, %yBottomGems%
+	Click left %IIQX%, %yBottomGems%
 	Sleep 1
 	
 	
@@ -222,6 +350,68 @@ SwitchBoth() {
 	return
 }
 
+TurnOffBloodRage() {
+	MouseGetPos, xpos, ypox
+	BlockInput On
+	closeInvAfter := OpenInventory()
+	
+	Click right 1767, 196
+	if (closeInvAfter) {
+		Send {i}
+	}
+	sleep 100
+	Click left 1767, 196
+	
+	MouseMove xpos, ypox 
+	BlockInput Off
+	return
+}
+
+SwitchBoth() {	;if (isPoeClosed()) {
+	;	send {f3}
+	;	return
+	;}
+	yBottomGems := 825
+	squareDimension := 54
+	leftBottomSquareX := 1870
+	;firstBottomGemX := leftBottomSquareX -  squareDimension
+	secondBottomGemX := firstBottomGemX - squareDimension
+	thirdBottomGemX := secondBottomGemX - squareDimension 
+	
+	MouseGetPos, xpos, ypox
+	BlockInput On
+	closeInvAfter := OpenInventory()
+
+	;Click left %firstBottomGemX%, %yBottomGems%
+	;Sleep 1
+	;Click left 1484, 363 ; top left staff
+	;Sleep 1
+	;Click left %firstBottomGemX%, %yBottomGems%
+	;Sleep 1
+	
+	;Click left %firstBottomGemX%, %yBottomGems%
+	;Sleep 1
+	;Click left 1406, 228 ; top left staff
+	;Sleep 1
+	;Click left %firstBottomGemX%, %yBottomGems%
+	;Sleep 1
+	
+	;Click left %thirdBottomGemX%, %yBottomGems%
+	;Sleep 1
+	;Click left 1355, 176
+	;Sleep 1
+	;Click left %thirdBottomGemX%, %yBottomGems%
+	;Sleep 1
+	
+	
+	;if (closeInvAfter) {
+	;	Send {i}
+	;}
+	;MouseMove xpos, ypox 
+	;BlockInput Off
+	return
+}
+
 
 OpenPortal(){
 	if (isPoeClosed()) {
@@ -230,13 +420,21 @@ OpenPortal(){
 	}
 	MouseGetPos, xpos, ypox
 	BlockInput On
-	OpenInventory()
-	Click right 1881,838 
-	Send {i}
-	Sleep 1
-	Click left 960, 450 
+	closeInvAfter := OpenInventory()
+	Click right 1881,838
+	Click left 630, 450
 	BlockInput Off
 	return
+}
+
+DrinkTwoFirstFlask() {
+	if (isPoeClosed()) {
+		send {f1}
+		return
+	}
+	Send {3}
+	Send {4}
+	Send {5}
 }
 
 DrinkFlask() {
@@ -244,6 +442,7 @@ DrinkFlask() {
 		send {f2}
 		return
 	}
+	Send {1}
 	Send {2}
 	Send {3}
 	Send {4}

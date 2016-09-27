@@ -75,13 +75,27 @@ poe_trade_conf = {
 	"crafted": "",
 	"enchanted": ""
 }
+
 with open('e:\clip.txt') as f:
 	clip_data = f.read()
 start_name = clip_data.find('\n')
 end_name = clip_data.find('------')-1
 poe_trade_conf['name'] = clip_data[start_name+1:end_name].replace('\n', ' ')
-if "Gem" in clip_data[0:start_name]:
+print(poe_trade_conf['name']+":")
+rarity = re.search('^Rarity\:\s+(.*)\n', clip_data)
+if not rarity:
+	raise Exception("Go fuck yourself!:)")
+rarity_type = rarity.group(1)
+
+if "Gem" == rarity_type:
 	poe_trade_conf['q_min'] = re.search("\nQuality\: \+(\d+)\%", clip_data, ).group(1)
+elif "Unique" == rarity_type:
+	poe_trade_conf['rarity'] = rarity_type
+map_tier = re.search("\nMap Tier\: (\d+)", clip_data)
+if (map_tier):
+	poe_trade_conf['level_min'] = map_tier.group(1)
+	poe_trade_conf['level_max'] = map_tier.group(1)
+
 url = requests.post('http://poe.trade/search', poe_trade_conf)
 
 soup = Soup(url.content, "html.parser")

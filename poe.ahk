@@ -45,16 +45,14 @@ Loop
 	}
 }
 printMessage() {
-o := Object()
+	o := Object()
 
-
-for index, element in o ; Recommended approach in most cases.
-	{
-	send {Enter}
-	sleep 100
-	send, %element%
-	send {Enter}
-	sleep 100
+	for index, element in o {
+		send {Enter}
+		sleep 100
+		send, %element%
+		send {Enter}
+		sleep 100
 	}
 }
 isCharacterActive() {
@@ -108,6 +106,7 @@ screamTrade() {
 					} else { 
 						send {enter}
 						printScreamMessage := false
+						MsgBox, Trade Off
 						return
 					}
 					sleep 100
@@ -122,6 +121,11 @@ screamTrade() {
 }
 
 startScream() {
+	if (isPoeClosed()) {
+		send {f5}
+		return
+
+	}
 	if ( printScreamMessage ) {
 		printScreamMessage := false
 	} else {
@@ -177,8 +181,8 @@ DebugAppend(Data) {
 $F2::DrinkFlask()
 $F1::OpenHideout()
 $F4::OpenPortal()
-$f6::getPrice()
-$F5::startScream()
+$F6::getPrice()
+$F5::printMessage()
 $F3::FastLogOut()
 ;$f12::reload
 ;$`::PhaseRun()
@@ -207,11 +211,14 @@ RunWaitOne(command) {
 
 
 getPrice() {
-	send ^C
-	sleep 20
 	FileDelete, e:\clip.txt
-	Fileappend,%clipboard%, e:\clip.txt
-	MsgBox % RunWaitOne("python" " C:\Users\Andrew\Documents\djangochat\sd.py")
+	ClipWait
+	;;if (clipboard = "R2d2") {
+	;;	MsgBox, Doesn't work
+	;;} else {
+		Fileappend,%clipboard%, e:\clip.txt
+		MsgBox % RunWaitOne("python" " C:\Users\Andrew\Documents\djangochat\sd.py")
+	;;}
 }
 OpenHideout() {
 	send {Enter}
@@ -283,7 +290,7 @@ FastLogOut(){
 	BlockInput On
 	SetDefaultMouseSpeed 0
 	sendinput {esc}
-	sleep 1
+	sleep 5
 	MouseClick, left, 959, 432, 1, 1
 	BlockInput Off
 	return

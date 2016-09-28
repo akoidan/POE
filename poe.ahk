@@ -186,11 +186,9 @@ $F4::OpenPortal()
 $f5::FastLogOut()
 $F6::getPrice()
 $F7::printMessage()
-<<<<<<< HEAD
 $f::TurnOffBloodRage()
-=======
 $f8::startScream()
->>>>>>> aeab0cc96d13b1f410c118c6e1e2b1e032db8e61
+
 ;$`::PhaseRun()
 ;$A::IceCrash()
 
@@ -223,11 +221,7 @@ getPrice() {
 	;;	MsgBox, Doesn't work
 	;;} else {
 		Fileappend,%clipboard%, clip.txt
-<<<<<<< HEAD
 		MsgBox % RunWaitOne("python ""C:\Users\Andrew\Documents\My Games\Path of Exile\price-finder.py""")
-=======
-		MsgBox % RunWaitOne("python" " ""C:\Users\Andrew\Documents\My Games\Path of Exile\price-finder.py""")
->>>>>>> aeab0cc96d13b1f410c118c6e1e2b1e032db8e61
 	;;}
 }
 OpenHideout() {

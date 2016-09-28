@@ -29,7 +29,7 @@ Show # Show items for alchemy
 
 Show 
 	Rarity Rare
-	BaseType "Vaal Regalia" "Hubris Circlet" "Sorcerer Boots" "Sorcerer Gloves" "Astral Plate" "Two-Toned Boots"
+	BaseType "Vaal Regalia" "Hubris Circlet" "Sorcerer Boots" "Sorcerer Gloves" "Astral Plate" "Two-Toned Boots" "Gripped Gloves" "Fingerless Silk Gloves" "Spiked Gloves"
 	ItemLevel > 75
 	SetBackgroundColor 30 90 45 230
     SetFontSize 38
@@ -37,18 +37,12 @@ Show
 	
 Show 
 	Rarity Rare
-	BaseType "Titan Greaves" "Slink Gloves"
+	BaseType "Titan Greaves" "Slink Gloves" "Lion Pelt" "Titan Gauntlets" "Slink Boots" "Royal Burgonet" "Eternal Burgonet" "Lion Pelt" "Bone Helmet"
 	ItemLevel > 75
 	SetBackgroundColor 30 90 45 230
     SetFontSize 32
     SetBorderColor 25 180 25
 
-Show 
-	Rarity Rare
-	BaseType "Gripped Gloves" "Fingerless Silk Gloves" "Spiked Gloves"
-	SetBackgroundColor 30 90 45 230
-    SetFontSize 50
-    SetBorderColor 25 180 25
 ###################################################
 ##################### Recepie #####################
 ###################################################
@@ -530,7 +524,7 @@ Hide # Hide all bad boots and gloves
 	Rarity "Magic" "Normal"
 	DropLevel <= 66
 	
-Hide # Hide bad things under 66 lvl
+Hide 
 	Class "Gloves" "Boots" "Helmet"
 	Rarity "Magic" "Normal"
 	BaseType "Deicide Mask" "Dragonscale Gauntlets" "Praetor Crown" "Sorcerer Gloves" "Titan Greaves" "Slink Boots" "Slink Gloves" "Titan Gauntlets" "Nightmare Bascinet" "Murder Mitts" "Lion Pelt" "Murder Boots" "Eternal Burgonet"

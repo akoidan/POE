@@ -413,17 +413,22 @@ SwitchRarity() {
 }
 
 TurnOffBloodRage() {
+	if (isPoeClosed()) {
+		send f
+		return
+	}
 	MouseGetPos, xpos, ypox
 	BlockInput On
 	closeInvAfter := OpenInventory()
-	
-	Click right 1767, 196
+	bloodRGemX := 1766
+	bloodRGemY := 199
+	Click right %bloodRGemX%, %bloodRGemY%
+	sleep 100
+	Click left %bloodRGemX%, %bloodRGemY%
+	sleep 10
 	if (closeInvAfter) {
 		Send {i}
 	}
-	sleep 100
-	Click left 1767, 196
-	
 	MouseMove xpos, ypox 
 	BlockInput Off
 	return

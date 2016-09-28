@@ -218,7 +218,7 @@ getPrice() {
 	;;	MsgBox, Doesn't work
 	;;} else {
 		Fileappend,%clipboard%, clip.txt
-		MsgBox % RunWaitOne("python" " price-finder.py")
+		MsgBox % RunWaitOne("python ""C:\Users\Andrew\Documents\My Games\Path of Exile\price-finder.py""")
 	;;}
 }
 OpenHideout() {

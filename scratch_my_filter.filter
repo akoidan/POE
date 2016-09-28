@@ -13,7 +13,7 @@ Show
 	SetTextColor 74 230 58
 	
 Show # Show items for alchemy
-    BaseType "Vaal Regalia" "Sorcerer Boots" "Sorcerer Gloves" "Hubris Circlet" "Astral Plate" "Leather Belt" "Heavy Belt"
+    BaseType "Vaal Regalia" "Sorcerer Boots" "Sorcerer Gloves" "Hubris Circlet" "Astral Plate" "Leather Belt" "Heavy Belt" "Titanium Spirit Shield"
 	ItemLevel >= 84
 	Rarity "Normal"
 	
@@ -29,7 +29,7 @@ Show # Show items for alchemy
 
 Show 
 	Rarity Rare
-	BaseType "Vaal Regalia" "Hubris Circlet" "Sorcerer Boots" "Sorcerer Gloves" "Astral Plate" "Two-Toned Boots" "Gripped Gloves" "Fingerless Silk Gloves" "Spiked Gloves"
+	BaseType "Vaal Regalia" "Hubris Circlet" "Sorcerer Boots" "Sorcerer Gloves" "Astral Plate" "Two-Toned Boots" "Gripped Gloves" "Fingerless Silk Gloves" "Spiked Gloves" "Titanium Spirit Shield"
 	ItemLevel > 75
 	SetBackgroundColor 30 90 45 230
     SetFontSize 38
@@ -37,7 +37,7 @@ Show
 	
 Show 
 	Rarity Rare
-	BaseType "Titan Greaves" "Slink Gloves" "Lion Pelt" "Titan Gauntlets" "Slink Boots" "Royal Burgonet" "Eternal Burgonet" "Lion Pelt" "Bone Helmet"
+	BaseType "Titan Greaves" "Slink Gloves" "Lion Pelt" "Titan Gauntlets" "Slink Boots" "Royal Burgonet" "Eternal Burgonet" "Lion Pelt" "Bone Helmet" "Archon Kite Shield"
 	ItemLevel > 75
 	SetBackgroundColor 30 90 45 230
     SetFontSize 32

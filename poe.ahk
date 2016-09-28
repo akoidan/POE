@@ -211,13 +211,13 @@ RunWaitOne(command) {
 
 
 getPrice() {
-	FileDelete, e:\clip.txt
+	FileDelete, clip.txt
 	ClipWait
 	;;if (clipboard = "R2d2") {
 	;;	MsgBox, Doesn't work
 	;;} else {
-		Fileappend,%clipboard%, e:\clip.txt
-		MsgBox % RunWaitOne("python" " C:\Users\Andrew\Documents\djangochat\sd.py")
+		Fileappend,%clipboard%, clip.txt
+		MsgBox % RunWaitOne("python" " price-finder.py")
 	;;}
 }
 OpenHideout() {

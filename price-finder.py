@@ -1,7 +1,9 @@
 import requests
 from bs4 import BeautifulSoup as Soup
 import re
+import os
 
+clip_path = os.sep.join((os.path.dirname(os.path.realpath(__file__)), 'clip.txt'))
 poe_trade_conf = {
 	"league": "Standard",
 	"type": "",
@@ -76,7 +78,8 @@ poe_trade_conf = {
 	"enchanted": ""
 }
 
-with open('e:\clip.txt') as f:
+
+with open(clip_path, 'r') as f:
 	clip_data = f.read()
 start_name = clip_data.find('\n')
 end_name = clip_data.find('------')-1

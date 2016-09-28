@@ -179,12 +179,13 @@ DebugAppend(Data) {
 
 
 $F1::OpenHideout()
-$F2::DrinkFlask()
+$d::DrinkFlask()
 $F3::SwitchConc()
 $F4::OpenPortal()
 $f5::FastLogOut()
 $F6::getPrice()
 $F7::printMessage()
+$f::TurnOffBloodRage()
 ;$`::PhaseRun()
 ;$A::IceCrash()
 
@@ -413,17 +414,22 @@ SwitchRarity() {
 }
 
 TurnOffBloodRage() {
+	if (isPoeClosed()) {
+		send f
+		return
+	}
 	MouseGetPos, xpos, ypox
 	BlockInput On
 	closeInvAfter := OpenInventory()
-	
-	Click right 1767, 196
+	bloodRGemX := 1766
+	bloodRGemY := 199
+	Click right %bloodRGemX%, %bloodRGemY%
+	sleep 100
+	Click left %bloodRGemX%, %bloodRGemY%
+	sleep 10
 	if (closeInvAfter) {
 		Send {i}
 	}
-	sleep 100
-	Click left 1767, 196
-	
 	MouseMove xpos, ypox 
 	BlockInput Off
 	return
@@ -501,7 +507,7 @@ DrinkTwoFirstFlask() {
 
 DrinkFlask() {
 	if (isPoeClosed()) {
-		send {f2}
+		send d
 		return
 	}
 	Send {1}

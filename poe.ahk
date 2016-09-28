@@ -46,7 +46,7 @@ Loop
 }
 printMessage() {
 	o := Object()
-
+	
 	for index, element in o {
 		send {Enter}
 		sleep 100
@@ -178,13 +178,13 @@ DebugAppend(Data) {
 
 
 
-$F2::DrinkFlask()
 $F1::OpenHideout()
+$F2::DrinkFlask()
+$F3::SwitchConc()
 $F4::OpenPortal()
+$f5::FastLogOut()
 $F6::getPrice()
-$F5::printMessage()
-$F3::FastLogOut()
-;$f12::reload
+$F7::printMessage()
 ;$`::PhaseRun()
 ;$A::IceCrash()
 
@@ -330,8 +330,8 @@ SwitchConc() {
 	
 	Click left %concX%, %concY%
 	Sleep 1
-	;Click left 1613, 305
-	Click left 1607, 522
+	Click left 1613, 305
+	;Click left 1607, 522
 	Sleep 1
 	Click left %concX%, %concY%
 	Sleep 1

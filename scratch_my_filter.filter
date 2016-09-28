@@ -372,6 +372,63 @@ Show # Maps:SAFE
 	SetFontSize 42
 	PlayAlertSound 4 300
 	
+##################################################
+#################### Fragments ###################
+##################################################	
+
+	
+Show
+	Class "Map Fragments"
+	BaseType "Mortal Hope" "Mortal Ignorance"
+	SetTextColor 0 0 0 255
+	SetBorderColor 0 0 0 255
+	SetBackgroundColor 255 255 255 255
+	SetFontSize 45
+	PlayAlertSound 6 300
+
+Show
+	Class "Map Fragments"
+	BaseType "Fragment of the Phoenix" "Fragment of the Minotaur" "Fragment of the Chimera" "Fragment of the Hydra"
+	SetTextColor 0 0 0 255
+	SetBorderColor 0 0 0 255
+	SetBackgroundColor 255 255 255 255
+	SetFontSize 45
+	PlayAlertSound 2 300
+
+Show
+	Class "Map Fragments"
+	BaseType "Mortal"
+	SetTextColor 0 0 0 255
+	SetBorderColor 0 0 0 255
+	SetBackgroundColor 180 0 0 255
+	SetFontSize 44
+	PlayAlertSound 2 300
+
+Show
+	Class "Map Fragments"
+	BaseType "Eber's Key" "Yriel's Key" "Inya's Key" "Volkuur's Key"
+	SetTextColor 0 0 0 255
+	SetBorderColor 0 0 0 255
+	SetBackgroundColor 180 0 0 255
+	SetFontSize 44
+	PlayAlertSound 6 300
+
+Show
+	Class "Map Fragments"
+	BaseType "Sacrifice at Midnight"
+	SetTextColor 0 0 0 255
+	SetBorderColor 0 0 0 255
+	SetBackgroundColor 180 0 0 255
+	SetFontSize 44
+	PlayAlertSound 2 300
+
+Show
+	Class "Map Fragments"
+	SetTextColor 180 0 0 255
+	SetBorderColor 180 0 0 255
+	SetBackgroundColor 0 0 0 255
+	SetFontSize 38
+	PlayAlertSound 2 300
 	
 ##################################################
 ##################### Hidden #####################
@@ -394,7 +451,7 @@ Hide # Hide all bad boots and gloves
 Hide # Hide bad things under 66 lvl
 	Class "Gloves" "Boots" "Helmet"
 	Rarity "Magic" "Normal"
-	BaseType "Deicide Mask" "Dragonscale Gauntlets" "Praetor Crown" "Sorcerer Gloves" "Titan Greaves" "Slink Boots" "Slink Gloves" "Titan Gauntlets"
+	BaseType "Deicide Mask" "Dragonscale Gauntlets" "Praetor Crown" "Sorcerer Gloves" "Titan Greaves" "Slink Boots" "Slink Gloves" "Titan Gauntlets" "Nightmare Bascinet" "Murder Mitts"
 	
 Hide # Show all new cool armour for spell damage etc
 	Class "Gloves" "Boots" "Helmet" "Ring" "Jewel"
@@ -414,12 +471,23 @@ Hide # Show all other cool belts
 
 Hide 
 	Rarity "Magic" "Normal"
-	BaseType "Studded Belt" "Chain Belt" "Cloth Belt" "Sapphire Ring" "Coral Ring" "Topaz Ring" "Ruby Ring" "Moonstone Ring" "Amethyst Ring" "Prismatic Ring" "Two-Stone Ring" "Paua Amulet" "Lapis Amulet" "Amber Amulet" "Coral Amulet" "Jade Amulet" "Unset Ring" "Citrine Amulet"
+	BaseType "Studded Belt" "Chain Belt" "Cloth Belt" "Sapphire Ring" "Coral Ring" "Topaz Ring" "Ruby Ring" "Moonstone Ring" "Amethyst Ring" "Prismatic Ring" "Two-Stone Ring" "Paua Amulet" "Lapis Amulet" "Amber Amulet" "Coral Amulet" "Jade Amulet" "Unset Ring" "Citrine Amulet" "Turquoise Amulet" "Onyx Amulet" "Iron Ring"
+Hide 
+	Rarity "Magic" "Normal"
+	ItemLevel < 80
+	BaseType "Gold Ring" "Diamond Ring" "Gold Amulet" "Hubris Circlet"
 
+Hide 
+	Rarity "Magic" "Normal"
+	ItemLevel < 84
+	BaseType  "Vaal Regalia" "Sorcerer Boots" "Sorcerer Gloves" "Hubris Circlet" "Astral Plate" 
+	
 Hide
 	Class "Divination Card"
 	BaseType "The Carrion Crow"
  	
+	
+
 Show # need to be fixed 
  	SetFontSize 100
     SetBackgroundColor 255 0 255

@@ -106,13 +106,14 @@ screamTrade() {
 					} else { 
 						send {enter}
 						printScreamMessage := false
-						MsgBox, Trade Off
+						MsgBox, Trade Off coz wrong clip
 						return
 					}
 					sleep 100
 				}
 			}
 			if (not printScreamMessage) {
+				MsgBox, Trade Off
 				return
 			}
 			sleep 1000
@@ -122,7 +123,7 @@ screamTrade() {
 
 startScream() {
 	if (isPoeClosed()) {
-		send {f5}
+		send {f8}
 		return
 
 	}
@@ -185,7 +186,11 @@ $F4::OpenPortal()
 $f5::FastLogOut()
 $F6::getPrice()
 $F7::printMessage()
+<<<<<<< HEAD
 $f::TurnOffBloodRage()
+=======
+$f8::startScream()
+>>>>>>> aeab0cc96d13b1f410c118c6e1e2b1e032db8e61
 ;$`::PhaseRun()
 ;$A::IceCrash()
 
@@ -218,7 +223,11 @@ getPrice() {
 	;;	MsgBox, Doesn't work
 	;;} else {
 		Fileappend,%clipboard%, clip.txt
+<<<<<<< HEAD
 		MsgBox % RunWaitOne("python ""C:\Users\Andrew\Documents\My Games\Path of Exile\price-finder.py""")
+=======
+		MsgBox % RunWaitOne("python" " ""C:\Users\Andrew\Documents\My Games\Path of Exile\price-finder.py""")
+>>>>>>> aeab0cc96d13b1f410c118c6e1e2b1e032db8e61
 	;;}
 }
 OpenHideout() {
@@ -291,7 +300,7 @@ FastLogOut(){
 	BlockInput On
 	SetDefaultMouseSpeed 0
 	sendinput {esc}
-	sleep 5
+	sleep 10
 	MouseClick, left, 959, 432, 1, 1
 	BlockInput Off
 	return

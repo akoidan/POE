@@ -93,7 +93,7 @@ rarity_type = rarity.group(1)
 if "Gem" == rarity_type:
 	poe_trade_conf['q_min'] = re.search("\nQuality\: \+(\d+)\%", clip_data, ).group(1)
 elif "Unique" == rarity_type:
-	poe_trade_conf['rarity'] = rarity_type
+	poe_trade_conf['rarity'] = 'unique'
 map_tier = re.search("\nMap Tier\: (\d+)", clip_data)
 if (map_tier):
 	poe_trade_conf['level_min'] = map_tier.group(1)

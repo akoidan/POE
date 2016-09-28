@@ -216,12 +216,8 @@ getPrice() {
 	clip_path := "C:\Users\Andrew\Documents\My Games\Path of Exile\clip.txt"
 	FileDelete, %clip_path%
 	ClipWait
-	;;if (clipboard = "R2d2") {
-	;;	MsgBox, Doesn't work
-	;;} else {
-		Fileappend,%clipboard%, %clip_path%, UTF-8
-		MsgBox % RunWaitOne("python" " ""C:\Users\Andrew\Documents\My Games\Path of Exile\price-finder.py""")
-	;;}
+	Fileappend,%clipboard%, %clip_path%, UTF-8
+	MsgBox % RunWaitOne("python ""C:\Users\Andrew\Documents\My Games\Path of Exile\price-finder.py""")
 }
 OpenHideout() {
 	send {Enter}

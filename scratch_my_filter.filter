@@ -13,7 +13,7 @@ Show
 	SetTextColor 74 230 58
 	
 Show # Show items for alchemy
-    BaseType "Vaal Regalia" "Sorcerer Boots" "Sorcerer Gloves" "Hubris Circlet" "Astral Plate" 
+    BaseType "Vaal Regalia" "Sorcerer Boots" "Sorcerer Gloves" "Hubris Circlet" "Astral Plate" "Leather Belt" "Heavy Belt"
 	ItemLevel >= 84
 	Rarity "Normal"
 	
@@ -27,6 +27,28 @@ Show # Show items for alchemy
 	ItemLevel >= 84
 	Rarity "Normal"
 
+Show 
+	Rarity Rare
+	BaseType "Vaal Regalia" "Hubris Circlet" "Sorcerer Boots" "Sorcerer Gloves" "Astral Plate" "Two-Toned Boots"
+	ItemLevel > 75
+	SetBackgroundColor 30 90 45 230
+    SetFontSize 38
+    SetBorderColor 25 180 25
+	
+Show 
+	Rarity Rare
+	BaseType "Titan Greaves" "Slink Gloves"
+	ItemLevel > 75
+	SetBackgroundColor 30 90 45 230
+    SetFontSize 32
+    SetBorderColor 25 180 25
+
+Show 
+	Rarity Rare
+	BaseType "Gripped Gloves" "Fingerless Silk Gloves" "Spiked Gloves"
+	SetBackgroundColor 30 90 45 230
+    SetFontSize 50
+    SetBorderColor 25 180 25
 ###################################################
 ##################### Recepie #####################
 ###################################################
@@ -507,7 +529,6 @@ Hide # Hide all bad boots and gloves
 	Class "Gloves" "Boots" "Helmet"
 	Rarity "Magic" "Normal"
 	DropLevel <= 66
-	ItemLevel < 84
 	
 Hide # Hide bad things under 66 lvl
 	Class "Gloves" "Boots" "Helmet"

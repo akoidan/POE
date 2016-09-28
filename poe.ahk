@@ -181,9 +181,9 @@ DebugAppend(Data) {
 
 $F1::OpenHideout()
 $F2::DrinkFlask()
-$F3::SwitchConc()
+$F5::SwitchConc()
 $F4::OpenPortal()
-$f5::FastLogOut()
+$f3::FastLogOut()
 $F6::getPrice()
 $F7::printMessage()
 $f8::startScream()
@@ -287,6 +287,7 @@ Remaining() {
 
 FastLogOut(){
 	if (isPoeClosed()) {
+		send {f3}
 		return
 	}
 	BlockInput On
@@ -323,6 +324,10 @@ OpenInventory() {
 }
 
 SwitchConc() {
+	if (isPoeClosed()) {
+		send {f5}
+		return
+	}
 	concX := 1877
 	concY := 615
 	

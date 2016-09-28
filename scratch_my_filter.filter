@@ -201,13 +201,73 @@ Show
     SetBackgroundColor 255 255 255
 	SetTextColor 0 0 0
 
+	
+##################################################
+################ Divination Cards ################
+##################################################
+
+Show
+	Class "Divination"
+	BaseType "The Wolf's Shadow"
+	SetTextColor 0 0 0
+	SetBorderColor 0 100 215 255
+	SetBackgroundColor 145 215 230 215
+	SetFontSize 38
+	PlayAlertSound 2 300
+
+#EXCEPTIONS - Trash-tier cards.
+Show #%H3
+	Class "Divination"
+	BaseType "Carrion Crow" "Other Cheek" "Hermit" "King's Blade" "Prosperity" "Metalsmith's Gift"
+	SetTextColor 0 0 0
+	SetBorderColor 0 0 0
+	SetBackgroundColor 175 215 230 180
+	SetFontSize 32
+
+#TIER 1: ~15C++ The penultimate cards. 
+Show
+	Class "Divination"
+	BaseType "The Doctor" "The Fiend" "House of Mirrors" "Hunter's Reward" "Abandoned Wealth" "The Artist" "Bowyer's Dream" "The Brittle Emperor" "The Celestial Justicar" "The Dapper Prodigy" "The Dark Mage" "The Devastator" "The Dragon's Heart" "The Ethereal" "The Formless Sea" "Heterochromia" "The Hunger" "The Immortal" "The Last One Standing" "The Offering" "The Queen" "The Thaumaturgist" "Wealth and Power" "The Enlightened"
+	SetTextColor 0 0 255 255
+	SetBorderColor 0 0 255 255
+	SetBackgroundColor 255 255 255 255
+	SetFontSize 45
+	PlayAlertSound 6 300
+
+#TIER 2: ~5-14ish chaos. Expansive or very good cards (such as the Cartographer)
+Show
+	Class "Divination"
+	BaseType "The Cartographer" "The Chains that Bind" "Chaotic Disposition" "Emperor of Purity" "The Harvester" "The Hoarder" "The King's Heart" "Last Hope" "Mawr Blaidd" "The Penitent" "Pride Before the Fall" "The Scavenger" "The Sephirot" "The Valkyrie" "The Vast" "The Warlord" "The Wolf" "Stormcaller" "Earth Drinker" "The Surveyor" "The Void"
+	SetTextColor 0 0 0
+	SetBorderColor 255 255 0 255
+	SetBackgroundColor 100 250 250 245
+	SetFontSize 44
+	PlayAlertSound 2 300
+
+#TIER 3: ~1-4C. Useful cards that are likely demanded by some players.
+Show
+	Class "Divination"
+	BaseType "The Aesthete" "The Arena Champion" "The Avenger" "Blind Venture" "The Body" "Boundless Realms" "The Calling" "Coveted Possession" "The Cursed King" "The Encroaching Darkness" "The Fletcher" "Gemcutter's Promise" "The Gladiator" "Glimmer of Hope" "Grave Knowledge" "Hope" "Humility" "The Inventor" "Jack in the Box" "The Jester" "Lost Worlds" "Lucky Connections" "Lysah's Respite" "Merciless Armament" "Rats" "The Risk" "The Road to Power" "Scholar of the Seas" "The Soul" "The Spoiled Prince" "The Survivalist" "Time-Lost Relic" "Tranquillity" "The Tyrant" "The Union" "The Wind" "The Wrath" "Fox" "Lucky Deck" "Treasure Hunter" "Vinia's Token" "Trial" "Death" "Dialla's Subjugation"
+	SetTextColor 0 0 0
+	SetBorderColor 0 0 255 255
+	SetBackgroundColor 50 220 240 235
+	SetFontSize 40
+	PlayAlertSound 2 300
+
+#TIER 4: Rest. Likely not demanded or worth less than 1C
+Show
+	Class "Divination"
+	SetTextColor 0 0 0
+	SetBorderColor 0 100 150 255
+	SetBackgroundColor 145 215 230 225
+	SetFontSize 38
+	PlayAlertSound 2 300	
+	
+	
+	
 ##################################################
 ##################### Others #####################
 ##################################################
-Show
-	Class "Divination Card"
-	BaseType "Emperor's Luck"
-	SetFontSize 40
 
 Show
 	Class "Gem"
@@ -222,7 +282,8 @@ Show
 Show
 	Class "Gem"
 	SetFontSize 45
-	Quality > 12
+	Quality > 12	
+
 	
 ##################################################
 ###################### Maps ######################
@@ -451,7 +512,7 @@ Hide # Hide all bad boots and gloves
 Hide # Hide bad things under 66 lvl
 	Class "Gloves" "Boots" "Helmet"
 	Rarity "Magic" "Normal"
-	BaseType "Deicide Mask" "Dragonscale Gauntlets" "Praetor Crown" "Sorcerer Gloves" "Titan Greaves" "Slink Boots" "Slink Gloves" "Titan Gauntlets" "Nightmare Bascinet" "Murder Mitts"
+	BaseType "Deicide Mask" "Dragonscale Gauntlets" "Praetor Crown" "Sorcerer Gloves" "Titan Greaves" "Slink Boots" "Slink Gloves" "Titan Gauntlets" "Nightmare Bascinet" "Murder Mitts" "Lion Pelt" "Murder Boots" "Eternal Burgonet"
 	
 Hide # Show all new cool armour for spell damage etc
 	Class "Gloves" "Boots" "Helmet" "Ring" "Jewel"
@@ -471,11 +532,11 @@ Hide # Show all other cool belts
 
 Hide 
 	Rarity "Magic" "Normal"
-	BaseType "Studded Belt" "Chain Belt" "Cloth Belt" "Sapphire Ring" "Coral Ring" "Topaz Ring" "Ruby Ring" "Moonstone Ring" "Amethyst Ring" "Prismatic Ring" "Two-Stone Ring" "Paua Amulet" "Lapis Amulet" "Amber Amulet" "Coral Amulet" "Jade Amulet" "Unset Ring" "Citrine Amulet" "Turquoise Amulet" "Onyx Amulet" "Iron Ring"
-Hide 
+	BaseType "Studded Belt" "Chain Belt" "Cloth Belt" "Sapphire Ring" "Coral Ring" "Topaz Ring" "Ruby Ring" "Moonstone Ring" "Amethyst Ring" "Prismatic Ring" "Two-Stone Ring" "Paua Amulet" "Lapis Amulet" "Amber Amulet" "Coral Amulet" "Jade Amulet" "Unset Ring" "Citrine Amulet" "Turquoise Amulet" "Onyx Amulet" "Iron Ring" "Agate Amulet" "Paua Ring"
+Hide
 	Rarity "Magic" "Normal"
 	ItemLevel < 80
-	BaseType "Gold Ring" "Diamond Ring" "Gold Amulet" "Hubris Circlet"
+	BaseType "Gold Ring" "Diamond Ring" "Gold Amulet"
 
 Hide 
 	Rarity "Magic" "Normal"
@@ -485,7 +546,6 @@ Hide
 Hide
 	Class "Divination Card"
 	BaseType "The Carrion Crow"
- 	
 	
 
 Show # need to be fixed 

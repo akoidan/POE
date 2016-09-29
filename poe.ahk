@@ -1,3 +1,4 @@
+
 global chrNum := 1
 
 ;Loop {
@@ -191,6 +192,20 @@ $f8::startScream()
 ;$A::IceCrash()
 
 
+
+DrawText(winText) {
+	setControlDelay, 500 ; remove this if theres no loop!
+	gui, font, cFF0000 s90, arial
+	gui, +alwaysOnTop +toolWindow -caption
+	gui, color, c000000
+	gui, add, text,, % winText
+	gui, show, y-300 NA, tDisp
+
+	winWait, tDisp
+	winSet, transColor, 000000
+	winMove, -90, -70 ; change coordinates!
+}
+
 RunWaitOne(command) {
 	dhw := A_DetectHiddenWindows
 	DetectHiddenWindows On
@@ -217,7 +232,7 @@ getPrice() {
 	FileDelete, %clip_path%
 	ClipWait
 	Fileappend,%clipboard%, %clip_path%, UTF-8
-	MsgBox % RunWaitOne("python ""C:\Users\Andrew\Documents\My Games\Path of Exile\price-finder.py""")
+	MsgBox, % RunWaitOne("python ""C:\Users\Andrew\Documents\My Games\Path of Exile\price-finder.py""")
 }
 OpenHideout() {
 	send {Enter}
@@ -290,7 +305,7 @@ FastLogOut(){
 	BlockInput On
 	SetDefaultMouseSpeed 0
 	sendinput {esc}
-	sleep 10
+	sleep 50
 	MouseClick, left, 959, 432, 1, 1
 	BlockInput Off
 	return

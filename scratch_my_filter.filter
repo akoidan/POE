@@ -93,7 +93,9 @@ Show
     Rarity Rare
     SetTextColor 255 190 0
 	SetBorderColor 255 0 255 255
-
+Show 
+	BaseType "Steel Ring"
+	 SetFontSize 50
 Show 
 	Class "Belts" "Ring"
 	Rarity "Rare"
@@ -189,7 +191,7 @@ Show
 
 Show
 	Class "Currency"
-    BaseType "Regal Orb" "Orb of Regret" "Chaos Orb" "Blessed Orb" "Jeweller's Orb" "Gemcutter's Prism" "Orb of Fusing" "Orb of Scouring" "Orb of Alchemy" "Orb of Chance" "Vaal Orb" "Cartographer's Chisel"  "Cartographer's Sextant"
+    BaseType "Regal Orb" "Orb of Regret" "Chaos Orb" "Blessed Orb" "Jeweller's Orb" "Gemcutter's Prism" "Orb of Fusing" "Orb of Scouring" "Orb of Alchemy" "Orb of Chance" "Vaal Orb" "Cartographer's Chisel"  "Cartographer's Sextant" "Silver Coin"
     SetBackgroundColor 213 159 15
     SetTextColor 0 0 0
     SetBorderColor 0 0 0
@@ -568,6 +570,10 @@ Hide
 Hide
 	Rarity "Magic" "Normal"
 	ItemLevel < 80
+	BaseType "Gold Ring" "Diamond Ring" "Gold Amulet"
+	
+Hide
+	Rarity "Magic"
 	BaseType "Gold Ring" "Diamond Ring" "Gold Amulet"
 
 Hide 

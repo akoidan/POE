@@ -1,3 +1,4 @@
+
 global chrNum := 1
 
 ;Loop {
@@ -46,7 +47,26 @@ Loop
 }
 printMessage() {
 	o := Object()
-	
+	o.Insert("@LordBelton Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""16""; position: left 4, top 8). My offer is 10c")
+o.Insert("@Neyaeh Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""Gears""; position: left 8, top 11). My offer is 10c")
+o.Insert("@xghostofsparta Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""MAGIC FIND BUILD""; position: left 4, top 2). My offer is 10c")
+o.Insert("@SpookeySkeletal Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""Div Card""; position: left 10, top 11). My offer is 10c")
+o.Insert("@Злая_Тетька Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""Разное""; position: left 10, top 8). My offer is 10c")
+o.Insert("@GreedyLucky Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""legacy""; position: left 8, top 4). My offer is 10c")
+o.Insert("@SSSYYSSS Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""sell-1""; position: left 0, top 3). My offer is 10c")
+o.Insert("@ytsuR_liaN Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""shop""; position: left 2, top 6). My offer is 10c")
+o.Insert("@Aitrod Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""Sell1""; position: left 8, top 10). My offer is 10c")
+o.Insert("@WickerRanger Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""Unique Rings/Belts""; position: left 8, top 1). My offer is 10c")
+o.Insert("@SexDrugsRocknRoll Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""Продажа""; position: left 5, top 0). My offer is 10c")
+o.Insert("@LarryShaper Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""9""; position: left 10, top 4). My offer is 10c")
+o.Insert("@raigod Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""boom""; position: left 0, top 10). My offer is 10c")
+o.Insert("@МЫВЗРЫВАЛИАПЕЛЬСИН Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""belt""; position: left 0, top 10). My offer is 10c")
+o.Insert("@lmmoIate Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""Jewellery""; position: left 6, top 7). My offer is 10c")
+o.Insert("@ProjectPTsDisciple Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""SELL""; position: left 8, top 7). My offer is 10c")
+o.Insert("@МожетЗатащу Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""Азири""; position: left 2, top 1). My offer is 10c")
+o.Insert("@Songwhistle Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""COLLECT""; position: left 2, top 6). My offer is 10c")
+o.Insert("@Warchiefs_never_cry Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""8""; position: left 2, top 4). My offer is 10c")
+
 	for index, element in o {
 		send {Enter}
 		sleep 100
@@ -183,7 +203,7 @@ $F1::OpenHideout()
 $d::DrinkFlask()
 $F3::SwitchConc()
 $F4::OpenPortal()
-$f5::FastLogOut()
+$f3::FastLogOut()
 $F6::getPrice()
 $F7::printMessage()
 $f::TurnOffBloodRage()
@@ -192,6 +212,19 @@ $f8::startScream()
 ;$`::PhaseRun()
 ;$A::IceCrash()
 
+
+DrawText(winText) {
+	setControlDelay, 500 ; remove this if theres no loop!
+	gui, font, cFF0000 s90, arial
+	gui, +alwaysOnTop +toolWindow -caption
+	gui, color, c000000
+	gui, add, text,, % winText
+	gui, show, y-300 NA, tDisp
+
+	winWait, tDisp
+	winSet, transColor, 000000
+	winMove, -90, -70 ; change coordinates!
+}
 
 RunWaitOne(command) {
 	dhw := A_DetectHiddenWindows
@@ -215,14 +248,13 @@ RunWaitOne(command) {
 
 
 getPrice() {
-	FileDelete, clip.txt
+	clip_path :=  A_ScriptDir "\clip.txt"
+	FileDelete, %clip_path%
 	ClipWait
-	;;if (clipboard = "R2d2") {
-	;;	MsgBox, Doesn't work
-	;;} else {
-		Fileappend,%clipboard%, clip.txt
-		MsgBox % RunWaitOne("python ""C:\Users\Andrew\Documents\My Games\Path of Exile\price-finder.py""")
-	;;}
+	Fileappend,%clipboard%, %clip_path%, UTF-8
+	priceFinderPath :=  A_ScriptDir "\price-finder.py"
+	command := "python " """" priceFinderPath """"
+	MsgBox, % RunWaitOne(command)
 }
 OpenHideout() {
 	send {Enter}
@@ -289,12 +321,13 @@ Remaining() {
 
 FastLogOut(){
 	if (isPoeClosed()) {
+		send {f3}
 		return
 	}
 	BlockInput On
 	SetDefaultMouseSpeed 0
 	sendinput {esc}
-	sleep 10
+	sleep 50
 	MouseClick, left, 959, 432, 1, 1
 	BlockInput Off
 	return
@@ -325,6 +358,10 @@ OpenInventory() {
 }
 
 SwitchConc() {
+	if (isPoeClosed()) {
+		send {f5}
+		return
+	}
 	concX := 1877
 	concY := 615
 	

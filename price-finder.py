@@ -1,9 +1,10 @@
 import requests
+import sys
 from bs4 import BeautifulSoup as Soup
 import re
 import os
 
-clip_path = os.sep.join((os.path.dirname(os.path.realpath(__file__)), 'clip.txt'))
+clip_path =  os.sep.join((os.path.dirname(os.path.realpath(__file__)), 'clip.txt'))
 poe_trade_conf = {
 	"league": "Standard",
 	"type": "",
@@ -79,13 +80,16 @@ poe_trade_conf = {
 }
 
 
-with open(clip_path, 'r') as f:
+def decode_utf8(text):
+	return ''.join([i if ord(i) < 128 else '?' for i in text])
+
+with open(clip_path, 'r', encoding="UTF-8") as f:
 	clip_data = f.read()
 start_name = clip_data.find('\n')
 end_name = clip_data.find('------')-1
 poe_trade_conf['name'] = clip_data[start_name+1:end_name].replace('\n', ' ')
-print(poe_trade_conf['name']+":")
-rarity = re.search('^Rarity\:\s+(.*)\n', clip_data)
+print(decode_utf8(poe_trade_conf['name']+":"))
+rarity = re.search('Rarity\:\s+(.*)\n', clip_data)
 if not rarity:
 	raise Exception("Go fuck yourself!:)")
 rarity_type = rarity.group(1)
@@ -109,4 +113,4 @@ for offer in all_offers:
 	i += 1
 	if i > 6:
 		break
-	print(offer['data-buyout'])
+	print(decode_utf8(offer['data-buyout']))

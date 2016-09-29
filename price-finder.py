@@ -85,24 +85,33 @@ def decode_utf8(text):
 
 with open(clip_path, 'r', encoding="UTF-8") as f:
 	clip_data = f.read()
-start_name = clip_data.find('\n')
-end_name = clip_data.find('------')-1
-poe_trade_conf['name'] = clip_data[start_name+1:end_name].replace('\n', ' ')
-print(decode_utf8(poe_trade_conf['name']+":"))
 rarity = re.search('Rarity\:\s+(.*)\n', clip_data)
 if not rarity:
 	raise Exception("Go fuck yourself!:)")
 rarity_type = rarity.group(1)
-
+is_unique = "Unique" == rarity_type
 if "Gem" == rarity_type:
-	poe_trade_conf['q_min'] = re.search("\nQuality\: \+(\d+)\%", clip_data, ).group(1)
-elif "Unique" == rarity_type:
+	quality_r = re.search("\nQuality\: \+(\d+)\%", clip_data, )
+	if quality_r:
+		poe_trade_conf['q_min'] = quality_r.group(1)
+	level_r = re.search("\nLevel\:\s*(\d+)", clip_data, )
+	if level_r:
+		lvl = int(level_r.group(1))
+		if lvl > 18:
+			poe_trade_conf['level_min'] = lvl
+elif is_unique:
 	poe_trade_conf['rarity'] = 'unique'
 map_tier = re.search("\nMap Tier\: (\d+)", clip_data)
-if (map_tier):
+if map_tier:
 	poe_trade_conf['level_min'] = map_tier.group(1)
 	poe_trade_conf['level_max'] = map_tier.group(1)
-
+if not map_tier or is_unique:
+	start_name = clip_data.find('\n')
+	end_name = clip_data.find('------')-1
+	poe_trade_conf['name'] = clip_data[start_name+1:end_name].replace('\n', ' ')
+else: # copy only base name if it's not unique map
+	poe_trade_conf['name'] = re.search('\n(.*)\n--------', clip_data).group(1)
+print(decode_utf8(poe_trade_conf['name']+":"))
 url = requests.post('http://poe.trade/search', poe_trade_conf)
 
 soup = Soup(url.content, "html.parser")

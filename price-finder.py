@@ -80,6 +80,20 @@ poe_trade_conf = {
 }
 
 
+def get_type(name):
+	type_regex = {
+		'Shield': r'Buckler\b|Bundle\b|Shield\b',
+		'Gloves': r"Gauntlets\b|Gloves\b|Mitts\b",
+		'Boots': r'Boots\b|Greaves\b|Slippers\b',
+		'Helmet': r'Bascinet\b|Burgonet\b|Cage\b|Circlet\b|Crown\b|Hood\b|Helm\b|Helmet\b|Mask\b|Sallet\b|Tricorne\b',
+		'BodyArmour': r'Armour\b|Brigandine\b|Chainmail\b|Coat\b|Doublet\b|Garb\b|Hauberk\b|Jacket\b|Lamellar\b|Leather\b|Plate\b|Raiment\b|Regalia\b|Ringmail\b|Robe\b|Tunic\b|Vest\b|Vestment\b|Chestplate|Full Dragonscale|Full Wyrmscale|Necromancer Silks|Shabby Jerkin|Silken Wrap'
+	}
+	for base_type in type_regex:
+		res = re.search(type_regex[base_type], name)
+		if res:
+			return base_type
+	return None
+
 def decode_utf8(text):
 	return ''.join([i if ord(i) < 128 else '?' for i in text])
 
@@ -109,9 +123,35 @@ if not map_tier or is_unique:
 	start_name = clip_data.find('\n')
 	end_name = clip_data.find('------')-1
 	poe_trade_conf['name'] = clip_data[start_name+1:end_name].replace('\n', ' ')
-else: # copy only base name if it's not unique map
+elif map_tier: # copy only base name if it's not unique map
+	poe_trade_conf['name'] = re.search('\n(.*Map).*\n--------', clip_data).group(1)
+else:
 	poe_trade_conf['name'] = re.search('\n(.*)\n--------', clip_data).group(1)
-print(decode_utf8(poe_trade_conf['name']+":"))
+
+base_type = get_type(poe_trade_conf['name'])
+if base_type and not is_unique:
+	poe_trade_conf['name'] = ''
+	poe_trade_conf['type'] = base_type
+	es = re.search('\nEnergy Shield: (\d+)', clip_data)
+	if es and int(es.group(1)) > 100:
+		poe_trade_conf['shield_min'] = es.group(1)
+
+	life = re.search('\n\+(\d+) to maximum Life', clip_data)
+	#if life and int(life.group(1)) > 40: TODO http://stackoverflow.com/questions/27116424/handling-duplicate-keys-in-http-post-in-order-to-specify-multiple-values
+	#	poe_trade_conf['shield_min'] = es.group(1)
+	res = re.finditer('\n\+(\d+)% to (Fire|Cold|Lightning) Resistance', clip_data)
+	sum_res = 0
+	for i in res:
+		sum_res += int(i.group(1))
+	if sum_res > 0:
+		poe_trade_conf['mod_name'] = '(pseudo) +#% total Resistance'
+		poe_trade_conf['mod_min'] = sum_res
+
+for k in poe_trade_conf:
+	if poe_trade_conf[k] != '' and k not in ('capquality', 'group_count', 'group_type'):
+		print(decode_utf8('{} : {}'.format(k, poe_trade_conf[k])))
+
+print('-'*10)
 url = requests.post('http://poe.trade/search', poe_trade_conf)
 
 soup = Soup(url.content, "html.parser")

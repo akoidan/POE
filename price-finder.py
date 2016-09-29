@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup as Soup
 import re
 import os
 
-clip_path = "C:\\Users\\Andrew\\Documents\\My Games\\Path of Exile\\clip.txt"
+clip_path =  os.sep.join((os.path.dirname(os.path.realpath(__file__)), 'clip.txt'))
 poe_trade_conf = {
 	"league": "Standard",
 	"type": "",

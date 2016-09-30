@@ -306,7 +306,7 @@ Show
 Show
 	Class "Gem"
 	SetFontSize 35
-	Quality < 12
+	Quality <= 12
 
 Show
 	Class "Gem"

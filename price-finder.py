@@ -122,7 +122,7 @@ if map_tier:
 if not map_tier or is_unique:
 	chat_prefix = '<<set:MS>><<set:M>><<set:S>>'
 	chat_pos = clip_data.find(chat_prefix)
-	start_name = chat_pos + len(chat_prefix) if chat_pos else clip_data.find('\n') + 1
+	start_name = chat_pos + len(chat_prefix) if chat_pos >= 0 else clip_data.find('\n') + 1
 	end_name = clip_data.find('------')-1
 	poe_trade_conf['name'] = clip_data[start_name:end_name].replace('\n', ' ')
 elif map_tier: # copy only base name if it's not unique map

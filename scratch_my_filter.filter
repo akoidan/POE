@@ -23,7 +23,7 @@ Show # Show items for alchemy
 	Rarity "Normal"
 	
 Show # Show items for alchemy
-    BaseType "Diamond Ring" "Gold Ring" "Gold Amulet" "Fingerless Silk Gloves" "Spiked Gloves" "Gripped Gloves"
+    BaseType "Diamond Ring" "Gold Ring" "Gold Amulet" "Fingerless Silk Gloves" "Spiked Gloves" "Gripped Gloves" 
 	ItemLevel >= 80
 	Rarity "Normal"	
 
@@ -42,7 +42,7 @@ Show
 	
 Show 
 	Rarity Rare
-	BaseType "Titan Greaves" "Slink Gloves" "Lion Pelt" "Titan Gauntlets" "Slink Boots" "Royal Burgonet" "Eternal Burgonet" "Lion Pelt" "Bone Helmet" "Archon Kite Shield" "Spike-Point Arrow Quiver" "Harbinger Bow" "Fleshripper"
+	BaseType "Titan Greaves" "Slink Gloves" "Lion Pelt" "Titan Gauntlets" "Slink Boots" "Royal Burgonet" "Eternal Burgonet" "Lion Pelt" "Bone Helmet" "Archon Kite Shield" "Spike-Point Arrow Quiver" "Harbinger Bow" "Fleshripper" "Two-Toned Boots"
 	ItemLevel > 75
 	SetBackgroundColor 30 90 45 230
     SetFontSize 32
@@ -203,7 +203,7 @@ Show
 
 Show
 	Class "Currency"
-    BaseType "Glassblower's Bauble" "Orb of Alteration" "Chromatic Orb" 
+    BaseType "Glassblower's Bauble" "Orb of Alteration" "Chromatic Orb"  "Perandus Coin"
     SetTextColor 190 178 135 255
     SetBorderColor 190 178 135 135 
     SetFontSize 37
@@ -540,7 +540,7 @@ Hide # Hide all bad boots and gloves
 Hide 
 	Class "Gloves" "Boots" "Helmet"
 	Rarity "Magic" "Normal"
-	BaseType "Deicide Mask" "Dragonscale Gauntlets" "Praetor Crown" "Sorcerer Gloves" "Titan Greaves" "Slink Boots" "Slink Gloves" "Titan Gauntlets" "Nightmare Bascinet" "Murder Mitts" "Lion Pelt" "Murder Boots" "Eternal Burgonet"
+	BaseType "Deicide Mask" "Dragonscale Gauntlets" "Praetor Crown" "Sorcerer Gloves" "Titan Greaves" "Slink Boots" "Slink Gloves" "Titan Gauntlets" "Nightmare Bascinet" "Murder Mitts" "Lion Pelt" "Murder Boots" "Eternal Burgonet" "Two-Toned Boots"
 
 Hide 
 	Class "Gloves" "Boots" "Helmet"

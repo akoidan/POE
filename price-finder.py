@@ -130,6 +130,9 @@ elif map_tier: # copy only base name if it's not unique map
 else:
 	poe_trade_conf['name'] = re.search('\n(.*)\n--------', clip_data).group(1)
 
+sup_pref = "Superior "
+if poe_trade_conf['name'].startswith(sup_pref):
+	poe_trade_conf['name'] = poe_trade_conf['name'][len(sup_pref):]
 base_type = get_type(poe_trade_conf['name'])
 if base_type and not is_unique:
 	poe_trade_conf['name'] = ''
@@ -159,9 +162,14 @@ url = requests.post('http://poe.trade/search', poe_trade_conf)
 soup = Soup(url.content, "html.parser")
 all_offers = soup.select('[data-ign]')
 result = ''
-i = 0
+
+
+igns = set()
 for offer in all_offers:
-	i += 1
-	if i > 6:
-		break
+	nick = offer['data-ign']
+	if nick in igns:
+		continue
+	igns.add(nick)
 	print(decode_utf8(offer['data-buyout']))
+	if len(igns) > 6:
+		break

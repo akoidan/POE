@@ -67,7 +67,7 @@ poe_trade_conf = {
 	"seller": "",
 	"thread": "",
 	"identified": "",
-	"corrupted": "",
+	"corrupted": 0,
 	"online": "x",
 	"buyout": "",
 	"altart": "",
@@ -120,9 +120,11 @@ if map_tier:
 	poe_trade_conf['level_min'] = map_tier.group(1)
 	poe_trade_conf['level_max'] = map_tier.group(1)
 if not map_tier or is_unique:
-	start_name = clip_data.find('\n')
+	chat_prefix = '<<set:MS>><<set:M>><<set:S>>'
+	chat_pos = clip_data.find(chat_prefix)
+	start_name = chat_pos + len(chat_prefix) if chat_pos else clip_data.find('\n') + 1
 	end_name = clip_data.find('------')-1
-	poe_trade_conf['name'] = clip_data[start_name+1:end_name].replace('\n', ' ')
+	poe_trade_conf['name'] = clip_data[start_name:end_name].replace('\n', ' ')
 elif map_tier: # copy only base name if it's not unique map
 	poe_trade_conf['name'] = re.search('\n(.*Map).*\n--------', clip_data).group(1)
 else:

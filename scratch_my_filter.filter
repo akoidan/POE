@@ -11,9 +11,14 @@ Show
 	SetFontSize 40
 	SetBorderColor 74 230 58
 	SetTextColor 74 230 58
+
 	
+Show 
+	BaseType "Steel Ring" "Opal Ring"
+	SetFontSize 50
+	 
 Show # Show items for alchemy
-    BaseType "Vaal Regalia" "Sorcerer Boots" "Sorcerer Gloves" "Hubris Circlet" "Astral Plate" "Leather Belt" "Heavy Belt" "Titanium Spirit Shield"    "Two-Toned Boots"
+    BaseType "Vaal Regalia" "Sorcerer Boots" "Sorcerer Gloves" "Hubris Circlet" "Astral Plate" "Leather Belt" "Heavy Belt" "Titanium Spirit Shield" "Two-Toned Boots"
 	ItemLevel >= 84
 	Rarity "Normal"
 	
@@ -93,13 +98,11 @@ Show
     Rarity Rare
     SetTextColor 255 190 0
 	SetBorderColor 255 0 255 255
+
 Show 
-	BaseType "Steel Ring"
-	 SetFontSize 50
-Show 
-	Class "Belts" "Ring"
+	Class "Belts" "Ring" "Amulet"
 	Rarity "Rare"
-	BaseType "Studded Belt" "Chain Belt" "Cloth Belt" "Sapphire Ring" "Coral Ring" "Topaz Ring" "Ruby Ring" "Moonstone Ring" "Amethyst Ring" "Prismatic Ring"
+	BaseType "Studded Belt" "Chain Belt" "Cloth Belt" "Sapphire Ring" "Coral Ring" "Topaz Ring" "Ruby Ring" "Moonstone Ring" "Amethyst Ring" "Prismatic Ring" "Two-Stone Ring" "Paua Amulet" "Lapis Amulet" "Amber Amulet" "Coral Amulet" "Jade Amulet" "Unset Ring" "Citrine Amulet" "Turquoise Amulet" "Onyx Amulet" "Iron Ring" "Agate Amulet" "Paua Ring"
 	SetTextColor 0 0 0
 	SetBackgroundColor 162 162 13 255
 	
@@ -291,6 +294,10 @@ Show
 ##################### Others #####################
 ##################################################
 
+Show
+	BaseType "Enlightened"
+	SetFontSize 40
+	
 Show
 	Class "Gem"
 	SetFontSize 25

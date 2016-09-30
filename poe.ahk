@@ -47,25 +47,7 @@ Loop
 }
 printMessage() {
 	o := Object()
-	o.Insert("@LordBelton Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""16""; position: left 4, top 8). My offer is 10c")
-o.Insert("@Neyaeh Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""Gears""; position: left 8, top 11). My offer is 10c")
-o.Insert("@xghostofsparta Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""MAGIC FIND BUILD""; position: left 4, top 2). My offer is 10c")
-o.Insert("@SpookeySkeletal Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""Div Card""; position: left 10, top 11). My offer is 10c")
-o.Insert("@Злая_Тетька Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""Разное""; position: left 10, top 8). My offer is 10c")
-o.Insert("@GreedyLucky Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""legacy""; position: left 8, top 4). My offer is 10c")
-o.Insert("@SSSYYSSS Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""sell-1""; position: left 0, top 3). My offer is 10c")
-o.Insert("@ytsuR_liaN Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""shop""; position: left 2, top 6). My offer is 10c")
-o.Insert("@Aitrod Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""Sell1""; position: left 8, top 10). My offer is 10c")
-o.Insert("@WickerRanger Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""Unique Rings/Belts""; position: left 8, top 1). My offer is 10c")
-o.Insert("@SexDrugsRocknRoll Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""Продажа""; position: left 5, top 0). My offer is 10c")
-o.Insert("@LarryShaper Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""9""; position: left 10, top 4). My offer is 10c")
-o.Insert("@raigod Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""boom""; position: left 0, top 10). My offer is 10c")
-o.Insert("@МЫВЗРЫВАЛИАПЕЛЬСИН Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""belt""; position: left 0, top 10). My offer is 10c")
-o.Insert("@lmmoIate Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""Jewellery""; position: left 6, top 7). My offer is 10c")
-o.Insert("@ProjectPTsDisciple Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""SELL""; position: left 8, top 7). My offer is 10c")
-o.Insert("@МожетЗатащу Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""Азири""; position: left 2, top 1). My offer is 10c")
-o.Insert("@Songwhistle Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""COLLECT""; position: left 2, top 6). My offer is 10c")
-o.Insert("@Warchiefs_never_cry Hi, I would like to buy your Doryani's Invitation Heavy Belt in Standard (stash tab ""8""; position: left 2, top 4). My offer is 10c")
+
 
 	for index, element in o {
 		send {Enter}
@@ -98,7 +80,7 @@ calcX(x) {
 }
 
 calcY(y) {
-	return winY + round(1920 * y / winHeight)
+	return winY + round(1080 * y / winHeight)
 }
 
 screamTrade() {
@@ -207,8 +189,37 @@ $f3::FastLogOut()
 $F6::getPrice()
 $F7::printMessage()
 $f8::startScream()
+
 ;$`::PhaseRun()
 ;$A::IceCrash()
+
+lol() {
+	HWND := WinExist()
+   Static SizeOfWINDOWINFO := 60
+   ; Struct WINDOWINFO
+   VarSetCapacity(WINDOWINFO, SizeOfWINDOWINFO, 0)
+   NumPut(SizeOfWINDOWINFO, WINDOWINFO, "UInt")
+   If !DllCall("User32.dll\GetWindowInfo", "Ptr", HWND, "Ptr", &WINDOWINFO, "UInt")
+      Return False
+   ; Object WI
+   WI := {}
+   WI.WindowX := NumGet(WINDOWINFO,  4, "Int")                 ; X coordinate of the window
+   WI.WindowY := NumGet(WINDOWINFO,  8, "Int")                 ; Y coordinate of the window
+   WI.WindowW := NumGet(WINDOWINFO, 12, "Int") - WI.WindowX    ; Width of the window
+   WI.WindowH := NumGet(WINDOWINFO, 16, "Int") - WI.WindowY    ; Height of the window
+   WI.ClientX := NumGet(WINDOWINFO, 20, "Int")                 ; X coordinate of the client area
+   WI.ClientY := NumGet(WINDOWINFO, 24, "Int")                 ; Y coordinate of the client area
+   WI.ClientW := NumGet(WINDOWINFO, 28, "Int") - WI.ClientX    ; Width of the client area
+   WI.ClientH := NumGet(WINDOWINFO, 32, "Int") - WI.ClientY    ; Height of the client area
+   WI.Style   := NumGet(WINDOWINFO, 36, "UInt")                ; The window styles.
+   WI.ExStyle := NumGet(WINDOWINFO, 40, "UInt")                ; The extended window styles.
+   WI.State   := NumGet(WINDOWINFO, 44, "UInt")                ; The window status (1 = active).
+   WI.BorderW := NumGet(WINDOWINFO, 48, "UInt")                ; The width of the window border, in pixels.
+   WI.BorderH := NumGet(WINDOWINFO, 52, "UInt")                ; The height of the window border, in pixels.
+   WI.Type    := NumGet(WINDOWINFO, 56, "UShort")              ; The window class atom.
+   WI.Version := NumGet(WINDOWINFO, 58, "UShort")              ; The Windows version of the application.
+   MsgBox, %WI%
+}
 
 
 DrawText(winText) {
@@ -346,7 +357,7 @@ isPoeClosed() {
 
 OpenInventory() {
 	PixelGetColor, colorKaomBack, 1581, 366
-	if (colorKaomBack != 0x1A181C) {
+	if (colorKaomBack != 0x1A181C and colorKaomBack != 0x1f2328) {
 		Send {i}
 		Sleep 30
 		return true
@@ -360,16 +371,17 @@ SwitchConc() {
 		send {f5}
 		return
 	}
-	concX := 1877
-	concY := 615
-	
+	concX := calcX(1877)
+	concY := calcY(615)
+	gemX := calcX(1613)
+	gemY := calcY(305)
 	MouseGetPos, xpos, ypox
 	BlockInput On
 	closeInvAfter := OpenInventory()
 	
 	Click left %concX%, %concY%
 	Sleep 1
-	Click left 1613, 305
+	Click left %gemX%, %gemY%
 	;Click left 1607, 522
 	Sleep 1
 	Click left %concX%, %concY%

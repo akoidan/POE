@@ -120,9 +120,17 @@ calcY(y) {
 	return winY + round(1080 * y / winHeight)
 }
 
+Rand( a=0.0, b=1 ) {
+   IfEqual,a,,Random,,% r := b = 1 ? Rand(0,0xFFFFFFFF) : b
+   Else Random,r,a,b
+   Return r
+}
+
+
 screamTrade() {
 	loop {
-		Loop, 300 {
+		interval := Rand(200, 400) 
+		Loop, interval {
 			if (A_Index = 1) {
 				Loop, 4 {
 					send {enter}
@@ -155,7 +163,7 @@ screamTrade() {
 				MsgBox, Trade Off
 				return
 			}
-			sleep 1000
+			sleep 2000
 		}
 	}
 }
@@ -374,6 +382,8 @@ FastLogOut(){
 	SetDefaultMouseSpeed 0
 	sendinput {esc}
 	sleep 50
+	MouseClick, left, 959, 432, 1, 1
+	sleep 100
 	MouseClick, left, 959, 432, 1, 1
 	BlockInput Off
 	return

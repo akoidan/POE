@@ -295,23 +295,54 @@ Show
 ##################################################
 
 Show
-	BaseType "Enlightened"
-	SetFontSize 40
-	
-Show
-	Class "Gem"
-	SetFontSize 25
-	Quality 0  
-
-Show
-	Class "Gem"
-	SetFontSize 35
-	Quality <= 12
-
-Show
-	Class "Gem"
+	Class Gem
+	BaseType "Empower" "Enlighten"
+	Quality >= 15
+	SetTextColor 30 150 180 255
+	SetBorderColor 30 150 180 255
+	SetBackgroundColor 255 255 255 255
 	SetFontSize 45
-	Quality > 12	
+	PlayAlertSound 6 300
+
+Show
+	Class Gem
+	Quality = 20
+	SetTextColor 30 150 180 255
+	SetBorderColor 30 150 180 255
+	SetBackgroundColor 255 255 255 255
+	SetFontSize 45
+	PlayAlertSound 3 300
+
+Show # Drop only good gems
+	Class Gem
+	BaseType "Portal" "Empower" "Enlighten" "Vaal Haste" "Vaal Discipline"
+	SetBorderColor 30 150 180
+	SetFontSize 42
+	PlayAlertSound 3 300
+
+Show # Drop only meh gems #%H3
+	Class Gem
+	BaseType "Detonate Mines" "Added Chaos Damage" "Vaal" "Enhance"
+	SetBorderColor 30 150 180 150
+	SetFontSize 38
+
+Show
+	Class "Gems"
+	Quality >= 15
+	SetBorderColor 30 150 180 255
+	SetFontSize 40
+	PlayAlertSound 2 300
+
+Show #%H3
+	Class "Gems"
+	Quality > 0
+	SetBorderColor 30 150 180 155
+	SetFontSize 38
+
+Hide #%H3
+	Class Gems
+	SetBorderColor 0 0 0
+	SetFontSize 34
 
 	
 ##################################################

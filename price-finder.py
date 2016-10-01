@@ -151,7 +151,8 @@ if base_type and not is_unique:
 	if sum_res > 0:
 		poe_trade_conf['mod_name'] = '(pseudo) +#% total Resistance'
 		poe_trade_conf['mod_min'] = sum_res
-
+if re.search('^Corrupted$', clip_data, re.MULTILINE):
+	poe_trade_conf['corrupted'] = 1
 for k in poe_trade_conf:
 	if poe_trade_conf[k] != '' and k not in ('capquality', 'group_count', 'group_type'):
 		print(decode_utf8('{} : {}'.format(k, poe_trade_conf[k])))

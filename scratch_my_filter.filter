@@ -54,20 +54,14 @@ Show
 ##################### Recepie #####################
 ###################################################
 
-Show
-    Sockets 6
-    Rarity Rare
-    ItemLevel >= 75
-    SetTextColor 255 190 0
-    SetBackgroundColor 75 75 75
-    SetBorderColor 150 150 150
-    SetFontSize 39
 
 Show
     Sockets 6
-    SetBackgroundColor 75 75 75
-    SetBorderColor 150 150 150
-    SetFontSize 39
+	SetBackgroundColor 0 0 0
+	SetFontSize 37
+	SetBorderColor 0 255 150
+	SetTextColor  190 50 50
+	SetTextColor   0 255 150
 
 Show
     Class "Gloves"

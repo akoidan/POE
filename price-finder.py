@@ -1,8 +1,16 @@
+import math
 import requests
 import sys
 from bs4 import BeautifulSoup as Soup
 import re
 import os
+import sys
+
+if 'price' not in sys.argv:
+	sout = print
+else:
+	def sout(value):
+		pass
 
 clip_path =  os.sep.join((os.path.dirname(os.path.realpath(__file__)), 'clip.txt'))
 poe_trade_conf = {
@@ -94,6 +102,7 @@ def get_type(name):
 			return base_type
 	return None
 
+
 def decode_utf8(text):
 	return ''.join([i if ord(i) < 128 else '?' for i in text])
 
@@ -155,22 +164,39 @@ if re.search('^Corrupted$', clip_data, re.MULTILINE):
 	poe_trade_conf['corrupted'] = 1
 for k in poe_trade_conf:
 	if poe_trade_conf[k] != '' and k not in ('capquality', 'group_count', 'group_type'):
-		print(decode_utf8('{} : {}'.format(k, poe_trade_conf[k])))
+		sout(decode_utf8('{} : {}'.format(k, poe_trade_conf[k])))
 
-print('-'*10)
+sout('-'*10)
 url = requests.post('http://poe.trade/search', poe_trade_conf)
 
 soup = Soup(url.content, "html.parser")
 all_offers = soup.select('[data-ign]')
 result = ''
 
-
 igns = set()
+
+multi = {
+	'chaos': 20,
+	'alchemy': 4,
+	'alteration': 1,
+	'fusing': 10,
+}
+sum_price = 0
+count = 0
 for offer in all_offers:
 	nick = offer['data-ign']
 	if nick in igns:
 		continue
+	buyout_ = offer['data-buyout']
+	bo = re.match('((\d+)\.?\d*) (\w+)', buyout_)
+	value = multi.get(bo.group(3))
+	if 'price' in sys.argv:
+		if not value:
+			continue
+		count += 1
+		sum_price += int(bo.group(1)) * value
 	igns.add(nick)
-	print(decode_utf8(offer['data-buyout']))
-	if len(igns) > 6:
+	sout(decode_utf8(buyout_))
+	if 'price' in sys.argv and count > 5:
 		break
+print(round(sum_price/count/multi['chaos']))

@@ -47,44 +47,10 @@ Loop
 }
 printMessage() {
 	o := Object()
-o.Insert("@BlazeKnightX Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""Weapon""; position: left 8, top 8). My offer is 20 chaos")
-o.Insert("@Charge_Of_The_Week Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""Belts""; position: left 6, top 4). My offer is 20 chaos")
-o.Insert("@reprepreprep Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""4""; position: left 8, top 0). My offer is 20 chaos")
-o.Insert("@Miononnoavevatrepalle Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""Mappe Uniche + OFF + FRAG""; position: left 8, top 3). My offer is 20 chaos")
-o.Insert("@Malkmen Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""6""; position: left 3, top 0). My offer is 20 chaos")
-o.Insert("@Orion_Princess Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""Sale""; position: left 7, top 5). My offer is 20 chaos")
-o.Insert("@Gt_pedrerão_GT Hi, I would like to buy your Agnerod West Imperial Staff in Standard. My offer is 20 chaos")
-o.Insert("@Orcish_Samalas Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""U""; position: left 8, top 4). My offer is 20 chaos")
-o.Insert("@PoEsPaRtAnO Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""mapas""; position: left 7, top 1). My offer is 20 chaos")
-o.Insert("@Híale Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""Birosca do Judeu""; position: left 4, top 6). My offer is 20 chaos")
-o.Insert("@PurpleThrow Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""M 7-8""; position: left 10, top 5). My offer is 20 chaos")
-o.Insert("@CoWToRd Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""Atzi Tab""; position: left 8, top 5). My offer is 20 chaos")
-o.Insert("@Drugbabe Hi, I would like to buy your Agnerod West Imperial Staff in Standard. My offer is 20 chaos")
-o.Insert("@DokuKansei Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""64 - make offers""; position: left 6, top 3). My offer is 20 chaos")
-o.Insert("@Slabas_C Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""4 itemai""; position: left 1, top 6). My offer is 20 chaos")
-o.Insert("@_Sidro_ Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""w4""; position: left 4, top 8). My offer is 20 chaos")
-o.Insert("@Electric_Ghost Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""Trade""; position: left 6, top 4). My offer is 20 chaos")
-o.Insert("@SceaVaa Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""Uniques with Prize checks""; position: left 0, top 4). My offer is 20 chaos")
-o.Insert("@RagazzaMatta Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""4Sale""; position: left 10, top 0). My offer is 20 chaos")
-o.Insert("@Totojok Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""40""; position: left 6, top 0). My offer is 20 chaos")
-o.Insert("@MasterChefWraeclast Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""2H""; position: left 4, top 8). My offer is 20 chaos")
-o.Insert("@EmptyShaper Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""6""; position: left 10, top 8). My offer is 20 chaos")
-o.Insert("@DEIXA_QUE_EU_CHUTO Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""gems recipe  VENDAS""; position: left 8, top 8). My offer is 20 chaos")
-o.Insert("@lnTheGame Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""2""; position: left 8, top 8). My offer is 20 chaos")
-o.Insert("@Talivor Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""U- 2h""; position: left 4, top 0). My offer is 20 chaos")
-o.Insert("@QuaeDucitAdMortem Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""U""; position: left 0, top 4). My offer is 20 chaos")
-o.Insert("@XIV_BladeVortex Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""items""; position: left 7, top 6). My offer is 20 chaos")
-o.Insert("@KiekkaMivessa Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""rngpt4""; position: left 10, top 2). My offer is 20 chaos")
-o.Insert("@BasedGodExile Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""unique""; position: left 10, top 4). My offer is 20 chaos")
-o.Insert("@VIOLENT_SEMEN_INFERNO Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""sell""; position: left 8, top 7). My offer is 20 chaos")
-o.Insert("@SirStabbyStabby Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""Uniques 9""; position: left 4, top 2). My offer is 20 chaos")
-o.Insert("@FrozenRaven Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""Uniques""; position: left 2, top 6). My offer is 20 chaos")
-o.Insert("@Нуаду Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""8""; position: left 0, top 8). My offer is 20 chaos")
-o.Insert("@Berga_Flicker Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""~price 0 chaos""; position: left 0, top 8). My offer is 20 chaos")
-o.Insert("@Isarium Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""GIDW""; position: left 10, top 3). My offer is 20 chaos")
-o.Insert("@LionoX Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""Stuff for sale {#}2""; position: left 4, top 8). My offer is 20 chaos")
-o.Insert("@what_is_sleep Hi, I would like to buy your Agnerod West Imperial Staff in Standard. My offer is 20 chaos")
-o.Insert("@Sam_Does_PA Hi, I would like to buy your Agnerod West Imperial Staff in Standard (stash tab ""Uniques""; position: left 10, top 4). My offer is 20 chaos")
+o.Insert("@Spresli Hi, I would like to buy your Empower Support in Standard. My offer is 7ex")
+o.Insert("@ThisMemeAlreadyExist Hi, I would like to buy your Empower Support in Standard (stash tab ""4""; position: left 10, top 8). My offer is 7ex")
+o.Insert("@BorgesPicasso Hi, I would like to buy your Empower Support in Standard (stash tab ""Gem-Top-1""; position: left 9, top 11). My offer is 7ex")
+o.Insert("@Offer_Ur_Sister Hi, I would like to buy your Empower Support in Standard (stash tab ""coc discharge""; position: left 6, top 8). My offer is 7ex")
 
 	for index, element in o {
 		send {Enter}
@@ -225,6 +191,22 @@ DebugAppend(Data) {
 }
 
 
+setGemPrice() {
+	clip_path :=  A_ScriptDir "\clip.txt"
+	FileDelete, %clip_path%
+	ClipWait
+	Fileappend,%clipboard%, %clip_path%, UTF-8
+	priceFinderPath :=  A_ScriptDir "\price-finder.py"
+	command := "python " """" priceFinderPath """ price"
+	res :=  RunWaitOne(command)
+	MsgBox, %res%
+	if (res < 3) {
+		MsgBox, drop
+	} else {
+		MsgBox, keep
+	}
+}
+
 
 $F1::OpenHideout()
 $F2::DrinkFlask()
@@ -234,6 +216,7 @@ $f3::FastLogOut()
 $F6::getPrice()
 $F7::printMessage()
 $f8::startScream()
+;;$f9::setGemPrice() 
 
 ;$`::PhaseRun()
 ;$A::IceCrash()
@@ -421,7 +404,7 @@ SwitchConc() {
 	concX := calcX(1877)
 	concY := calcY(615)
 	gemX := calcX(1613)
-	gemY := calcY(305)
+	gemY := calcY(359)
 	MouseGetPos, xpos, ypox
 	BlockInput On
 	closeInvAfter := OpenInventory()
@@ -586,7 +569,7 @@ OpenPortal(){
 	MouseGetPos, xpos, ypox
 	BlockInput On
 	closeInvAfter := OpenInventory()
-	Click right 1881,838
+	Click right 1824,613
 	Click left 630, 450
 	BlockInput Off
 	return

@@ -229,10 +229,7 @@ $F6::getPrice()
 $F7::printMessage()
 $f::TurnOffBloodRage()
 $f8::startScream()
-<<<<<<< HEAD
-=======
-;;$f9::setGemPrice() 
->>>>>>> 070b5072de0807c6e29eab1df94cc7de8580f6e1
+
 
 ;$`::PhaseRun()
 ;$A::IceCrash()

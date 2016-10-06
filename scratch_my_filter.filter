@@ -11,21 +11,21 @@ Show
 	SetFontSize 40
 	SetBorderColor 74 230 58
 	SetTextColor 74 230 58
+
 	
+Show 
+	BaseType "Steel Ring" "Opal Ring"
+	SetFontSize 50
+	 
 Show # Show items for alchemy
-    BaseType "Vaal Regalia" "Sorcerer Boots" "Sorcerer Gloves" "Hubris Circlet" "Astral Plate" "Leather Belt" "Heavy Belt" "Titanium Spirit Shield"    "Two-Toned Boots"
+    BaseType "Vaal Regalia" "Sorcerer Boots" "Sorcerer Gloves" "Hubris Circlet" "Astral Plate" "Leather Belt" "Heavy Belt" "Titanium Spirit Shield" "Two-Toned Boots" "Rustic Sash"
 	ItemLevel >= 84
 	Rarity "Normal"
 	
 Show # Show items for alchemy
-    BaseType "Diamond Ring" "Gold Ring" "Gold Amulet" "Fingerless Silk Gloves" "Spiked Gloves" "Gripped Gloves"
+    BaseType "Diamond Ring" "Gold Ring" "Gold Amulet" "Fingerless Silk Gloves" "Spiked Gloves" "Gripped Gloves" 
 	ItemLevel >= 80
 	Rarity "Normal"	
-
-Show # Show items for alchemy
-    Class "Ring" "Amulet"
-	ItemLevel >= 84
-	Rarity "Normal"
 
 Show 
 	Rarity Rare
@@ -37,7 +37,7 @@ Show
 	
 Show 
 	Rarity Rare
-	BaseType "Titan Greaves" "Slink Gloves" "Lion Pelt" "Titan Gauntlets" "Slink Boots" "Royal Burgonet" "Eternal Burgonet" "Lion Pelt" "Bone Helmet" "Archon Kite Shield" "Spike-Point Arrow Quiver" "Harbinger Bow" "Fleshripper"
+	BaseType "Titan Greaves" "Slink Gloves" "Lion Pelt" "Titan Gauntlets" "Slink Boots" "Royal Burgonet" "Eternal Burgonet" "Lion Pelt" "Bone Helmet" "Archon Kite Shield" "Spike-Point Arrow Quiver" "Harbinger Bow" "Fleshripper" "Two-Toned Boots"
 	ItemLevel > 75
 	SetBackgroundColor 30 90 45 230
     SetFontSize 32
@@ -50,19 +50,20 @@ Show
 ###################################################
 
 Show
-    Sockets 6
-    Rarity Rare
-    ItemLevel >= 75
-    SetTextColor 255 190 0
-    SetBackgroundColor 75 75 75
-    SetBorderColor 150 150 150
-    SetFontSize 39
+    LinkedSockets  6
+    SetTextColor 255 0 0 255
+    SetBorderColor 255 0 0 255
+    SetBackgroundColor 255 255 255 255
+    PlayAlertSound 6 300
+    SetFontSize 45
 
 Show
     Sockets 6
-    SetBackgroundColor 75 75 75
-    SetBorderColor 150 150 150
-    SetFontSize 39
+	SetBackgroundColor 0 0 0
+	SetFontSize 37
+	SetBorderColor 0 255 150
+	SetTextColor  190 50 50
+	SetTextColor   0 255 150
 
 Show
     Class "Gloves"
@@ -93,13 +94,11 @@ Show
     Rarity Rare
     SetTextColor 255 190 0
 	SetBorderColor 255 0 255 255
+
 Show 
-	BaseType "Steel Ring"
-	 SetFontSize 50
-Show 
-	Class "Belts" "Ring"
+	Class "Belts" "Ring" "Amulet"
 	Rarity "Rare"
-	BaseType "Studded Belt" "Chain Belt" "Cloth Belt" "Sapphire Ring" "Coral Ring" "Topaz Ring" "Ruby Ring" "Moonstone Ring" "Amethyst Ring" "Prismatic Ring"
+	BaseType "Studded Belt" "Chain Belt" "Cloth Belt" "Sapphire Ring" "Coral Ring" "Topaz Ring" "Ruby Ring" "Moonstone Ring" "Amethyst Ring" "Prismatic Ring" "Two-Stone Ring" "Paua Amulet" "Lapis Amulet" "Amber Amulet" "Coral Amulet" "Jade Amulet" "Unset Ring" "Citrine Amulet" "Turquoise Amulet" "Onyx Amulet" "Iron Ring" "Agate Amulet" "Paua Ring"
 	SetTextColor 0 0 0
 	SetBackgroundColor 162 162 13 255
 	
@@ -200,7 +199,7 @@ Show
 
 Show
 	Class "Currency"
-    BaseType "Glassblower's Bauble" "Orb of Alteration" "Chromatic Orb" 
+    BaseType "Glassblower's Bauble" "Orb of Alteration" "Chromatic Orb"  "Perandus Coin"
     SetTextColor 190 178 135 255
     SetBorderColor 190 178 135 135 
     SetFontSize 37
@@ -292,19 +291,54 @@ Show
 ##################################################
 
 Show
-	Class "Gem"
-	SetFontSize 25
-	Quality 0  
-
-Show
-	Class "Gem"
-	SetFontSize 35
-	Quality < 12
-
-Show
-	Class "Gem"
+	Class Gem
+	BaseType "Empower" "Enlighten"
+	Quality >= 15
+	SetTextColor 30 150 180 255
+	SetBorderColor 30 150 180 255
+	SetBackgroundColor 255 255 255 255
 	SetFontSize 45
-	Quality > 12	
+	PlayAlertSound 6 300
+
+Show
+	Class Gem
+	Quality = 20
+	SetTextColor 30 150 180 255
+	SetBorderColor 30 150 180 255
+	SetBackgroundColor 255 255 255 255
+	SetFontSize 45
+	PlayAlertSound 3 300
+
+Show # Drop only good gems
+	Class Gem
+	BaseType "Portal" "Empower" "Enlighten" "Vaal Haste" "Vaal Discipline"
+	SetBorderColor 30 150 180
+	SetFontSize 42
+	PlayAlertSound 3 300
+
+Show # Drop only meh gems #%H3
+	Class Gem
+	BaseType "Detonate Mines" "Added Chaos Damage" "Vaal" "Enhance"
+	SetBorderColor 30 150 180 150
+	SetFontSize 38
+
+Show
+	Class "Gems"
+	Quality >= 15
+	SetBorderColor 30 150 180 255
+	SetFontSize 40
+	PlayAlertSound 2 300
+
+Show #%H3
+	Class "Gems"
+	Quality > 0
+	SetBorderColor 30 150 180 155
+	SetFontSize 38
+
+Hide #%H3
+	Class Gems
+	SetBorderColor 0 0 0
+	SetFontSize 34
 
 	
 ##################################################
@@ -360,7 +394,7 @@ Show # Maps:T12
 	SetTextColor 0 0 0 255
 	SetBorderColor 0 0 0 255
 	SetBackgroundColor 200 200 200 255
-	SetFontSize 42
+	SetFontSize 40
 	PlayAlertSound 4 300
 
 Show # Maps:T11
@@ -369,7 +403,7 @@ Show # Maps:T11
 	SetTextColor 0 0 0 255
 	SetBorderColor 0 0 0 255
 	SetBackgroundColor 200 200 200 255
-	SetFontSize 41
+	SetFontSize 36
 	PlayAlertSound 4 300
 
 ### T10-T6 ###	
@@ -533,7 +567,7 @@ Hide # Hide all bad boots and gloves
 Hide 
 	Class "Gloves" "Boots" "Helmet"
 	Rarity "Magic" "Normal"
-	BaseType "Deicide Mask" "Dragonscale Gauntlets" "Praetor Crown" "Sorcerer Gloves" "Titan Greaves" "Slink Boots" "Slink Gloves" "Titan Gauntlets" "Nightmare Bascinet" "Murder Mitts" "Lion Pelt" "Murder Boots" "Eternal Burgonet"
+	BaseType "Deicide Mask" "Dragonscale Gauntlets" "Praetor Crown" "Sorcerer Gloves" "Titan Greaves" "Slink Boots" "Slink Gloves" "Titan Gauntlets" "Nightmare Bascinet" "Murder Mitts" "Lion Pelt" "Murder Boots" "Eternal Burgonet" "Two-Toned Boots"
 
 Hide 
 	Class "Gloves" "Boots" "Helmet"

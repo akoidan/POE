@@ -18,7 +18,7 @@ Show
 	SetFontSize 50
 	 
 Show # Show items for alchemy
-    BaseType "Vaal Regalia" "Sorcerer Boots" "Sorcerer Gloves" "Hubris Circlet" "Astral Plate" "Leather Belt" "Heavy Belt" "Titanium Spirit Shield" "Two-Toned Boots"
+    BaseType "Vaal Regalia" "Sorcerer Boots" "Sorcerer Gloves" "Hubris Circlet" "Astral Plate" "Leather Belt" "Heavy Belt" "Titanium Spirit Shield" "Two-Toned Boots" "Rustic Sash"
 	ItemLevel >= 84
 	Rarity "Normal"
 	
@@ -26,11 +26,6 @@ Show # Show items for alchemy
     BaseType "Diamond Ring" "Gold Ring" "Gold Amulet" "Fingerless Silk Gloves" "Spiked Gloves" "Gripped Gloves" 
 	ItemLevel >= 80
 	Rarity "Normal"	
-
-Show # Show items for alchemy
-    Class "Ring" "Amulet"
-	ItemLevel >= 84
-	Rarity "Normal"
 
 Show 
 	Rarity Rare
@@ -54,6 +49,13 @@ Show
 ##################### Recepie #####################
 ###################################################
 
+Show
+    LinkedSockets  6
+    SetTextColor 255 0 0 255
+    SetBorderColor 255 0 0 255
+    SetBackgroundColor 255 255 255 255
+    PlayAlertSound 6 300
+    SetFontSize 45
 
 Show
     Sockets 6

@@ -132,14 +132,8 @@ screamTrade() {
 				}
 				send {enter}
 				sleep 10
-				send /trade 0
-				sleep 200
-				send {enter}
-				sleep 10
-				send /global 0
-				sleep 200
-				send {enter}
-			}
+				click left 245 293
+			} 
 			if (not printScreamMessage) {
 				MsgBox, Trade Off
 				return

@@ -1,4 +1,3 @@
-
 global chrNum := 1
 
 ;Loop {
@@ -47,22 +46,6 @@ Loop
 }
 printMessage() {
 	o := Object()
-o.Insert("@Алькапалька Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""валюта""; position: left 28, top 0). My offer is 4ex")
-o.Insert("@VortexFlask Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""Currency 6l""; position: left 4, top 0). My offer is 4ex")
-o.Insert("@LordIzaro Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""Chance rec""; position: left 8, top 1). My offer is 4ex")
-o.Insert("@_Ptac_ Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""19""; position: left 6, top 3). My offer is 4ex")
-o.Insert("@General_Kot Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""R""; position: left 8, top 2). My offer is 4ex")
-o.Insert("@First_trap_NELU Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""buy all""; position: left 10, top 0). My offer is 4ex")
-o.Insert("@ХолодныеЧерныеДни Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""Things""; position: left 10, top 3). My offer is 4ex")
-o.Insert("@skudder Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""SELL""; position: left 10, top 3). My offer is 4ex")
-o.Insert("@Schlarckle Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""Chest""; position: left 10, top 9). My offer is 4ex")
-o.Insert("@PiLiPooZik Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""14""; position: left 2, top 3). My offer is 4ex")
-o.Insert("@Сундучница Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""Trade 3""; position: left 10, top 0). My offer is 4ex")
-o.Insert("@DEIXA_QUE_EU_CHUTO Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""vaal + chisel""; position: left 5, top 0). My offer is 4ex")
-o.Insert("@Filquist Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""19""; position: left 9, top 7). My offer is 4ex")
-o.Insert("@ЛИКВВИИДАТОР Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""Камни""; position: left 6, top 9). My offer is 4ex")
-o.Insert("@Skyalicious Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""Offer""; position: left 6, top 3). My offer is 4ex")
-o.Insert("@HMD_Real_Estate_ Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""16""; position: left 10, top 0). My offer is 4ex")
 
 	for index, element in o {
 		send {Enter}

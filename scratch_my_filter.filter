@@ -14,9 +14,18 @@ Show
 
 	
 Show 
-	BaseType "Steel Ring" "Opal Ring"
+	BaseType "Opal Ring" "Marble Amulet"
 	SetFontSize 50
-	 
+
+
+Show 
+	BaseType "Steel Ring" "Crystal Belt"
+	SetTextColor 0 0 0 255
+	SetBorderColor 0 0 0 255
+	SetBackgroundColor 200 200 200 255
+	SetFontSize 44
+	PlayAlertSound 4 300
+	
 Show # Show items for alchemy
     BaseType "Vaal Regalia" "Sorcerer Boots" "Sorcerer Gloves" "Hubris Circlet" "Astral Plate" "Leather Belt" "Heavy Belt" "Titanium Spirit Shield" "Two-Toned Boots" "Rustic Sash"
 	ItemLevel >= 84
@@ -141,7 +150,7 @@ Show # Maps:Unique
 	PlayAlertSound 4 300
 
 Show # T1 - These uniques are have a consistent price of ~0.5++ ex
-	BaseType "Varnished Coat" "Gold Ring" "Ursine Pelt" "Champion Kite Shield" "Sapphire Flask" "Desert Brigandine" "Occultist" "Glorious" "Titanium" "Siege Axe" "Prophecy Wand" "Sacrificial Garb" "Sorcerer Boots" "Topaz Flask" "Deicide Mask" "Imperial Skean" "Rawhide Boots" "Assassin's Garb" "Ezomyte Burgonet" "Two-Stone" "Savant's Robe" "Vaal Regalia" "Silver Flask" "Jewelled Foil" "Fiend Dagger" "Gladiator Plate" "Exquisite Leather" "Prismatic Jewel" "Lion Pelt" "Stibnite Flask" "Crusader Boots"
+	BaseType "Varnished Coat" "Gold Ring" "Ursine Pelt" "Champion Kite Shield" "Sapphire Flask" "Desert Brigandine" "Occultist" "Glorious" "Titanium" "Siege Axe" "Prophecy Wand" "Sacrificial Garb" "Sorcerer Boots" "Topaz Flask" "Deicide Mask" "Imperial Skean" "Rawhide Boots" "Assassin's Garb" "Ezomyte Burgonet" "Two-Stone" "Savant's Robe" "Vaal Regalia" "Silver Flask" "Jewelled Foil" "Fiend Dagger" "Gladiator Plate" "Exquisite Leather" "Prismatic Jewel" "Lion Pelt" "Stibnite Flask" "Crusader Boots" "Ruby Flask" "Granite Flask"
 	Rarity Unique
 	SetTextColor 175 96 37 255
 	SetBorderColor 175 96 37 255

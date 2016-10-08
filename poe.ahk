@@ -102,6 +102,7 @@ screamTrade() {
 		interval := Rand(200, 400) 
 		Loop, %interval% {
 			if (A_Index = 1) {
+				send {Escape}
 				Loop, 4 {
 					send {enter}
 					sleep 20
@@ -129,6 +130,15 @@ screamTrade() {
 					}
 					sleep 100
 				}
+				send {enter}
+				sleep 10
+				send /trade 0
+				sleep 200
+				send {enter}
+				sleep 10
+				send /global 0
+				sleep 200
+				send {enter}
 			}
 			if (not printScreamMessage) {
 				MsgBox, Trade Off

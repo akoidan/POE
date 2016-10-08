@@ -118,12 +118,13 @@ screamTrade() {
 					send ^A
 					sleep 100
 					send ^C
+					ClipWait
 					if InStr(Clipboard, "Morbid Mantle, Vaal Regalia") {
 						send {enter}
 					} else { 
 						send {enter}
 						printScreamMessage := false
-						MsgBox, Trade Off coz wrong clip
+						MsgBox, %Clipboard%
 						return
 					}
 					sleep 100
@@ -148,7 +149,6 @@ startScream() {
 		printScreamMessage := false
 	} else {
 		printScreamMessage := true
-		MsgBox, LOL
 		screamTrade()
 	}
 }

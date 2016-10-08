@@ -46,7 +46,16 @@ Loop
 }
 printMessage() {
 	o := Object()
-
+o.Insert("@Shadow_Clown Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""Unique Chests""; position: left 10, top 9). My offer is 3exalteds")
+o.Insert("@FlaskRaptor Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""Itemy7""; position: left 8, top 3). My offer is 3exalteds")
+o.Insert("@PlaneswalkerDL Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""uniques""; position: left 2, top 0). My offer is 3exalteds")
+o.Insert("@xSTo_ONeDdx Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""Rüstung""; position: left 2, top 6). My offer is 3exalteds")
+o.Insert("@TotioforoColomboMMXIXVI Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""sell proph. 5""; position: left 3, top 9). My offer is 3exalteds")
+o.Insert("@Tamesa Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard. My offer is 3exalteds")
+o.Insert("@TaxaMiky Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""Body arnour""; position: left 10, top 0). My offer is 3exalteds")
+o.Insert("@HankVORTEX Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""SHOP 3""; position: left 2, top 0). My offer is 3exalteds")
+o.Insert("@Bast_z Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""a""; position: left 2, top 0). My offer is 3exalteds")
+o.Insert("@IWillNeverQuit Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""K""; position: left 10, top 9). My offer is 3exalteds")
 	for index, element in o {
 		send {Enter}
 		sleep 100
@@ -91,7 +100,7 @@ Rand( a=0.0, b=1 ) {
 screamTrade() {
 	loop {
 		interval := Rand(200, 400) 
-		Loop, interval {
+		Loop, %interval% {
 			if (A_Index = 1) {
 				Loop, 4 {
 					send {enter}
@@ -139,6 +148,7 @@ startScream() {
 		printScreamMessage := false
 	} else {
 		printScreamMessage := true
+		MsgBox, LOL
 		screamTrade()
 	}
 }
@@ -585,8 +595,7 @@ DrinkFlask() {
 		send {f2}
 		return
 	}
-	Send {1}
-	Send {2}
+
 	Send {3}
 	Send {4}
 	Send {5}

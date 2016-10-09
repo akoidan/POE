@@ -576,7 +576,7 @@ Hide # Hide all bad boots and gloves
 Hide 
 	Class "Gloves" "Boots" "Helmet"
 	Rarity "Magic" "Normal"
-	BaseType "Deicide Mask" "Dragonscale Gauntlets" "Praetor Crown" "Sorcerer Gloves" "Titan Greaves" "Slink Boots" "Slink Gloves" "Titan Gauntlets" "Nightmare Bascinet" "Murder Mitts" "Lion Pelt" "Murder Boots" "Eternal Burgonet" "Two-Toned Boots"
+	BaseType "Deicide Mask" "Dragonscale Gauntlets" "Praetor Crown" "Sorcerer Gloves" "Titan Greaves" "Slink Boots" "Slink Gloves" "Titan Gauntlets" "Nightmare Bascinet" "Murder Mitts" "Lion Pelt" "Murder Boots" "Eternal Burgonet" "Two-Toned Boots"  "Bone Helmet"
 
 Hide 
 	Class "Gloves" "Boots" "Helmet"

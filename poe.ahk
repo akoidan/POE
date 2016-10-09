@@ -46,7 +46,18 @@ Loop
 }
 printMessage() {
 	o := Object()
-
+o.Insert("@TheDragonKings Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""w""; position: left 8, top 9). My offer is 4 exalteds")
+o.Insert("@BeePhana Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""rosse-rf mara""; position: left 0, top 4). My offer is 4 exalteds")
+o.Insert("@GooseJuice Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""Valuable Stuff""; position: left 2, top 3). My offer is 4 exalteds")
+o.Insert("@JoneNigula Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""Expensivos""; position: left 10, top 3). My offer is 4 exalteds")
+o.Insert("@YamaAmaMama Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""Самое смачное""; position: left 0, top 9). My offer is 4 exalteds")
+o.Insert("@DoctorButtChocolate Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""Gear""; position: left 2, top 4). My offer is 4 exalteds")
+o.Insert("@PoumPoum Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""Chest""; position: left 10, top 9). My offer is 4 exalteds")
+o.Insert("@Whispersfromthevoid Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard. My offer is 4 exalteds")
+o.Insert("@what_is_sleep Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab "":)--<""; position: left 0, top 3). My offer is 4 exalteds")
+o.Insert("@DawaBlast Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""$$$$""; position: left 10, top 1). My offer is 4 exalteds")
+o.Insert("@donttrytoflipme Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""PEITO ""; position: left 10, top 9). My offer is 4 exalteds")
+o.Insert("@T_Bowerade Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard. My offer is 4 exalteds")
 	for index, element in o {
 		send {Enter}
 		sleep 100
@@ -210,12 +221,16 @@ setGemPrice() {
 
 $F1::OpenHideout()
 $F2::DrinkFlask()
-$F5::SwitchConc()
-$F4::OpenPortal()
 $f3::FastLogOut()
+$F4::OpenPortal()
+;;$F5::switchGems(1613, 359,1877, 615, f5)
+$F5::switchGems(1613, 305, 1773, 615, f5)
 $F6::getPrice()
 $F7::printMessage()
 $f8::startScream()
+
+	
+	
 ;;$f9::setGemPrice() 
 
 ;$`::PhaseRun()
@@ -396,25 +411,20 @@ OpenInventory() {
 	}
 }
 
-SwitchConc() {
+switchGems(destX, destY, srcX, srcY, key) {
 	if (isPoeClosed()) {
-		send {f5}
+		send %key%
 		return
 	}
-	concX := calcX(1877)
-	concY := calcY(615)
-	gemX := calcX(1613)
-	gemY := calcY(359)
 	MouseGetPos, xpos, ypox
 	BlockInput On
 	closeInvAfter := OpenInventory()
 	
-	Click left %concX%, %concY%
+	Click left %srcX%, %srcY%
 	Sleep 1
-	Click left %gemX%, %gemY%
-	;Click left 1607, 522
+	Click left %destX%, %destY%
 	Sleep 1
-	Click left %concX%, %concY%
+	Click left %srcX%, %srcY%
 	Sleep 1
 	
 	if (closeInvAfter) {

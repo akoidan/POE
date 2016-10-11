@@ -44,28 +44,26 @@ Loop
 	sleep 100
 	}
 }
+
+
 printMessage() {
-	o := Object()
-o.Insert("@TheDragonKings Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""w""; position: left 8, top 9). My offer is 4 exalteds")
-o.Insert("@BeePhana Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""rosse-rf mara""; position: left 0, top 4). My offer is 4 exalteds")
-o.Insert("@GooseJuice Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""Valuable Stuff""; position: left 2, top 3). My offer is 4 exalteds")
-o.Insert("@JoneNigula Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""Expensivos""; position: left 10, top 3). My offer is 4 exalteds")
-o.Insert("@YamaAmaMama Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""Самое смачное""; position: left 0, top 9). My offer is 4 exalteds")
-o.Insert("@DoctorButtChocolate Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""Gear""; position: left 2, top 4). My offer is 4 exalteds")
-o.Insert("@PoumPoum Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""Chest""; position: left 10, top 9). My offer is 4 exalteds")
-o.Insert("@Whispersfromthevoid Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard. My offer is 4 exalteds")
-o.Insert("@what_is_sleep Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab "":)--<""; position: left 0, top 3). My offer is 4 exalteds")
-o.Insert("@DawaBlast Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""$$$$""; position: left 10, top 1). My offer is 4 exalteds")
-o.Insert("@donttrytoflipme Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard (stash tab ""PEITO ""; position: left 10, top 9). My offer is 4 exalteds")
-o.Insert("@T_Bowerade Hi, I would like to buy your Shavronne's Wrappings Occultist's Vestment in Standard. My offer is 4 exalteds")
-	for index, element in o {
-		send {Enter}
-		sleep 100
-		send, %element%
-		send {Enter}
-		sleep 100
+	
+	;;price_path :=  A_ScriptDir "\price-data.txt"
+	price_path :=  "D:\Downloads\buyItemsList.txt"
+	Loop, read, %price_path%
+	{
+		Loop, parse, A_LoopReadLine, %A_Tab%
+		{
+			send {Enter}
+			sleep 100
+			send, %A_LoopField%
+			send {Enter}
+			sleep 100
+		}
 	}
+	FileDelete, %price_path%
 }
+
 isCharacterActive() {
 	PixelGetColor, colorTopManaBorder, 1890, 913
 	PixelGetColor, colorShop, 1458, 1000
@@ -122,7 +120,7 @@ screamTrade() {
 					sleep 100
 					send ^C
 					ClipWait
-					if InStr(Clipboard, "Morbid Mantle, Vaal Regalia") {
+					if InStr(Clipboard, "Shavronne") {
 						send {enter}
 					} else { 
 						send {enter}
@@ -223,11 +221,12 @@ $F1::OpenHideout()
 $F2::DrinkFlask()
 $f3::FastLogOut()
 $F4::OpenPortal()
-;;$F5::switchGems(1613, 359,1877, 615, f5)
-$F5::switchGems(1613, 305, 1773, 615, f5)
+$F5::switchGems(1613, 359,1877, 615, f5)
+;;$F5::switchGems(1613, 305, 1773, 615, f5)
 $F6::getPrice()
 $F7::printMessage()
 $f8::startScream()
+
 
 	
 	

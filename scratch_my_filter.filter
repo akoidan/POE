@@ -246,7 +246,7 @@ Show
 	PlayAlertSound 2 300
 
 #EXCEPTIONS - Trash-tier cards.
-Show #%H3
+Hide #%H3
 	Class "Divination"
 	BaseType "Carrion Crow" "Other Cheek" "Hermit" "King's Blade" "Prosperity" "Metalsmith's Gift"
 	SetTextColor 0 0 0

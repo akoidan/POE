@@ -46,7 +46,7 @@ Show
 	
 Show 
 	Rarity Rare
-	BaseType "Titan Greaves" "Slink Gloves" "Lion Pelt" "Titan Gauntlets" "Slink Boots" "Royal Burgonet" "Eternal Burgonet" "Lion Pelt" "Bone Helmet" "Archon Kite Shield" "Spike-Point Arrow Quiver" "Harbinger Bow" "Fleshripper" "Two-Toned Boots"
+	BaseType "Titan Greaves" "Slink Gloves" "Lion Pelt" "Titan Gauntlets" "Slink Boots" "Royal Burgonet" "Eternal Burgonet" "Lion Pelt" "Bone Helmet" "Spike-Point Arrow Quiver" "Harbinger Bow" "Fleshripper" "Two-Toned Boots"
 	ItemLevel > 75
 	SetBackgroundColor 30 90 45 230
     SetFontSize 32
@@ -159,7 +159,7 @@ Show # T1 - These uniques are have a consistent price of ~0.5++ ex
 	PlayAlertSound 6 300
 
 Show # T2 - These uniques usually are worth ~0.5-1 ex at the start of the league and drop to ~5c++ (sometimes ranging to an ex and up) over 1-2 month.
-	BaseType "Judgement Staff" "Golden Plate" "Nubuck Boots" "Terror Maul" "Full Wyrmscale" "Gavel" "Archon Kite Shield" "Reinforced Greaves" "Imperial Bow" "Conjurer Boots" "Steelscale Gauntlets" "Nightmare Bascinet" "Sharkskin Boots" "Granite Flask" "Imperial Staff" "Deerskin Gloves" "Karui Sceptre" "Paua Ring" "Vaal Axe" "Spine Bow" "Slaughter Knife" "Sinner Tricorne" "Hubris" "Strapped Mitts" "Eternal Sword" "Onyx Amulet" "Penetrating Arrow Quiver" "Broadhead Arrow Quiver" "Crusader Gloves" "Murder Boots"
+	BaseType "Midnight Blade"  "Judgement Staff" "Golden Plate" "Nubuck Boots" "Terror Maul" "Full Wyrmscale" "Gavel" "Archon Kite Shield" "Reinforced Greaves" "Imperial Bow" "Conjurer Boots" "Steelscale Gauntlets" "Nightmare Bascinet" "Sharkskin Boots" "Granite Flask" "Imperial Staff" "Deerskin Gloves" "Karui Sceptre" "Paua Ring" "Vaal Axe" "Spine Bow" "Slaughter Knife" "Sinner Tricorne" "Hubris" "Strapped Mitts" "Eternal Sword" "Onyx Amulet" "Penetrating Arrow Quiver" "Broadhead Arrow Quiver" "Crusader Gloves" "Murder Boots"
 	Rarity Unique
 	SetTextColor 0 0 0 255
 	SetBorderColor 0 0 0 255
@@ -589,11 +589,14 @@ Hide
 	ItemLevel < 80
 	BaseType "Two-Toned Boots" "Fingerless Silk Gloves" "Spiked Gloves" "Gripped Gloves"
 
-	
 Hide # Show all new cool armour for spell damage etc
 	Class "Gloves" "Boots" "Helmet" "Ring" "Jewel"
 	Rarity "Magic"
 	DropLevel < 73
+
+Hide 
+	Class "Jewel"
+	Rarity "Normal"
 
 Hide # Show all other cool belts
 	Class "Belt"

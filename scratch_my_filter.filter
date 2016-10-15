@@ -26,8 +26,18 @@ Show
 	SetFontSize 44
 	PlayAlertSound 4 300
 	
+	
+Show 
+	BaseType "Silk Gloves"
+	ItemLevel >= 84
+	SetTextColor 0 0 0 255
+	SetBorderColor 0 0 0 255
+	SetBackgroundColor 200 200 200 255
+	SetFontSize 44
+	PlayAlertSound 4 300
+	
 Show # Show items for alchemy
-    BaseType "Vaal Regalia" "Sorcerer Boots" "Sorcerer Gloves" "Hubris Circlet" "Astral Plate" "Leather Belt" "Heavy Belt" "Titanium Spirit Shield" "Two-Toned Boots" "Rustic Sash"
+    BaseType "Vaal Regalia" "Sorcerer Boots" "Sorcerer Gloves" "Hubris Circlet" "Astral Plate" "Leather Belt" "Vanguard Belt" "Heavy Belt" "Titanium Spirit Shield" "Two-Toned Boots" "Rustic Sash"
 	ItemLevel >= 84
 	Rarity "Normal"
 	
@@ -159,7 +169,7 @@ Show # T1 - These uniques are have a consistent price of ~0.5++ ex
 	PlayAlertSound 6 300
 
 Show # T2 - These uniques usually are worth ~0.5-1 ex at the start of the league and drop to ~5c++ (sometimes ranging to an ex and up) over 1-2 month.
-	BaseType "Midnight Blade"  "Judgement Staff" "Golden Plate" "Nubuck Boots" "Terror Maul" "Full Wyrmscale" "Gavel" "Archon Kite Shield" "Reinforced Greaves" "Imperial Bow" "Conjurer Boots" "Steelscale Gauntlets" "Nightmare Bascinet" "Sharkskin Boots" "Granite Flask" "Imperial Staff" "Deerskin Gloves" "Karui Sceptre" "Paua Ring" "Vaal Axe" "Spine Bow" "Slaughter Knife" "Sinner Tricorne" "Hubris" "Strapped Mitts" "Eternal Sword" "Onyx Amulet" "Penetrating Arrow Quiver" "Broadhead Arrow Quiver" "Crusader Gloves" "Murder Boots"
+	BaseType "Midnight Blade"  "Judgement Staff" "Golden Plate" "Nubuck Boots" "Terror Maul" "Full Wyrmscale" "Gavel" "Archon Kite Shield" "Reinforced Greaves" "Imperial Bow" "Conjurer Boots" "Steelscale Gauntlets" "Nightmare Bascinet" "Sharkskin Boots" "Granite Flask" "Imperial Staff" "Deerskin Gloves" "Karui Sceptre" "Paua Ring" "Vaal Axe" "Spine Bow" "Slaughter Knife" "Sinner Tricorne" "Hubris" "Strapped Mitts" "Eternal Sword" "Onyx Amulet" "Penetrating Arrow Quiver" "Broadhead Arrow Quiver" "Crusader Gloves" "Murder Boots" "Harbinger Bow"
 	Rarity Unique
 	SetTextColor 0 0 0 255
 	SetBorderColor 0 0 0 255
@@ -601,13 +611,13 @@ Hide
 Hide # Show all other cool belts
 	Class "Belt"
 	Rarity "Magic"
-	BaseType "Leather Belt" "Rustic Sash" "Heavy Belt"
+	BaseType "Leather Belt" "Rustic Sash" "Heavy Belt" "Vanguard Belt"
 	
 Hide # Show all other cool belts
 	Class "Belt"
 	Rarity "Normal"
 	ItemLevel < 84
-	BaseType "Leather Belt" "Rustic Sash" "Heavy Belt"
+	BaseType "Leather Belt" "Rustic Sash" "Heavy Belt" "Vanguard Belt"
 
 Hide 
 	Rarity "Magic" "Normal"

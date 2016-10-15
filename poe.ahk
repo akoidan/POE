@@ -35,16 +35,40 @@ isLowHp() {
 }
 
 PrintLol() {
-Loop
-{
-	send /trade 1
-	sleep 100
-	send, %element%
-	send {Enter}
-	sleep 100
-	}
+	o := Object()
+o.Insert("@AryaTheSheWolf Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@AnotherHeaven Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@Carhin Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@ranger_Xtoast Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@MasterOfKaKu Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@OMGCrushedYouLikeWorm Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@Stagnum Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@BoatNaKub Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@ManicToxins Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@THE_ZANIN Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@MorgNAuder Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@JayosMetaLul Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@acélparaszt Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@Lancegeis Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@Funfunlol Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@CoffeeCannon Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@I_make_pewpewpew Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@Gehenna Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@RekzorzVoltaxic Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@Eyelvaut Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@Sumemmon Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@Ours_Is_The_Fury Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@Tethu Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@Hermike Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@zzknopkazz Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+	for index, element in o {		
+ 		send {Enter}		
+ 		sleep 100		
+ 		send, %element%		
+ 		send {Enter}		
+ 		sleep 2000		
+  	}
 }
-
 
 printMessage() {
 	
@@ -227,7 +251,8 @@ $F5::switchGems(1613, 359,1877, 615, f5)
 ;;$F5::switchGems(1613, 305, 1773, 615, f5)
 $F6::getPrice()
 $F7::printMessage()
-$f8::startScream()
+;;$f8::startScream()
+;$f8::PrintLol()
 
 
 	

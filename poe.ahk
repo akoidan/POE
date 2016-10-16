@@ -36,31 +36,7 @@ isLowHp() {
 
 PrintLol() {
 	o := Object()
-o.Insert("@AryaTheSheWolf Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
-o.Insert("@AnotherHeaven Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
-o.Insert("@Carhin Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
-o.Insert("@ranger_Xtoast Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
-o.Insert("@MasterOfKaKu Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
-o.Insert("@OMGCrushedYouLikeWorm Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
-o.Insert("@Stagnum Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
-o.Insert("@BoatNaKub Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
-o.Insert("@ManicToxins Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
-o.Insert("@THE_ZANIN Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
-o.Insert("@MorgNAuder Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
-o.Insert("@JayosMetaLul Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
-o.Insert("@acélparaszt Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
-o.Insert("@Lancegeis Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
-o.Insert("@Funfunlol Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
-o.Insert("@CoffeeCannon Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
-o.Insert("@I_make_pewpewpew Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
-o.Insert("@Gehenna Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
-o.Insert("@RekzorzVoltaxic Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
-o.Insert("@Eyelvaut Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
-o.Insert("@Sumemmon Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
-o.Insert("@Ours_Is_The_Fury Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
-o.Insert("@Tethu Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
-o.Insert("@Hermike Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
-o.Insert("@zzknopkazz Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+
 	for index, element in o {		
  		send {Enter}		
  		sleep 100		
@@ -254,6 +230,28 @@ $f::TurnOffBloodRage()
 $f8::startScream()
 
 
+;;$F5::switchGems([{ "srcX" : 1877, "srcY" : 615, "dstX": 1613 , "dstY":  359}, { "srcX" : 1773, "srcY" : 615, "dstX":1613 , "dstY":  305}])
+
+
+	
+testLol() {
+	coordinates := [{ "srcX" : 553, "srcY" : 466, "dstX": 333, "dstY": 444 }] ; numbered array
+	for i, element in coordinates {
+		srcX := element.srcX
+		srcY := element.srcX
+		dstX := element.dstX
+		dstY := element.dstY
+		Click left %srcX%, %srcY%
+		Sleep 10
+		Click left, %destX%, %destY%
+		Sleep 10
+		Click left, %srcX%, %srcY%
+		Sleep 10
+	}
+}	
+
+;;$f9::setGemPrice() 
+
 ;$`::PhaseRun()
 ;$A::IceCrash()
 
@@ -432,7 +430,8 @@ OpenInventory() {
 	}
 }
 
-switchGems(destX, destY, srcX, srcY, key) {
+
+switchGems(coordinates) {
 	if (isPoeClosed()) {
 		send %key%
 		return
@@ -441,12 +440,18 @@ switchGems(destX, destY, srcX, srcY, key) {
 	BlockInput On
 	closeInvAfter := OpenInventory()
 	
-	Click left %srcX%, %srcY%
-	Sleep 1
-	Click left %destX%, %destY%
-	Sleep 1
-	Click left %srcX%, %srcY%
-	Sleep 1
+	for i, element in coordinates {
+		srcX := element.srcX
+		srcY := element.srcY
+		dstX := element.dstX
+		dstY := element.dstY
+		Click left %srcX%, %srcY%
+		Sleep 10
+		Click left, %dstX%, %dstY%
+		Sleep 10
+		Click left, %srcX%, %srcY%
+		Sleep 10
+	}
 	
 	if (closeInvAfter) {
 		Send {i}
@@ -456,73 +461,6 @@ switchGems(destX, destY, srcX, srcY, key) {
 	return
 }
 
-
-SwitchCurse() {
-	yBottomGems := 825
-	squareDimension := 54
-	leftBottomSquareX := 1870
-	warlMarkX := leftBottomSquareX -  squareDimension
-	
-	MouseGetPos, xpos, ypox
-	BlockInput On
-	closeInvAfter := OpenInventory()
-	
-	Click left %warlMarkX%, %yBottomGems%
-	Sleep 1
-	Click left 1485, 371 
-	Sleep 1
-	Click left %warlMarkX%, %yBottomGems%
-	Sleep 1
-	
-	if (closeInvAfter) {
-		Send {i}
-	}
-	MouseMove xpos, ypox 
-	BlockInput Off
-	return
-}
-
-
-SwitchRarity() {
-	yBottomGems := 825
-	squareDimension := 54
-	leftBottomSquareX := 1870
-	IIRX := leftBottomSquareX -  squareDimension*5
-	IIQX := leftBottomSquareX - squareDimension*6
-	
-	MouseGetPos, xpos, ypox
-	BlockInput On
-	closeInvAfter := OpenInventory()
-	PixelGetColor, middleLeftSocketColor, 1350, 225
-	middleLeftSocketColorRgb := getColor(middleLeftSocketColor)
-	if (middleLeftSocketColorRgb != "r") {
-		send {x}
-		sleep 50
-	}
-
-	
-	Click left %IIRX%, %yBottomGems%
-	Sleep 1
-	Click left 1406, 228 ; top left staff
-	Sleep 1
-	Click left %IIRX%, %yBottomGems%
-	Sleep 1
-	
-	Click left %IIQX%, %yBottomGems%
-	Sleep 1
-	Click left 1355, 176
-	Sleep 1
-	Click left %IIQX%, %yBottomGems%
-	Sleep 1
-	
-	
-	if (closeInvAfter) {
-		Send {i}
-	}
-	MouseMove xpos, ypox 
-	BlockInput Off
-	return
-}
 
 TurnOffBloodRage() {
 	if (isPoeClosed()) {
@@ -543,51 +481,6 @@ TurnOffBloodRage() {
 	}
 	MouseMove xpos, ypox 
 	BlockInput Off
-	return
-}
-
-SwitchBoth() {	;if (isPoeClosed()) {
-	;	send {f3}
-	;	return
-	;}
-	yBottomGems := 825
-	squareDimension := 54
-	leftBottomSquareX := 1870
-	;firstBottomGemX := leftBottomSquareX -  squareDimension
-	secondBottomGemX := firstBottomGemX - squareDimension
-	thirdBottomGemX := secondBottomGemX - squareDimension 
-	
-	MouseGetPos, xpos, ypox
-	BlockInput On
-	closeInvAfter := OpenInventory()
-
-	;Click left %firstBottomGemX%, %yBottomGems%
-	;Sleep 1
-	;Click left 1484, 363 ; top left staff
-	;Sleep 1
-	;Click left %firstBottomGemX%, %yBottomGems%
-	;Sleep 1
-	
-	;Click left %firstBottomGemX%, %yBottomGems%
-	;Sleep 1
-	;Click left 1406, 228 ; top left staff
-	;Sleep 1
-	;Click left %firstBottomGemX%, %yBottomGems%
-	;Sleep 1
-	
-	;Click left %thirdBottomGemX%, %yBottomGems%
-	;Sleep 1
-	;Click left 1355, 176
-	;Sleep 1
-	;Click left %thirdBottomGemX%, %yBottomGems%
-	;Sleep 1
-	
-	
-	;if (closeInvAfter) {
-	;	Send {i}
-	;}
-	;MouseMove xpos, ypox 
-	;BlockInput Off
 	return
 }
 

@@ -1,11 +1,12 @@
 import math
 
-TREE_MR = 0.2
-BM_LVL = None
+TREE_MR = 0.34
+BM_LVL = 20
 ENL_LVL = 4
 
 BASE_RESERV = (1 - TREE_MR)
 ENL_LEVELS = {
+	None: 1,
 	1: 1,
 	2: 0.96,
 	3: 0.92,
@@ -26,6 +27,6 @@ def ca(base_m):
 	return res
 
 
-#96
-print(ca(25)+ca(50)+ca(50))
+
+print(ca(50)+ca(35))
 

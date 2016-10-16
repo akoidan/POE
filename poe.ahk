@@ -1,4 +1,3 @@
-
 global chrNum := 1
 
 ;Loop {
@@ -36,45 +35,59 @@ isLowHp() {
 }
 
 PrintLol() {
-Loop
-{
-	send /trade 1
-	sleep 100
-	send, %element%
-	send {Enter}
-	sleep 100
-	}
-}
-printMessage() {
 	o := Object()
-o.Insert("@Deadeye_blaster Hi, I would like to buy your Springs Map in Standard (stash tab ""2.4 m""; position: left 3, top 1). My offer is 20 chaos")
-o.Insert("@IFuckSluts Hi, I would like to buy your Insane Spires Springs Map in Standard (stash tab ""Red""; position: left 3, top 1). My offer is 20 chaos")
-o.Insert("@BorgesKimoji Hi, I would like to buy your Springs Map in Standard (stash tab ""Map-2""; position: left 2, top 11). My offer is 20 chaos")
-o.Insert("@THELASTSLAYER Hi, I would like to buy your Springs Map in Standard (stash tab ""maps""; position: left 11, top 0). My offer is 20 chaos")
-o.Insert("@Дикарек Hi, I would like to buy your Hidden Solitude Springs Map in Standard (stash tab ""t10+O""; position: left 3, top 10). My offer is 20 chaos")
-o.Insert("@ArrowSniperX Hi, I would like to buy your Breeding Solitude Springs Map in Standard (stash tab ""|||| Maps 8+""; position: left 7, top 11). My offer is 20 chaos")
-o.Insert("@_БЛУДРЭЙН_ Hi, I would like to buy your Superior Springs Map in Standard (stash tab ""Новые карты""; position: left 0, top 5). My offer is 20 chaos")
-o.Insert("@Ainieas Hi, I would like to buy your Springs Map in Standard (stash tab ""Tier 14-15""; position: left 10, top 0). My offer is 20 chaos")
-o.Insert("@Seelenernter Hi, I would like to buy your Springs Map in Standard (stash tab ""Maps""; position: left 5, top 8). My offer is 20 chaos")
-o.Insert("@Xinomahc Hi, I would like to buy your Springs Map in Standard (stash tab ""std""; position: left 3, top 9). My offer is 20 chaos")
-o.Insert("@DaXiongMao Hi, I would like to buy your Springs Map in Standard (stash tab ""新图""; position: left 11, top 8). My offer is 20 chaos")
-o.Insert("@Oakua Hi, I would like to buy your Springs Map in Standard (stash tab ""Maps""; position: left 10, top 3). My offer is 20 chaos")
-o.Insert("@Koenigin_Horst Hi, I would like to buy your Superior Springs Map in Standard (stash tab ""Maps 81+""; position: left 0, top 8). My offer is 20 chaos")
-o.Insert("@ProMandy Hi, I would like to buy your Springs Map in Standard (stash tab ""Muts""; position: left 7, top 5). My offer is 20 chaos")
-o.Insert("@zougatabang Hi, I would like to buy your Springs Map in Standard (stash tab ""NEW MAPS""; position: left 10, top 1). My offer is 20 chaos")
-o.Insert("@Celina_Hunt Hi, I would like to buy your Springs Map in Standard (stash tab ""Div-Cards bad offer no msg""; position: left 11, top 9). My offer is 20 chaos")
-o.Insert("@qTBeef Hi, I would like to buy your Springs Map in Standard (stash tab ""M$H""; position: left 9, top 6). My offer is 20 chaos")
-o.Insert("@KKong_somi Hi, I would like to buy your Springs Map in Standard (stash tab ""MAP T 14~16""; position: left 0, top 1). My offer is 20 chaos")
-o.Insert("@LibritanniaCS Hi, I would like to buy your Springs Map in Standard (stash tab ""Sort""; position: left 5, top 1). My offer is 20 chaos")
-
-	for index, element in o {
-		send {Enter}
-		sleep 100
-		send, %element%
-		send {Enter}
-		sleep 100
-	}
+o.Insert("@AryaTheSheWolf Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@AnotherHeaven Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@Carhin Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@ranger_Xtoast Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@MasterOfKaKu Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@OMGCrushedYouLikeWorm Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@Stagnum Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@BoatNaKub Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@ManicToxins Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@THE_ZANIN Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@MorgNAuder Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@JayosMetaLul Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@acélparaszt Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@Lancegeis Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@Funfunlol Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@CoffeeCannon Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@I_make_pewpewpew Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@Gehenna Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@RekzorzVoltaxic Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@Eyelvaut Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@Sumemmon Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@Ours_Is_The_Fury Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@Tethu Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@Hermike Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+o.Insert("@zzknopkazz Hi, Do you wanna do some gorge/waterways/shaped atoll or T16 rotation")
+	for index, element in o {		
+ 		send {Enter}		
+ 		sleep 100		
+ 		send, %element%		
+ 		send {Enter}		
+ 		sleep 2000		
+  	}
 }
+
+printMessage() {
+	
+	;;price_path :=  A_ScriptDir "\price-data.txt"
+	price_path :=  "D:\Downloads\buyItemsList.txt"
+	Loop, read, %price_path%
+	{
+		Loop, parse, A_LoopReadLine, %A_Tab%
+		{
+			send {Enter}
+			sleep 100
+			send, %A_LoopField%
+			send {Enter}
+			sleep 100
+		}
+	}
+	FileDelete, %price_path%
+}
+
 isCharacterActive() {
 	PixelGetColor, colorTopManaBorder, 1890, 913
 	PixelGetColor, colorShop, 1458, 1000
@@ -111,8 +124,9 @@ Rand( a=0.0, b=1 ) {
 screamTrade() {
 	loop {
 		interval := Rand(200, 400) 
-		Loop, interval {
+		Loop, %interval% {
 			if (A_Index = 1) {
+				send {Escape}
 				Loop, 4 {
 					send {enter}
 					sleep 20
@@ -129,22 +143,28 @@ screamTrade() {
 					send ^A
 					sleep 100
 					send ^C
-					if InStr(Clipboard, "Morbid Mantle, Vaal Regalia") {
+					ClipWait
+					if InStr(Clipboard, "Shavronne") {
 						send {enter}
 					} else { 
 						send {enter}
 						printScreamMessage := false
-						MsgBox, Trade Off coz wrong clip
+						MsgBox, %Clipboard%
 						return
 					}
 					sleep 100
 				}
-			}
+				send {enter}
+				sleep 10
+			
+				click left 245 293
+				click left 257 391
+			} 
 			if (not printScreamMessage) {
 				MsgBox, Trade Off
 				return
 			}
-			sleep 2000
+			sleep 1000
 		}
 	}
 }
@@ -412,25 +432,20 @@ OpenInventory() {
 	}
 }
 
-SwitchConc() {
+switchGems(destX, destY, srcX, srcY, key) {
 	if (isPoeClosed()) {
-		send {f5}
+		send %key%
 		return
 	}
-	concX := calcX(1877)
-	concY := calcY(615)
-	gemX := calcX(1613)
-	gemY := calcY(359)
 	MouseGetPos, xpos, ypox
 	BlockInput On
 	closeInvAfter := OpenInventory()
 	
-	Click left %concX%, %concY%
+	Click left %srcX%, %srcY%
 	Sleep 1
-	Click left %gemX%, %gemY%
-	;Click left 1607, 522
+	Click left %destX%, %destY%
 	Sleep 1
-	Click left %concX%, %concY%
+	Click left %srcX%, %srcY%
 	Sleep 1
 	
 	if (closeInvAfter) {

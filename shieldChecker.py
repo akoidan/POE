@@ -3,23 +3,75 @@ import datetime
 import requests
 import time
 import daemon
+from sys import argv
+import sys
 
-conf = {'id' : -1}
-headers = {
-	'Cookie:': 'league=Standard'
-}
-url = 'http://poe.trade/search/eatehagoyesiut/live'
+
+class Unbuffered(object):
+	def __init__(self):
+		self.stream = open("/tmp/shield.log", "w")
+
+	def write(self, data):
+		self.stream.write(data)
+		self.stream.flush()
+
+	def __getattr__(self, attr):
+		return getattr(self.stream, attr)
+
+sys.stdout = Unbuffered()
+
+
+class Notifier(object):
+	def __init__(self):
+		if len(argv) < 2:
+			raise PermissionError("Token is missing")
+		self.token = argv[1]
+		self.headers = {
+			'Access-Token': self.token,
+			'Content-Type': 'application/json'
+		}
+		self.data = {
+			'body': 'Online',
+			'type': 'note',
+			'title': 'Poe'
+		}
+		self.url = 'https://api.pushbullet.com/v2/pushes'
+
+	def notify(self, data):
+		with open("/tmp/shield.txt", "w") as out_report:
+			out_report.write(data)
+		resp = requests.post(self.url, json=self.data, headers=self.headers)
+		print(resp)
+
+
+class PoeTradeDigger(object):
+
+	def __init__(self):
+		self.conf = {'id': -1}
+		self.headers = {
+			'Cookie:': 'league=Standard'
+		}
+
+		self.response = {}
+		self.url = 'http://poe.trade/search/eatehagoyesiut/live'
+		self.notifier = Notifier()
+
+	def check(self):
+		response = requests.post(self.url, self.conf, self.headers)
+		self.response = json.loads(response.content.decode('utf-8'))
+		self.conf['id'] = self.response['newid']
+		self.log()
+		self.notify()
+
+	def log(self):
+		print("{} :: {}\n".format(datetime.datetime.now(), str(self.response)))
+
+	def notify(self):
+		if self.response.get('data'):
+			self.notifier.notify(self.response.get('data'))
 
 with daemon.DaemonContext():
-	text_file = open("/tmp/shield.log", "w")
+	digger = PoeTradeDigger()
 	while True:
-		response = requests.post(url, conf, headers)
-		d = json.loads(response.content.decode('utf-8'))
-		conf['id'] = d['newid']
-		text_file.write("{} :: {}\n".format(datetime.datetime.now(), str(d)))
-		text_file.flush()
-		if d.get('data'):
-			with open("/tmp/shield.txt", "w") as out_report:
-				out_report.write(d.get('data'))
+		digger.check()
 		time.sleep(10)
-	text_file.close()

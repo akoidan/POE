@@ -3,7 +3,7 @@ import json
 import requests
 import time
 
-conf = {'id' : 46590000}
+conf = {'id' : -1}
 headers = {
 	'Cookie:': 'league=Standard'
 }

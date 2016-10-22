@@ -19,6 +19,7 @@ class Unbuffered(object):
 
 
 class Notifier(object):
+
 	def __init__(self):
 		if len(argv) < 2:
 			raise PermissionError("Token is missing")
@@ -27,17 +28,20 @@ class Notifier(object):
 			'Access-Token': self.token,
 			'Content-Type': 'application/json'
 		}
-		self.data = {
-			'body': 'Online',
-			'type': 'note',
-			'title': 'Poe'
-		}
 		self.url = 'https://api.pushbullet.com/v2/pushes'
+		self.message('Notifier started')
 
 	def notify(self, data):
 		with open("/tmp/shield.txt", "w") as out_report:
 			out_report.write(data)
-		resp = requests.post(self.url, json=self.data, headers=self.headers)
+		self.message('The guy is online!')
+
+	def message(self, data='Null data', title='Poe'):
+		resp = requests.post(self.url, json={
+			'body': data,
+			'type': 'note',
+			'title': title
+		}, headers=self.headers)
 		if resp.status_code != 200:
 			raise Exception(resp)
 

@@ -21,13 +21,14 @@ class Unbuffered(object):
 class Notifier(object):
 
 	def __init__(self):
-		if len(argv) < 2:
-			raise PermissionError("Token is missing")
+		if len(argv) < 3:
+			raise PermissionError("Tokens are missing")
 		self.token = argv[1]
 		self.headers = {
 			'Access-Token': self.token,
 			'Content-Type': 'application/json'
 		}
+		self.sms_token = argv[2]
 		self.url = 'https://api.pushbullet.com/v2/pushes'
 		self.message('Notifier started')
 
@@ -37,13 +38,31 @@ class Notifier(object):
 		self.message('The guy is online!')
 
 	def message(self, data='Null data', title='Poe'):
+		self.sms(data, title)
+		self.pushbullet(data, title)
+
+	def pushbullet(self, data, title):
 		resp = requests.post(self.url, json={
 			'body': data,
 			'type': 'note',
 			'title': title
 		}, headers=self.headers)
 		if resp.status_code != 200:
-			raise Exception(resp)
+			raise Exception(resp.content)
+
+	def sms(self, data, title):
+		response = requests.get(
+			'https://gate.smsclub.mobi/http/',
+			{
+				'username': '380636972218',
+				'password': self.sms_token,
+				'from': title,
+				'to': '380636972218',
+				'text': data
+			}
+		)
+		if response.status_code != 200:
+			raise Exception(response.content)
 
 
 class PoeTradeDigger(object):

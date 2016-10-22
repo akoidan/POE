@@ -37,7 +37,7 @@ class Notifier(object):
 			out_report.write(data)
 		self.message('The guy is online!')
 
-	def message(self, data='Null data', title='Poe'):
+	def message(self, data='Null data', title='POE'):
 		self.sms(data, title)
 		self.pushbullet(data, title)
 

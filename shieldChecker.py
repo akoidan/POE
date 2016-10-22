@@ -7,7 +7,7 @@ conf = {'id' : -1}
 headers = {
 	'Cookie:': 'league=Standard'
 }
-url = 'http://poe.trade/search/omonotamomoras/live'
+url = 'http://poe.trade/search/eatehagoyesiut/live'
 
 while True:
 	response = requests.post(url, conf, headers)

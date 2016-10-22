@@ -4,7 +4,6 @@ import requests
 import time
 import daemon
 from sys import argv
-import sys
 
 
 class Unbuffered(object):
@@ -17,8 +16,6 @@ class Unbuffered(object):
 
 	def __getattr__(self, attr):
 		return getattr(self.stream, attr)
-
-sys.stdout = Unbuffered()
 
 
 class Notifier(object):
@@ -41,7 +38,8 @@ class Notifier(object):
 		with open("/tmp/shield.txt", "w") as out_report:
 			out_report.write(data)
 		resp = requests.post(self.url, json=self.data, headers=self.headers)
-		print(resp)
+		if resp.status_code != 200:
+			raise Exception(resp)
 
 
 class PoeTradeDigger(object):
@@ -55,6 +53,7 @@ class PoeTradeDigger(object):
 		self.response = {}
 		self.url = 'http://poe.trade/search/eatehagoyesiut/live'
 		self.notifier = Notifier()
+		self.logger = Unbuffered()
 
 	def check(self):
 		response = requests.post(self.url, self.conf, self.headers)
@@ -64,7 +63,7 @@ class PoeTradeDigger(object):
 		self.notify()
 
 	def log(self):
-		print("{} :: {}\n".format(datetime.datetime.now(), str(self.response)))
+		self.logger.write("{} :: {}\n".format(datetime.datetime.now(), str(self.response)))
 
 	def notify(self):
 		if self.response.get('data'):

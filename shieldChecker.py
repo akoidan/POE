@@ -74,7 +74,7 @@ class PoeTradeDigger(object):
 		}
 
 		self.response = {}
-		self.url = 'http://poe.trade/search/eatehagoyesiut/live'
+		self.url = 'http://poe.trade/search/ahumotedutaani/live' #Eagle Bite Platinum Kris
 		self.notifier = Notifier()
 		self.logger = Unbuffered()
 

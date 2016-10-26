@@ -120,7 +120,7 @@ screamTrade() {
 					sleep 100
 					send ^C
 					ClipWait
-					if InStr(Clipboard, "Shavronne") {
+					if InStr(Clipboard, "Dread Spell") {
 						send {enter}
 					} else { 
 						send {enter}
@@ -131,9 +131,8 @@ screamTrade() {
 					sleep 100
 				}
 				send {enter}
-				sleep 10
-			
-				click left 245 293
+				sleep 100
+				;click left 245 293
 				click left 257 391
 			} 
 			if (not printScreamMessage) {
@@ -223,11 +222,12 @@ $F1::OpenHideout()
 $F2::DrinkFlask()
 $f3::FastLogOut()
 $F4::OpenPortal()
-$F5::switchGems([{ "srcX" : 1877, "srcY" : 615, "dstX": 1613 , "dstY":  359}, { "srcX" : 1773, "srcY" : 615, "dstX":1613 , "dstY":  305}])
+;;$F5::switchGems([{ "srcX" : 1877, "srcY" : 615, "dstX": 1613 , "dstY":  359}, { "srcX" : 1773, "srcY" : 615, "dstX":1613 , "dstY":  305}, { "srcX" : 1718, "srcY" : 614, "dstX":1559 , "dstY":  360}, { "srcX" : 1665, "srcY" : 619, "dstX":1559 , "dstY":  306}])
+$F5::switchGems([{ "srcX" : 1773, "srcY" : 615, "dstX":1613 , "dstY":  305}])
+;;$f5::TurnOffBloodRage()
 $F6::getPrice()
 $F7::printMessage()
-;;$f8::startScream()
-$f8::testLol()
+$f8::startScream()
 
 
 	

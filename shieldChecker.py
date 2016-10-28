@@ -1,14 +1,24 @@
 import json
 import datetime
+import os
+import traceback
+
 import requests
 import time
 import daemon
+from sys import platform
 
 from credentials import *
 
+LOG_FILE_NAME = 'shield.log'
+LOG_DIR = os.path.dirname(__file__) if platform.startswith('win') else '/tmp'
+LOG_FILE_PATH = os.sep.join((LOG_DIR, LOG_FILE_NAME))
+
+
 class Unbuffered(object):
+
 	def __init__(self):
-		self.stream = open("/tmp/shield.log", "w")
+		self.stream = open(LOG_FILE_PATH, "w")
 
 	def write(self, data):
 		self.stream.write(data)
@@ -25,15 +35,15 @@ class Notifier(object):
 			'Access-Token': PUSHBULET_TOKEN,
 			'Content-Type': 'application/json'
 		}
+		self.logger = Unbuffered()
 		self.pushbullet_url = 'https://api.pushbullet.com/v2/pushes'
-		self.message('Notifier started')
+		self.notify('{} notifier started'.format(datetime.datetime.now()))
 
-	def notify(self, data):
-		with open("/tmp/shield.txt", "w") as out_report:
-			out_report.write(data)
-		self.message(data)
+	def log(self, parsed_response):
+		self.logger.write("{} :: {}\n".format(datetime.datetime.now(), str(parsed_response)))
 
-	def message(self, data='Null data', title='POE'):
+	def notify(self, data='Null data', title='POE'):
+		self.log(data)
 		self.sms(data, title)
 		self.pushbullet(data, title)
 
@@ -78,13 +88,12 @@ class PoeTradeDigger(object):
 			'http://poe.trade/search/roritosinikiyo/live': -1  # ring
 		}
 		self.notifier = Notifier()
-		self.logger = Unbuffered()
 
 	def check(self, url):
 		response = requests.post(url, {'id': self.urls[url]}, self.headers)
 		parsed_response = json.loads(response.content.decode('utf-8'))
 		self.urls[url] = parsed_response['newid']
-		self.log(parsed_response)
+		self.notifier.log(parsed_response)
 		self.notify(url, parsed_response)
 
 	def check_all(self):
@@ -95,10 +104,7 @@ class PoeTradeDigger(object):
 			except Exception as e:
 				exp_data = "{} url exception : {}".format(url, str(e))
 				self.notifier.notify(exp_data)
-				self.log(exp_data)
-
-	def log(self, parsed_response):
-		self.logger.write("{} :: {}\n".format(datetime.datetime.now(), str(parsed_response)))
+				self.notifier.log(traceback.format_exc())
 
 	def notify(self, url, parsed_response):
 		if parsed_response.get('data'):

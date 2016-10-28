@@ -37,7 +37,7 @@ class Notifier(object):
 		}
 		self.logger = Unbuffered()
 		self.pushbullet_url = 'https://api.pushbullet.com/v2/pushes'
-		self.notify('{} notifier started'.format(datetime.datetime.now()))
+		self.notify('Notifier started')
 
 	def log(self, parsed_response):
 		self.logger.write("{} :: {}\n".format(datetime.datetime.now(), str(parsed_response)))

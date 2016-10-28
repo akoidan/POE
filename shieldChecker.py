@@ -3,8 +3,8 @@ import datetime
 import requests
 import time
 import daemon
-from sys import argv
 
+from credentials import *
 
 class Unbuffered(object):
 	def __init__(self):
@@ -21,28 +21,24 @@ class Unbuffered(object):
 class Notifier(object):
 
 	def __init__(self):
-		if len(argv) < 3:
-			raise PermissionError("Tokens are missing")
-		self.token = argv[1]
 		self.headers = {
-			'Access-Token': self.token,
+			'Access-Token': PUSHBULET_TOKEN,
 			'Content-Type': 'application/json'
 		}
-		self.sms_token = argv[2]
-		self.url = 'https://api.pushbullet.com/v2/pushes'
+		self.pushbullet_url = 'https://api.pushbullet.com/v2/pushes'
 		self.message('Notifier started')
 
 	def notify(self, data):
 		with open("/tmp/shield.txt", "w") as out_report:
 			out_report.write(data)
-		self.message('The guy is online!')
+		self.message(data)
 
 	def message(self, data='Null data', title='POE'):
 		self.sms(data, title)
 		self.pushbullet(data, title)
 
 	def pushbullet(self, data, title):
-		resp = requests.post(self.url, json={
+		resp = requests.post(self.pushbullet_url, json={
 			'body': data,
 			'type': 'note',
 			'title': title
@@ -51,14 +47,16 @@ class Notifier(object):
 			raise Exception(resp.content)
 
 	def sms(self, data, title):
+		if SMS_TOKEN is None:
+			return
 		response = requests.get(
 			'https://gate.smsclub.mobi/http/',
 			{
 				'username': '380636972218',
-				'password': self.sms_token,
+				'password': SMS_TOKEN,
 				'from': title,
 				'to': '380636972218',
-				'text': data
+				'text': data[:100]
 			}
 		)
 		if response.status_code != 200:
@@ -73,27 +71,41 @@ class PoeTradeDigger(object):
 			'Cookie:': 'league=Standard'
 		}
 
-		self.response = {}
-		self.url = 'http://poe.trade/search/ahumotedutaani/live' #Eagle Bite Platinum Kris
+		self.urls = {
+			'http://poe.trade/search/naragotenahohu/live': -1,  # jewel
+			'http://poe.trade/search/kanayahamikaki/live': -1,  # ES shield craft
+			'http://poe.trade/search/atetatasisiuku/live': -1,  # dagger
+			'http://poe.trade/search/roritosinikiyo/live': -1  # ring
+		}
 		self.notifier = Notifier()
 		self.logger = Unbuffered()
 
-	def check(self):
-		response = requests.post(self.url, self.conf, self.headers)
-		self.response = json.loads(response.content.decode('utf-8'))
-		self.conf['id'] = self.response['newid']
-		self.log()
-		self.notify()
+	def check(self, url):
+		response = requests.post(url, {'id': self.urls[url]}, self.headers)
+		parsed_response = json.loads(response.content.decode('utf-8'))
+		self.urls[url] = parsed_response['newid']
+		self.log(parsed_response)
+		self.notify(url, parsed_response)
 
-	def log(self):
-		self.logger.write("{} :: {}\n".format(datetime.datetime.now(), str(self.response)))
+	def check_all(self):
+		for url in self.urls:
+			try:
+				self.check(url)
+				time.sleep(1)
+			except Exception as e:
+				exp_data = "{} url exception : {}".format(url, str(e))
+				self.notifier.notify(exp_data)
+				self.log(exp_data)
 
-	def notify(self):
-		if self.response.get('data'):
-			self.notifier.notify(self.response.get('data'))
+	def log(self, parsed_response):
+		self.logger.write("{} :: {}\n".format(datetime.datetime.now(), str(parsed_response)))
+
+	def notify(self, url, parsed_response):
+		if parsed_response.get('data'):
+			self.notifier.notify("{} url matches: {}".format(url, parsed_response.get('data')))
 
 with daemon.DaemonContext():
 	digger = PoeTradeDigger()
 	while True:
-		digger.check()
+		digger.check_all()
 		time.sleep(10)

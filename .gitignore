@@ -8,3 +8,4 @@ trash/
 production_Config.ini
 production_login.credentials
 .~lock.maps3.ods#
+credentials.py

@@ -1,3 +1,4 @@
+import datetime
 import json
 import os
 import time
@@ -44,7 +45,7 @@ class Notifier(object):
 		self.notify('Notifier started')
 
 	def log(self, *args):
-		self.logger.write("{} ::")
+		self.logger.write("{}:: ".format(datetime.datetime.now()))
 		for arg in args:
 			self.logger.write(arg)
 		self.logger.write("\n")
@@ -100,7 +101,7 @@ class PoeTradeDigger(object):
 		response = requests.post(url, {'id': self.urls[url]}, self.headers)
 		parsed_response = json.loads(response.content.decode('utf-8'))
 		self.urls[url] = parsed_response['newid']
-		self.notifier.log(parsed_response, url)
+		self.notifier.log(url, parsed_response)
 		self.notify(url, parsed_response)
 
 	def check_all(self):

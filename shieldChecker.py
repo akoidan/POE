@@ -41,7 +41,9 @@ class Notifier(object):
 		self.notify('Notifier started')
 
 	def log(self, parsed_response):
-		self.logger.write("{} :: {}\n".format(datetime.datetime.now(), str(parsed_response)))
+		self.logger.write("{} ::")
+		self.logger.write(parsed_response.encode('utf-8'))
+		self.logger.write("\n")
 
 	def notify(self, data='Null data', title='POE'):
 		self.log(data)

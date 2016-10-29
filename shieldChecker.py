@@ -1,4 +1,3 @@
-import datetime
 import json
 import os
 import time
@@ -19,9 +18,13 @@ LOG_FILE_PATH = os.sep.join((LOG_DIR, LOG_FILE_NAME))
 class Unbuffered(object):
 
 	def __init__(self):
-		self.stream = open(LOG_FILE_PATH, "w")
+		self.stream = open(LOG_FILE_PATH, "wb")
 
 	def write(self, data):
+		if not isinstance(data, str) and not isinstance(data, bytes):
+			data = str(data)
+		if isinstance(data, str):
+			data = data.encode('utf-8')
 		self.stream.write(data)
 		self.stream.flush()
 
@@ -40,9 +43,10 @@ class Notifier(object):
 		self.pushbullet_url = 'https://api.pushbullet.com/v2/pushes'
 		self.notify('Notifier started')
 
-	def log(self, parsed_response):
+	def log(self, *args):
 		self.logger.write("{} ::")
-		self.logger.write(parsed_response.encode('utf-8'))
+		for arg in args:
+			self.logger.write(arg)
 		self.logger.write("\n")
 
 	def notify(self, data='Null data', title='POE'):
@@ -96,7 +100,7 @@ class PoeTradeDigger(object):
 		response = requests.post(url, {'id': self.urls[url]}, self.headers)
 		parsed_response = json.loads(response.content.decode('utf-8'))
 		self.urls[url] = parsed_response['newid']
-		self.notifier.log(parsed_response)
+		self.notifier.log(parsed_response, url)
 		self.notify(url, parsed_response)
 
 	def check_all(self):

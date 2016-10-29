@@ -1,17 +1,18 @@
-import json
 import datetime
+import json
 import os
+import time
 import traceback
+from sys import platform
 
 import requests
-import time
-import daemon
-from sys import platform
+from bs4 import BeautifulSoup as Soup
 
 from credentials import *
 
 LOG_FILE_NAME = 'shield.log'
-LOG_DIR = os.path.dirname(__file__) if platform.startswith('win') else '/tmp'
+IS_WIN = platform.startswith('win')
+LOG_DIR = os.path.dirname(__file__) if IS_WIN else '/tmp'
 LOG_FILE_PATH = os.sep.join((LOG_DIR, LOG_FILE_NAME))
 
 
@@ -105,13 +106,32 @@ class PoeTradeDigger(object):
 				exp_data = "{} url exception : {}".format(url, str(e))
 				self.notifier.notify(exp_data)
 				self.notifier.log(traceback.format_exc())
+		time.sleep(10)
+
+	def extract_title(self, html):
+		soup = Soup(html, "html.parser")
+		tbody = soup.select('tbody[data-name]')
+		if len(tbody) > 0:
+			name = tbody[0].get('data-name', 'NAME')
+			ign = tbody[0].get('data-ign', 'IGN')
+			bo = tbody[0].get('data-buyout', '')
+			title = "{} '{}' {}".format(ign, name, bo)
+		else:
+			title = 'NO_MATCHES'
+		return title
 
 	def notify(self, url, parsed_response):
 		if parsed_response.get('data'):
-			self.notifier.notify("{} url matches: {}".format(url, parsed_response.get('data')))
+			content = "{} url matches: {}".format(url, parsed_response.get('data'))
+			title = self.extract_title(parsed_response.get('data'))
+			self.notifier.notify(content, title)
 
-with daemon.DaemonContext():
+if not IS_WIN:
+	import daemon
+	with daemon.DaemonContext():
+		digger = PoeTradeDigger()
+		while True:
+			digger.check_all()
+else:
 	digger = PoeTradeDigger()
-	while True:
-		digger.check_all()
-		time.sleep(10)
+	digger.check_all()

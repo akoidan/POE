@@ -221,16 +221,15 @@ setGemPrice() {
 
 $F1::OpenHideout()
 $d::DrinkFlask()
-$F3::FastLogOut()
 $F4::OpenPortal()
-$f5::FastLogOut()
+$c::FastLogOut()
 $F6::getPrice()
 $F7::printMessage()
 $f::TurnOffBloodRage()
 $f8::startScream()
 
 
-;;$F5::switchGems([{ "srcX" : 1877, "srcY" : 615, "dstX": 1613 , "dstY":  359}, { "srcX" : 1773, "srcY" : 615, "dstX":1613 , "dstY":  305}])
+$F5::switchGems([{ "srcX" : 1824, "srcY" : 667, "dstX": 1559 , "dstY":  307}, { "srcX" : 1878, "srcY" : 662, "dstX": 1613 , "dstY":  358}])
 
 
 	
@@ -392,7 +391,7 @@ Remaining() {
 
 FastLogOut(){
 	if (isPoeClosed()) {
-		send {f3}
+		send c
 		return
 	}
 	BlockInput On

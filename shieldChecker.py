@@ -112,8 +112,8 @@ class PoeTradeDigger(object):
 				time.sleep(1)
 			except Exception as e:
 				exp_data = "{} url exception : {}".format(url, str(e))
-				self.notifier.notify(exp_data)
 				self.notifier.log(traceback.format_exc())
+				self.notifier.notify(exp_data)
 		time.sleep(10)
 
 	def extract_title(self, html):
@@ -139,7 +139,10 @@ if not IS_WIN:
 	with daemon.DaemonContext():
 		digger = PoeTradeDigger()
 		while True:
-			digger.check_all()
+			try:
+				digger.check_all()
+			except:
+				pass
 else:
 	digger = PoeTradeDigger()
 	digger.check_all()

@@ -47,7 +47,7 @@ class Notifier(object):
 		}
 		self.logger = Unbuffered()
 		self.pushbullet_url = 'https://api.pushbullet.com/v2/pushes'
-		self.notify('Notifier started')
+		self.notif_all('Notifier started')
 
 	def log(self, *args):
 		self.logger.write("{} ".format(datetime.datetime.now()))
@@ -56,7 +56,7 @@ class Notifier(object):
 			self.logger.write(' ')
 		self.logger.write("\n")
 
-	def notify(self, data='Null data', title='POE'):
+	def notif_all(self, data='Null data', title='POE'):
 		self.log(data)
 		self.mail(data, title)
 		self.pushbullet(data, title)
@@ -73,6 +73,7 @@ class Notifier(object):
 	def mail(self,
 			text,
 			subject,
+			subtype='plain',
 			fro='shieldChecker',
 			to=('nightmare.quake@Mail.ru',),
 			server="localhost"):
@@ -81,7 +82,7 @@ class Notifier(object):
 		msg['To'] = COMMASPACE.join(to)
 		msg['Date'] = formatdate(localtime=True)
 		msg['Subject'] = subject
-		msg.attach(MIMEText(text))
+		msg.attach(MIMEText(text, subtype))
 
 		smtp = smtplib.SMTP(server)
 		smtp.sendmail(fro, to, msg.as_string() )
@@ -109,7 +110,7 @@ class PoeTradeDigger(object):
 		parsed_response = json.loads(response.content.decode('utf-8'))
 		self.urls[url] = parsed_response['newid']
 		self.notifier.log(url, parsed_response)
-		self.notify(url, parsed_response)
+		self.notify_if_html(url, parsed_response)
 
 	def check_all(self):
 		for url in self.urls:
@@ -134,11 +135,14 @@ class PoeTradeDigger(object):
 			title = 'NO_MATCHES'
 		return title
 
-	def notify(self, url, parsed_response):
-		if parsed_response.get('data'):
-			content = "{} url matches: {}".format(url, parsed_response.get('data'))
-			title = self.extract_title(parsed_response.get('data'))
-			self.notifier.notify(content, title)
+	def notify_if_html(self, url, parsed_response):
+		html = parsed_response.get('data')
+		if html:
+			content = "{} url matches: {}".format(url, html)
+			title = self.extract_title(html)
+			self.notifier.mail(html, title, subtype='html')
+			self.notifier.log(content)
+			self.notifier.pushbullet(content, title)
 
 if not IS_WIN:
 	import daemon

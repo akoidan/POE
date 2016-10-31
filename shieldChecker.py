@@ -1,8 +1,13 @@
 import datetime
 import json
 import os
+import smtplib
 import time
 import traceback
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.utils import formatdate
+from smtpd import COMMASPACE
 from sys import platform
 
 import requests
@@ -65,21 +70,22 @@ class Notifier(object):
 		if resp.status_code != 200:
 			raise Exception(resp.content)
 
-	def sms(self, data, title):
-		if SMS_TOKEN is None:
-			return
-		response = requests.get(
-			'https://gate.smsclub.mobi/http/',
-			{
-				'username': '380636972218',
-				'password': SMS_TOKEN,
-				'from': title,
-				'to': '380636972218',
-				'text': data[:100]
-			}
-		)
-		if response.status_code != 200:
-			raise Exception(response.content)
+	def mail(self,
+			text,
+			subject,
+			fro='shieldChecker',
+			to=('nightmare.quake@Mail.ru',),
+			server="localhost"):
+		msg = MIMEMultipart()
+		msg['From'] = fro
+		msg['To'] = COMMASPACE.join(to)
+		msg['Date'] = formatdate(localtime=True)
+		msg['Subject'] = subject
+		msg.attach(MIMEText(text))
+
+		smtp = smtplib.SMTP(server)
+		smtp.sendmail(fro, to, msg.as_string() )
+		smtp.close()
 
 
 class PoeTradeDigger(object):
@@ -111,9 +117,9 @@ class PoeTradeDigger(object):
 				self.check(url)
 				time.sleep(1)
 			except Exception as e:
-				exp_data = "{} url exception : {}".format(url, str(e))
-				self.notifier.log(traceback.format_exc())
-				self.notifier.notify(exp_data)
+				exp_data = "{} url exception : {}\n {}".format(url, str(e), str(traceback.format_exc()))
+				self.notifier.log(exp_data)
+				self.notifier.mail(exp_data, "shieldChecker Error")
 		time.sleep(10)
 
 	def extract_title(self, html):

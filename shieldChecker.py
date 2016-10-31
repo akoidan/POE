@@ -58,7 +58,7 @@ class Notifier(object):
 
 	def notify(self, data='Null data', title='POE'):
 		self.log(data)
-		self.sms(data, title)
+		self.mail(data, title)
 		self.pushbullet(data, title)
 
 	def pushbullet(self, data, title):

@@ -85,7 +85,7 @@ class Notifier(object):
 		msg.attach(MIMEText(text, subtype))
 
 		smtp = smtplib.SMTP(server)
-		smtp.sendmail(fro, to, msg.as_string() )
+		smtp.sendmail(fro, to, msg.as_string())
 		smtp.close()
 
 
@@ -120,7 +120,8 @@ class PoeTradeDigger(object):
 			except Exception as e:
 				exp_data = "{} url exception : {}\n {}".format(url, str(e), str(traceback.format_exc()))
 				self.notifier.log(exp_data)
-				self.notifier.mail(exp_data, "shieldChecker Error")
+				if not isinstance(e,  ConnectionResetError):
+					self.notifier.mail(exp_data, "shieldChecker Error")
 		time.sleep(10)
 
 	def extract_title(self, html):

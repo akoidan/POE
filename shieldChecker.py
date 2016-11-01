@@ -120,7 +120,7 @@ class PoeTradeDigger(object):
 			except Exception as e:
 				exp_data = "{} url exception : {}\n {}".format(url, str(e), str(traceback.format_exc()))
 				self.notifier.log(exp_data)
-				if not isinstance(e,  ConnectionResetError):
+				if not isinstance(e,  ConnectionError):
 					self.notifier.mail(exp_data, "shieldChecker Error")
 		time.sleep(10)
 

@@ -120,7 +120,7 @@ screamTrade() {
 					sleep 100
 					send ^C
 					ClipWait
-					if InStr(Clipboard, "Shavronne") {
+					if InStr(Clipboard, "Dread Spell") {
 						send {enter}
 					} else { 
 						send {enter}
@@ -131,9 +131,8 @@ screamTrade() {
 					sleep 100
 				}
 				send {enter}
-				sleep 10
-			
-				click left 245 293
+				sleep 100
+				;click left 245 293
 				click left 257 391
 			} 
 			if (not printScreamMessage) {

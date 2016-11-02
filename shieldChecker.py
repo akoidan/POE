@@ -1,16 +1,36 @@
-import json
 import datetime
-import requests
+import json
+import os
+import smtplib
 import time
-import daemon
-from sys import argv
+import traceback
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.utils import formatdate
+from smtpd import COMMASPACE
+from sys import platform
+
+import requests
+from bs4 import BeautifulSoup as Soup
+
+from credentials import *
+
+LOG_FILE_NAME = 'shield.log'
+IS_WIN = platform.startswith('win')
+LOG_DIR = os.path.dirname(__file__) if IS_WIN else '/tmp'
+LOG_FILE_PATH = os.sep.join((LOG_DIR, LOG_FILE_NAME))
 
 
 class Unbuffered(object):
+
 	def __init__(self):
-		self.stream = open("/tmp/shield.log", "w")
+		self.stream = open(LOG_FILE_PATH, "wb")
 
 	def write(self, data):
+		if not isinstance(data, str) and not isinstance(data, bytes):
+			data = str(data)
+		if isinstance(data, str):
+			data = data.encode('utf-8')
 		self.stream.write(data)
 		self.stream.flush()
 
@@ -21,28 +41,28 @@ class Unbuffered(object):
 class Notifier(object):
 
 	def __init__(self):
-		if len(argv) < 3:
-			raise PermissionError("Tokens are missing")
-		self.token = argv[1]
 		self.headers = {
-			'Access-Token': self.token,
+			'Access-Token': PUSHBULET_TOKEN,
 			'Content-Type': 'application/json'
 		}
-		self.sms_token = argv[2]
-		self.url = 'https://api.pushbullet.com/v2/pushes'
-		self.message('Notifier started')
+		self.logger = Unbuffered()
+		self.pushbullet_url = 'https://api.pushbullet.com/v2/pushes'
+		self.notif_all('Notifier started')
 
-	def notify(self, data):
-		with open("/tmp/shield.txt", "w") as out_report:
-			out_report.write(data)
-		self.message('The guy is online!')
+	def log(self, *args):
+		self.logger.write("{} ".format(datetime.datetime.now()))
+		for arg in args:
+			self.logger.write(arg)
+			self.logger.write(' ')
+		self.logger.write("\n")
 
-	def message(self, data='Null data', title='POE'):
-		self.sms(data, title)
+	def notif_all(self, data='Null data', title='POE'):
+		self.log(data)
+		self.mail(data, title)
 		self.pushbullet(data, title)
 
 	def pushbullet(self, data, title):
-		resp = requests.post(self.url, json={
+		resp = requests.post(self.pushbullet_url, json={
 			'body': data,
 			'type': 'note',
 			'title': title
@@ -50,19 +70,23 @@ class Notifier(object):
 		if resp.status_code != 200:
 			raise Exception(resp.content)
 
-	def sms(self, data, title):
-		response = requests.get(
-			'https://gate.smsclub.mobi/http/',
-			{
-				'username': '380636972218',
-				'password': self.sms_token,
-				'from': title,
-				'to': '380636972218',
-				'text': data
-			}
-		)
-		if response.status_code != 200:
-			raise Exception(response.content)
+	def mail(self,
+			text,
+			subject,
+			subtype='plain',
+			fro='shieldChecker',
+			to=('nightmare.quake@Mail.ru',),
+			server="localhost"):
+		msg = MIMEMultipart()
+		msg['From'] = fro
+		msg['To'] = COMMASPACE.join(to)
+		msg['Date'] = formatdate(localtime=True)
+		msg['Subject'] = subject
+		msg.attach(MIMEText(text, subtype))
+
+		smtp = smtplib.SMTP(server)
+		smtp.sendmail(fro, to, msg.as_string())
+		smtp.close()
 
 
 class PoeTradeDigger(object):
@@ -73,27 +97,63 @@ class PoeTradeDigger(object):
 			'Cookie:': 'league=Standard'
 		}
 
-		self.response = {}
-		self.url = 'http://poe.trade/search/ahumotedutaani/live' #Eagle Bite Platinum Kris
+		self.urls = {
+			'http://poe.trade/search/naragotenahohu/live': -1,  # jewel
+			'http://poe.trade/search/kanayahamikaki/live': -1,  # ES shield craft
+			'http://poe.trade/search/atetatasisiuku/live': -1,  # dagger
+			'http://poe.trade/search/roritosinikiyo/live': -1  # ring
+		}
 		self.notifier = Notifier()
-		self.logger = Unbuffered()
 
-	def check(self):
-		response = requests.post(self.url, self.conf, self.headers)
-		self.response = json.loads(response.content.decode('utf-8'))
-		self.conf['id'] = self.response['newid']
-		self.log()
-		self.notify()
+	def check(self, url):
+		response = requests.post(url, {'id': self.urls[url]}, self.headers)
+		parsed_response = json.loads(response.content.decode('utf-8'))
+		self.urls[url] = parsed_response['newid']
+		self.notifier.log(url, parsed_response)
+		self.notify_if_html(url, parsed_response)
 
-	def log(self):
-		self.logger.write("{} :: {}\n".format(datetime.datetime.now(), str(self.response)))
-
-	def notify(self):
-		if self.response.get('data'):
-			self.notifier.notify(self.response.get('data'))
-
-with daemon.DaemonContext():
-	digger = PoeTradeDigger()
-	while True:
-		digger.check()
+	def check_all(self):
+		for url in self.urls:
+			try:
+				self.check(url)
+				time.sleep(1)
+			except Exception as e:
+				exp_data = "{} url exception : {}\n {}".format(url, str(e), str(traceback.format_exc()))
+				self.notifier.log(exp_data)
+				if not isinstance(e,  ConnectionError):
+					self.notifier.mail(exp_data, "shieldChecker Error")
 		time.sleep(10)
+
+	def extract_title(self, html):
+		soup = Soup(html, "html.parser")
+		tbody = soup.select('tbody[data-name]')
+		if len(tbody) > 0:
+			name = tbody[0].get('data-name', 'NAME')
+			ign = tbody[0].get('data-ign', 'IGN')
+			bo = tbody[0].get('data-buyout', '')
+			title = "{} '{}' {}".format(ign, name, bo)
+		else:
+			title = 'NO_MATCHES'
+		return title
+
+	def notify_if_html(self, url, parsed_response):
+		html = parsed_response.get('data')
+		if html:
+			content = "{} url matches: {}".format(url, html)
+			title = self.extract_title(html)
+			self.notifier.mail(html, title, subtype='html')
+			self.notifier.log(content)
+			self.notifier.pushbullet(content, title)
+
+if not IS_WIN:
+	import daemon
+	with daemon.DaemonContext():
+		digger = PoeTradeDigger()
+		while True:
+			try:
+				digger.check_all()
+			except:
+				pass
+else:
+	digger = PoeTradeDigger()
+	digger.check_all()

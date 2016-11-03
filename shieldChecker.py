@@ -12,6 +12,7 @@ from sys import platform
 
 import requests
 from bs4 import BeautifulSoup as Soup
+from requests.packages.urllib3.exceptions import NewConnectionError
 
 from credentials import *
 
@@ -101,7 +102,12 @@ class PoeTradeDigger(object):
 			'http://poe.trade/search/naragotenahohu/live': -1,  # jewel
 			'http://poe.trade/search/kanayahamikaki/live': -1,  # ES shield craft
 			'http://poe.trade/search/atetatasisiuku/live': -1,  # dagger
-			'http://poe.trade/search/roritosinikiyo/live': -1  # ring
+			'http://poe.trade/search/roritosinikiyo/live': -1,  # ring
+			'http://poe.trade/search/akoyeratohukat/live': -1,  # MF gold Ring
+			'http://poe.trade/search/auhuorusohamag/live': -1,  # MF diamon ring
+			'http://poe.trade/search/oruhakiharitar/live': -1,  # MF manareg diamond ring
+			'http://poe.trade/search/nosimkanahubon/live': -1  # MF manareg gold ring
+
 		}
 		self.notifier = Notifier()
 
@@ -120,7 +126,7 @@ class PoeTradeDigger(object):
 			except Exception as e:
 				exp_data = "{} url exception : {}\n {}".format(url, str(e), str(traceback.format_exc()))
 				self.notifier.log(exp_data)
-				if not isinstance(e,  ConnectionError):
+				if not isinstance(e, NewConnectionError) and not isinstance(e,  ConnectionError):
 					self.notifier.mail(exp_data, "shieldChecker Error")
 		time.sleep(10)
 

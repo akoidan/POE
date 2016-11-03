@@ -39,7 +39,7 @@ Show # Show items for alchemy
 	Rarity "Normal"
 	
 Show # Show items for alchemy
-    BaseType "Diamond Ring" "Gold Ring" "Gold Amulet" "Fingerless Silk Gloves" "Spiked Gloves" "Gripped Gloves" 
+    BaseType "Diamond Ring" "Gold Ring" "Gold Amulet" "Fingerless Silk Gloves" "Spiked Gloves" "Gripped Gloves" "Agate Amulet" "Citrine Amulet" "Turquoise Amulet" "Blue Pearl Amulet"
 	ItemLevel >= 80
 	Rarity "Normal"	
 
@@ -117,15 +117,31 @@ Show
     SetTextColor 255 190 0
 	SetBorderColor 255 0 255 255
 
+Show
+	Class Rings Amulets
+	Rarity Rare
+	ItemLevel >= 84
+	SetBackgroundColor 30 90 45 230
+	SetFontSize 38
+	SetBorderColor 25 180 25
+	
 Show 
 	Class "Belts" "Ring" "Amulet"
 	Rarity "Rare"
 	BaseType "Studded Belt" "Chain Belt" "Cloth Belt" "Sapphire Ring" "Coral Ring" "Topaz Ring" "Ruby Ring" "Moonstone Ring" "Amethyst Ring" "Prismatic Ring" "Two-Stone Ring" "Paua Amulet" "Lapis Amulet" "Amber Amulet" "Coral Amulet" "Jade Amulet" "Unset Ring" "Citrine Amulet" "Turquoise Amulet" "Onyx Amulet" "Iron Ring" "Agate Amulet" "Paua Ring"
 	SetTextColor 0 0 0
 	SetBackgroundColor 162 162 13 255
+
+Show
+    Class Rings Amulets Belts
+    Rarity Rare
+	BaseType "Rustic Sash" "Heavy Belt" "Leather Belt" "Diamond Ring" "Gold Amulet" "Blue Pearl Amulet"
+    SetBackgroundColor 30 90 45 230
+    SetFontSize 38
+    SetBorderColor 25 180 25
 	
 Show
-    Class Rings Amulets Belts Jewel
+    Class Jewel
     Rarity Rare
     SetBackgroundColor 30 90 45 230
     SetFontSize 38
@@ -314,14 +330,14 @@ Show
 
 Show
 	Class Gem
-	BaseType "Empower" "Enlighten"
+	BaseType "Empower" "Enlighten" "Vaal Haste" "Vaal Discipline"
 	Quality >= 15
 	SetTextColor 30 150 180 255
 	SetBorderColor 30 150 180 255
 	SetBackgroundColor 255 255 255 255
 	SetFontSize 45
 	PlayAlertSound 6 300
-
+	
 Show
 	Class Gem
 	Quality = 20

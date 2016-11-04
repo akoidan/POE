@@ -154,15 +154,6 @@ class PoeTradeDigger(object):
 			self.notifier.log(content)
 			self.notifier.pushbullet(content, title)
 
-if not IS_WIN:
-	import daemon
-	with daemon.DaemonContext():
-		digger = PoeTradeDigger()
-		while True:
-			try:
-				digger.check_all()
-			except:
-				pass
-else:
-	digger = PoeTradeDigger()
-	digger.check_all()
+
+digger = PoeTradeDigger()
+digger.check_all()

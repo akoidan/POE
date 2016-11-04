@@ -109,8 +109,9 @@ class PoeTradeDigger(object):
 			'http://poe.trade/search/akoyeratohukat/live': -1,  # MF gold Ring
 			'http://poe.trade/search/auhuorusohamag/live': -1,  # MF diamon ring
 			'http://poe.trade/search/oruhakiharitar/live': -1,  # MF manareg diamond ring
-			'http://poe.trade/search/nosimkanahubon/live': -1, # MF manareg gold ring
-			'http://poe.trade/search/arerotetasitok/live' : -1, #Shavrone's +1
+			'http://poe.trade/search/nosimkanahubon/live': -1,  # MF manareg gold ring
+			'http://poe.trade/search/arerotetasitok/live': -1,  # Shavrone's +1
+			'http://poe.trade/search/ahihahukitasiw/live': -1,  # Rumi's concoctions
 		}
 		self.notifier = Notifier()
 

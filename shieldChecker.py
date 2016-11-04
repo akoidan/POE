@@ -78,6 +78,9 @@ class Notifier(object):
 			fro='shieldChecker',
 			to=('nightmare.quake@Mail.ru',),
 			server="localhost"):
+		if IS_WIN:
+			print("MAIL MOCK")
+			return
 		msg = MIMEMultipart()
 		msg['From'] = fro
 		msg['To'] = COMMASPACE.join(to)
@@ -127,7 +130,7 @@ class PoeTradeDigger(object):
 				exp_data = "{} url exception : {}\n {}".format(url, str(e), str(traceback.format_exc()))
 				self.notifier.log(exp_data)
 				if not isinstance(e, NewConnectionError) and not isinstance(e,  ConnectionError):
-					self.notifier.mail(exp_data, "shieldChecker Error")
+					self.notifier.mail(exp_data, e.__class__.__name__)
 
 	def extract_title(self, html):
 		soup = Soup(html, "html.parser")

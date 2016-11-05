@@ -1,7 +1,7 @@
-var LOCAL_STORAGE_PERMA_BLOCK = 'rumi';
-var LOCAL_STORAGE_TODAY_BLOCK = 'rumi';
+var LOCAL_STORAGE_PERMA_BLOCK = 'bv';
+var LOCAL_STORAGE_TODAY_BLOCK = 'bv';
 var DEBUG = false;
-function getOffer(element) {
+var getOffer = function(element) {
     var message = whisperMessage(element);
     var blck = getAttr(element, '##% Chance to Block during Flask effect');
     var blckSpl = getAttr(element, '##% Chance to Block Spells during Flask effect');
@@ -13,12 +13,15 @@ function getOffer(element) {
         57: '17ex',
         58: '21ex',
         59: '25ex',
-        60: false,
-    }
+        60: false
+    };
     if (map[blck + blckSpl]) {
         return whisperMessage(element) + ' My offer is ' + map[blck + blckSpl];
     }
-}
+};
+getOffer = function(element) {
+    return whisperMessage(element) + 'My offer is 5 exalteds. Pure';
+};
 function getAttr(element, atr) {
     return parseInt($($(element).parents(".item")[0]).find('[data-name="' + atr + '"]')[0].getAttribute('data-value'))
 }
@@ -26,31 +29,30 @@ var ls = (function() {
     this.getLocalStorage = function(key) {
         var value = localStorage.getItem(key);
         return value ? JSON.parse(value) : [];
-    }
+    };
     this.setLocalStorage = function(key, value) {
         localStorage.setItem(key, JSON.stringify(value));
-    }
+    };
     this.blockPerson = function(name) {
         if (!DEBUG) {
             var list = getLocalStorage(LOCAL_STORAGE_PERMA_BLOCK);
             list.push(name);
             setLocalStorage(LOCAL_STORAGE_PERMA_BLOCK, list);
         }
-    }
+    };
     this.blockToday = function(name) {
         if (!DEBUG) {
             var list = getLocalStorage(LOCAL_STORAGE_TODAY_BLOCK);
             list.push(name);
             setLocalStorage(LOCAL_STORAGE_TODAY_BLOCK, list);
         }
-    }
+    };
     this.getPermaBlock = function(value) {
         return this.getLocalStorage(LOCAL_STORAGE_PERMA_BLOCK);
-    }
+    };
     this.getTodayBlock = function() {
         return this.getLocalStorage(LOCAL_STORAGE_TODAY_BLOCK);
-    }
-    this.set
+    };
     return this;
 })();
 function loadFileSaver(onReady) {
@@ -69,7 +71,6 @@ function loadFileSaver(onReady) {
 }
 var escaper = (function() {
     const escapeMap = {
-        '"': '""',
         '#': '{#}'
     };
     var replaceHtmlRegex = new RegExp("[" + Object.keys(escapeMap).join("") + "]","g");
@@ -77,17 +78,16 @@ var escaper = (function() {
         return html.replace(replaceHtmlRegex, function(s) {
             return escapeMap[s];
         });
-    }
+    };
     return this;
 })();
 (function() {
     var blockPesonlist = ls.getPermaBlock();
     var blockedToday = ls.getTodayBlock();
     var outStr = "";
-    var prices = {}
     var getParent = function(el) {
         return el.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
-    }
+    };
     var uniqueIgn = {};
     var ign = document.querySelectorAll('.whisper-btn');
     [].filter.call(ign, function(btn) {
@@ -103,7 +103,7 @@ var escaper = (function() {
     for (var name in uniqueIgn) {
         if (!uniqueIgn.hasOwnProperty(name))
             continue;
-        var offer = getOffer(uniqueIgn[name])
+        var offer = getOffer(uniqueIgn[name]);
         if (offer) {
             outStr += offer + '\n';
         }
@@ -111,7 +111,7 @@ var escaper = (function() {
     if (outStr) {
         console.log(outStr);
         loadFileSaver(function() {
-            saveAs(new Blob([outStr],{
+            saveAs(new Blob([escaper.encode(outStr)], {
                 type: "text/plain;charset=utf-8"
             }), 'buyItemsList.txt');
         });
@@ -119,17 +119,3 @@ var escaper = (function() {
         console.error("No new entries found");
     }
 })();
-/*
-printMessage() {
-	o := Object()
-	;;// PASTE INSERT HERE
-	for index, element in o
-	{
-		send {Enter}
-		sleep 100
-		send, %element%
-		sleep 100
-		send {Enter}
-		sleep 2000
-	}
-}*/

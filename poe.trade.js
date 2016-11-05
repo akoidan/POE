@@ -1,34 +1,56 @@
-var LOCAL_STORAGE_PERMA_BLOCK = 'bv';
-var LOCAL_STORAGE_TODAY_BLOCK = 'bv';
-var offer = ' My offer is 3 ex';
-function extraFilter(el) {
-    return true;
-    //return $('#' + el.id + ':contains("Merciless Difficulty")').length > 0;
+var LOCAL_STORAGE_PERMA_BLOCK = 'rumi';
+var LOCAL_STORAGE_TODAY_BLOCK = 'rumi';
+var DEBUG = false;
+function getOffer(element) {
+    var message = whisperMessage(element);
+    var blck = getAttr(element, '##% Chance to Block during Flask effect');
+    var blckSpl = getAttr(element, '##% Chance to Block Spells during Flask effect');
+    var map = {
+        53: '9ex',
+        54: '10ex',
+        55: '12ex',
+        56: '14.5ex',
+        57: '17ex',
+        58: '21ex',
+        59: '25ex',
+        60: false,
+    }
+    if (map[blck + blckSpl]) {
+        return whisperMessage(element) + ' My offer is ' + map[blck + blckSpl];
+    }
 }
-var ls = (function () {
-    this.getLocalStorage = function (key) {
+function getAttr(element, atr) {
+    return parseInt($($(element).parents(".item")[0]).find('[data-name="' + atr + '"]')[0].getAttribute('data-value'))
+}
+var ls = (function() {
+    this.getLocalStorage = function(key) {
         var value = localStorage.getItem(key);
         return value ? JSON.parse(value) : [];
-    };
-    this.setLocalStorage = function (key, value) {
+    }
+    this.setLocalStorage = function(key, value) {
         localStorage.setItem(key, JSON.stringify(value));
-    };
-    this.blockPerson = function (name) {
-        var list = getLocalStorage(LOCAL_STORAGE_PERMA_BLOCK);
-        list.push(name);
-        setLocalStorage(LOCAL_STORAGE_PERMA_BLOCK, list);
-    };
-    this.blockToday = function (name) {
-        var list = getLocalStorage(LOCAL_STORAGE_TODAY_BLOCK);
-        list.push(name);
-        setLocalStorage(LOCAL_STORAGE_TODAY_BLOCK, list);
-    };
-    this.getPermaBlock = function (value) {
+    }
+    this.blockPerson = function(name) {
+        if (!DEBUG) {
+            var list = getLocalStorage(LOCAL_STORAGE_PERMA_BLOCK);
+            list.push(name);
+            setLocalStorage(LOCAL_STORAGE_PERMA_BLOCK, list);
+        }
+    }
+    this.blockToday = function(name) {
+        if (!DEBUG) {
+            var list = getLocalStorage(LOCAL_STORAGE_TODAY_BLOCK);
+            list.push(name);
+            setLocalStorage(LOCAL_STORAGE_TODAY_BLOCK, list);
+        }
+    }
+    this.getPermaBlock = function(value) {
         return this.getLocalStorage(LOCAL_STORAGE_PERMA_BLOCK);
-    };
-    this.getTodayBlock = function () {
+    }
+    this.getTodayBlock = function() {
         return this.getLocalStorage(LOCAL_STORAGE_TODAY_BLOCK);
-    };
+    }
+    this.set
     return this;
 })();
 function loadFileSaver(onReady) {
@@ -45,32 +67,32 @@ function loadFileSaver(onReady) {
         onReady();
     }
 }
-var escaper = (function () {
+var escaper = (function() {
     const escapeMap = {
         '"': '""',
         '#': '{#}'
     };
-    var replaceHtmlRegex = new RegExp("[" + Object.keys(escapeMap).join("") + "]", "g");
-    this.encode = function (html) {
-        return html.replace(replaceHtmlRegex, function (s) {
+    var replaceHtmlRegex = new RegExp("[" + Object.keys(escapeMap).join("") + "]","g");
+    this.encode = function(html) {
+        return html.replace(replaceHtmlRegex, function(s) {
             return escapeMap[s];
         });
-    };
+    }
     return this;
 })();
-(function () {
+(function() {
     var blockPesonlist = ls.getPermaBlock();
     var blockedToday = ls.getTodayBlock();
     var outStr = "";
-    var prices = {};
-    var getParent = function (el) {
+    var prices = {}
+    var getParent = function(el) {
         return el.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
-    };
+    }
     var uniqueIgn = {};
     var ign = document.querySelectorAll('.whisper-btn');
-    [].filter.call(ign, function (btn) {
+    [].filter.call(ign, function(btn) {
         return !document.querySelector('#' + getParent(btn).id + ' .currency');
-    }).filter(extraFilter).forEach(function (btn) {
+    }).forEach(function(btn) {
         var el = getParent(btn);
         var name = el.getAttribute('data-ign');
         if (blockPesonlist.indexOf(name) < 0 && blockedToday.indexOf(name) < 0) {
@@ -81,15 +103,33 @@ var escaper = (function () {
     for (var name in uniqueIgn) {
         if (!uniqueIgn.hasOwnProperty(name))
             continue;
-        var message = whisperMessage(uniqueIgn[name]);
-        outStr += message + offer + '\n';
+        var offer = getOffer(uniqueIgn[name])
+        if (offer) {
+            outStr += offer + '\n';
+        }
     }
     if (outStr) {
         console.log(outStr);
-        loadFileSaver(function () {
-            saveAs(new Blob([outStr], {type: "text/plain;charset=utf-8"}), 'buyItemsList.txt');
+        loadFileSaver(function() {
+            saveAs(new Blob([outStr],{
+                type: "text/plain;charset=utf-8"
+            }), 'buyItemsList.txt');
         });
     } else {
         console.error("No new entries found");
     }
 })();
+/*
+printMessage() {
+	o := Object()
+	;;// PASTE INSERT HERE
+	for index, element in o
+	{
+		send {Enter}
+		sleep 100
+		send, %element%
+		sleep 100
+		send {Enter}
+		sleep 2000
+	}
+}*/

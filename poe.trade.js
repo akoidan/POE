@@ -1,5 +1,5 @@
 var LOCAL_STORAGE_PERMA_BLOCK = 'bv';
-var LOCAL_STORAGE_TODAY_BLOCK = 'bv';
+var LOCAL_STORAGE_TODAY_BLOCK = LOCAL_STORAGE_PERMA_BLOCK;
 var DEBUG = false;
 var getOffer = function(element) {
     var message = whisperMessage(element);
@@ -19,8 +19,11 @@ var getOffer = function(element) {
         return whisperMessage(element) + ' My offer is ' + map[blck + blckSpl];
     }
 };
+function currencyFilter(btn) {
+       return !document.querySelector('#' + $(btn).parents(".item")[0].id + ' .currency');
+}
 getOffer = function(element) {
-    return whisperMessage(element) + 'My offer is 5 exalteds. Pure';
+    return whisperMessage(element) + ' My offer is 5ex';
 };
 function getAttr(element, atr) {
     return parseInt($($(element).parents(".item")[0]).find('[data-name="' + atr + '"]')[0].getAttribute('data-value'))
@@ -71,7 +74,10 @@ function loadFileSaver(onReady) {
 }
 var escaper = (function() {
     const escapeMap = {
-        '#': '{#}'
+        '#': '{#}',
+        '+': '{+}',
+        '{': '{{}',
+        '}': '{}}'
     };
     var replaceHtmlRegex = new RegExp("[" + Object.keys(escapeMap).join("") + "]","g");
     this.encode = function(html) {
@@ -90,9 +96,7 @@ var escaper = (function() {
     };
     var uniqueIgn = {};
     var ign = document.querySelectorAll('.whisper-btn');
-    [].filter.call(ign, function(btn) {
-        return !document.querySelector('#' + getParent(btn).id + ' .currency');
-    }).forEach(function(btn) {
+    [].filter.call(ign, currencyFilter).forEach(function(btn) {
         var el = getParent(btn);
         var name = el.getAttribute('data-ign');
         if (blockPesonlist.indexOf(name) < 0 && blockedToday.indexOf(name) < 0) {

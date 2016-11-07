@@ -224,6 +224,7 @@ $f3::FastLogOut()
 $F4::OpenPortal()
 ;;$F5::switchGems([{ "srcX" : 1877, "srcY" : 615, "dstX": 1613 , "dstY":  359}, { "srcX" : 1773, "srcY" : 615, "dstX":1613 , "dstY":  305}, { "srcX" : 1718, "srcY" : 614, "dstX":1559 , "dstY":  360}, { "srcX" : 1665, "srcY" : 619, "dstX":1559 , "dstY":  306}])
 $F5::switchGems([{ "srcX" : 1773, "srcY" : 615, "dstX":1613 , "dstY":  305}])
+;quant $F5::switchGems([{ "srcX" : 1719, "srcY" : 615, "dstX":1560 , "dstY":  252}])
 ;;$f5::TurnOffBloodRage()
 $F6::getPrice()
 $F7::printMessage()
@@ -232,19 +233,7 @@ $f8::startScream()
 
 	
 testLol() {
-	coordinates := [{ "srcX" : 553, "srcY" : 466, "dstX": 333, "dstY": 444 }] ; numbered array
-	for i, element in coordinates {
-		srcX := element.srcX
-		srcY := element.srcX
-		dstX := element.dstX
-		dstY := element.dstY
-		Click left %srcX%, %srcY%
-		Sleep 10
-		Click left, %destX%, %destY%
-		Sleep 10
-		Click left, %srcX%, %srcY%
-		Sleep 10
-	}
+	send "{f}asdas a"
 }	
 
 ;;$f9::setGemPrice() 

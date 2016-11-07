@@ -230,19 +230,7 @@ $F6::getPrice()
 
 	
 testLol() {
-	coordinates := [{ "srcX" : 553, "srcY" : 466, "dstX": 333, "dstY": 444 }] ; numbered array
-	for i, element in coordinates {
-		srcX := element.srcX
-		srcY := element.srcX
-		dstX := element.dstX
-		dstY := element.dstY
-		Click left %srcX%, %srcY%
-		Sleep 10
-		Click left, %destX%, %destY%
-		Sleep 10
-		Click left, %srcX%, %srcY%
-		Sleep 10
-	}
+	send "{f}asdas a"
 }	
 
 ;;$f9::setGemPrice() 

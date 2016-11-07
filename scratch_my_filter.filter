@@ -2,6 +2,12 @@ Show
 	Class Microtransactions
 
 Show
+	BaseType "Sorcerer Boots"
+	Rarity "Normal"
+	SetBorderColor 0 150 0 150
+    SetTextColor 255 255 255 255
+	
+Show
 	Class Quest Items
 	SetFontSize 40
 	SetBorderColor 74 230 58	
@@ -121,10 +127,11 @@ Show
 	Class Rings Amulets
 	Rarity Rare
 	ItemLevel >= 84
+	BaseType "Sapphire Ring" "Coral Ring" "Topaz Ring" "Ruby Ring" "Amethyst Ring" "Prismatic Ring" "Two-Stone Ring" "Lapis Amulet" "Amber Amulet" "Jade Amulet" "Unset Ring" "Citrine Amulet" "Turquoise Amulet" "Onyx Amulet" "Agate Amulet"
 	SetBackgroundColor 30 90 45 230
 	SetFontSize 38
 	SetBorderColor 25 180 25
-	
+
 Show 
 	Class "Belts" "Ring" "Amulet"
 	Rarity "Rare"
@@ -133,12 +140,12 @@ Show
 	SetBackgroundColor 162 162 13 255
 
 Show
-    Class Rings Amulets Belts
-    Rarity Rare
-	BaseType "Rustic Sash" "Heavy Belt" "Leather Belt" "Diamond Ring" "Gold Amulet" "Blue Pearl Amulet"
-    SetBackgroundColor 30 90 45 230
-    SetFontSize 38
-    SetBorderColor 25 180 25
+	Class Rings Amulets Belts
+	Rarity Rare
+	BaseType "Rustic Sash" "Heavy Belt" "Leather Belt" "Diamond Ring" "Gold Amulet" "Blue Pearl Amulet" "Gold Ring"
+	SetBackgroundColor 30 90 45 230
+	SetFontSize 38
+	SetBorderColor 25 180 25
 	
 Show
     Class Jewel
@@ -160,12 +167,6 @@ Show
     SetBorderColor 150 150 150
     Width <= 1	
 
-	
-Show
-	BaseType "Sorcerer Boots"
-	Rarity "Normal"
-	SetBorderColor 0 150 0 150
-    SetTextColor 255 255 255 255
 
 	
 ##################################################

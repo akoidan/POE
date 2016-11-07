@@ -12,6 +12,7 @@ from sys import platform
 
 import requests
 from bs4 import BeautifulSoup as Soup
+from requests.packages.urllib3.exceptions import NewConnectionError
 
 from credentials import *
 
@@ -77,6 +78,9 @@ class Notifier(object):
 			fro='shieldChecker',
 			to=('nightmare.quake@Mail.ru',),
 			server="localhost"):
+		if IS_WIN:
+			print("MAIL MOCK")
+			return
 		msg = MIMEMultipart()
 		msg['From'] = fro
 		msg['To'] = COMMASPACE.join(to)
@@ -85,7 +89,7 @@ class Notifier(object):
 		msg.attach(MIMEText(text, subtype))
 
 		smtp = smtplib.SMTP(server)
-		smtp.sendmail(fro, to, msg.as_string() )
+		smtp.sendmail(fro, to, msg.as_string())
 		smtp.close()
 
 
@@ -101,7 +105,14 @@ class PoeTradeDigger(object):
 			'http://poe.trade/search/naragotenahohu/live': -1,  # jewel
 			'http://poe.trade/search/kanayahamikaki/live': -1,  # ES shield craft
 			'http://poe.trade/search/atetatasisiuku/live': -1,  # dagger
-			'http://poe.trade/search/roritosinikiyo/live': -1  # ring
+			'http://poe.trade/search/roritosinikiyo/live': -1,  # ring
+			'http://poe.trade/search/akoyeratohukat/live': -1,  # MF gold Ring
+			'http://poe.trade/search/auhuorusohamag/live': -1,  # MF diamon ring
+			'http://poe.trade/search/oruhakiharitar/live': -1,  # MF manareg diamond ring
+			'http://poe.trade/search/nosimkanahubon/live': -1,  # MF manareg gold ring
+			'http://poe.trade/search/arerotetasitok/live': -1,  # Shavrone's +1
+			# 'http://poe.trade/search/ahihahukitasiw/live': -1,  # Rumi's concoctions
+			'http://poe.trade/search/auohuasikotaki/live': -1,  # Vessel for 20% convert
 		}
 		self.notifier = Notifier()
 
@@ -116,12 +127,12 @@ class PoeTradeDigger(object):
 		for url in self.urls:
 			try:
 				self.check(url)
-				time.sleep(1)
+				time.sleep(2)
 			except Exception as e:
 				exp_data = "{} url exception : {}\n {}".format(url, str(e), str(traceback.format_exc()))
 				self.notifier.log(exp_data)
-				self.notifier.mail(exp_data, "shieldChecker Error")
-		time.sleep(10)
+				if not isinstance(e, NewConnectionError) and not isinstance(e,  ConnectionError):
+					self.notifier.mail(exp_data, e.__class__.__name__)
 
 	def extract_title(self, html):
 		soup = Soup(html, "html.parser")

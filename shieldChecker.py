@@ -133,7 +133,7 @@ class PoeTradeDigger(object):
 			except Exception as e:
 				exp_data = "{} url exception : {}\n {}".format(url, str(e), str(traceback.format_exc()))
 				self.notifier.log(exp_data)
-				if not isinstance(e, NewConnectionError) and not isinstance(e,  ConnectionError) and not isinstance(e, ConnectionErrorReqExc):
+				if not isinstance(e, (NewConnectionError, ConnectionError, ConnectionErrorReqExc)):
 					self.notifier.mail(exp_data, e.__class__.__name__)
 
 	def extract_title(self, html):

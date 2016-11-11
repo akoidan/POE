@@ -12,6 +12,7 @@ from sys import platform
 
 import requests
 from bs4 import BeautifulSoup as Soup
+from requests.exceptions import ConnectionError as ConnectionErrorReqExc
 from requests.packages.urllib3.exceptions import NewConnectionError
 
 from credentials import *
@@ -113,6 +114,7 @@ class PoeTradeDigger(object):
 			'http://poe.trade/search/arerotetasitok/live': -1,  # Shavrone's +1
 			# 'http://poe.trade/search/ahihahukitasiw/live': -1,  # Rumi's concoctions
 			'http://poe.trade/search/auohuasikotaki/live': -1,  # Vessel for 20% convert
+			'http://poe.trade/search/ukanatitasisit/live': -1,  # titanium shield craft prefix
 		}
 		self.notifier = Notifier()
 
@@ -131,7 +133,7 @@ class PoeTradeDigger(object):
 			except Exception as e:
 				exp_data = "{} url exception : {}\n {}".format(url, str(e), str(traceback.format_exc()))
 				self.notifier.log(exp_data)
-				if not isinstance(e, NewConnectionError) and not isinstance(e,  ConnectionError):
+				if not isinstance(e, (NewConnectionError, ConnectionError, ConnectionErrorReqExc)):
 					self.notifier.mail(exp_data, e.__class__.__name__)
 
 	def extract_title(self, html):

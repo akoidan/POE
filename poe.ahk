@@ -46,9 +46,11 @@ PrintLol() {
   	}
 }
 
+
 printMessage() {
 	
 	;;price_path :=  A_ScriptDir "\price-data.txt"
+	
 	price_path :=  "D:\Downloads\buyItemsList.txt"
 	Loop, read, %price_path%
 	{
@@ -228,8 +230,11 @@ $F5::switchGems([{ "srcX" : 1773, "srcY" : 615, "dstX":1613 , "dstY":  305}])
 ;;$f5::TurnOffBloodRage()
 $F6::getPrice()
 $F7::printMessage()
-$f8::startScream()
+$f8::reloadScript()
 
+reloadScript() {
+	Reload
+}
 
 	
 testLol() {

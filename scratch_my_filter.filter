@@ -93,31 +93,34 @@ Show
 	SetTextColor  190 50 50
 	SetTextColor   0 255 150
 
-Show
+	
+	
+	# CHAOS RECEIPY
+Hide
     Class "Gloves"
     Rarity Rare
     SetTextColor 255 190 0
     SetBorderColor 0 255 0 230
 		
-Show
+Hide
     Class "Boots"
     Rarity Rare
     SetTextColor 255 190 0
     SetBorderColor 80 80 255 255
 
-Show
+Hide
     Class "Helmets"
     Rarity Rare
     SetTextColor 255 190 0
 	SetBorderColor 255 255 0 255
 	
-Show
+Hide
     Class "Body Armour"
     Rarity Rare
     SetTextColor 255 190 0
     SetBorderColor 255 0 0 230
 
-Show
+Hide
     Class "Two Hand" "Bow" "Staves"
     Rarity Rare
     SetTextColor 255 190 0
@@ -180,7 +183,7 @@ Show # Maps:Unique
 	PlayAlertSound 4 300
 
 Show # T1 - These uniques are have a consistent price of ~0.5++ ex
-	BaseType "Citrine Amulet" "Gold Ring" "Ursine Pelt" "Champion Kite Shield" "Sapphire Flask"  "Occultist" "Glorious" "Titanium" "Siege Axe" "Prophecy Wand" "Sacrificial Garb" "Sorcerer Boots" "Topaz Flask" "Deicide Mask" "Imperial Skean" "Rawhide Boots" "Assassin's Garb" "Ezomyte Burgonet" "Two-Stone" "Savant's Robe" "Vaal Regalia" "Silver Flask" "Jewelled Foil" "Fiend Dagger" "Gladiator Plate" "Exquisite Leather" "Prismatic Jewel" "Lion Pelt" "Stibnite Flask" "Crusader Boots" "Ruby Flask" "Granite Flask" "Infernal Sword"
+	BaseType "Citrine Amulet" "Gold Ring" "Ursine Pelt" "Champion Kite Shield" "Sapphire Flask"  "Occultist" "Glorious" "Titanium" "Siege Axe" "Prophecy Wand" "Sacrificial Garb" "Sorcerer Boots" "Topaz Flask" "Deicide Mask" "Imperial Skean" "Rawhide Boots" "Assassin's Garb" "Ezomyte Burgonet" "Two-Stone" "Savant's Robe" "Vaal Regalia" "Silver Flask" "Jewelled Foil"  "Gladiator Plate" "Exquisite Leather" "Prismatic Jewel" "Lion Pelt" "Stibnite Flask" "Crusader Boots" "Ruby Flask" "Granite Flask" "Infernal Sword"
 	Rarity Unique
 	SetTextColor 175 96 37 255
 	SetBorderColor 175 96 37 255
@@ -189,7 +192,7 @@ Show # T1 - These uniques are have a consistent price of ~0.5++ ex
 	PlayAlertSound 6 300
 
 Show # T2 - These uniques usually are worth ~0.5-1 ex at the start of the league and drop to ~5c++ (sometimes ranging to an ex and up) over 1-2 month.
-	BaseType "Desert Brigandine" "Spike-Point Arrow Quiver" "Titan Gauntlets" "Varnished Coat" "Midnight Blade"  "Judgement Staff" "Golden Plate" "Nubuck Boots" "Terror Maul" "Full Wyrmscale" "Gavel" "Archon Kite Shield" "Reinforced Greaves" "Imperial Bow" "Conjurer Boots" "Conjurer Gloves"  "Steelscale Gauntlets" "Nightmare Bascinet" "Sharkskin Boots" "Granite Flask" "Imperial Staff" "Deerskin Gloves" "Karui Sceptre" "Paua Ring" "Vaal Axe" "Spine Bow" "Slaughter Knife" "Sinner Tricorne" "Hubris" "Strapped Mitts" "Eternal Sword" "Onyx Amulet" "Penetrating Arrow Quiver" "Broadhead Arrow Quiver" "Crusader Gloves" "Murder Boots" "Harbinger Bow"
+	BaseType "Fiend Dagger" "Studded Belt" "Desert Brigandine" "Spike-Point Arrow Quiver" "Titan Gauntlets" "Varnished Coat" "Midnight Blade"  "Judgement Staff" "Golden Plate" "Nubuck Boots" "Terror Maul" "Full Wyrmscale" "Gavel" "Archon Kite Shield" "Reinforced Greaves" "Imperial Bow" "Conjurer Boots" "Conjurer Gloves"  "Steelscale Gauntlets" "Nightmare Bascinet" "Sharkskin Boots" "Granite Flask" "Imperial Staff" "Deerskin Gloves" "Karui Sceptre" "Paua Ring" "Vaal Axe" "Spine Bow" "Slaughter Knife" "Sinner Tricorne" "Hubris" "Strapped Mitts" "Eternal Sword" "Onyx Amulet" "Penetrating Arrow Quiver" "Broadhead Arrow Quiver" "Crusader Gloves" "Murder Boots" "Harbinger Bow"
 	Rarity Unique
 	SetTextColor 0 0 0 255
 	SetBorderColor 0 0 0 255
@@ -278,7 +281,7 @@ Show
 #EXCEPTIONS - Trash-tier cards.
 Hide #%H3
 	Class "Divination"
-	BaseType "Carrion Crow" "Other Cheek" "Hermit" "King's Blade" "Prosperity" "Metalsmith's Gift"
+	BaseType "Carrion Crow" "Other Cheek" "Hermit" "King's Blade" "Prosperity" "Metalsmith's Gift" "The Lover" "Thunderous Skies" "The Feast" "The Throne" "The Twins"
 	SetTextColor 0 0 0
 	SetBorderColor 0 0 0
 	SetBackgroundColor 175 215 230 180
@@ -294,7 +297,7 @@ Show
 	SetFontSize 45
 	PlayAlertSound 6 300
 
-#TIER 2: ~5-14ish chaos. Expansive or very good cards (such as the Cartographer)
+#TIER 2: ~5-14ish w. Expansive or very good cards (such as the Cartographer)
 Show
 	Class "Divination"
 	BaseType "The Cartographer" "The Chains that Bind" "Chaotic Disposition" "Emperor of Purity" "The Harvester" "The Hoarder" "The King's Heart" "Last Hope" "Mawr Blaidd" "The Penitent" "Pride Before the Fall" "The Scavenger" "The Sephirot" "The Valkyrie" "The Vast" "The Warlord" "The Wolf" "Stormcaller" "Earth Drinker" "The Surveyor" "The Void"
@@ -593,88 +596,83 @@ Show
 Hide # Hide all <rare weapons and amour
 	Class "Wand" "Dagger" "Axe" "Flask" "Mace" "Sword" "Claw" "Bow" "Shield" "Quiver" "Armour" "Staves" "One Hand Mace" "Sceptre"
 	Rarity "Magic" "Normal"
-	SetFontSize 25
+	SetFontSize 5
 
 Hide # Hide all one handed rare stuff that not for chaos
 	Class "Shield" "Dagger" "One Hand Axe" "Sceptre" "One Hand Sword" "One Hand Mace" "Quiver" "Claw" "Wand"
 	Rarity "Rare"
-	SetFontSize 25
+	SetFontSize 5
 
 Hide # Hide all bad boots and gloves
 	Class "Gloves" "Boots" "Helmet"
 	Rarity "Magic" "Normal"
 	DropLevel <= 66
-	SetFontSize 25
+	SetFontSize 5
 	
 Hide 
 	Class "Gloves" "Boots" "Helmet"
 	Rarity "Magic" "Normal"
 	BaseType "Deicide Mask" "Dragonscale Gauntlets" "Praetor Crown" "Sorcerer Gloves" "Titan Greaves" "Slink Boots" "Slink Gloves" "Titan Gauntlets" "Nightmare Bascinet" "Murder Mitts" "Lion Pelt" "Murder Boots" "Eternal Burgonet" "Two-Toned Boots"  "Bone Helmet"
-	SetFontSize 25
+	SetFontSize 5
 
 Hide 
 	Class "Gloves" "Boots" "Helmet"
 	Rarity "Magic"
 	BaseType "Two-Toned Boots" "Fingerless Silk Gloves" "Spiked Gloves" "Gripped Gloves"
-	SetFontSize 25
+	SetFontSize 5
 
 Hide 
 	Class "Gloves" "Boots" "Helmet"
 	Rarity "Normal"
 	ItemLevel < 80
 	BaseType "Two-Toned Boots" "Fingerless Silk Gloves" "Spiked Gloves" "Gripped Gloves"
-	SetFontSize 25
+	SetFontSize 5
 
 Hide # Show all new cool armour for spell damage etc
 	Class "Gloves" "Boots" "Helmet" "Ring" "Jewel"
 	Rarity "Magic"
 	DropLevel < 73
-	SetFontSize 25
+	SetFontSize 5
 
 Hide 
 	Class "Jewel"
 	Rarity "Normal"
-	SetFontSize 25
+	SetFontSize 5
 
 Hide # Show all other cool belts
 	Class "Belt"
 	Rarity "Magic"
 	BaseType "Leather Belt" "Rustic Sash" "Heavy Belt" "Vanguard Belt"
-	SetFontSize 25
+	SetFontSize 5
 	
 Hide # Show all other cool belts
 	Class "Belt"
 	Rarity "Normal"
 	ItemLevel < 84
 	BaseType "Leather Belt" "Rustic Sash" "Heavy Belt" "Vanguard Belt"
-	SetFontSize 25
+	SetFontSize 5
 
 Hide 
 	Rarity "Magic" "Normal"
 	BaseType "Studded Belt" "Chain Belt" "Cloth Belt" "Sapphire Ring" "Coral Ring" "Topaz Ring" "Ruby Ring" "Moonstone Ring" "Amethyst Ring" "Prismatic Ring" "Two-Stone Ring" "Paua Amulet" "Lapis Amulet" "Amber Amulet" "Coral Amulet" "Jade Amulet" "Unset Ring" "Citrine Amulet" "Turquoise Amulet" "Onyx Amulet" "Iron Ring" "Agate Amulet" "Paua Ring" 
-	SetFontSize 25
+	SetFontSize 5
 
 Hide
 	Rarity "Magic" "Normal"
 	ItemLevel < 80
 	BaseType "Gold Ring" "Diamond Ring" "Gold Amulet"
-	SetFontSize 25
+	SetFontSize 5
 	
 Hide
 	Rarity "Magic"
 	BaseType "Gold Ring" "Diamond Ring" "Gold Amulet"
-	SetFontSize 25
+	SetFontSize 5
 
 Hide 
 	Rarity "Magic" "Normal"
 	ItemLevel < 84
 	BaseType  "Vaal Regalia" "Sorcerer Boots" "Sorcerer Gloves" "Hubris Circlet" "Astral Plate" 
-	SetFontSize 25
-	
-Hide
-	Class "Divination Card"
-	BaseType "The Carrion Crow"
-	SetFontSize 25
+	SetFontSize 5
 	
 
 Show # need to be fixed 

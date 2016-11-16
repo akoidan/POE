@@ -63,14 +63,16 @@ class Notifier(object):
 		self.mail(data, title)
 		self.pushbullet(data, title)
 
+	# TODO
 	def pushbullet(self, data, title):
-		resp = requests.post(self.pushbullet_url, json={
-			'body': data,
-			'type': 'note',
-			'title': title
-		}, headers=self.headers)
-		if resp.status_code != 200:
-			raise Exception(resp.content)
+		pass
+		# resp = requests.post(self.pushbullet_url, json={
+		# 	'body': data,
+		# 	'type': 'note',
+		# 	'title': title
+		# }, headers=self.headers)
+		# if resp.status_code != 200:
+		# 	raise Exception(resp.content)
 
 	def mail(self,
 			text,

@@ -115,7 +115,7 @@ class PoeTradeDigger(object):
 			'http://poe.trade/search/nosimkanahubon/live': -1,  # MF manareg gold ring
 			'http://poe.trade/search/arerotetasitok/live': -1,  # Shavrone's +1
 			# 'http://poe.trade/search/ahihahukitasiw/live': -1,  # Rumi's concoctions
-			'http://poe.trade/search/auohuasikotaki/live': -1,  # Vessel for 20% convert
+			#'http://poe.trade/search/auohuasikotaki/live': -1,  # Vessel for 20% convert
 			'http://poe.trade/search/ukanatitasisit/live': -1,  # titanium shield craft prefix
 		}
 		self.notifier = Notifier()

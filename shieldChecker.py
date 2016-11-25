@@ -7,6 +7,7 @@ import traceback
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.utils import formatdate
+from json import JSONDecodeError
 from smtpd import COMMASPACE
 from sys import platform
 
@@ -135,7 +136,7 @@ class PoeTradeDigger(object):
 			except Exception as e:
 				exp_data = "{} url exception : {}\n {}".format(url, str(e), str(traceback.format_exc()))
 				self.notifier.log(exp_data)
-				if not isinstance(e, (NewConnectionError, ConnectionError, ConnectionErrorReqExc)):
+				if not isinstance(e, (NewConnectionError, ConnectionError, ConnectionErrorReqExc, JSONDecodeError)):
 					self.notifier.mail(exp_data, e.__class__.__name__)
 
 	def extract_title(self, html):

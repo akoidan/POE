@@ -236,8 +236,7 @@ reloadScript() {
 testLol() {
 	send "{f}asdas a"
 }	
-
-;;$f9::setGemPrice() 
+ 
 
 ;$`::PhaseRun()
 ;$A::IceCrash()

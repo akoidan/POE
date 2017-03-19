@@ -7,11 +7,13 @@ import traceback
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.utils import formatdate
+from json import JSONDecodeError
 from smtpd import COMMASPACE
 from sys import platform
 
 import requests
 from bs4 import BeautifulSoup as Soup
+from requests.exceptions import ConnectionError as ConnectionErrorReqExc
 from requests.packages.urllib3.exceptions import NewConnectionError
 
 from credentials import *
@@ -62,14 +64,16 @@ class Notifier(object):
 		self.mail(data, title)
 		self.pushbullet(data, title)
 
+	# TODO
 	def pushbullet(self, data, title):
-		resp = requests.post(self.pushbullet_url, json={
-			'body': data,
-			'type': 'note',
-			'title': title
-		}, headers=self.headers)
-		if resp.status_code != 200:
-			raise Exception(resp.content)
+		pass
+		# resp = requests.post(self.pushbullet_url, json={
+		# 	'body': data,
+		# 	'type': 'note',
+		# 	'title': title
+		# }, headers=self.headers)
+		# if resp.status_code != 200:
+		# 	raise Exception(resp.content)
 
 	def mail(self,
 			text,
@@ -112,7 +116,8 @@ class PoeTradeDigger(object):
 			'http://poe.trade/search/nosimkanahubon/live': -1,  # MF manareg gold ring
 			'http://poe.trade/search/arerotetasitok/live': -1,  # Shavrone's +1
 			# 'http://poe.trade/search/ahihahukitasiw/live': -1,  # Rumi's concoctions
-			'http://poe.trade/search/auohuasikotaki/live': -1,  # Vessel for 20% convert
+			#'http://poe.trade/search/auohuasikotaki/live': -1,  # Vessel for 20% convert
+			'http://poe.trade/search/ukanatitasisit/live': -1,  # titanium shield craft prefix
 		}
 		self.notifier = Notifier()
 
@@ -131,7 +136,7 @@ class PoeTradeDigger(object):
 			except Exception as e:
 				exp_data = "{} url exception : {}\n {}".format(url, str(e), str(traceback.format_exc()))
 				self.notifier.log(exp_data)
-				if not isinstance(e, NewConnectionError) and not isinstance(e,  ConnectionError):
+				if not isinstance(e, (NewConnectionError, ConnectionError, ConnectionErrorReqExc, JSONDecodeError)):
 					self.notifier.mail(exp_data, e.__class__.__name__)
 
 	def extract_title(self, html):

@@ -5,19 +5,19 @@ Show
 	BaseType "Sorcerer Boots"
 	Rarity "Normal"
 	SetBorderColor 0 150 0 150
-    SetTextColor 255 255 255 255
-	
+	SetTextColor 255 255 255 255
+
 Show
 	Class Quest Items
 	SetFontSize 40
-	SetBorderColor 74 230 58	
+	SetBorderColor 74 230 58
 
 Show
 	Class "Labyrinth"
 	SetFontSize 40
 	SetBorderColor 74 230 58
 	SetTextColor 74 230 58
-	
+
 Show 
 	BaseType "Opal Ring" "Marble Amulet"
 	SetFontSize 50
@@ -29,7 +29,7 @@ Show
 	SetBackgroundColor 200 200 200 255
 	SetFontSize 44
 	PlayAlertSound 4 300
-	
+
 Show 
 	BaseType "Fingerless Silk Gloves"
 	ItemLevel >= 84
@@ -38,89 +38,90 @@ Show
 	SetBackgroundColor 200 200 200 255
 	SetFontSize 44
 	PlayAlertSound 4 300
-	
+
 Show # Show items for alchemy
-    BaseType "Vaal Regalia" "Sorcerer Boots" "Sorcerer Gloves" "Hubris Circlet" "Leather Belt" "Vanguard Belt" "Heavy Belt" "Titanium Spirit Shield" "Two-Toned Boots" "Rustic Sash" "Harmonic Spirit Shield" "Platinum Kris" "Golden Kris" "Copper Kris"
+	BaseType "Vaal Regalia" "Sorcerer Boots" "Sorcerer Gloves" "Hubris Circlet" "Leather Belt" "Vanguard Belt" "Heavy Belt" "Titanium Spirit Shield" "Two-Toned Boots" "Rustic Sash" "Harmonic Spirit Shield" "Platinum Kris" "Golden Kris" "Copper Kris"
 	ItemLevel >= 84
 	Rarity "Normal"
-	
+
 Show # Show items for alchemy
-    BaseType "Diamond Ring" "Gold Ring" "Gold Amulet" "Fingerless Silk Gloves" "Spiked Gloves" "Gripped Gloves" "Agate Amulet" "Citrine Amulet" "Turquoise Amulet" "Blue Pearl Amulet"
+	BaseType "Diamond Ring" "Gold Ring" "Gold Amulet" "Fingerless Silk Gloves" "Spiked Gloves" "Gripped Gloves" "Agate Amulet" "Citrine Amulet" "Turquoise Amulet" "Blue Pearl Amulet"
 	ItemLevel >= 80
-	Rarity "Normal"	
+	Rarity "Normal"
 
 Show 
 	Rarity Rare
 	BaseType "Vaal Regalia" "Hubris Circlet" "Sorcerer Boots" "Sorcerer Gloves" "Two-Toned Boots" "Gripped Gloves" "Fingerless Silk Gloves" "Spiked Gloves" "Titanium Spirit Shield" "Harmonic Spirit Shield"
 	ItemLevel >= 75
 	SetBackgroundColor 30 90 45 230
-    SetFontSize 38
-    SetBorderColor 25 180 25
-	
+	SetFontSize 38
+	SetBorderColor 25 180 25
+
 Show 
 	Rarity Rare
 	BaseType "Titan Greaves" "Slink Gloves" "Lion Pelt" "Titan Gauntlets" "Slink Boots" "Astral Plate" "Royal Burgonet" "Eternal Burgonet" "Lion Pelt" "Bone Helmet" "Spike-Point Arrow Quiver" "Harbinger Bow" "Fleshripper" "Two-Toned Boots"
 	ItemLevel > 75
 	SetBackgroundColor 30 90 45 230
-    SetFontSize 32
-    SetBorderColor 25 180 25
+	SetFontSize 32
+	SetBorderColor 25 180 25
 
 Show #spell damage dagger, could worth a lot, chances are not that bad
 	Rarity Rare
 	BaseType "Platinum Kris" "Golden Kris" "Copper Kris"
 	ItemLevel >= 84
 	SetBackgroundColor 30 90 45 230
-    SetFontSize 38
-    SetBorderColor 25 180 25
-	
+	SetFontSize 38
+	SetBorderColor 25 180 25
+
 ###################################################
 ##################### Recepie #####################
 ###################################################
 
 Show
-    LinkedSockets  6
-    SetTextColor 255 0 0 255
-    SetBorderColor 255 0 0 255
-    SetBackgroundColor 255 255 255 255
-    PlayAlertSound 6 300
-    SetFontSize 45
+	LinkedSockets  6
+	SetTextColor 255 0 0 255
+	SetBorderColor 255 0 0 255
+	SetBackgroundColor 255 255 255 255
+	PlayAlertSound 6 300
+	SetFontSize 45
 
 Show
-    Sockets 6
+	Sockets 6
 	SetBackgroundColor 0 0 0
 	SetFontSize 37
 	SetBorderColor 0 255 150
 	SetTextColor  190 50 50
 	SetTextColor   0 255 150
 
-Show
-    Class "Gloves"
-    Rarity Rare
-    SetTextColor 255 190 0
-    SetBorderColor 0 255 0 230
-		
-Show
-    Class "Boots"
-    Rarity Rare
-    SetTextColor 255 190 0
-    SetBorderColor 80 80 255 255
+# CHAOS RECEIPY
+Hide
+	Class "Gloves"
+	Rarity Rare
+	SetTextColor 255 190 0
+	SetBorderColor 0 255 0 230
 
-Show
-    Class "Helmets"
-    Rarity Rare
-    SetTextColor 255 190 0
+Hide
+	Class "Boots"
+	Rarity Rare
+	SetTextColor 255 190 0
+	SetBorderColor 80 80 255 255
+
+Hide
+	Class "Helmets"
+	Rarity Rare
+	SetTextColor 255 190 0
 	SetBorderColor 255 255 0 255
-	
-Show
-    Class "Body Armour"
-    Rarity Rare
-    SetTextColor 255 190 0
-    SetBorderColor 255 0 0 230
 
-Show
-    Class "Two Hand" "Bow" "Staves"
-    Rarity Rare
-    SetTextColor 255 190 0
+Hide
+	Class "Body Armour"
+	Rarity Rare
+	SetTextColor 255 190 0
+	SetBorderColor 255 0 0 230
+
+Hide
+	Class "Two Hand" "Bow" "Staves"
+	Rarity Rare
+	SetTextColor 255 190 0
 	SetBorderColor 255 0 255 255
 
 Show
@@ -146,29 +147,28 @@ Show
 	SetBackgroundColor 30 90 45 230
 	SetFontSize 38
 	SetBorderColor 25 180 25
-	
-Show
-    Class Jewel
-    Rarity Rare
-    SetBackgroundColor 30 90 45 230
-    SetFontSize 38
-    SetBorderColor 25 180 25
 
 Show
-    SocketGroup RGB
-    SetBackgroundColor 75 75 75
-    SetBorderColor 150 150 150
-    Height <= 2
-    Width <= 2
+	Class Jewel
+	Rarity Rare
+	SetBackgroundColor 30 90 45 230
+	SetFontSize 38
+	SetBorderColor 25 180 25
 
 Show
-    SocketGroup RGB
-    SetBackgroundColor 75 75 75
-    SetBorderColor 150 150 150
-    Width <= 1	
+	SocketGroup RGB
+	SetBackgroundColor 75 75 75
+	SetBorderColor 150 150 150
+	Height <= 2
+	Width <= 2
+
+Show
+	SocketGroup RGB
+	SetBackgroundColor 75 75 75
+	SetBorderColor 150 150 150
+	Width <= 1
 
 
-	
 ##################################################
 #################### Uniques #####################
 ##################################################
@@ -180,7 +180,7 @@ Show # Maps:Unique
 	PlayAlertSound 4 300
 
 Show # T1 - These uniques are have a consistent price of ~0.5++ ex
-	BaseType "Citrine Amulet" "Gold Ring" "Ursine Pelt" "Champion Kite Shield" "Sapphire Flask"  "Occultist" "Glorious" "Titanium" "Siege Axe" "Prophecy Wand" "Sacrificial Garb" "Sorcerer Boots" "Topaz Flask" "Deicide Mask" "Imperial Skean" "Rawhide Boots" "Assassin's Garb" "Ezomyte Burgonet" "Two-Stone" "Savant's Robe" "Vaal Regalia" "Silver Flask" "Jewelled Foil" "Fiend Dagger" "Gladiator Plate" "Exquisite Leather" "Prismatic Jewel" "Lion Pelt" "Stibnite Flask" "Crusader Boots" "Ruby Flask" "Granite Flask" "Infernal Sword"
+	BaseType "Citrine Amulet" "Gold Ring" "Ursine Pelt" "Champion Kite Shield" "Sapphire Flask"  "Occultist" "Glorious" "Titanium" "Siege Axe" "Prophecy Wand" "Sacrificial Garb" "Sorcerer Boots" "Topaz Flask" "Deicide Mask" "Imperial Skean" "Rawhide Boots" "Assassin's Garb" "Ezomyte Burgonet" "Two-Stone" "Savant's Robe" "Vaal Regalia" "Silver Flask" "Jewelled Foil"  "Gladiator Plate" "Exquisite Leather" "Prismatic Jewel" "Lion Pelt" "Stibnite Flask" "Crusader Boots" "Ruby Flask" "Granite Flask" "Infernal Sword"
 	Rarity Unique
 	SetTextColor 175 96 37 255
 	SetBorderColor 175 96 37 255
@@ -189,7 +189,7 @@ Show # T1 - These uniques are have a consistent price of ~0.5++ ex
 	PlayAlertSound 6 300
 
 Show # T2 - These uniques usually are worth ~0.5-1 ex at the start of the league and drop to ~5c++ (sometimes ranging to an ex and up) over 1-2 month.
-	BaseType "Desert Brigandine" "Spike-Point Arrow Quiver" "Titan Gauntlets" "Varnished Coat" "Midnight Blade"  "Judgement Staff" "Golden Plate" "Nubuck Boots" "Terror Maul" "Full Wyrmscale" "Gavel" "Archon Kite Shield" "Reinforced Greaves" "Imperial Bow" "Conjurer Boots" "Conjurer Gloves"  "Steelscale Gauntlets" "Nightmare Bascinet" "Sharkskin Boots" "Granite Flask" "Imperial Staff" "Deerskin Gloves" "Karui Sceptre" "Paua Ring" "Vaal Axe" "Spine Bow" "Slaughter Knife" "Sinner Tricorne" "Hubris" "Strapped Mitts" "Eternal Sword" "Onyx Amulet" "Penetrating Arrow Quiver" "Broadhead Arrow Quiver" "Crusader Gloves" "Murder Boots" "Harbinger Bow"
+	BaseType "Fiend Dagger" "Studded Belt" "Desert Brigandine" "Spike-Point Arrow Quiver" "Titan Gauntlets" "Varnished Coat" "Midnight Blade"  "Judgement Staff" "Golden Plate" "Nubuck Boots" "Terror Maul" "Full Wyrmscale" "Gavel" "Archon Kite Shield" "Reinforced Greaves" "Imperial Bow" "Conjurer Boots" "Conjurer Gloves"  "Steelscale Gauntlets" "Nightmare Bascinet" "Sharkskin Boots" "Granite Flask" "Imperial Staff" "Deerskin Gloves" "Karui Sceptre" "Paua Ring" "Vaal Axe" "Spine Bow" "Slaughter Knife" "Sinner Tricorne" "Hubris" "Strapped Mitts" "Eternal Sword" "Onyx Amulet" "Penetrating Arrow Quiver" "Broadhead Arrow Quiver" "Crusader Gloves" "Murder Boots" "Harbinger Bow"
 	Rarity Unique
 	SetTextColor 0 0 0 255
 	SetBorderColor 0 0 0 255
@@ -198,12 +198,12 @@ Show # T2 - These uniques usually are worth ~0.5-1 ex at the start of the league
 	PlayAlertSound 6 300
 
 Show #T2.5 - Fated Uniques. Note: does not apply to every variation of the basetype. Example: The blackheart unique iron ring has a fated version, the le-heup-of-all iron ring unique on the other hand not.
-    BaseType "Iron Ring" "Coral Ring" "Jade Amulet" "Plate Vest" "Ornate Sword" "Scholar Boots" "Iron Staff" "Spiraled Wand" "Sledgehammer" "Long Bow" "Crude Bow" "Royal Bow" "Woodsplitter" "Jade Hatchet" "Painted Buckler" "Plank Kite Shield" "War Buckler" "Gilded Sallet" "Iron Hat" "Vine Circlet" "Goathide Gloves" "Coral Amulet" "Fire Arrow Quiver" "Serrated Arrow Quiver" "Death Bow"
+	BaseType "Iron Ring" "Coral Ring" "Jade Amulet" "Plate Vest" "Ornate Sword" "Scholar Boots" "Iron Staff" "Spiraled Wand" "Sledgehammer" "Long Bow" "Crude Bow" "Royal Bow" "Woodsplitter" "Jade Hatchet" "Painted Buckler" "Plank Kite Shield" "War Buckler" "Gilded Sallet" "Iron Hat" "Vine Circlet" "Goathide Gloves" "Coral Amulet" "Fire Arrow Quiver" "Serrated Arrow Quiver" "Death Bow"
 	Rarity Unique
 	SetTextColor 175 96 37 254
-    SetBorderColor 100 37 254 200
-    SetBackgroundColor 15 0 25
-    SetFontSize 40
+	SetBorderColor 100 37 254 200
+	SetBackgroundColor 15 0 25
+	SetFontSize 40
 	PlayAlertSound 3 300
 
 Show # T3 - Random uniques. In some cases, such as jewels some very valuable uniques may be still in here, but it's impossible to identify them.
@@ -212,37 +212,37 @@ Show # T3 - Random uniques. In some cases, such as jewels some very valuable uni
 	SetBorderColor 175 96 37 255
 	SetBackgroundColor 0 0 0 255
 	SetFontSize 40
-	PlayAlertSound 3 300	
-	
+	PlayAlertSound 3 300
+
 
 ##################################################
 #################### Currency ####################
 ##################################################
 Show
 	Class "Currency"
-    BaseType "Eternal Orb" "Divine Orb" "Exalted Orb" "Albino Rhoa Feather" "Kalandra"
-    SetTextColor 255 0 0 255
-    SetBorderColor 255 0 0 255
-    SetBackgroundColor 255 255 255 255
-    PlayAlertSound 6 300
-    SetFontSize 45
+	BaseType "Eternal Orb" "Divine Orb" "Exalted Orb" "Albino Rhoa Feather" "Kalandra"
+	SetTextColor 255 0 0 255
+	SetBorderColor 255 0 0 255
+	SetBackgroundColor 255 255 255 255
+	PlayAlertSound 6 300
+	SetFontSize 45
 
 Show
 	Class "Currency"
-    BaseType "Regal Orb" "Orb of Regret" "Chaos Orb" "Blessed Orb" "Jeweller's Orb" "Gemcutter's Prism" "Orb of Fusing" "Orb of Scouring" "Orb of Alchemy" "Orb of Chance" "Vaal Orb" "Cartographer's Chisel"  "Cartographer's Sextant" "Silver Coin"
-    SetBackgroundColor 213 159 15
-    SetTextColor 0 0 0
-    SetBorderColor 0 0 0
-    PlayAlertSound 1 300i
-    SetFontSize 39
+	BaseType "Regal Orb" "Orb of Regret" "Chaos Orb" "Blessed Orb" "Jeweller's Orb" "Gemcutter's Prism" "Orb of Fusing" "Orb of Scouring" "Orb of Alchemy" "Orb of Chance" "Vaal Orb" "Cartographer's Chisel"  "Cartographer's Sextant" "Silver Coin"
+	SetBackgroundColor 213 159 15
+	SetTextColor 0 0 0
+	SetBorderColor 0 0 0
+	PlayAlertSound 1 300i
+	SetFontSize 39
 
 Show
 	Class "Currency"
-    BaseType "Glassblower's Bauble" "Orb of Alteration" "Chromatic Orb"  "Perandus Coin"
-    SetTextColor 190 178 135 255
-    SetBorderColor 190 178 135 135 
-    SetFontSize 37
-	
+	BaseType "Glassblower's Bauble" "Orb of Alteration" "Chromatic Orb"  "Perandus Coin"
+	SetTextColor 190 178 135 255
+	SetBorderColor 190 178 135 135 
+	SetFontSize 37
+
 Show
 	Class "Currency"
 	BaseType "Portal Scroll" "Scroll of Wisdom" "Transmutation" "Augmentation" "Armourer's Scrap" "Blacksmith's Whetstone"
@@ -258,10 +258,10 @@ Show
 Show
 	Class Currency
 	SetFontSize 50
-    SetBackgroundColor 255 255 255
+	SetBackgroundColor 255 255 255
 	SetTextColor 0 0 0
 
-	
+
 ##################################################
 ################ Divination Cards ################
 ##################################################
@@ -278,7 +278,7 @@ Show
 #EXCEPTIONS - Trash-tier cards.
 Hide #%H3
 	Class "Divination"
-	BaseType "Carrion Crow" "Other Cheek" "Hermit" "King's Blade" "Prosperity" "Metalsmith's Gift"
+	BaseType "Carrion Crow" "Other Cheek" "Hermit" "King's Blade" "Prosperity" "Metalsmith's Gift" "The Lover" "Thunderous Skies" "The Feast" "The Throne" "The Twins"
 	SetTextColor 0 0 0
 	SetBorderColor 0 0 0
 	SetBackgroundColor 175 215 230 180
@@ -294,7 +294,7 @@ Show
 	SetFontSize 45
 	PlayAlertSound 6 300
 
-#TIER 2: ~5-14ish chaos. Expansive or very good cards (such as the Cartographer)
+#TIER 2: ~5-14ish w. Expansive or very good cards (such as the Cartographer)
 Show
 	Class "Divination"
 	BaseType "The Cartographer" "The Chains that Bind" "Chaotic Disposition" "Emperor of Purity" "The Harvester" "The Hoarder" "The King's Heart" "Last Hope" "Mawr Blaidd" "The Penitent" "Pride Before the Fall" "The Scavenger" "The Sephirot" "The Valkyrie" "The Vast" "The Warlord" "The Wolf" "Stormcaller" "Earth Drinker" "The Surveyor" "The Void"
@@ -321,10 +321,10 @@ Show
 	SetBorderColor 0 100 150 255
 	SetBackgroundColor 145 215 230 225
 	SetFontSize 38
-	PlayAlertSound 2 300	
-	
-	
-	
+	PlayAlertSound 2 300
+
+
+
 ##################################################
 ##################### Others #####################
 ##################################################
@@ -338,7 +338,7 @@ Show
 	SetBackgroundColor 255 255 255 255
 	SetFontSize 45
 	PlayAlertSound 6 300
-	
+
 Show
 	Class Gem
 	Quality = 20
@@ -379,10 +379,10 @@ Hide #%H3
 	SetBorderColor 0 0 0
 	SetFontSize 34
 
-	
+
 ##################################################
 ###################### Maps ######################
-##################################################	
+##################################################
 
 
 ### T16 ###
@@ -445,7 +445,7 @@ Show # Maps:T11
 	SetFontSize 36
 	PlayAlertSound 4 300
 
-### T10-T6 ###	
+### T10-T6 ###
 
 Show # Maps:T10
 	Class Maps
@@ -512,7 +512,7 @@ Show # Maps:T2 %H3
 	SetFontSize 35
 	PlayAlertSound 4 200
 
-### T1 ###	
+### T1 ###
 
 Show # Maps:T1 %H3
 	Class Maps
@@ -521,18 +521,18 @@ Show # Maps:T1 %H3
 	SetFontSize 35
 	PlayAlertSound 4 200
 
-### Safetyline ###	
+### Safetyline ###
 
 Show # Maps:SAFE
 	Class Maps
 	SetFontSize 42
 	PlayAlertSound 4 300
-	
+
 ##################################################
 #################### Fragments ###################
-##################################################	
+##################################################
 
-	
+
 Show
 	Class "Map Fragments"
 	BaseType "Mortal Hope" "Mortal Ignorance"
@@ -585,99 +585,94 @@ Show
 	SetBackgroundColor 0 0 0 255
 	SetFontSize 38
 	PlayAlertSound 2 300
-	
+
 ##################################################
 ##################### Hidden #####################
 ##################################################
-		
+
 Hide # Hide all <rare weapons and amour
 	Class "Wand" "Dagger" "Axe" "Flask" "Mace" "Sword" "Claw" "Bow" "Shield" "Quiver" "Armour" "Staves" "One Hand Mace" "Sceptre"
 	Rarity "Magic" "Normal"
-	SetFontSize 25
+	SetFontSize 5
 
 Hide # Hide all one handed rare stuff that not for chaos
 	Class "Shield" "Dagger" "One Hand Axe" "Sceptre" "One Hand Sword" "One Hand Mace" "Quiver" "Claw" "Wand"
 	Rarity "Rare"
-	SetFontSize 25
+	SetFontSize 5
 
 Hide # Hide all bad boots and gloves
 	Class "Gloves" "Boots" "Helmet"
 	Rarity "Magic" "Normal"
 	DropLevel <= 66
-	SetFontSize 25
-	
+	SetFontSize 5
+
 Hide 
 	Class "Gloves" "Boots" "Helmet"
 	Rarity "Magic" "Normal"
 	BaseType "Deicide Mask" "Dragonscale Gauntlets" "Praetor Crown" "Sorcerer Gloves" "Titan Greaves" "Slink Boots" "Slink Gloves" "Titan Gauntlets" "Nightmare Bascinet" "Murder Mitts" "Lion Pelt" "Murder Boots" "Eternal Burgonet" "Two-Toned Boots"  "Bone Helmet"
-	SetFontSize 25
+	SetFontSize 5
 
 Hide 
 	Class "Gloves" "Boots" "Helmet"
 	Rarity "Magic"
 	BaseType "Two-Toned Boots" "Fingerless Silk Gloves" "Spiked Gloves" "Gripped Gloves"
-	SetFontSize 25
+	SetFontSize 5
 
 Hide 
 	Class "Gloves" "Boots" "Helmet"
 	Rarity "Normal"
 	ItemLevel < 80
 	BaseType "Two-Toned Boots" "Fingerless Silk Gloves" "Spiked Gloves" "Gripped Gloves"
-	SetFontSize 25
+	SetFontSize 5
 
 Hide # Show all new cool armour for spell damage etc
 	Class "Gloves" "Boots" "Helmet" "Ring" "Jewel"
 	Rarity "Magic"
 	DropLevel < 73
-	SetFontSize 25
+	SetFontSize 5
 
 Hide 
 	Class "Jewel"
 	Rarity "Normal"
-	SetFontSize 25
+	SetFontSize 5
 
 Hide # Show all other cool belts
 	Class "Belt"
 	Rarity "Magic"
 	BaseType "Leather Belt" "Rustic Sash" "Heavy Belt" "Vanguard Belt"
-	SetFontSize 25
-	
+	SetFontSize 5
+
 Hide # Show all other cool belts
 	Class "Belt"
 	Rarity "Normal"
 	ItemLevel < 84
 	BaseType "Leather Belt" "Rustic Sash" "Heavy Belt" "Vanguard Belt"
-	SetFontSize 25
+	SetFontSize 5
 
 Hide 
 	Rarity "Magic" "Normal"
 	BaseType "Studded Belt" "Chain Belt" "Cloth Belt" "Sapphire Ring" "Coral Ring" "Topaz Ring" "Ruby Ring" "Moonstone Ring" "Amethyst Ring" "Prismatic Ring" "Two-Stone Ring" "Paua Amulet" "Lapis Amulet" "Amber Amulet" "Coral Amulet" "Jade Amulet" "Unset Ring" "Citrine Amulet" "Turquoise Amulet" "Onyx Amulet" "Iron Ring" "Agate Amulet" "Paua Ring" 
-	SetFontSize 25
+	SetFontSize 5
 
 Hide
 	Rarity "Magic" "Normal"
 	ItemLevel < 80
 	BaseType "Gold Ring" "Diamond Ring" "Gold Amulet"
-	SetFontSize 25
-	
+	SetFontSize 5
+
 Hide
 	Rarity "Magic"
 	BaseType "Gold Ring" "Diamond Ring" "Gold Amulet"
-	SetFontSize 25
+	SetFontSize 5
 
 Hide 
 	Rarity "Magic" "Normal"
 	ItemLevel < 84
 	BaseType  "Vaal Regalia" "Sorcerer Boots" "Sorcerer Gloves" "Hubris Circlet" "Astral Plate" 
-	SetFontSize 25
-	
-Hide
-	Class "Divination Card"
-	BaseType "The Carrion Crow"
-	SetFontSize 25
-	
+	SetFontSize 5
+
 
 Show # need to be fixed 
  	SetFontSize 100
-    SetBackgroundColor 255 0 255
+	SetBackgroundColor 255 0 255
 	SetTextColor 0 0 0

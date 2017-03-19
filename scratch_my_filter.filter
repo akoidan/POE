@@ -2,7 +2,7 @@ Show
 	Class Microtransactions
 
 Show
-	BaseType "Sorcerer Boots"
+	BaseType "Sorcerer Boots" "Leather Belt"
 	Rarity "Normal"
 	SetBorderColor 0 150 0 150
 	SetTextColor 255 255 255 255

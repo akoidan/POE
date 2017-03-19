@@ -222,7 +222,7 @@ setGemPrice() {
 
 $F1::OpenHideout()
 $F2::DrinkFlask()
-$f3::FastLogOut()
+$F3::FastLogOut()
 $F4::OpenPortal()
 ;;$F5::switchGems([{ "srcX" : 1877, "srcY" : 615, "dstX": 1613 , "dstY":  359}, { "srcX" : 1773, "srcY" : 615, "dstX":1613 , "dstY":  305}, { "srcX" : 1718, "srcY" : 614, "dstX":1559 , "dstY":  360}, { "srcX" : 1665, "srcY" : 619, "dstX":1559 , "dstY":  306}])
 $F5::switchGems([{ "srcX" : 1773, "srcY" : 615, "dstX":1613 , "dstY":  305}])
@@ -383,7 +383,7 @@ Remaining() {
 
 FastLogOut(){
 	if (isPoeClosed()) {
-		send {f3}
+		send {F3}
 		return
 	}
 	BlockInput On
@@ -502,7 +502,7 @@ DrinkTwoFirstFlask() {
 
 DrinkFlask() {
 	if (isPoeClosed()) {
-		send {f2}
+		send {F2}
 		return
 	}
 	Send {1}

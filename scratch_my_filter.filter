@@ -39,6 +39,60 @@ Show
 	SetFontSize 44
 	PlayAlertSound 4 300
 
+#------------------------------------
+#   [0212] Chisel recipe items
+#------------------------------------
+# Chisel Recipe: You can sell a 20% hammer + random map for 1 chisel
+
+Show #$chisel, recipes %TB-Gavels %D3
+	Quality = 20
+	BaseType "Gavel" "Rock Breaker" "Stone Hammer"
+	Rarity Magic
+	SetFontSize 38
+	SetTextColor 100 100 255 255         # TEXTCOLOR: Magic Items: Strong Highlight
+	SetBorderColor 250 250 250           # BORDERCOLOR:	 Recipes: top component / very strong leveling highlight
+	SetBackgroundColor 75 75 75          # BACKGROUND:	 Recipes
+
+Show #$chisel, recipes %TB-Gavels %D3
+	Quality = 20
+	BaseType "Gavel" "Rock Breaker" "Stone Hammer"
+	Rarity Normal
+	SetFontSize 38
+	SetTextColor 255 255 255 255         # TEXTCOLOR:	 Normal Items: Strong Highlight
+	SetBorderColor 250 250 250           # BORDERCOLOR:	 Recipes: top component / very strong leveling highlight
+	SetBackgroundColor 75 75 75          # BACKGROUND:	 Recipes
+
+Show #$chisel, recipes %TB-Gavels %D3
+	Quality > 17
+	BaseType "Gavel" "Rock Breaker" "Stone Hammer"
+	Rarity Magic
+	SetFontSize 36
+	SetBorderColor 150 150 150           # BORDERCOLOR:	 Rares - Size - Small (+Good basetype), Recipe: small/high qual
+	SetBackgroundColor 75 75 75          # BACKGROUND:	 Recipes
+
+Show #$chisel, recipes %TB-Gavels %D3
+	Quality > 14
+	BaseType "Gavel" "Rock Breaker" "Stone Hammer"
+	Rarity Normal
+	SetFontSize 36
+	SetBorderColor 150 150 150           # BORDERCOLOR:	 Rares - Size - Small (+Good basetype), Recipe: small/high qual
+	SetBackgroundColor 75 75 75          # BACKGROUND:	 Recipes
+
+Show #$chisel, recipes %TB-Gavels %D2
+	Quality > 11
+	BaseType "Gavel" "Rock Breaker" "Stone Hammer"
+	Rarity Magic
+	SetFontSize 32
+	SetBorderColor 0 0 0                 # BORDERCOLOR:	 Cosmetic: Neutral Highlight
+	SetBackgroundColor 75 75 75          # BACKGROUND:	 Recipes
+
+Show #$chisel, recipes %TB-Gavels %D2
+	BaseType "Gavel" "Rock Breaker" "Stone Hammer"
+	Rarity Normal
+	SetFontSize 32
+	SetBorderColor 0 0 0                 # BORDERCOLOR:	 Cosmetic: Neutral Highlight
+	SetBackgroundColor 75 75 75          # BACKGROUND:	 Recipes
+	
 Show # Show items for alchemy
 	BaseType "Vaal Regalia" "Sorcerer Boots" "Sorcerer Gloves" "Hubris Circlet" "Leather Belt" "Vanguard Belt" "Heavy Belt" "Titanium Spirit Shield" "Two-Toned Boots" "Rustic Sash" "Harmonic Spirit Shield" "Platinum Kris" "Golden Kris" "Copper Kris"
 	ItemLevel >= 84

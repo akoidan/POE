@@ -27,6 +27,7 @@ global winWidth := 0
 global winHeight
 global printScreamMessage := false
 global printScreamMessageInited := false
+global printMessageFromJs := true
 
 isLowHp() {
 	charActive := isCharacterActive()
@@ -46,16 +47,21 @@ PrintLol() {
   	}
 }
 
+turnPringOff() {
+	global printMessageFromJs := true
+}
 
 printMessage() {
-	
+	 
 	;;price_path :=  A_ScriptDir "\price-data.txt"
-	
 	price_path :=  "D:\Downloads\buyItemsList.txt"
+	global printMessageFromJs := false
 	Loop, read, %price_path%
 	{
 		Loop, parse, A_LoopReadLine, %A_Tab%
 		{
+			if printMessageFromJs
+				Goto, MyLabel
 			send {Enter}
 			sleep 100
 			send, %A_LoopField%
@@ -63,7 +69,9 @@ printMessage() {
 			sleep 100
 		}
 	}
-	FileDelete, %price_path%
+	;FileDelete, %price_path%
+	MyLabel:
+		sleep 1
 }
 
 isCharacterActive() {
@@ -231,6 +239,7 @@ $F5::switchGems([{ "srcX" : 1773, "srcY" : 615, "dstX":1613 , "dstY":  305}])
 $F6::getPrice()
 $F7::printMessage()
 $f8::reloadScript()
+~o::turnPringOff()
 
 reloadScript() {
 	Reload
@@ -505,6 +514,7 @@ DrinkFlask() {
 		send {F2}
 		return
 	}
+
 	Send {1}
 	Send {2}
 	Send {3}

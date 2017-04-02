@@ -1,4 +1,4 @@
-var LOCAL_STORAGE_PERMA_BLOCK = $('#name').val() ;
+var LOCAL_STORAGE_PERMA_BLOCK =  $('#name').val() || $('#base_chosen a span').html();;
 var LOCAL_STORAGE_TODAY_BLOCK = LOCAL_STORAGE_PERMA_BLOCK;
 var DEBUG = false;
 var getOffer = function(element) {

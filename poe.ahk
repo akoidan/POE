@@ -106,7 +106,6 @@ Rand( a=0.0, b=1 ) {
    Return r
 }
 
-
 screamTrade() {
 	loop {
 		interval := Rand(200, 400) 

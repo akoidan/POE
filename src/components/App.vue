@@ -1,0 +1,104 @@
+<template>
+    <div class="ahk-main no-marg-b">
+        <table>
+            <tr>
+                <th>Data</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td><input type="text" v-model="price"/></td>
+                <td class="td2">
+                    <button @click="save">Create File</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" class=" in2 inline" v-model="blockName"/>
+                    <div class="inline checbw">
+                        <poe-trade-checkbox class="checb" v-model="block"/>
+                    </div>
+                    <button class="bbtn1 inline" @click="showBlockInfo">Show Block Info</button>
+                </td>
+                <td >
+                    <button @click="clear">Clear</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</template>
+<style lang="sass" scoped>
+    .checbw
+        position: relative
+        width: 85px
+        .checb
+            position: absolute
+            top: -20px
+            left: 10px
+    .in2
+        width: calc(100% - 275px)
+    .t23
+        width: calc(100% - 80px)
+        vertical-align: top
+        padding-top: 15px
+        padding-left: 5px
+        display: inline-block
+    .inline
+        display: inline-block
+    .bbtn1
+        width: 180px
+    .text
+        vertical-align: top
+        width: calc(100% - 190px)
+        padding-right: 10px
+        > *
+            display: inline-block
+    table
+        width: 100%
+    .ahk-main
+        padding: 0 10px
+    .checb
+        margin-bottom: 0
+        width: 65px
+    .td2
+        width: 135px
+    button
+        width: 125px
+
+
+</style>
+<script>
+
+  import {clearBlock, saveCurrentData, showBlockInfo} from '../helpers/poe.trade'
+  import PoeTradeCheckbox from './PoeTradeCheckbox.vue'
+
+  export default {
+    components: {PoeTradeCheckbox},
+    name: 'app',
+    data: function () {
+      return {
+        status: '',
+        block: false,
+        blockName: '',
+        price: 'My offer is 1 chaos'
+      }
+    },
+    created: function() {
+      let innerHTML = document.querySelector('#base_chosen a span').innerHTML;
+      if (innerHTML === 'any') {
+        innerHTML = '';
+      }
+      this.blockName = document.getElementById('name').value || innerHTML;
+    },
+    methods: {
+      save: function () {
+        saveCurrentData(this.block && this.blockName? this.blockName : false, this.price);
+      },
+      clear: function() {
+        clearBlock(this.blockName);
+      },
+      showBlockInfo: function () {
+        alert(showBlockInfo(this.blockName));
+      }
+    }
+  }
+</script>

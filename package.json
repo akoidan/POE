@@ -1,0 +1,22 @@
+{
+  "name": "autohotkey",
+  "version": "1.0.0",
+  "description": "",
+  "main": "month_ago_filter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Deathangel908/autohotkey.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Deathangel908/autohotkey/issues"
+  },
+  "homepage": "https://github.com/Deathangel908/autohotkey#readme",
+  "dependencies": {
+    "file-saver": "^1.3.3"
+  }
+}

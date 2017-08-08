@@ -21,7 +21,7 @@ function setStatus(text) {
 
 function restore_options() {
 	chrome.storage.sync.get({
-		path: "D:\\Downloads\\buyItemsList.txt"
+		path: "buyItemsList.txt"
 	}, function (items) {
 		path.value = items.path;
 		setStatus("Options loaded");

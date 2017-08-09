@@ -231,7 +231,7 @@ setGemPrice() {
 $F1::OpenHideout()
 $d::DrinkFlask()
 $F4::OpenPortal()
-$c::FastLogOut()
+$x::FastLogOut()
 $F6::getPrice()
 $F7::printMessage()
 $f8::reloadScript()
@@ -387,7 +387,7 @@ Remaining() {
 
 FastLogOut(){
 	if (isPoeClosed()) {
-		send c
+		send x
 		return
 	}
 	BlockInput On
@@ -510,7 +510,6 @@ DrinkFlask() {
 		return
 	}
 
-	Send {1}
 	Send {2}
 	Send {3}
 	Send {4}

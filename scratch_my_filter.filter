@@ -1,6 +1,15 @@
 Show
 	Class Microtransactions
 
+
+Show
+	Class Jewel
+	Rarity Normal
+	SetBackgroundColor 30 90 45 230
+	SetFontSize 38
+	SetBorderColor 25 180 25
+
+	
 Show # "Ancient Reliquary Key" - the following section handles it (it's classified as a ""Misc Map Items" by GGG). No it's not hidden, stop asking me, crazy people.
 
 	SetTextColor 0 0 0 255
@@ -311,11 +320,11 @@ Show
 
 Show
 	Class "Currency"
-	BaseType "Regal Orb" "Orb of Regret" "Chaos Orb" "Blessed Orb" "Jeweller's Orb" "Gemcutter's Prism" "Orb of Fusing" "Orb of Scouring" "Orb of Alchemy" "Orb of Chance" "Vaal Orb" "Cartographer's Chisel"  "Cartographer's Sextant" "Silver Coin"
+	BaseType "Regal Orb" "Orb of Regret" "Chaos Orb" "Blessed Orb" "Jeweller's Orb" "Gemcutter's Prism" "Orb of Fusing" "Orb of Scouring" "Orb of Alchemy" "Orb of Chance" "Vaal Orb" "Cartographer's Chisel"  "Cartographer's Sextant" "Silver Coin" "Harbinger's Orb"
 	SetBackgroundColor 213 159 15
 	SetTextColor 0 0 0
 	SetBorderColor 0 0 0
-	PlayAlertSound 1 300i
+	PlayAlertSound 1 300
 	SetFontSize 39
 
 Show
@@ -337,7 +346,6 @@ Show
 	SetTextColor 170 158 130 165
 	SetFontSize 29
 
-	
 
 Show # %TB-Essence-T1
 	Class Currency
@@ -382,6 +390,7 @@ Show
 	SetTextColor 0 0 0 255               # TEXTCOLOR:	 Cosmetic: Black Text
 	SetBorderColor 0 0 0 255             # BORDERCOLOR:	 Cosmetic: Highlight good drops
 	SetBackgroundColor 30 159 200 200    # BACKGROUND:	 Essence LVL2
+	PlayAlertSound 12 100  
 
 Show
 	Class Currency
@@ -390,6 +399,7 @@ Show
 	SetTextColor 0 0 0 255               # TEXTCOLOR:	 Cosmetic: Black Text
 	SetBorderColor 0 0 0 255             # BORDERCOLOR:	 Cosmetic: Highlight good drops
 	SetBackgroundColor 30 159 200 175    # BACKGROUND:	 Essence LVL1
+	PlayAlertSound 12 100  
 
 
 Show # Splinter
@@ -401,13 +411,43 @@ Show # Splinter
 	SetBackgroundColor 65 20 80          # BACKGROUND:	 Breach
 	PlayAlertSound 2 100                 # DROPSOUND:	 Breach Splinters
 
+
+Show # %TB-Currency-Harbinger-ShardsT1
+	Class Currency
+	BaseType "Annulment Shard" "Harbinger's Shard" "Ancient Shard" "Exalted Shard"
+	SetFontSize 45
+	SetTextColor 0 0 0 255               # TEXTCOLOR:	 Cosmetic: Black Text
+	SetBorderColor 40 220 255 255        # BORDERCOLOR:	 Cosmetic: Neutral Highlight
+	SetBackgroundColor 80 95 210 255     # BACKGROUND:	 Harbinger Item - Shard
+	PlayAlertSound 12 300                # DROPSOUND:	 Shard Dropsound
+
+Show # %TB-Currency-Harbinger-ShardsT2 %H5
+	Class Currency
+	BaseType "Horizon Shard" "Engineer's Shard" "Binding Shard"
+	SetFontSize 42
+	SetTextColor 0 0 0 255               # TEXTCOLOR:	 Cosmetic: Black Text
+	SetBorderColor 0 0 0                 # BORDERCOLOR:	 Cosmetic: Neutral Highlight
+	SetBackgroundColor 135 140 100 255   # BACKGROUND:	 Currency Shards Old
+	PlayAlertSound 12 300                # DROPSOUND:	 Shard Dropsound
+
+Show # %TB-Currency-Harbinger-ShardsT2 %H5
+	Class Currency
+	BaseType "Regal Shard" "Chaos Shard"
+	SetFontSize 42
+	SetTextColor 0 0 0 255               # TEXTCOLOR:	 Cosmetic: Black Text
+	SetBorderColor 0 0 0                 # BORDERCOLOR:	 Cosmetic: Neutral Highlight
+	SetBackgroundColor 135 140 100 255   # BACKGROUND:	 Currency Shards Old
+	PlayAlertSound 12 300                # DROPSOUND:	 Shard Dropsound
+
 Show
 	Class Currency
 	SetFontSize 50
 	SetBackgroundColor 255 255 255
 	SetTextColor 0 0 0
-
-
+	PlayAlertSound 12 300  
+#------------------------------------	
+	
+	
 ##################################################
 ################ Divination Cards ################
 ##################################################

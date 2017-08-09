@@ -69,9 +69,9 @@ printMessage() {
 			sleep 100
 		}
 	}
-	;FileDelete, %price_path%
+	FileDelete, %price_path%
 	MyLabel:
-		sleep 1
+	sleep 1
 }
 
 isCharacterActive() {
@@ -513,10 +513,8 @@ DrinkFlask() {
 		send {F2}
 		return
 	}
-
-	Send {1}
-	Send {2}
-	Send {3}
+Send {2}
+Send {3}
 	Send {4}
 	Send {5}
 }

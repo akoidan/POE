@@ -69,9 +69,9 @@ printMessage() {
 			sleep 100
 		}
 	}
-	;FileDelete, %price_path%
+	FileDelete, %price_path%
 	MyLabel:
-		sleep 1
+	sleep 1
 }
 
 isCharacterActive() {
@@ -105,7 +105,6 @@ Rand( a=0.0, b=1 ) {
    Else Random,r,a,b
    Return r
 }
-
 
 screamTrade() {
 	loop {
@@ -509,7 +508,6 @@ DrinkFlask() {
 		send d
 		return
 	}
-
 	Send {2}
 	Send {3}
 	Send {4}

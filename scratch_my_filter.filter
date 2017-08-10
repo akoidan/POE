@@ -309,6 +309,10 @@ Show # T3 - Random uniques. In some cases, such as jewels some very valuable uni
 ##################################################
 #################### Currency ####################
 ##################################################
+
+Hide 
+	BaseType "Alteration Shard" "Transmutation Shard"
+	
 Show
 	Class "Currency"
 	BaseType "Eternal Orb" "Divine Orb" "Exalted Orb" "Albino Rhoa Feather" "Kalandra"

@@ -38,6 +38,7 @@ Show
 
 Show 
 	BaseType "Opal Ring" "Marble Amulet"
+	PlayAlertSound 4 200
 	SetFontSize 50
 
 Show 
@@ -328,7 +329,7 @@ Show
 	SetBackgroundColor 213 159 15
 	SetTextColor 0 0 0
 	SetBorderColor 0 0 0
-	PlayAlertSound 1 250
+	PlayAlertSound 1 200
 	SetFontSize 39
 
 Show
@@ -502,7 +503,7 @@ Show
 	SetBorderColor 0 0 255 255
 	SetBackgroundColor 50 220 240 235
 	SetFontSize 40
-	PlayAlertSound 2 300
+	PlayAlertSound 2 200
 
 #TIER 4: Rest. Likely not demanded or worth less than 1C
 Show
@@ -511,8 +512,6 @@ Show
 	SetBorderColor 0 100 150 255
 	SetBackgroundColor 145 215 230 225
 	SetFontSize 38
-	PlayAlertSound 2 300
-
 
 
 ##################################################
@@ -556,7 +555,7 @@ Show
 	Quality >= 15
 	SetBorderColor 30 150 180 255
 	SetFontSize 40
-	PlayAlertSound 2 300
+	PlayAlertSound 2 200
 
 Show #%H3
 	Class "Gems"
@@ -649,28 +648,26 @@ Show # Maps:T9
 	DropLevel >= 76
 	SetBackgroundColor 0 0 0 255
 	SetFontSize 39
-	PlayAlertSound 4 300
+	PlayAlertSound 4 200
 
 Show # Maps:T8
 	Class Maps
 	DropLevel >= 75
 	SetBackgroundColor 0 0 0 255
 	SetFontSize 38
-	PlayAlertSound 4 300
+	PlayAlertSound 4 100
 
 Show # Maps:T7
 	Class Maps
 	DropLevel >= 74
 	SetBackgroundColor 0 0 0 255
 	SetFontSize 38
-	PlayAlertSound 4 300
 
 Show # Maps:T6
 	Class Maps
 	DropLevel >= 73
 	SetBackgroundColor 0 0 0 255
 	SetFontSize 38
-	PlayAlertSound 4 300
 
 ### T5-T2 ###
 
@@ -679,28 +676,24 @@ Show # Maps:T5 %H3
 	DropLevel >= 72
 	SetBackgroundColor 0 0 0 180
 	SetFontSize 36
-	PlayAlertSound 4 200
 
 Show # Maps:T4 %H3
 	Class Maps
 	DropLevel >= 71
 	SetBackgroundColor 0 0 0 180
 	SetFontSize 36
-	PlayAlertSound 4 200
 
 Show # Maps:T3 %H3
 	Class Maps
 	DropLevel >= 70
 	SetBackgroundColor 0 0 0 180
 	SetFontSize 36
-	PlayAlertSound 4 200
 
 Show # Maps:T2 %H3
 	Class Maps
 	DropLevel = 69
 	SetBackgroundColor 0 0 0 180
 	SetFontSize 35
-	PlayAlertSound 4 200
 
 ### T1 ###
 
@@ -709,7 +702,6 @@ Show # Maps:T1 %H3
 	DropLevel < 69
 	SetBackgroundColor 0 0 0 180
 	SetFontSize 35
-	PlayAlertSound 4 200
 
 ### Safetyline ###
 
@@ -781,30 +773,10 @@ Show
 	
 Show # %TC-Leaguestone-General
 	Class Leaguestone
-	Rarity = Normal
 	SetFontSize 40
 	SetTextColor 0 0 0 255
 	SetBorderColor 0 0 0 255
-	SetBackgroundColor 100 220 145 220
-	PlayAlertSound 2 300
-	
-Show # %TC-Leaguestone-General
-	Class Leaguestone
-	Rarity >= Magic
-	SetFontSize 45
-	SetTextColor 0 0 0 255
-	SetBorderColor 255 255 0 255
-	SetBackgroundColor 100 220 145 255
-	PlayAlertSound 2 300
-
-Show # %TC-Leaguestone-General
-	Class Leaguestone
-	Rarity = Normal
-	SetFontSize 40
-	SetTextColor 0 0 0 255
-	SetBorderColor 0 0 0 255
-	SetBackgroundColor 100 220 145 220
-	PlayAlertSound 2 300
+	SetBackgroundColor 100 220 145 220q
 	
 Show # %TB-Talisman
 	Class Amulets
@@ -813,7 +785,6 @@ Show # %TB-Talisman
 	SetFontSize 40
 	SetBorderColor 109 200 130 255       # BORDERCOLOR:	 Cosmetic: Talisman
 	SetBackgroundColor 0 0 0 255         # BACKGROUND:	 T6-10 maps, currency, talismans
-	PlayAlertSound 2 300                 # DROPSOUND:	 Value Drop: Currency, fragments
 
 
 ##################################################

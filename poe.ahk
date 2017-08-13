@@ -1,22 +1,13 @@
 global chrNum := 1
 
-;Loop {
-;	if (not isPoeClosed()) {
-;		if (isLowHp()) {
-;			send {1}
-;		}
-;		;Transform, globChar, zChr, % chrNum++
-;		;if (chrNum > 10) {
-;		;ImageSearch, OutputVarX, OutputVarY, 0, 0, 1409, 80, C:\poe\ahk\endurance.png
-;		;if (OutputVarX > 0 and OutputVarY > 0) {
-;		;	sleep 1
-;		;	DebugAppend("lasdsad")
-;		;} else {
-;		;	sleep 2
-;		;}
-;		Sleep, 100
-;	}
-;}
+Loop {
+	if (not isPoeClosed()) {
+		if (isLowHp()) {
+			send {1}
+		}
+		Sleep, 100
+	}
+}
 
 global debugInited := false
 global Debug
@@ -30,9 +21,20 @@ global printScreamMessageInited := false
 global printMessageFromJs := true
 
 isLowHp() {
-	charActive := isCharacterActive()
-	PixelGetColor, lowHpColor, 124, 1005
-	return charActive and getColor(lowHpColor) != "r" 
+	PixelGetColor, flaskColor, 332, 1057, rgb
+	Red:="0x" SubStr(flaskColor,3,2) ;substr is to get the piece
+	Red:=Red+0 ;add 0 is to convert it to the current number format
+	Green:="0x" SubStr(flaskColor,5,2)
+	Green:=Green+0
+	Blue:="0x" SubStr(flaskColor,7,2)
+	Blue:= Blue+0
+	if (Red > 105 and Red < 114 and Green > 22  and Green < 25 and Blue > 2 and Blue < 5 ) {
+		PixelGetColor, lowHpColor, 124, 1005
+		f := getColor(lowHpColor)
+		return f != "r" 
+	} else {
+		return false
+	}
 }
 
 PrintLol() {
@@ -168,12 +170,12 @@ startScream() {
 }
 
 getColorDebug(color, printDebug) {
-	Blue:="0x" SubStr(color,3,2) ;substr is to get the piece
-	Blue:=Blue+0 ;add 0 is to convert it to the current number format
+	Red:="0x" SubStr(color,3,2) ;substr is to get the piece
+	Red:=Red+0 ;add 0 is to convert it to the current number format
 	Green:="0x" SubStr(color,5,2)
 	Green:=Green+0
-	Red:="0x" SubStr(color,7,2)
-	Red:=Red+0
+	Blue:="0x" SubStr(color,7,2)
+	Blue:=Blue+0
 	satur := 35
 	diff := sqrt((blue - green)*(blue - green) + (blue - red)*(blue - red) + (red - green)*(red - green))
 	if (color == 0x000000) {
@@ -182,13 +184,13 @@ getColorDebug(color, printDebug) {
 		colorReal := "white" 
 	} else if (diff < 8) {
 		colorReal := "grey"
-	} else if (blue < 10 and green > 40 and green < 60 and red > 100 and red < 200) {
+	} else if (red < 10 and green > 40 and green < 60 and red > 100 and red < 200) {
 		colorReal := "brown"
-	} else if (blue + satur < red and green + satur < red) {
-		colorReal := "r"
-	} else if (red + satur < green and blue + satur < green) {
-		colorReal := "g"
 	} else if (red + satur < blue and green + satur < blue) {
+		colorReal := "r"
+	} else if (blue + satur < green and red + satur < green) {
+		colorReal := "g"
+	} else if (blue + satur < red and green + satur < red) {
 		colorReal := "b"
 	} else {
 		colorReal := "u" ;unknown
@@ -231,9 +233,8 @@ $F1::OpenHideout()
 $F2::DrinkFlask()
 $F3::FastLogOut()
 $F4::OpenPortal()
-;;$F5::switchGems([{ "srcX" : 1877, "srcY" : 615, "dstX": 1613 , "dstY":  359}, { "srcX" : 1773, "srcY" : 615, "dstX":1613 , "dstY":  305}, { "srcX" : 1718, "srcY" : 614, "dstX":1559 , "dstY":  360}, { "srcX" : 1665, "srcY" : 619, "dstX":1559 , "dstY":  306}])
-$F5::switchGems([{ "srcX" : 1773, "srcY" : 615, "dstX":1613 , "dstY":  305}])
-;quant $F5::switchGems([{ "srcX" : 1719, "srcY" : 615, "dstX":1560 , "dstY":  252}])
+;; $F5::switchGems([{ "srcX" : 1486, "srcY" : 371, "dstX": 1613 , "dstY":  359}, { "srcX" : 1486, "srcY" : 426, "dstX": 1561 , "dstY":  358}, { "srcX" : 1877, "srcY" : 647, "dstX": 1593 , "dstY":  520}])
+$F5::switchGems([{ "srcX" : 1486, "srcY" : 371, "dstX": 1613 , "dstY":  359}, { "srcX" : 1486, "srcY" : 426, "dstX": 1561 , "dstY":  358}])
 ;;$f5::TurnOffBloodRage()
 $F6::getPrice()
 $F7::printMessage()
@@ -419,8 +420,8 @@ isPoeClosed() {
 }
 
 OpenInventory() {
-	PixelGetColor, colorKaomBack, 1581, 366
-	if (colorKaomBack != 0x1A181C and colorKaomBack != 0x1f2328) {
+	PixelGetColor, colorKaomBack, 1628, 484
+	if (colorKaomBack != 0x200809) {
 		Send {i}
 		Sleep 30
 		return true
@@ -444,7 +445,12 @@ switchGems(coordinates) {
 		srcY := element.srcY
 		dstX := element.dstX
 		dstY := element.dstY
-		Click left %srcX%, %srcY%
+		if (srcY > 587) {
+			Click left %srcX%, %srcY%
+		} else {
+			Click right %srcX%, %srcY%
+		}
+		Click right %srcX%, %srcY%
 		Sleep 10
 		Click left, %dstX%, %dstY%
 		Sleep 10
@@ -513,8 +519,8 @@ DrinkFlask() {
 		send {F2}
 		return
 	}
-Send {2}
-Send {3}
+	Send {2}
+	Send {3}
 	Send {4}
 	Send {5}
 }

@@ -82,7 +82,9 @@ export function showBlockInfo(block) {
   return new Blocker(block).getTodayBlockInfo();
 }
 
-
+export function appendAccount() {
+  [].forEach.call(document.querySelectorAll('[data-seller]'), e => e.querySelector('h5').innerHTML += e.getAttribute('data-seller'))
+}
 
 function getAttr(element, atr) {
   return element.closest(".item").querySelector('[data-name="' + atr + '"]').getAttribute('data-value');

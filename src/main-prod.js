@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './components/App.vue'
 import './assets/stylesheets/main.sass'
+import {appendAccount} from "./helpers/poe.trade";
 Vue.config.productionTip = false;
 
 (function() {
@@ -20,6 +21,7 @@ Vue.config.productionTip = false;
         render: h => h(App),
       });
       clearInterval(rfLoader);
+      appendAccount();
     }
   }
   const rfLoader = setInterval(loader, 400);

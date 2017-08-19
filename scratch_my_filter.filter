@@ -469,7 +469,7 @@ Show
 #EXCEPTIONS - Trash-tier cards.
 Hide #%H3
 	Class "Divination"
-	BaseType "Carrion Crow" "Other Cheek" "Hermit" "King's Blade" "Prosperity" "Metalsmith's Gift" "The Lover" "Thunderous Skies" "The Feast" "The Throne" "The Twins" "Flora's Gift" "The Lunaris Priestess"
+	BaseType "Carrion Crow" "Light and Truth" "Other Cheek" "Hermit" "King's Blade" "Prosperity" "Metalsmith's Gift" "The Lover" "Thunderous Skies" "The Feast" "The Throne" "The Twins" "Flora's Gift" "The Lunaris Priestess" "The Scarred Meadow"
 	SetTextColor 0 0 0
 	SetBorderColor 0 0 0
 	SetBackgroundColor 175 215 230 180

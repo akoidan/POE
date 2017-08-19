@@ -5,7 +5,7 @@ Loop {
 		if (isLowHp()) {
 			send {1}
 		}
-		Sleep, 100
+		Sleep, 50
 	}
 }
 

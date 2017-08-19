@@ -1,4 +1,5 @@
 .idea/
+dist
 __pycache__
 DailyDealCache/
 MOTDCache/
@@ -9,5 +10,7 @@ trash/
 neversin.filter
 production_Config.ini
 production_login.credentials
+node_modules
 .~lock.maps3.ods#
 credentials.py
+package-lock.json

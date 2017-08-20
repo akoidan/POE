@@ -162,7 +162,7 @@ if rarity:
 	if re.search('^Corrupted$', clip_data, re.MULTILINE):
 		poe_trade_conf['corrupted'] = 1
 elif '\n' not in  clip_data and len(clip_data) < 50:
-	poe_trade_conf['name'] = clip_data
+	poe_trade_conf['name'] = clip_data[1:] if ord(clip_data[0]) == 65279 else clip_data
 else:
 	sout("Bad clipboard data")
 	exit()

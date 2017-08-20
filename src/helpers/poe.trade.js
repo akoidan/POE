@@ -151,9 +151,7 @@ function parsePage(blockName, getOffer) {
   };
   let uniqueIgn = {};
   let ign = document.querySelectorAll('.whisper-btn');
-  [].filter.call(ign, function currencyFilter(btn) {
-    return !btn.closest('.item').querySelector('.currency');
-  }).forEach(function (btn) {
+  [].forEach.call(ign, function (btn) {
     let el = getParent(btn);
     let name = el.getAttribute('data-ign');
     if (blockName) {

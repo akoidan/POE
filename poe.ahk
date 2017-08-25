@@ -55,8 +55,27 @@ turnPringOff() {
 
 printMessage() {
 	 
-	;;price_path :=  A_ScriptDir "\price-data.txt"
-	price_path :=  "D:\Downloads\buyItemsList.txt"
+	o := Object()
+	o.Insert(" (6)")
+	o.Insert(" (5)")
+	o.Insert(" (4)")
+	o.Insert(" (3)")
+	o.Insert(" (2)")
+	o.Insert(" (1)")
+	o.Insert("")
+
+	price_path := "empty"
+	for index, element in o { 
+		p :=  "D:\Downloads\buyItemsList" element ".txt"
+		if (FileExist(p)) {
+			if (price_path = "empty") {
+				price_path := p
+			} else {
+				FileDelete, %p%
+			}
+		}
+	}
+	
 	global printMessageFromJs := false
 	Loop, read, %price_path%
 	{
@@ -519,6 +538,7 @@ DrinkFlask() {
 		send {F2}
 		return
 	}
+	Send {1}
 	Send {2}
 	Send {3}
 	Send {4}

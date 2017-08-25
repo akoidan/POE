@@ -36,13 +36,9 @@ Show
 	SetBorderColor 74 230 58
 	SetTextColor 74 230 58
 
-Show 
-	BaseType "Opal Ring" "Marble Amulet"
-	PlayAlertSound 4 200
-	SetFontSize 50
 
 Show 
-	BaseType "Steel Ring" "Crystal Belt"
+	BaseType "Steel Ring" "Crystal Belt" "Opal Ring" "Marble Amulet"
 	SetTextColor 0 0 0 255
 	SetBorderColor 0 0 0 255
 	SetBackgroundColor 200 200 200 255
@@ -150,7 +146,7 @@ Show
 
 Show 
 	Rarity Rare
-	BaseType "Titan Greaves" "Slink Gloves" "Lion Pelt" "Titan Gauntlets" "Slink Boots" "Astral Plate" "Royal Burgonet" "Eternal Burgonet" "Lion Pelt" "Bone Helmet" "Spike-Point Arrow Quiver" "Harbinger Bow" "Fleshripper" "Two-Toned Boots"
+	BaseType "Titan Greaves" "Slink Gloves" "Lion Pelt" "Titan Gauntlets" "Slink Boots" "Astral Plate" "Royal Burgonet" "Eternal Burgonet" "Lion Pelt" "Bone Helmet" "Harbinger Bow" "Fleshripper" "Two-Toned Boots"
 	ItemLevel > 75
 	SetBackgroundColor 30 90 45 230
 	SetFontSize 32

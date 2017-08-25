@@ -75,6 +75,10 @@ printMessage() {
 			}
 		}
 	}
+	if (price_path != "D:\Downloads\buyItemsList.txt" and price_path != "empty") {
+		FileMove, %price_path%,  D:\Downloads\buyItemsList.txt
+		price_path := "D:\Downloads\buyItemsList.txt"
+	}
 	
 	global printMessageFromJs := false
 	Loop, read, %price_path%

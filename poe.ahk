@@ -233,7 +233,7 @@ $F1::OpenHideout()
 $d::DrinkFlask()
 $F4::OpenPortal()
 $x::FastLogOut()
-;; $F5::switchGems([{ "srcX" : 1486, "srcY" : 371, "dstX": 1613 , "dstY":  359}, { "srcX" : 1486, "srcY" : 426, "dstX": 1561 , "dstY":  358}, { "srcX" : 1877, "srcY" : 647, "dstX": 1593 , "dstY":  520}])
+$F5::switchGems([{ "srcX" : 1431, "srcY" : 424, "dstX": 1563 , "dstY":  361}, { "srcX" : 1484, "srcY" : 423, "dstX": 1615 , "dstY":  362}])
 $F6::getPrice()
 $F7::printMessage()
 $f8::reloadScript()
@@ -516,10 +516,9 @@ DrinkFlask() {
 		send d
 		return
 	}
-	Send {2}
+	Send {5}
 	Send {3}
 	Send {4}
-	Send {5}
 	
 }
 

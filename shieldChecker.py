@@ -64,23 +64,21 @@ class Notifier(object):
 		self.mail(data, title)
 		self.pushbullet(data, title)
 
-	# TODO
 	def pushbullet(self, data, title):
-		pass
-		# resp = requests.post(self.pushbullet_url, json={
-		# 	'body': data,
-		# 	'type': 'note',
-		# 	'title': title
-		# }, headers=self.headers)
-		# if resp.status_code != 200:
-		# 	raise Exception(resp.content)
+		resp = requests.post(self.pushbullet_url, json={
+			'body': data,
+			'type': 'note',
+			'title': title
+		}, headers=self.headers)
+		if resp.status_code != 200:
+			raise Exception(resp.content)
 
 	def mail(self,
 			text,
 			subject,
 			subtype='plain',
 			fro='shieldChecker',
-			to=('nightmare.quake@Mail.ru',),
+			to=('deathangel908@gmail.com',),
 			server="localhost"):
 		if IS_WIN:
 			print("MAIL MOCK")
@@ -102,22 +100,11 @@ class PoeTradeDigger(object):
 	def __init__(self):
 		self.conf = {'id': -1}
 		self.headers = {
-			'Cookie:': 'league=Standard'
+			'Cookie:': 'league=Harbinger'
 		}
 
 		self.urls = {
-			'http://poe.trade/search/naragotenahohu/live': -1,  # jewel
-			'http://poe.trade/search/kanayahamikaki/live': -1,  # ES shield craft
-			'http://poe.trade/search/atetatasisiuku/live': -1,  # dagger
-			'http://poe.trade/search/roritosinikiyo/live': -1,  # ring
-			'http://poe.trade/search/akoyeratohukat/live': -1,  # MF gold Ring
-			'http://poe.trade/search/auhuorusohamag/live': -1,  # MF diamon ring
-			'http://poe.trade/search/oruhakiharitar/live': -1,  # MF manareg diamond ring
-			'http://poe.trade/search/nosimkanahubon/live': -1,  # MF manareg gold ring
-			'http://poe.trade/search/arerotetasitok/live': -1,  # Shavrone's +1
-			# 'http://poe.trade/search/ahihahukitasiw/live': -1,  # Rumi's concoctions
-			#'http://poe.trade/search/auohuasikotaki/live': -1,  # Vessel for 20% convert
-			'http://poe.trade/search/ukanatitasisit/live': -1,  # titanium shield craft prefix
+			'http://poe.trade/search/oyuwarigokitom/live': -1,  # Harbinger belt
 		}
 		self.notifier = Notifier()
 

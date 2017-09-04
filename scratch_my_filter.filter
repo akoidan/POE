@@ -433,7 +433,7 @@ Show # %TB-Currency-Harbinger-ShardsT1
 Show # %TB-Currency-Harbinger-ShardsT2 %H5
 	Class Currency
 	BaseType "Horizon Shard" "Engineer's Shard" "Binding Shard" "Alchemy Shard" "Regal Shard" "Chaos Shard" "Alteration Shard"
-	SetFontSize 55
+	SetFontSize 38
 	SetTextColor 0 0 0 255               # TEXTCOLOR:	 Cosmetic: Black Text
 	SetBorderColor 0 0 0                 # BORDERCOLOR:	 Cosmetic: Neutral Highlight
 	SetBackgroundColor 135 140 100 255   # BACKGROUND:	 Currency Shards Old

@@ -1,4 +1,5 @@
 import FileSaver from 'file-saver'
+import PoeItem from "./PoeItem";
 function getDefaultOffer(userText) {
   return function (element) {
     return whisperMessage(element) + ' ' + userText;
@@ -82,8 +83,62 @@ export function showBlockInfo(block) {
   return new Blocker(block).getTodayBlockInfo();
 }
 
-export function appendAccount() {
+
+function appendAccount() {
   [].forEach.call(document.querySelectorAll('[data-seller]'), e => e.querySelector('h5').innerHTML += e.getAttribute('data-seller'))
+}
+
+function copyTextToClipboard(text) {
+  let textArea = document.createElement("textarea");
+  // Place in top-left corner of screen regardless of scroll position.
+  textArea.style.position = 'fixed';
+  textArea.style.top = 0;
+  textArea.style.left = 0;
+  // Ensure it has a small width and height. Setting to 1px / 1em
+  // doesn't work as this gives a negative w/h on some browsers.
+  textArea.style.width = '2em';
+  textArea.style.height = '2em';
+  // We don't need padding, reducing the size if it does flash render.
+  textArea.style.padding = 0;
+  // Clean up any borders.
+  textArea.style.border = 'none';
+  textArea.style.outline = 'none';
+  textArea.style.boxShadow = 'none';
+  // Avoid flash of white box if rendered for any reason.
+  textArea.style.background = 'transparent';
+  textArea.value = text;
+  document.body.appendChild(textArea);
+  textArea.select();
+  let success = false;
+  try {
+    success = document.execCommand('copy');
+  } catch (err) {
+    console.log('Oops, unable to copy');
+  }
+  document.body.removeChild(textArea);
+  return success;
+}
+
+
+function poeClip() {
+  [].forEach.call(document.querySelectorAll('*[id^="item-container-"]'), e => {
+    let li = document.createElement('li');
+    let a = document.createElement('a');
+    li.appendChild(a);
+    e.querySelector('.requirements .proplist').appendChild(li);
+    a.innerText = 'Copy';
+    a.onclick = () => {
+      let poeObject = new PoeItem(e);
+      let succ = copyTextToClipboard(poeObject.buildItem());
+      a.innerText = succ ? 'Copied' : 'Error';
+    };
+  });
+}
+
+
+export function init() {
+  appendAccount();
+  poeClip();
 }
 
 function getAttr(element, atr) {

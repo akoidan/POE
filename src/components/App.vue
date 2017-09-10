@@ -2,13 +2,12 @@
     <div class="ahk-main no-marg-b">
         <table>
             <tr>
-                <th>Data</th>
-                <th>Action</th>
-            </tr>
-            <tr>
                 <td><input type="text" v-model="price"/></td>
-                <td class="td2">
+                <td class="fsd">
                     <button @click="save">Create File</button>
+                </td>
+                <td class="td2">
+                    <button @click="reinit">Reinit</button>
                 </td>
             </tr>
             <tr>
@@ -17,6 +16,8 @@
                     <div class="inline checbw">
                         <poe-trade-checkbox class="checb" v-model="block"/>
                     </div>
+                </td>
+                <td>
                     <button class="bbtn1 inline" @click="showBlockInfo">Show Block Info</button>
                 </td>
                 <td >
@@ -27,6 +28,10 @@
     </div>
 </template>
 <style lang="sass" scoped>
+    .fsd
+        width: 1px
+        button
+            width: 100%
     .checbw
         position: relative
         width: 85px
@@ -35,7 +40,7 @@
             top: -20px
             left: 10px
     .in2
-        width: calc(100% - 275px)
+        width: calc(100% - 90px)
     .t23
         width: calc(100% - 80px)
         vertical-align: top
@@ -68,7 +73,7 @@
 </style>
 <script>
 
-  import {clearBlock, saveCurrentData, showBlockInfo} from '../helpers/poe.trade'
+  import {clearBlock, init, saveCurrentData, showBlockInfo} from '../helpers/poe.trade'
   import PoeTradeCheckbox from './PoeTradeCheckbox.vue'
 
   export default {
@@ -90,6 +95,9 @@
       this.blockName = document.getElementById('name').value || innerHTML;
     },
     methods: {
+      reinit: function() {
+        init();
+      },
       save: function () {
         saveCurrentData(this.block && this.blockName? this.blockName : false, this.price);
       },

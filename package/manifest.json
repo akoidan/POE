@@ -7,6 +7,7 @@
   "permissions": [
     "storage"
   ],
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhyK0L/7CRrW/D5Q/u2kak3P5pA9I6Y/5w1dnWkg4KCgKTQrxllVk4FJ8k3a1DwnDTy5Q8FCsmbEjmsJ01ZPHO+JYuLBjstEx6b7MTayfizc8zXNPjnh2AKM8QJuPLf8mpPW7ECgXWbJZ3H1vG1vJX22eED2yE/av9IgQlotwnFPGKkKtVRlekVVr/pJVXuNaJYsH6AnFSWtXWL+oMY7XWQyuOuEJ4vSpveYTFUT9vv7RN5fAg+hTu/FHEUMRNUgmiOLRTgqMf2zreaTW4E+jS4zGc5f58hFeZLpD0xm7Mt+/jkPTZttWX2ahBGt11YeSN08OexkiLRVVQNqBLjvVzQIDAQAB",
   "content_scripts": [ {
     "all_frames": false,
     "js": [ "js/manifest.js", "js/vendor.js", "js/app.js" ],

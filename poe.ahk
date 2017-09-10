@@ -5,7 +5,7 @@ Loop {
 		if (isLowHp()) {
 			send {1}
 		}
-		Sleep, 50
+		Sleep, 100
 	}
 }
 
@@ -258,7 +258,8 @@ $F3::FastLogOut()
 $F4::OpenPortal()
 ;; $F5::switchGems([{ "srcX" : 1486, "srcY" : 371, "dstX": 1613 , "dstY":  359}, { "srcX" : 1486, "srcY" : 426, "dstX": 1561 , "dstY":  358}, { "srcX" : 1877, "srcY" : 647, "dstX": 1593 , "dstY":  520}])
 ;$F5::switchGems([{ "srcX" : 1432, "srcY" : 422, "dstX": 1561 , "dstY":  306}, { "srcX" : 1486, "srcY" : 372, "dstX": 1561 , "dstY":  358}])
-$F5::switchGems([{ "srcX" : 1697, "srcY" : 618, "dstX": 1587 , "dstY":  425}])
+;$F5::switchGems([{ "srcX" : 1697, "srcY" : 618, "dstX": 1587 , "dstY":  425}]) ;onslaught
+$F5::switchGems([{ "srcX" : 1855, "srcY" : 726, "dstX": 1587 , "dstY":  314}], true) ; body armour
 ;;$f5::TurnOffBloodRage()
 $F6::getPrice()
 $F7::printMessage()
@@ -455,7 +456,7 @@ OpenInventory() {
 }
 
 
-switchGems(coordinates) {
+switchGems(coordinates, isM2) {
 	if (isPoeClosed()) {
 		send %key%
 		return
@@ -474,7 +475,12 @@ switchGems(coordinates) {
 		} else {
 			Click right %srcX%, %srcY%
 		}
-		Click right %srcX%, %srcY%
+		if (isM2) {
+			Click left %srcX%, %srcY%
+		} else {
+			Click right %srcX%, %srcY%
+		}
+		
 		Sleep 10
 		Click left, %dstX%, %dstY%
 		Sleep 10
@@ -543,7 +549,6 @@ DrinkFlask() {
 		send {F2}
 		return
 	}
-	Send {1}
 	Send {2}
 	Send {3}
 	Send {4}

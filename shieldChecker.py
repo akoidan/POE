@@ -107,7 +107,7 @@ class PoeTradeDigger(object):
 			'http://poe.trade/search/wosekikuonomor/live': -1,  # Harbinger belt
 			'http://poe.trade/search/itetaretanyahu/live': -1,  # Harb jewel
 			'http://poe.trade/search/ausonarimoheui/live': -1,  # Harb Amu
-			'http://poe.trade/search/hiyetonanorasu/live': -1,  # Harb Bots
+			'http://poe.trade/search/iomaugunamohik/live': -1,  # Harb Bots
 		}
 		self.notifier = Notifier()
 

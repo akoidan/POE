@@ -66,7 +66,7 @@ Show
 #------------------------------------
 # Chisel Recipe: You can sell a 20% hammer + random map for 1 chisel
 
-Show #$chisel, recipes %TB-Gavels %D3
+Hide #$chisel, recipes %TB-Gavels %D3 #TODO
 	Quality = 20
 	BaseType "Gavel" "Rock Breaker" "Stone Hammer"
 	Rarity Magic
@@ -75,7 +75,7 @@ Show #$chisel, recipes %TB-Gavels %D3
 	SetBorderColor 250 250 250           # BORDERCOLOR:	 Recipes: top component / very strong leveling highlight
 	SetBackgroundColor 75 75 75          # BACKGROUND:	 Recipes
 
-Show #$chisel, recipes %TB-Gavels %D3
+Hide #$chisel, recipes %TB-Gavels %D3 #TODO
 	Quality = 20
 	BaseType "Gavel" "Rock Breaker" "Stone Hammer"
 	Rarity Normal
@@ -84,7 +84,7 @@ Show #$chisel, recipes %TB-Gavels %D3
 	SetBorderColor 250 250 250           # BORDERCOLOR:	 Recipes: top component / very strong leveling highlight
 	SetBackgroundColor 75 75 75          # BACKGROUND:	 Recipes
 
-Show #$chisel, recipes %TB-Gavels %D3
+Hide #$chisel, recipes %TB-Gavels %D3 #TODO
 	Quality > 17
 	BaseType "Gavel" "Rock Breaker" "Stone Hammer"
 	Rarity Magic
@@ -92,7 +92,7 @@ Show #$chisel, recipes %TB-Gavels %D3
 	SetBorderColor 150 150 150           # BORDERCOLOR:	 Rares - Size - Small (+Good basetype), Recipe: small/high qual
 	SetBackgroundColor 75 75 75          # BACKGROUND:	 Recipes
 
-Show #$chisel, recipes %TB-Gavels %D3
+Hide #$chisel, recipes %TB-Gavels %D3 #TODO
 	Quality > 14
 	BaseType "Gavel" "Rock Breaker" "Stone Hammer"
 	Rarity Normal
@@ -100,7 +100,7 @@ Show #$chisel, recipes %TB-Gavels %D3
 	SetBorderColor 150 150 150           # BORDERCOLOR:	 Rares - Size - Small (+Good basetype), Recipe: small/high qual
 	SetBackgroundColor 75 75 75          # BACKGROUND:	 Recipes
 
-Show #$chisel, recipes %TB-Gavels %D2
+Hide #$chisel, recipes %TB-Gavels %D2 #TODO
 	Quality > 11
 	BaseType "Gavel" "Rock Breaker" "Stone Hammer"
 	Rarity Magic
@@ -108,7 +108,7 @@ Show #$chisel, recipes %TB-Gavels %D2
 	SetBorderColor 0 0 0                 # BORDERCOLOR:	 Cosmetic: Neutral Highlight
 	SetBackgroundColor 75 75 75          # BACKGROUND:	 Recipes
 
-Show #$chisel, recipes %TB-Gavels %D2
+Hide #$chisel, recipes %TB-Gavels %D2 #TODO
 	BaseType "Gavel" "Rock Breaker" "Stone Hammer"
 	Rarity Normal
 	SetFontSize 32
@@ -238,7 +238,7 @@ Show
 Show
 	Class Rings Amulets Belts
 	Rarity Rare
-	BaseType "Rustic Sash" "Heavy Belt" "Leather Belt" "Diamond Ring" "Gold Amulet" "Blue Pearl Amulet" "Gold Ring"
+	BaseType "Rustic Sash" "Heavy Belt" "Leather Belt" "Diamond Ring" "Gold Amulet" "Blue Pearl Amulet" "Gold Ring" "Vanguard Belt"
 	SetBackgroundColor 30 90 45 230
 	SetFontSize 38
 	SetBorderColor 25 180 25
@@ -514,7 +514,7 @@ Show
 
 Show
 	Class Gem
-	BaseType "Empower" "Enlighten" "Vaal Haste" "Vaal Discipline"
+	BaseType "Empower" "Enlighten" "Vaal Haste" "Vaal Grace" "Vaal Discipline"
 	Quality >= 15
 	SetTextColor 30 150 180 255
 	SetBorderColor 30 150 180 255
@@ -533,10 +533,15 @@ Show
 
 Show # Drop only good gems
 	Class Gem
-	BaseType "Portal" "Empower" "Enlighten" "Vaal Haste" "Vaal Discipline"
+	BaseType "Portal" "Empower" "Enlighten" "Vaal Haste" "Vaal Grace"
 	SetBorderColor 30 150 180
 	SetFontSize 42
 	PlayAlertSound 3 300
+
+Hide
+	Class Gem
+	Quality 0
+	BaseType "Vaal"
 
 Show # Drop only meh gems #%H3
 	Class Gem
@@ -577,7 +582,7 @@ Show # Maps:T16
 	SetBorderColor 100 0 255 255
 	SetBackgroundColor 255 255 255 255
 	SetFontSize 45
-	PlayAlertSound 6 300
+	PlayAlertSound 4 300
 
 ### T15 ###
 
@@ -588,7 +593,7 @@ Show # Maps:T15
 	SetBorderColor 0 0 0 255
 	SetBackgroundColor 255 255 255 255
 	SetFontSize 45
-	PlayAlertSound 6 300
+	PlayAlertSound 4 300
 
 ### T14-T11 ###
 
@@ -638,7 +643,7 @@ Show
 	SetBorderColor 0 0 0 255
 	SetBackgroundColor 255 255 255 255
 	SetFontSize 30
-	PlayAlertSound 4 200
+	PlayAlertSound 1 150
 
 Show # Maps:T10
 	Class Maps
@@ -768,7 +773,10 @@ Show
 	SetBackgroundColor 0 0 0 255
 	SetFontSize 38
 	PlayAlertSound 2 300
-	
+
+Hide
+	Rarity "Magic" "Normal"
+	BaseType "Bismuth Flask" "Amethyst Flask" "Ruby Flask" "Sapphire Flask" "Silver Flask" "Aquamarine Flask" "Granite Flask" "Sulphur Flask" "Basalt Flask"
 Show
     Class "Utility Flasks"
 	

@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './components/App.vue'
+//import CurrencyApp from './components/CurrencyApp.vue'
 import './assets/stylesheets/main.sass'
 
 Vue.config.productionTip = false;

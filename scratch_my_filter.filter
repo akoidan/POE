@@ -19,8 +19,8 @@ Show # "Ancient Reliquary Key" - the following section handles it (it's classifi
 	PlayAlertSound 6 300
 	Class "Misc Map Items"
 
-Show
-	BaseType "Leather Belt" #  "Sorcerer Boots" TODO
+Show # "Sorcerer Boots" TODO
+	BaseType "Leather Belt" 
 	Rarity "Normal"
 	SetBorderColor 0 150 0 150
 	SetTextColor 255 255 255 255

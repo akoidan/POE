@@ -109,6 +109,7 @@ class PoeTradeDigger(object):
 			'http://poe.trade/search/ausonarimoheui/live': -1,  # Harb Amu
 			'http://poe.trade/search/ihanasakekabau/live': -1,  # Harb Boots
 			'http://poe.trade/search/ariahonnetohih/live': -1,  # Harb shield
+			'http://poe.trade/search/raikominohobak/live': -1,  # Harb wand
 		}
 		self.notifier = Notifier()
 
@@ -130,26 +131,33 @@ class PoeTradeDigger(object):
 				if not isinstance(e, (NewConnectionError, ConnectionError, ConnectionErrorReqExc, JSONDecodeError)):
 					self.notifier.mail(exp_data, e.__class__.__name__)
 
-	def extract_title(self, html):
+	def extract_data(self, html):
 		soup = Soup(html, "html.parser")
 		tbody = soup.select('tbody[data-name]')
+		data = {}
 		if len(tbody) > 0:
-			name = tbody[0].get('data-name', 'NAME')
-			ign = tbody[0].get('data-ign', 'IGN')
-			bo = tbody[0].get('data-buyout', '')
-			title = "{} '{}' {}".format(ign, name, bo)
-		else:
-			title = 'NO_MATCHES'
-		return title
+			data['name'] = tbody[0].get('data-name', 'NAME')
+			data['ign'] = tbody[0].get('data-ign', 'IGN')
+			data['bo'] = tbody[0].get('data-buyout', '')
+			mods = soup.select('.mods li')
+			if len(mods) > 0:
+				data['mods'] = [{'n': m.get('data-name'), 'v': m.get('data-value')} for m in mods]
+			else:
+				data['mods'] = []
+		return data
 
 	def notify_if_html(self, url, parsed_response):
 		html = parsed_response.get('data')
 		if html:
 			content = "{} url matches: {}".format(url, html)
-			title = self.extract_title(html)
+			data = self.extract_data(html)
+			title = "{} '{}' {}".format(data['ign'], data['name'], data['bo'])
 			self.notifier.mail(html, title, subtype='html')
 			self.notifier.log(content)
-			self.notifier.pushbullet(content, title)
+			text_content = "{} '{}' {}\n".format(data['ign'], data['name'], data['bo'])
+			for m in data['mods']:
+				text_content += "{}: {} \n".format(m['n'], m['v'])
+			self.notifier.pushbullet(text_content, data['name'])
 
 if not IS_WIN:
 	import daemon

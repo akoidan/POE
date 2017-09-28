@@ -20,7 +20,7 @@ Show # "Ancient Reliquary Key" - the following section handles it (it's classifi
 	Class "Misc Map Items"
 
 Show
-	BaseType "Sorcerer Boots" "Leather Belt"
+	BaseType "Leather Belt" #  "Sorcerer Boots" TODO
 	Rarity "Normal"
 	SetBorderColor 0 150 0 150
 	SetTextColor 255 255 255 255
@@ -189,35 +189,67 @@ Show
 	SetTextColor   0 255 150
 
 # CHAOS RECEIPY
-Show
+Hide
 	Class "Gloves"
 	Rarity Rare
 	SetTextColor 255 190 0
 	SetBorderColor 0 255 0 230
 
-Show
+Hide
 	Class "Boots"
 	Rarity Rare
 	SetTextColor 255 190 0
 	SetBorderColor 80 80 255 255
 
-Show
+Hide
 	Class "Helmets"
 	Rarity Rare
 	SetTextColor 255 190 0
 	SetBorderColor 255 255 0 255
 
-Show
+Hide
 	Class "Body Armour"
 	Rarity Rare
 	SetTextColor 255 190 0
 	SetBorderColor 255 0 0 230
 
-Show
+Hide
 	Class "Two Hand" "Bow" "Staves"
 	Rarity Rare
 	SetTextColor 255 190 0
 	SetBorderColor 255 0 255 255
+
+	
+# CHAOS RECEIPY
+#Show
+#	Class "Gloves"
+#	Rarity Rare
+#	SetTextColor 255 190 0
+#	SetBorderColor 0 255 0 230
+#
+#Show
+#	Class "Boots"
+#	Rarity Rare
+#	SetTextColor 255 190 0
+#	SetBorderColor 80 80 255 255
+#
+#Show
+#	Class "Helmets"
+#	Rarity Rare
+#	SetTextColor 255 190 0
+#	SetBorderColor 255 255 0 255
+#
+#Show
+#	Class "Body Armour"
+#	Rarity Rare
+#	SetTextColor 255 190 0
+#	SetBorderColor 255 0 0 230
+#
+#Show
+#	Class "Two Hand" "Bow" "Staves"
+#	Rarity Rare
+#	SetTextColor 255 190 0
+#	SetBorderColor 255 0 255 255
 
 Show
 	Class Rings Amulets

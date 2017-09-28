@@ -1,29 +1,23 @@
 skill_value = {
-	"as": 1.2,
-	"ac": 0.5,
-	"li": 0.4,
-	"cr": 0.9,
-	"ev": 0.2
+	"fl": 1,
+	"li": 0.3,
+	"el": 0.25,
 }
 
 armour_max_value = {
-	"as":  5,
-	"ac": 100,
-	"li":10,
-	"cr": 20,
-	"ev": 20
+	"el":  5,
+	"li": 10,
+	"fl": 10,
 }
 
 current_value = {
-	"as": 5,
-	"ac": 71,
-	"li": 2,
-	"cr": 19,
-	"ev": 23
+	"el": 4,
+	"li": 0,
+	"fl": 7,
 }
 
 sum = 0
-for k in ["as", "ac", "li", "cr", "ev"]:
+for k in skill_value.keys():
 	s = skill_value[k]/armour_max_value[k] * current_value[k]
 	print("%s: %d/%d = %0.2f" % (k, current_value[k], armour_max_value[k], s))
 	sum += s

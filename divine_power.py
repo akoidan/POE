@@ -11,9 +11,9 @@ armour_max_value = {
 }
 
 current_value = {
-	"el": 4,
-	"li": 0,
-	"fl": 7,
+	"el": 0,
+	"li": 7,
+	"fl": 9,
 }
 
 sum = 0

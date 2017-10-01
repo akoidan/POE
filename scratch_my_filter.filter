@@ -353,7 +353,7 @@ Hide
 
 Show
 	Class "Currency"
-	BaseType "Eternal Orb" "Divine Orb" "Exalted Orb" "Albino Rhoa Feather" "Kalandra" "Master Cartographer's Sextant"
+	BaseType "Eternal Orb" "Divine Orb" "Exalted Orb" "Albino Rhoa Feather" "Kalandra" 
 	SetTextColor 255 0 0 255
 	SetBorderColor 255 0 0 255
 	SetBackgroundColor 255 255 255 255
@@ -362,7 +362,7 @@ Show
 
 Show
 	Class "Currency"
-	BaseType "Regal Orb" "Glassblower's Bauble" "Orb of Regret" "Stacked Deck" "Chaos Orb" "Blessed Orb" "Gemcutter's Prism" "Orb of Fusing" "Orb of Scouring" "Orb of Alchemy" "Orb of Chance" "Vaal Orb" "Cartographer's Chisel"  "Cartographer's Sextant" "Silver Coin" "Harbinger's Orb"
+	BaseType "Regal Orb" "Glassblower's Bauble" "Orb of Regret" "Stacked Deck" "Chaos Orb" "Blessed Orb" "Gemcutter's Prism" "Orb of Fusing" "Orb of Scouring" "Orb of Alchemy" "Orb of Chance" "Vaal Orb" "Cartographer's Chisel" "Cartographer's Sextant" "Silver Coin" "Harbinger's Orb"
 	SetBackgroundColor 213 159 15
 	SetTextColor 0 0 0
 	SetBorderColor 0 0 0
@@ -669,8 +669,8 @@ Show # Maps:T11
 ### T10-T6 ###
 
 Show
-	Class Maps
-	BaseType "Shaped Primordial Pool"
+	Class Maps 
+	BaseType "Shaped Primordial Pool" "Shaped Burial Chambers"
 	SetTextColor 0 0 0 255
 	SetBorderColor 0 0 0 255
 	SetBackgroundColor 255 255 255 255

@@ -111,7 +111,6 @@ class PoeTradeDigger(object):
 			'http://poe.trade/search/ariahonnetohih/live': -1,  # Harb shield
 			'http://poe.trade/search/raikominohobak/live': -1,  # Harb wand
 			'http://poe.trade/search/raikominohobak/live': -1,  # Harb wand
-			'http://poe.trade/search/erinoyatobarud/live': -1,  # Harb QueenOfTheForest
 		}
 		self.notifier = Notifier()
 

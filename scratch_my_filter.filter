@@ -455,7 +455,7 @@ Show # Splinter
 
 Show # %TB-Currency-Harbinger-ShardsT1
 	Class Currency
-	BaseType "Annulment Shard" "Harbinger's Shard" "Ancient Shard" "Exalted Shard"
+	BaseType "Harbinger's Shard" "Ancient Shard" "Exalted Shard"
 	SetFontSize 45
 	SetTextColor 0 0 0 255               # TEXTCOLOR:	 Cosmetic: Black Text
 	SetBorderColor 40 220 255 255        # BORDERCOLOR:	 Cosmetic: Neutral Highlight
@@ -464,7 +464,7 @@ Show # %TB-Currency-Harbinger-ShardsT1
 
 Show # %TB-Currency-Harbinger-ShardsT2 %H5
 	Class Currency
-	BaseType "Horizon Shard" "Engineer's Shard" "Binding Shard" "Alchemy Shard" "Regal Shard" "Chaos Shard" "Alteration Shard"
+	BaseType "Horizon Shard" "Engineer's Shard" "Binding Shard" "Alchemy Shard" "Regal Shard" "Chaos Shard" "Alteration Shard" "Annulment Shard" 
 	SetFontSize 38
 	SetTextColor 0 0 0 255               # TEXTCOLOR:	 Cosmetic: Black Text
 	SetBorderColor 0 0 0                 # BORDERCOLOR:	 Cosmetic: Neutral Highlight

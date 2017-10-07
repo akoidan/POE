@@ -104,13 +104,13 @@ class PoeTradeDigger(object):
 		}
 
 		self.urls = {
-			'http://poe.trade/search/booyaanatigaba/live': -1,  # Harb belt
+			'http://poe.trade/search/osenomkasinika/live': -1,  # Harb belt
 			'http://poe.trade/search/itetaretanyahu/live': -1,  # Harb jewel
 			'http://poe.trade/search/ausonarimoheui/live': -1,  # Harb Amu
-			'http://poe.trade/search/ihanasakekabau/live': -1,  # Harb Boots
+			'http://poe.trade/search/hadogeuminihog/live': -1,  # Harb Boots
 			'http://poe.trade/search/ariahonnetohih/live': -1,  # Harb shield
-			'http://poe.trade/search/raikominohobak/live': -1,  # Harb wand
-			'http://poe.trade/search/raikominohobak/live': -1,  # Harb wand
+			'http://poe.trade/search/urikahoabonoma/live': -1,  # Harb wand
+			'http://poe.trade/search/obekoasimisare/live': -1,  # Harb Helm
 		}
 		self.notifier = Notifier()
 

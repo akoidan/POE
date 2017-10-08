@@ -2,7 +2,7 @@
   "name": "PoE trade ahk",
   "author": "Andrew Koidan, https://github.com/Deathangel908",
   "description": "Path Of Exile extension for poe.trade to scream pm",
-  "version": "1.2",
+  "version": "1.4",
   "manifest_version": 2,
   "permissions": [
     "storage"
@@ -12,7 +12,7 @@
     "all_frames": false,
     "js": [ "js/manifest.js", "js/vendor.js", "js/app.js" ],
     "css": ["css/app.css"],
-    "matches": [ "http://poe.trade/*" ],
+    "matches": [ "http://poe.trade/*", "http://currency.poe.trade/search*" ],
     "run_at": "document_end"
   } ],
   "icons": { "128": "icons/icon-128.png" }

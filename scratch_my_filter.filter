@@ -19,8 +19,8 @@ Show # "Ancient Reliquary Key" - the following section handles it (it's classifi
 	PlayAlertSound 6 300
 	Class "Misc Map Items"
 
-Show
-	BaseType "Sorcerer Boots" "Leather Belt"
+Show # "Sorcerer Boots" TODO
+	BaseType "Leather Belt" 
 	Rarity "Normal"
 	SetBorderColor 0 150 0 150
 	SetTextColor 255 255 255 255
@@ -189,35 +189,67 @@ Show
 	SetTextColor   0 255 150
 
 # CHAOS RECEIPY
-Show
+Hide
 	Class "Gloves"
 	Rarity Rare
 	SetTextColor 255 190 0
 	SetBorderColor 0 255 0 230
 
-Show
+Hide
 	Class "Boots"
 	Rarity Rare
 	SetTextColor 255 190 0
 	SetBorderColor 80 80 255 255
 
-Show
+Hide
 	Class "Helmets"
 	Rarity Rare
 	SetTextColor 255 190 0
 	SetBorderColor 255 255 0 255
 
-Show
+Hide
 	Class "Body Armour"
 	Rarity Rare
 	SetTextColor 255 190 0
 	SetBorderColor 255 0 0 230
 
-Show
+Hide
 	Class "Two Hand" "Bow" "Staves"
 	Rarity Rare
 	SetTextColor 255 190 0
 	SetBorderColor 255 0 255 255
+
+	
+# CHAOS RECEIPY
+#Show
+#	Class "Gloves"
+#	Rarity Rare
+#	SetTextColor 255 190 0
+#	SetBorderColor 0 255 0 230
+#
+#Show
+#	Class "Boots"
+#	Rarity Rare
+#	SetTextColor 255 190 0
+#	SetBorderColor 80 80 255 255
+#
+#Show
+#	Class "Helmets"
+#	Rarity Rare
+#	SetTextColor 255 190 0
+#	SetBorderColor 255 255 0 255
+#
+#Show
+#	Class "Body Armour"
+#	Rarity Rare
+#	SetTextColor 255 190 0
+#	SetBorderColor 255 0 0 230
+#
+#Show
+#	Class "Two Hand" "Bow" "Staves"
+#	Rarity Rare
+#	SetTextColor 255 190 0
+#	SetBorderColor 255 0 255 255
 
 Show
 	Class Rings Amulets
@@ -321,7 +353,7 @@ Hide
 
 Show
 	Class "Currency"
-	BaseType "Eternal Orb" "Divine Orb" "Exalted Orb" "Albino Rhoa Feather" "Kalandra" "Master Cartographer's Sextant"
+	BaseType "Eternal Orb" "Divine Orb" "Exalted Orb" "Albino Rhoa Feather" "Kalandra" 
 	SetTextColor 255 0 0 255
 	SetBorderColor 255 0 0 255
 	SetBackgroundColor 255 255 255 255
@@ -330,7 +362,7 @@ Show
 
 Show
 	Class "Currency"
-	BaseType "Regal Orb" "Glassblower's Bauble" "Orb of Regret" "Stacked Deck" "Chaos Orb" "Blessed Orb" "Gemcutter's Prism" "Orb of Fusing" "Orb of Scouring" "Orb of Alchemy" "Orb of Chance" "Vaal Orb" "Cartographer's Chisel"  "Cartographer's Sextant" "Silver Coin" "Harbinger's Orb"
+	BaseType "Regal Orb" "Glassblower's Bauble" "Orb of Regret" "Stacked Deck" "Chaos Orb" "Blessed Orb" "Gemcutter's Prism" "Orb of Fusing" "Orb of Scouring" "Orb of Alchemy" "Orb of Chance" "Vaal Orb" "Cartographer's Chisel" "Cartographer's Sextant" "Silver Coin" "Harbinger's Orb"
 	SetBackgroundColor 213 159 15
 	SetTextColor 0 0 0
 	SetBorderColor 0 0 0
@@ -423,7 +455,7 @@ Show # Splinter
 
 Show # %TB-Currency-Harbinger-ShardsT1
 	Class Currency
-	BaseType "Annulment Shard" "Harbinger's Shard" "Ancient Shard" "Exalted Shard"
+	BaseType "Harbinger's Shard" "Ancient Shard" "Exalted Shard"
 	SetFontSize 45
 	SetTextColor 0 0 0 255               # TEXTCOLOR:	 Cosmetic: Black Text
 	SetBorderColor 40 220 255 255        # BORDERCOLOR:	 Cosmetic: Neutral Highlight
@@ -432,7 +464,7 @@ Show # %TB-Currency-Harbinger-ShardsT1
 
 Show # %TB-Currency-Harbinger-ShardsT2 %H5
 	Class Currency
-	BaseType "Horizon Shard" "Engineer's Shard" "Binding Shard" "Alchemy Shard" "Regal Shard" "Chaos Shard" "Alteration Shard"
+	BaseType "Horizon Shard" "Engineer's Shard" "Binding Shard" "Alchemy Shard" "Regal Shard" "Chaos Shard" "Alteration Shard" "Annulment Shard" 
 	SetFontSize 38
 	SetTextColor 0 0 0 255               # TEXTCOLOR:	 Cosmetic: Black Text
 	SetBorderColor 0 0 0                 # BORDERCOLOR:	 Cosmetic: Neutral Highlight
@@ -637,8 +669,8 @@ Show # Maps:T11
 ### T10-T6 ###
 
 Show
-	Class Maps
-	BaseType "Shaped Primordial Pool"
+	Class Maps 
+	BaseType "Shaped Primordial Pool" "Shaped Burial Chambers"
 	SetTextColor 0 0 0 255
 	SetBorderColor 0 0 0 255
 	SetBackgroundColor 255 255 255 255

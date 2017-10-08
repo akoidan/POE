@@ -265,6 +265,7 @@ $F5::switchGems([{ "srcX" : 1744, "srcY" : 618, "dstX": 1587 , "dstY":  425}], f
 $F6::getPrice()
 $F7::printMessage()
 $f8::reloadScript()
+$F12::switchGems([{ "srcX" : 1887, "srcY" : 662, "dstX": 1617 , "dstY":  358},{ "srcX" : 1887, "srcY" : 721, "dstX": 1617 , "dstY":  306}, { "srcX" : 1887, "srcY" : 767, "dstX": 1554 , "dstY":  306}], false) ;; barrage to vaal siphon
 ~o::turnPringOff()
 
 reloadScript() {
@@ -544,6 +545,7 @@ DrinkTwoFirstFlask() {
 	Send {5}
 }
 
+
 DrinkFlask() {
 	if (isPoeClosed()) {
 		send d
@@ -553,6 +555,7 @@ DrinkFlask() {
 	Send {2}
 	Send {3}
 	Send {4}
+	Send {1}
 	
 }
 

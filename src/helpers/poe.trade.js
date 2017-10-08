@@ -68,11 +68,43 @@ export function saveCurrentData(block, offer) {
   let offerStr= getDefaultOffer(offer);
     // offer = getCalcOffer(request.attributes.paramNames, request.attributes.paramMap);
   let result = parsePage(block, offerStr);
-  let escaped = escapeHtml(result);
+  saveToFile(result);
+}
+
+function saveToFile(data) {
+  let escaped = escapeHtml(data);
   FileSaver.saveAs(new Blob([escaped], {
     type: "text/plain;charset=utf-8"
   }), 'buyItemsList.txt');
   return true;
+}
+
+function findGetParameter(parameterName) {
+  var result = null,
+      tmp = [];
+  var items = location.search.substr(1).split("&");
+  for (var index = 0; index < items.length; index++) {
+    tmp = items[index].split("=");
+    if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+  }
+  return result;
+}
+
+function createOffer(o) {
+  return {
+    "username": o.getAttribute("data-username"),
+    "sellcurrency": parseInt(o.getAttribute("data-sellcurrency")),
+    "buycurrency": parseInt(o.getAttribute("data-buycurrency")),
+    "sellvalue": parseFloat(o.getAttribute("data-sellvalue")),
+    "buyvalue": parseFloat(o.getAttribute("data-buyvalue")),
+    "ign": o.getAttribute("data-ign"),
+    "stock": o.getAttribute("data-stock"),
+  };
+}
+
+export function saveCurrencyData(amount, limit) {
+  let data = parseCurrencyPage(amount, limit);
+  saveToFile(data);
 }
 
 export function clearBlock(block) {
@@ -192,6 +224,66 @@ class Blocker {
   isAvailable(name) {
     return this.getPermaBlock().indexOf(name) < 0 && this.getTodayBlock().indexOf(name) < 0;
   };
+}
+
+function getCurrencyText() {
+  const regex = /CURRENCY_TEXTS = (\[.*\])/g;
+  let res = regex.exec(document.body.innerHTML);
+  if (res && res[1]) {
+    return JSON.parse(res[1]);
+  } else {
+    alert ("can't evaluate CURRENCY_TEXTS var ");
+    throw "Invalid state exception";
+  }
+}
+
+function parseCurrencyPage(amount, limit) {
+  let els = document.querySelectorAll('.displayoffer');
+  let outstr = '';
+  let CURRENCY_TEXTS = getCurrencyText();
+  Array.prototype.forEach.call(els, e => {
+        let offer = createOffer(e);
+        let price = offer.buyvalue / offer.sellvalue;
+        if (limit) {
+          if (price > 1 && price > limit) {
+            return;
+          } else if (price < 1 && 1 / price < limit) {
+            return
+          }
+        }
+
+        let buying;
+        let selling;
+        let end = '';
+        let currencyName = CURRENCY_TEXTS[offer.sellcurrency];
+        let currencyNameSell = CURRENCY_TEXTS[offer.buycurrency];
+        if (price > 1) {
+          if (amount && offer.sellvalue > amount) {
+            selling = price * amount;
+            buying = amount;
+          } else {
+            buying = offer.sellvalue;
+            selling = offer.buyvalue;
+          }
+          if (amount && offer.sellvalue < amount) {
+            end = ` I need ${amount} ${currencyName}.`
+          }
+        } else {
+          if (amount && offer.buyvalue > amount) {
+            selling = amount;
+            buying = amount / price;
+          } else {
+            buying = offer.sellvalue;
+            selling = offer.buyvalue;
+          }
+          if (amount && offer.buyvalue < amount) {
+            end = ` I need ${amount} ${currencyNameSell} worth.`
+          }
+        }
+        outstr += `@${offer.ign} Hi, I'd like to buy your ${Math.floor(buying)} ${currencyName} for my ${Math.floor(selling)} ${currencyNameSell} in ${findGetParameter('league')}.${end}\n`;
+      }
+  );
+  return outstr;
 }
 
 

@@ -115,7 +115,9 @@ export default class PoeItem {
       if (that.innerText.indexOf('enchanted') === -1 &&
           that.innerText.indexOf('crafted') === -1 &&
           that.innerText.indexOf('pseudo') === -1) {
-        itemMods += that.innerText.trim() + '\r\n';
+        let l = '';
+        that.childNodes.forEach(e => {if (e.tagName != 'SPAN') {l += e.textContent}})
+        itemMods += l.trim() + '\r\n';
       }
     });
     return itemMods;

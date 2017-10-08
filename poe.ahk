@@ -551,11 +551,10 @@ DrinkFlask() {
 		send d
 		return
 	}
-	Send {5}
 	Send {2}
+	Send {5}
 	Send {3}
 	Send {4}
-	Send {1}
 	
 }
 

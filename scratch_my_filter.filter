@@ -349,7 +349,7 @@ Show # T3 - Random uniques. In some cases, such as jewels some very valuable uni
 
 
 Hide
-	BaseType "Transmutation Shard"
+	BaseType "Transmutation Shard" "Engineer's Shard" "Alteration Shard"  "Armourer's Scrap"  "Augmentation" "Transmutation"
 
 Show
 	Class "Currency"
@@ -378,7 +378,7 @@ Show
 
 Show
 	Class "Currency"
-	BaseType "Portal Scroll" "Scroll of Wisdom" "Transmutation" "Augmentation" "Armourer's Scrap" "Blacksmith's Whetstone" "Alteration Shard" "Engineer's Shard"
+	BaseType "Portal Scroll" "Scroll of Wisdom" "Blacksmith's Whetstone"  "Horizon Shard"  "Binding Shard" "Alchemy Shard"
 	SetTextColor 170 158 130 220
 	SetBorderColor 0 0 0 255
 
@@ -464,7 +464,7 @@ Show # %TB-Currency-Harbinger-ShardsT1
 
 Show # %TB-Currency-Harbinger-ShardsT2 %H5
 	Class Currency
-	BaseType "Horizon Shard" "Engineer's Shard" "Binding Shard" "Alchemy Shard" "Regal Shard" "Chaos Shard" "Alteration Shard" "Annulment Shard" 
+	BaseType  "Regal Shard" "Chaos Shard" "Annulment Shard" 
 	SetFontSize 38
 	SetTextColor 0 0 0 255               # TEXTCOLOR:	 Cosmetic: Black Text
 	SetBorderColor 0 0 0                 # BORDERCOLOR:	 Cosmetic: Neutral Highlight

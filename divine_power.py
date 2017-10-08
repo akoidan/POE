@@ -1,19 +1,22 @@
 skill_value = {
-	"fl": 0.5,
-	"li": 0.3,
-	"el": 0.25,
+	"dam":  3,
+	"life": 10,
+	"cri": 4,
+	"as": 10,
 }
 
 armour_max_value = {
-	"el":  5,
-	"li": 10,
-	"fl": 10,
+	"dam":  2,
+	"life": 2,
+	"cri": 3,
+	"as": 2,
 }
 
 current_value = {
-	"el": 3,
-	"li": 5,
-	"fl": 7,
+	"dam":  2,
+	"life": 2,
+	"cri": 1,
+	"as": 2,
 }
 
 sum = 0

@@ -7,10 +7,7 @@
 <body>
 <canvas id="coveringCanvas"></canvas>
 <script>
-  let map = [{x: 27, y: 120}, {x: 95, y: 120}, {x: 163, y: 120}, {x: 235, y: 120}, {x: 306, y: 120}, {
-    x: 342,
-    y: 32
-  }, {x: 510, y: 120}, {x: 582, y: 120}, {x: 646, y: 120}, {x: 783, y: 120}];
+  let map = [{x: 27, y: 120}, {x: 95, y: 120}, {x: 163, y: 120}, {x: 235, y: 120}, {x: 306, y: 120}, {x: 342, y: 32}, {x: 510, y: 120}, {x: 582, y: 120}, {x: 646, y: 120}, {x: 783, y: 120}];
   let d = new Date();
   let canvas = document.getElementById('coveringCanvas');
   let context = canvas.getContext('2d');
@@ -40,12 +37,12 @@
     })
   };
 
-  function setStep(x, y) {
+  function setStep(xy) {
     context.drawImage(image,
         imStartX, imStartY, imWidth, imHeight,
         0, 0, imWidth, imHeight);
     context.beginPath();
-    context.arc(x, y, 32, 0, 2 * Math.PI, false);
+    context.arc(xy.x, xy.y, 32, 0, 2 * Math.PI, false);
     context.lineWidth = 10;
     context.strokeStyle = '#ff0100';
     context.stroke();

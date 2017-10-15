@@ -5,6 +5,7 @@ import os
 import tornado
 from  tornado import ioloop
 from tornado import web
+from tornado.httpserver import HTTPServer
 from tornado.websocket import WebSocketHandler
 
 root = os.path.dirname(__file__)
@@ -109,16 +110,19 @@ class TornadoHandler(WebSocketHandler):
     def close(self, code=None, reason=None):
         handlers.remove(self)
 
-def make_app():
 
-    return tornado.web.Application([
-        (r'/ws/*', TornadoHandler),
-        (r'/rest/*', BaseHander),
-        (r'/image.jpg', ImageHandler),
-        (r"/(.*)", tornado.web.StaticFileHandler, {"path": root, "default_filename": "index.html"}),
-    ])
+application = tornado.web.Application([
+    (r'/ws/*', TornadoHandler),
+    (r'/rest/*', BaseHander),
+    (r'/image.jpg', ImageHandler),
+    (r"/(.*)", tornado.web.StaticFileHandler, {"path": root, "default_filename": "index.html"}),
+])
 
-if __name__ == "__main__":
-    app = make_app()
-    app.listen(8888)
-    tornado.ioloop.IOLoop.current().start()
+if __name__ == '__main__':
+    http_server = tornado.httpserver.HTTPServer(application, ssl_options={
+        "certfile": "/etc/nginx/ssl/1_pychat.org_bundle.crt",
+        "keyfile": "/etc/nginx/ssl/server.key",
+    })
+    http_server.listen(8889)
+    # application.listen(8889) insted of both above
+    tornado.ioloop.IOLoop.instance().start()

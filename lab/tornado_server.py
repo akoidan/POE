@@ -9,7 +9,7 @@ from tornado import web
 from tornado.httpserver import HTTPServer
 from tornado.websocket import WebSocketHandler
 
-root = os.path.dirname(__file__)
+root = os.path.dirname(os.path.abspath(__file__))
 print ('root dir' + root)
 
 import os
@@ -85,8 +85,8 @@ class TornadoHandler(WebSocketHandler):
                 if h.remote_ip == self.remote_ip:
                     try:
                         h.write_message(self.current_step)
-                    except:
-                        pass
+                    except Exception as e:
+                        print("Error sending message to {}: {} {}".format(h.remote_ip, type(e), e))
 
     def open(self):
         handlers.append(self)

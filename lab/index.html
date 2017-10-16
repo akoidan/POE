@@ -118,7 +118,7 @@
 			if (!window.WebSocket) {
 				return;
 			}
-			self.ws = new WebSocket('wss://' + window.location.host + '/ws');
+			self.ws = new WebSocket(`ws${location.protocol == 'https:' ? 's' :''}://` + window.location.host + '/ws');
 			self.ws.onmessage = self.onWsMessage;
 			self.ws.onclose = self.onWsClose;
 			self.ws.onopen = function () {

@@ -547,7 +547,6 @@ DrinkTwoFirstFlask() {
 
 
 DrinkFlask() {
-	Send {1}
 	Send {2}
 	Send {3}
 	Send {4}

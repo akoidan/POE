@@ -1,21 +1,21 @@
 skill_value = {
-	"dam":  3,
+	"proj":  4,
 	"life": 10,
-	"cri": 4,
-	"as": 10,
+	"cri": 6,
+	"as": 12,
 }
 
 armour_max_value = {
-	"dam":  2,
+	"proj":  2,
 	"life": 2,
 	"cri": 3,
 	"as": 2,
 }
 
 current_value = {
-	"dam":  2,
-	"life": 2,
-	"cri": 1,
+	"proj":  1,
+	"life": 0,
+	"cri": 3,
 	"as": 2,
 }
 

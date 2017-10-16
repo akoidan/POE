@@ -10,6 +10,7 @@ from tornado.httpserver import HTTPServer
 from tornado.websocket import WebSocketHandler
 
 root = os.path.dirname(__file__)
+print ('root dir' + root)
 
 import os
 
@@ -22,16 +23,6 @@ current_step = '{"x":0, "y":0}'
 
 handlers = []
 
-class BaseHander(tornado.web.RequestHandler):
-    join = os.sep.join((root, 'config.json'))
-
-    def get(self):
-        with open(self.join, 'r') as myfile:
-           self.write(myfile.read())
-    def post(self, a, b):
-        f = open(self.join, 'w')
-        f.write(a)
-        f.close()
 
 class ImageHandler(tornado.web.RequestHandler):
 
@@ -109,7 +100,6 @@ class TornadoHandler(WebSocketHandler):
 
 application = tornado.web.Application([
     (r'/ws/*', TornadoHandler),
-    (r'/rest/*', BaseHander),
     (r'/image.jpg', ImageHandler),
     (r"/(.*)", tornado.web.StaticFileHandler, {"path": root, "default_filename": "index.html"}),
 ])

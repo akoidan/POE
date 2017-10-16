@@ -3,6 +3,7 @@ import json
 import os
 
 import tornado
+import imghdr
 from  tornado import ioloop
 from tornado import web
 from tornado.httpserver import HTTPServer
@@ -14,7 +15,7 @@ import os
 
 def get_img_path():
     now = datetime.datetime.now()
-    return "{}-{}-{}_uber.jpg".format(now.year, now.month, now.day-1)
+    return "{}-{}-{}_uber.jpg".format(now.year, now.month, now.day)
 
 
 current_step = '{"x":0, "y":0}'
@@ -36,10 +37,10 @@ class ImageHandler(tornado.web.RequestHandler):
 
     def get(self):
         path = get_img_path()
-        if not os.path.isfile(path) or os.stat(path).st_size < 1000:
+        if not os.path.isfile(path) or imghdr.what(path) != 'jpeg':
             now = datetime.datetime.now()
             img_url = "http://www.poelab.com/wp-content/uploads/{}/{}/{}-{}-{}_uber.jpg".format(
-                now.year, now.month, now.year, now.month, now.day - 1
+                now.year, now.month, now.year, now.month, now.day 
             )
             os.system("wget -O {0} {1}".format(path, img_url))
         print('serving {}'.format(path))

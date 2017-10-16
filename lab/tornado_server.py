@@ -14,9 +14,7 @@ import os
 
 def get_img_path():
     now = datetime.datetime.now()
-    if (now.hour < 3):
-        now = datetime.datetime.today() - datetime.timedelta(days=1)
-    return "{}-{}-{}_uber.jpg".format(now.year, now.month, now.day)
+    return "{}-{}-{}_uber.jpg".format(now.year, now.month, now.day-1)
 
 
 current_step = '{"x":0, "y":0}'
@@ -41,14 +39,11 @@ class ImageHandler(tornado.web.RequestHandler):
         if not os.path.isfile(path) or os.stat(path).st_size < 1000:
             now = datetime.datetime.now()
             img_url = "http://www.poelab.com/wp-content/uploads/{}/{}/{}-{}-{}_uber.jpg".format(
-                now.year, now.month, now.year, now.month, now.day
+                now.year, now.month, now.year, now.month, now.day - 1
             )
             os.system("wget -O {0} {1}".format(path, img_url))
-        with open(path, 'rb') as f:
-            data = f.read()
-            self.write(data)
-        self.finish()
-
+        print('serving {}'.format(path))
+        self.redirect('/'+path)
 
 class TornadoHandler(WebSocketHandler):
     joind = os.sep.join((root, 'config.json'))
@@ -119,10 +114,10 @@ application = tornado.web.Application([
 ])
 
 if __name__ == '__main__':
-    http_server = tornado.httpserver.HTTPServer(application, ssl_options={
-        "certfile": "/etc/nginx/ssl/1_pychat.org_bundle.crt",
-        "keyfile": "/etc/nginx/ssl/server.key",
-    })
-    http_server.listen(8889)
-    # application.listen(8889) insted of both above
+   # http_server = tornado.httpserver.HTTPServer(application, ssl_options={
+   #     "certfile": "/etc/nginx/ssl/1_pychat.org_bundle.crt",
+   #     "keyfile": "/etc/nginx/ssl/server.key",
+   # })
+   # http_server.listen(8889)
+    application.listen(8889) #insted of both above
     tornado.ioloop.IOLoop.instance().start()

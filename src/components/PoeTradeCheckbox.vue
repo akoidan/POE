@@ -1,5 +1,5 @@
 <template>
-    <div class="switch">
+    <div class="switch fixWidth">
         <input id="ahk1" value="" type="radio"  v-model="picked"><span
             class="custom radio checked"></span>
         <label for="ahk1" onclick="">Off</label>

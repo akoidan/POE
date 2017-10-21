@@ -1,34 +1,35 @@
 <template>
     <div class="ahk-main no-marg-b">
         <table>
-            <tr v-if="aff">
+            <tr v-if="complexPrice">
                 <div v-for="a in aff"></div>
             </tr>
             <tr>
-                <td>
-                    <input type="text" v-model="price"/>
+                <td class="kms">
+                    <span v-if="complexPrice">Complex price</span>
+                    <input type="text" v-else v-model="price"/>
                 </td>
                 <td>
-                    <div class="inline checbw">
-                        <poe-trade-checkbox class="checb" v-model="complexPrice"/>
+                    <div >
+                        <poe-trade-checkbox class="topB" v-model="complexPrice"/>
                     </div>
                     </td>
                 <td class="fsd">
                     <button @click="save">Create File</button>
                 </td>
-                <td class="td2">
+                <td>
                     <button @click="reinit">Reinit</button>
                 </td>
             </tr>
             <tr>
-                <td><input type="text" class=" in2 inline" v-model="blockName"/></td>
+                <td class="kms"><input type="text" v-model="blockName"/></td>
                 <td>
-                    <div class="inline checbw">
-                        <poe-trade-checkbox class="checb" v-model="block"/>
+                    <div>
+                        <poe-trade-checkbox class="topB" v-model="block"/>
                     </div>
                 </td>
-                <td>
-                    <button class="bbtn1 inline" @click="showBlockInfo">Show Block Info</button>
+                <td class="fsd">
+                    <button @click="showBlockInfo">Show Block Info</button>
                 </td>
                 <td >
                     <button @click="clear">Clear</button>
@@ -39,51 +40,17 @@
 </template>
 <style lang="sass" scoped>
     .fsd
-        width: 1px
+        min-width: 180px
         button
             width: 100%
-    .checbw
-        position: relative
-        width: 85px
-        .checb
-            position: absolute
-            top: -20px
-            left: 10px
-    .in2
-        width: calc(100% - 90px)
-    .t23
-        width: calc(100% - 80px)
-        vertical-align: top
-        padding-top: 15px
-        padding-left: 5px
-        display: inline-block
-    .inline
-        display: inline-block
-    .bbtn1
-        width: 180px
-    .text
-        vertical-align: top
-        width: calc(100% - 190px)
-        padding-right: 10px
-        > *
-            display: inline-block
-    table
+    .kms
         width: 100%
-    .ahk-main
-        padding: 0 10px
-    .checb
+    .topB
         margin-bottom: 0
-        width: 65px
-    .td2
-        width: 135px
-    button
-        width: 125px
-
-
 </style>
 <script>
 
-  import {clearBlock, init, saveCurrentData, showBlockInfo} from '../helpers/poe.trade'
+  import {clearBlock, init, saveCurrentData, showBlockInfo, getMods} from '../helpers/poe.trade'
   import PoeTradeCheckbox from './PoeTradeCheckbox.vue'
 
   export default {
@@ -92,7 +59,6 @@
     data: function () {
       return {
         status: '',
-        aff: [],
         block: false,
         blockName: '',
         complexPrice: false,
@@ -105,6 +71,9 @@
         innerHTML = '';
       }
       this.blockName = document.getElementById('name').value || innerHTML;
+    },
+    computed: {
+      aff: getMods
     },
     methods: {
       reinit: function() {

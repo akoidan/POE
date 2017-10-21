@@ -1,2 +1,10 @@
 .no-marg-b td > *
   margin-bottom: 0 !important
+.switch
+  width: 65px
+div.switch input
+  $padding: 5px
+  &:last-of-type:checked+span+label
+    right: $padding
+  &:first-of-type:checked+span+label
+    left: $padding

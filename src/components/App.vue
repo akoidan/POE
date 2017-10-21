@@ -1,8 +1,18 @@
 <template>
     <div class="ahk-main no-marg-b">
         <table>
+            <tr v-if="aff">
+                <div v-for="a in aff"></div>
+            </tr>
             <tr>
-                <td><input type="text" v-model="price"/></td>
+                <td>
+                    <input type="text" v-model="price"/>
+                </td>
+                <td>
+                    <div class="inline checbw">
+                        <poe-trade-checkbox class="checb" v-model="complexPrice"/>
+                    </div>
+                    </td>
                 <td class="fsd">
                     <button @click="save">Create File</button>
                 </td>
@@ -11,8 +21,8 @@
                 </td>
             </tr>
             <tr>
+                <td><input type="text" class=" in2 inline" v-model="blockName"/></td>
                 <td>
-                    <input type="text" class=" in2 inline" v-model="blockName"/>
                     <div class="inline checbw">
                         <poe-trade-checkbox class="checb" v-model="block"/>
                     </div>
@@ -82,8 +92,10 @@
     data: function () {
       return {
         status: '',
+        aff: [],
         block: false,
         blockName: '',
+        complexPrice: false,
         price: 'My offer is 1 chaos'
       }
     },

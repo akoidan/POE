@@ -109,7 +109,7 @@ class PoeTradeDigger(object):
 			'http://poe.trade/search/ausonarimoheui/live': -1,  # Harb Amu
 			'http://poe.trade/search/hadogeuminihog/live': -1,  # Harb Boots
 			'http://poe.trade/search/ariahonnetohih/live': -1,  # Harb shield
-			'http://poe.trade/search/urikahoabonoma/live': -1,  # Harb wand
+			'http://poe.trade/search/usuzikumimonar/live': -1,  # Harb ring
 			'http://poe.trade/search/obekoasimisare/live': -1,  # Harb Helm
 		}
 		self.notifier = Notifier()

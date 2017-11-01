@@ -833,7 +833,7 @@ Show
 
 Hide
 	Rarity "Magic" "Normal"
-	BaseType "Bismuth Flask" "Amethyst Flask" "Ruby Flask" "Sapphire Flask" "Silver Flask" "Aquamarine Flask" "Granite Flask" "Sulphur Flask" "Basalt Flask"
+	BaseType "Bismuth Flask" "Amethyst Flask" "Ruby Flask" "Sapphire Flask" "Silver Flask" "Aquamarine Flask" "Granite Flask" "Sulphur Flask" "Topaz Flask" "Quarts Flask"
 Show
     Class "Utility Flasks"
 	

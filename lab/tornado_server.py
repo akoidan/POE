@@ -14,11 +14,6 @@ print ('root dir' + root)
 
 import os
 
-def get_img_path():
-    now = datetime.datetime.now()
-    return "{}-{}-{}_uber.jpg".format(now.year, now.month, now.day)
-
-
 current_step = '{"x":0, "y":0}'
 
 handlers = []
@@ -27,12 +22,10 @@ handlers = []
 class ImageHandler(tornado.web.RequestHandler):
 
     def get(self):
-        path = get_img_path()
+        now = datetime.datetime.now()
+        path =  now.strftime("%Y-%m-%d_uber.jpg")
         if not os.path.isfile(path) or imghdr.what(path) != 'jpeg':
-            now = datetime.datetime.now()
-            img_url = "http://www.poelab.com/wp-content/uploads/{}/{}/{}-{}-{}_uber.jpg".format(
-                now.year, now.month, now.year, now.month, now.day 
-            )
+            img_url = now.strftime("http://www.poelab.com/wp-content/uploads/%Y/%m/%Y-%m-%d_uber.jpg")
             os.system("wget -O {0} {1}".format(path, img_url))
         print('serving {}'.format(path))
         self.redirect('/'+path)

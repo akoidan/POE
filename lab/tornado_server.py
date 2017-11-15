@@ -26,19 +26,22 @@ class ImageHandler(tornado.web.RequestHandler):
     def wget(self, now, path, format):
         img_url = now.strftime(format)
         res = os.system("wget -O {0} {1}".format(path, img_url))
+        print("Fetched {} with result {}".format(img_url, res))
         return res == 0
 
     def get(self):
         now = datetime.datetime.now()
-        path = now.strftime("%Y-%m-%d_uber.jpg")
+        file_name = now.strftime("%Y-%m-%d_uber.jpg")
+        path = os.sep.join((root, file_name))
         if os.path.isfile(path) and imghdr.what(path) == 'jpeg':
             found = True
         else:
+            print("image file doesn't exist nor it's not an image")
             url_1 = "http://www.poelab.com/wp-content/uploads/%Y/%m/%Y-%m-%d_uber.jpg"
             url_2 = "http://www.poelab.com/wp-content/uploads/%Y/%m/%Y-%m-%d_uber-1.jpg"
             found = self.wget(now, path, url_1) or self.wget(now, path, url_2)
         if found:
-            self.redirect('/' + path)
+            self.redirect('/' + file_name)
         else:
             self.set_status(404, 'Not found')
 

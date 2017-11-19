@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Title</title>
 	<style>
-		div {
+		body > div {
 			position: relative;
 			width: 817px;
 		}
@@ -14,25 +14,48 @@
 			bottom: 6px;
 			right: 4px;
 		}
+		#times {
+			position: absolute;
+			left: 4px;
+			bottom: 13px;
+			color: white;
+			height: 10px;
+			width: 100px;
+		}
 	</style>
 </head>
 <body>
 <div>
 	<canvas id="coveringCanvas"></canvas>
 	<input type="checkbox" id="checkbox"/>
+	<div id="times"></div>
 </div>
 
 <script>
-	let d = new Date();
-	let canvas = document.getElementById('coveringCanvas');
-	let checkbox = document.getElementById('checkbox');
-	let context = canvas.getContext('2d');
-	let imWidth = 817;
-	let imHeight = 240;
-	let imStartX = 317;
-	let imStartY = 126;
-	let image = new Image();
+	var d = new Date();
+	var canvas = document.getElementById('coveringCanvas');
+	var checkbox = document.getElementById('checkbox');
+	var context = canvas.getContext('2d');
+	var imWidth = 817;
+	var imHeight = 240;
+	var imStartX = 317;
+	var imStartY = 126;
+	var image = new Image();
 
+	(function(){
+		var xobj = new XMLHttpRequest();
+		xobj.open('GET', 'https://www.pathofexile.com/api/ladders?offset=0&limit=20&id=Standard&type=labyrinth&difficulty=4');
+		function getTime (time) {
+			var s = time % 60;
+			var m = Math.floor(time / 60);
+			return m + 'm' + s + 's';
+		}
+		xobj.onload = function () {
+			var d = JSON.parse(xobj.responseText);
+			document.getElementById('times').textContent = getTime(d.entries[0].time)  + ', ' +getTime(d.entries[1].time);
+		};
+		xobj.send(null);
+	})();
 	image.onload = function (e) {
 		canvas.width = imWidth;
 		canvas.height = imHeight;
@@ -41,9 +64,9 @@
 	image.src = `/image.jpg`;
 
 	canvas.onclick = function (e) {
-		 let offsets = canvas.getClientRects()[0];
-		 let y = e.pageY - offsets.top;
-		 let x = e.pageX - offsets.left;
+		 var offsets = canvas.getClientRects()[0];
+		 var y = e.pageY - offsets.top;
+		 var x = e.pageX - offsets.left;
 		console.log(`${x},${y}`);
 		ws.sendToServer({x, y, set: checkbox.checked});
 	};
@@ -65,10 +88,10 @@
 	 checkbox.onclick = function (e) {
 		 if (checkbox.checked) {
 			 clearImage();
-			 let xobj = new XMLHttpRequest();
+			 var xobj = new XMLHttpRequest();
 			 xobj.open('GET', '/config.json', true); // Replace 'my_data' with the path to your file
 			 xobj.onload = function () {
-				 let d = JSON.parse(xobj.responseText);
+				 var d = JSON.parse(xobj.responseText);
 				 d.forEach(setPoint);
 			 };
 			 xobj.send(null);
@@ -78,8 +101,8 @@
 	 };
 
 	 function setCurrentPoint() {
-			clearImage();
-			setPoint(window.currentPoint)
+		clearImage();
+		window.currentPoint && setPoint(window.currentPoint);
 	 }
 
 	 function WsHandler() {
@@ -88,7 +111,7 @@
 
 		self.wsConnectionId = '';
 		self.onWsMessage = function (message) {
-				let xy = JSON.parse(message.data);
+				var xy = JSON.parse(message.data);
 				if (xy.length) {
 					clearImage();
 					xy.forEach(setPoint)

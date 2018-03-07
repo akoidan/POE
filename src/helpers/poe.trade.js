@@ -120,6 +120,14 @@ function appendAccount() {
   [].forEach.call(document.querySelectorAll('[data-seller]'), e => e.querySelector('h5').innerHTML += e.getAttribute('data-seller'))
 }
 
+export function getMods() {
+  let modDivs = document.querySelectorAll('.mods [data-name]');
+  let modNames = [].map.call(modDivs, a => a.getAttribute('data-name'));
+  let excludeMods = item => item.indexOf('#(enchant)') < 0;
+  return modNames.filter((item, pos) => modNames.indexOf(item) === pos && excludeMods(item));
+}
+
+
 function copyTextToClipboard(text) {
   let textArea = document.createElement("textarea");
   // Place in top-left corner of screen regardless of scroll position.

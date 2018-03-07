@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		body > div {
+			position: relative;
+			width: 817px;
+		}
+
+		#checkbox {
+			position: absolute;
+			bottom: 6px;
+			right: 4px;
+		}
+		#times {
+			position: absolute;
+			left: 4px;
+			bottom: 13px;
+			color: white;
+			height: 10px;
+			width: 100px;
+		}
+	</style>
+</head>
+<body>
+<div>
+	<canvas id="coveringCanvas"></canvas>
+	<input type="checkbox" id="checkbox"/>
+	<div id="times"></div>
+</div>
+
+<script>
+	var d = new Date();
+	var canvas = document.getElementById('coveringCanvas');
+	var checkbox = document.getElementById('checkbox');
+	var context = canvas.getContext('2d');
+	var imWidth = 817;
+	var imHeight = 240;
+	var imStartX = 317;
+	var imStartY = 126;
+	var image = new Image();
+
+	(function(){
+		var xobj = new XMLHttpRequest();
+		xobj.open('GET', 'https://www.pathofexile.com/api/ladders?offset=0&limit=20&id=Standard&type=labyrinth&difficulty=4');
+		function getTime (time) {
+			var s = time % 60;
+			var m = Math.floor(time / 60);
+			return m + 'm' + s + 's';
+		}
+		xobj.onload = function () {
+			var d = JSON.parse(xobj.responseText);
+			document.getElementById('times').textContent = getTime(d.entries[0].time)  + ', ' +getTime(d.entries[1].time);
+		};
+		xobj.send(null);
+	})();
+	image.onload = function (e) {
+		canvas.width = imWidth;
+		canvas.height = imHeight;
+		setCurrentPoint()
+	};
+	image.src = `/image.jpg`;
+
+	canvas.onclick = function (e) {
+		 var offsets = canvas.getClientRects()[0];
+		 var y = e.pageY - offsets.top;
+		 var x = e.pageX - offsets.left;
+		console.log(`${x},${y}`);
+		ws.sendToServer({x, y, set: checkbox.checked});
+	};
+
+	function setPoint(xy) {
+		context.beginPath();
+		context.arc(xy.x, xy.y, 32, 0, 2 * Math.PI, false);
+		context.lineWidth = 10;
+		context.strokeStyle = '#ff0100';
+		context.stroke();
+	}
+
+	function clearImage() {
+		context.drawImage(image,
+				imStartX, imStartY, imWidth, imHeight,
+				0, 0, imWidth, imHeight);
+	}
+
+	 checkbox.onclick = function (e) {
+		 if (checkbox.checked) {
+			 clearImage();
+			 var xobj = new XMLHttpRequest();
+			 xobj.open('GET', '/config.json', true); // Replace 'my_data' with the path to your file
+			 xobj.onload = function () {
+				 var d = JSON.parse(xobj.responseText);
+				 d.forEach(setPoint);
+			 };
+			 xobj.send(null);
+		 } else {
+		 	setCurrentPoint();
+		 }
+	 };
+
+	 function setCurrentPoint() {
+		clearImage();
+		window.currentPoint && setPoint(window.currentPoint);
+	 }
+
+	 function WsHandler() {
+		var self = this;
+		self.wsState = 0; // 0 - not inited, 1 - tried to connect but failed; 9 - connected;
+
+		self.wsConnectionId = '';
+		self.onWsMessage = function (message) {
+				var xy = JSON.parse(message.data);
+				if (xy.length) {
+					clearImage();
+					xy.forEach(setPoint)
+				} else {
+					window.currentPoint = xy;
+					setCurrentPoint();
+				}
+		};
+		self.sendToServer = function (messageRequest) {
+			var jsonRequest = JSON.stringify(messageRequest);
+			if (self.ws.readyState == WebSocket.OPEN) {
+				self.ws.send(jsonRequest);
+			}
+		};
+
+		self.setStatus = function (isOnline) {
+			console.log('asd')
+		};
+		self.onWsClose = function (e) {
+			self.setStatus(false);
+			var reason = e.reason || e;
+			self.wsState = 1;
+			// Try to reconnect in 10 seconds
+			setTimeout(self.listenWS, 1000);
+		};
+		self.listenWS = function () {
+			if (!window.WebSocket) {
+				return;
+			}
+			self.ws = new WebSocket(`ws${location.protocol == 'https:' ? 's' :''}://` + window.location.host + '/ws');
+			self.ws.onmessage = self.onWsMessage;
+			self.ws.onclose = self.onWsClose;
+			self.ws.onopen = function () {
+				self.setStatus(true);
+			};
+		};
+	}
+
+	var ws = new WsHandler();
+	ws.listenWS();
+
+</script>
+</body>
+</html>

@@ -14,7 +14,7 @@ else:
 
 clip_path =  os.sep.join((os.path.dirname(os.path.realpath(__file__)), 'clip.txt'))
 poe_trade_conf = {
-	"league": "Harbinger",
+	"league": "Bestiary",
 	"type": "",
 	"base": "",
 	"name": "",

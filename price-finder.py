@@ -6,8 +6,11 @@ import re
 import os
 import sys
 
+if sys.version < '3':
+	from io import open
 if 'price' not in sys.argv:
-	sout = print
+	def sout(value):
+		print(value)
 else:
 	def sout(value):
 		pass
@@ -202,7 +205,7 @@ for offer in all_offers:
 	sout(decode_utf8(buyout_))
 	if 'price' in sys.argv and count > 5:
 		break
-if len(all_offers) > 0:
+if len(all_offers) > 0 and count > 0:
 	print(round(sum_price/count/multi['chaos']))
-else:
+elif count > 0:
 	print('No results')

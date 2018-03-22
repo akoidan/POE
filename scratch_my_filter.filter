@@ -400,7 +400,7 @@ Show
 
 Show
 	Class "Currency"
-	BaseType "Regal Orb" "Glassblower's Bauble" "Orb of Regret" "Stacked Deck" "Chaos Orb" "Blessed Orb" "Gemcutter's Prism" "Orb of Fusing" "Orb of Scouring" "Orb of Alchemy" "Orb of Chance" "Vaal Orb" "Cartographer's Chisel" "Silver Coin" "Harbinger's Orb"
+	BaseType "Regal Orb" "Glassblower's Bauble" "Orb of Regret" "Stacked Deck" "Chaos Orb" "Blessed Orb" "Gemcutter's Prism" "Orb of Fusing" "Orb of Scouring" "Orb of Alchemy" "Orb of Chance" "Vaal Orb" "Cartographer's Chisel" "Silver Coin" "Harbinger's Orb" "Necromancy Net"
 	SetBackgroundColor 213 159 15
 	SetTextColor 0 0 0
 	SetBorderColor 0 0 0
@@ -449,7 +449,7 @@ Show
 
 Show
 	Class "Currency"
-	BaseType "Portal Scroll" "Scroll of Wisdom" "Blacksmith's Whetstone"  "Horizon Shard"  "Binding Shard" "Alchemy Shard"
+	BaseType "Portal Scroll" "Scroll of Wisdom" "Blacksmith's Whetstone"  "Horizon Shard"  "Binding Shard" "Alchemy Shard" "Simple Iron Net" "Reinforced Iron Net" "Strong Iron Net"  "Simple Rope Net" "Reinforced Rope Net" "Strong Rope Net"  "Simple Steel Net" "Reinforced Steel Net" "Strong Steel Net"
 	SetTextColor 170 158 130 220
 	SetBorderColor 0 0 0 255
 
@@ -541,37 +541,12 @@ Show # %TB-Currency-Harbinger-ShardsT2 %H5
 	SetBorderColor 0 0 0                 # BORDERCOLOR:	 Cosmetic: Neutral Highlight
 	SetBackgroundColor 135 140 100 255   # BACKGROUND:	 Currency Shards Old
 
-Show #$Currency->Net->T1
-	Class Currency
-	BaseType "Thaumaturgical Net"
-	SetFontSize 45
-	SetTextColor 0 0 0 255               # TEXTCOLOR:	 Cosmetic: Black Text
-	SetBorderColor 0 0 0                 # BORDERCOLOR:	 Cosmetic: Neutral Highlight
-	SetBackgroundColor 213 159 0 255     # BACKGROUND:	 T3 Currency
-	PlayAlertSound 2 300                 # DROPSOUND:	 Value Drop: Currency, fragments
-
-Show #$Currency->Net->T2
-	Class Currency
-	BaseType "Simple Steel Net" "Reinforced Steel Net" "Strong Steel Net"
-	SetFontSize 42
-	SetTextColor 155 210 135 255
-	SetBorderColor 0 255 36 255
-	SetBackgroundColor 0 0 0 255
-
 Show #$Currency->Net->T3
 	Class Currency
-	BaseType "Simple Iron Net" "Reinforced Iron Net" "Strong Iron Net"
-	SetFontSize 42
+	BaseType  "Thaumaturgical Net"
+	SetFontSize 35
 	SetTextColor 155 210 135 255
 	SetBorderColor 220 220 220 255
-	SetBackgroundColor 0 0 0 255
-
-Show #$Currency->Net->T4
-	Class Currency
-	BaseType "Simple Rope Net" "Reinforced Rope Net" "Strong Rope Net"
-	SetFontSize 42
-	SetTextColor 155 210 135 255
-	SetBorderColor 0 0 0
 	SetBackgroundColor 0 0 0 255
 	
 Show

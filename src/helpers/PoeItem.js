@@ -9,6 +9,7 @@ export default class PoeItem {
   constructor(div) {
     this.itemName = "";
     this.itemType = "";
+    this.regex = /.*\w$/g;
     this.htmlDiv = div;
     //taken from poe.trade source
     this.item_rarities = ["Normal", "Magic", "Rare", "Unique", "Gem", "Currency", "", "", "", "Relic"];
@@ -54,7 +55,27 @@ export default class PoeItem {
   };
 
   returnItemSockets() {
-    return this.htmlDiv.querySelector(".sockets-raw").innerText.trim();
+    var sockets = "";
+
+    this.htmlDiv.querySelectorAll(".sockets .sockets-inner div").forEach( a=> {
+    var classes = a.className.split(' ');
+      if (classes.indexOf('socketLink') >= 0) {
+        sockets += "-";
+      } else {
+        if (this.regex.exec(sockets)) {
+          sockets += " "
+        }
+        if (classes.indexOf('socketI') >= 0) {
+          sockets += "B";
+        } else if (classes.indexOf('socketD') >= 0) {
+          sockets += "G";
+        } else if (classes.indexOf('socketS') >= 0) {
+          sockets += "R";
+        }
+      }
+
+    });
+    return sockets;
   };
 
   returnLevelRequirement() {

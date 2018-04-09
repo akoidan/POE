@@ -9,6 +9,253 @@ Show
 	SetFontSize 38
 	SetBorderColor 25 180 25
 
+
+
+
+
+
+
+
+Show # $Rare->Shaper->T1 $x->ShaperElder
+	ShaperItem True
+	ItemLevel >= 84
+	BaseType "Coral Amulet" "Paua Amulet" "Gold Amulet" "Gold Ring" "Paua Ring" "Iron Ring" "Amethyst Ring" "Unset Ring" "Moonstone Ring" "Studded Belt" "Cloth Belt" "Chain Belt"
+	Rarity <= Rare
+	SetFontSize 40
+	SetTextColor 255 255 255 255         # TEXTCOLOR:	 Normal Items: Strong Highlight
+	SetBorderColor 255 255 255 255       # BORDERCOLOR:	 Cosmetic: Highlight good drops
+	SetBackgroundColor 20 110 220        # BACKGROUND:	 ShaperElder80
+	PlayAlertSound 3 300                 # DROPSOUND:	 Uniques
+
+#------------------------------------
+#   [0302] Shaper Item Layers - T1
+#------------------------------------
+
+# Level-Independent Expensive finds
+
+Show # $Rare->Shaper->T1 $x->ShaperElder
+	ShaperItem True
+	BaseType "Opal Ring" "Steel Ring" "Stygian Vise"
+	Rarity <= Rare
+	SetFontSize 40
+	SetTextColor 50 130 165 255          # TEXTCOLOR:	 ShaperElder
+	SetBorderColor 50 130 165 255        # BORDERCOLOR:	 ShaperElder
+	SetBackgroundColor 255 255 255 255   # BACKGROUND:	 T1 Global High Value Drop
+	PlayAlertSound 6 300                 # DROPSOUND:	 T1 Drop
+
+# Level-Dependent Expensive finds (82)
+
+Show # $Rare->Shaper->T1 $x->ShaperElder
+	ShaperItem True
+	ItemLevel >= 82
+	Class "Amulets"
+	Rarity <= Rare
+	SetFontSize 40
+	SetTextColor 50 130 165 255          # TEXTCOLOR:	 ShaperElder
+	SetBorderColor 50 130 165 255        # BORDERCOLOR:	 ShaperElder
+	SetBackgroundColor 255 255 255 255   # BACKGROUND:	 T1 Global High Value Drop
+	PlayAlertSound 6 300                 # DROPSOUND:	 T1 Drop
+
+Show # $Rare->Shaper->T1 $x->ShaperElder
+	ShaperItem True
+	ItemLevel >= 85
+	Class "Quivers" "Rings" "Belts"
+	Rarity <= Rare
+	SetFontSize 40
+	SetTextColor 50 130 165 255          # TEXTCOLOR:	 ShaperElder
+	SetBorderColor 50 130 165 255        # BORDERCOLOR:	 ShaperElder
+	SetBackgroundColor 255 255 255 255   # BACKGROUND:	 T1 Global High Value Drop
+	PlayAlertSound 6 300                 # DROPSOUND:	 T1 Drop
+
+Show # $Rare->Shaper->T1 $x->ShaperElder
+	ShaperItem True
+	ItemLevel >= 82
+	BaseType "Bone Helmet" "Two-Stone Ring" "Diamond Ring" "Two-Toned Boots" "Kris" "Void Sceptre" "Opal Sceptre" "Sambar Sceptre" "Gripped Gloves" "Fingerless Silk Gloves" "Spiked Gloves"
+	Rarity <= Rare
+	SetFontSize 40
+	SetTextColor 50 130 165 255          # TEXTCOLOR:	 ShaperElder
+	SetBorderColor 50 130 165 255        # BORDERCOLOR:	 ShaperElder
+	SetBackgroundColor 255 255 255 255   # BACKGROUND:	 T1 Global High Value Drop
+	PlayAlertSound 6 300                 # DROPSOUND:	 T1 Drop
+
+# Level-Dependent Expensive finds (84)
+
+Show # $Rare->Shaper->T1 $x->ShaperElder
+	ShaperItem True
+	ItemLevel >= 85
+	BaseType "Sorcerer Gloves" "Lion Pelt" "Hubris Circlet" "Royal Burgonet" "Eternal Burgonet" "Vaal Regalia" "Astral Plate" "Colossal Tower Shield" "Pinnacle Tower Shield" "Mirrored Spiked Shield" "Archon Kite Shield" "Crusader Buckler" "Eclipse Staff" "Harbinger Bow" "Vaal Axe" "Runic Hatchet" "Jewelled Foil" "Spiraled Foil" "Exquisite Blade" "Titan Greaves" "Assassin's Garb" "Harmonic Spirit Shield" "Titanium Spirit Shield"
+	Rarity <= Rare
+	SetFontSize 40
+	SetTextColor 50 130 165 255          # TEXTCOLOR:	 ShaperElder
+	SetBorderColor 50 130 165 255        # BORDERCOLOR:	 ShaperElder
+	SetBackgroundColor 255 255 255 255   # BACKGROUND:	 T1 Global High Value Drop
+	PlayAlertSound 6 300                 # DROPSOUND:	 T1 Drop
+
+#------------------------------------
+#   [0303] Shaper Item Layers - T2
+#------------------------------------
+
+Show # $Rare->Shaper->T2 $x->ShaperElder
+	ShaperItem True
+	ItemLevel >= 80
+	Class "Daggers" "Sceptres" "Quivers"
+	Rarity <= Rare
+	SetFontSize 40
+	SetTextColor 255 255 255 255         # TEXTCOLOR:	 Normal Items: Strong Highlight
+	SetBorderColor 255 255 255 255       # BORDERCOLOR:	 Cosmetic: Highlight good drops
+	SetBackgroundColor 20 110 220        # BACKGROUND:	 ShaperElder80
+	PlayAlertSound 3 300                 # DROPSOUND:	 Uniques
+
+Show # $Rare->Shaper->T2 $x->ShaperElder
+	ShaperItem True
+	ItemLevel >= 83
+	DropLevel >= 62
+	Class "Two Hand Maces" "Two Hand Axes" "Two Hand Swords" "Bows" "One Hand Swords" "One Hand Maces" "One Hand Axes" "Wand" "Sceptre" "Staves" "Claws" "Body Armour" "Gloves" "Boots" "Helmets" "Quivers" "Daggers" "Shields"
+	Rarity <= Rare
+	SetFontSize 40
+	SetTextColor 255 255 255 255         # TEXTCOLOR:	 Normal Items: Strong Highlight
+	SetBorderColor 255 255 255 255       # BORDERCOLOR:	 Cosmetic: Highlight good drops
+	SetBackgroundColor 20 110 220        # BACKGROUND:	 ShaperElder80
+	PlayAlertSound 3 300                 # DROPSOUND:	 Uniques
+
+Show # $Rare->Shaper->T2 $x->ShaperElder
+	ShaperItem True
+	Class "Amulets" "Rings" "Belts"
+	Rarity <= Rare
+	SetFontSize 40
+	SetTextColor 255 255 255 255         # TEXTCOLOR:	 Normal Items: Strong Highlight
+	SetBorderColor 25 235 25 255         # BORDERCOLOR:	 Rares - Size - Tiny, special base
+	SetBackgroundColor 20 110 220        # BACKGROUND:	 ShaperElder80
+	PlayAlertSound 3 300                 # DROPSOUND:	 Uniques
+
+#------------------------------------
+#   [0304] Shaper Item Layers - T3
+#------------------------------------
+
+Show # $Rare->Shaper->T3 $x->ShaperElder
+	ShaperItem True
+	Rarity <= Rare
+	SetFontSize 40
+	SetTextColor 255 255 255 255         # TEXTCOLOR:	 Normal Items: Strong Highlight
+	SetBorderColor 255 255 255 255       # BORDERCOLOR:	 Cosmetic: Highlight good drops
+	SetBackgroundColor 50 130 165        # BACKGROUND:	 ShaperElder
+
+#===============================================================================================================
+# [[0400]] ELDER ITEMS
+#===============================================================================================================
+
+#------------------------------------
+#   [0401] Exception Handling - Rings, Amulets, Belts
+#------------------------------------
+
+Show # $Rare->Elder->T1 $x->ShaperElder
+	ElderItem True
+	ItemLevel >= 84
+	BaseType "Coral Amulet" "Paua Amulet" "Gold Amulet" "Gold Ring" "Paua Ring" "Iron Ring" "Amethyst Ring" "Unset Ring" "Moonstone Ring" "Studded Belt" "Cloth Belt" "Chain Belt"
+	Rarity <= Rare
+	SetFontSize 40
+	SetTextColor 255 255 255 255         # TEXTCOLOR:	 Normal Items: Strong Highlight
+	SetBorderColor 255 255 255 255       # BORDERCOLOR:	 Cosmetic: Highlight good drops
+	SetBackgroundColor 20 110 220        # BACKGROUND:	 ShaperElder80
+	PlayAlertSound 3 300                 # DROPSOUND:	 Uniques
+
+#------------------------------------
+#   [0402] Elder Item Layers - T1
+#------------------------------------
+
+# Level-Independent Expensive finds
+
+Show # $Rare->Elder->T1 $x->ShaperElder
+	ElderItem True
+	BaseType "Opal Ring" "Steel Ring" "Stygian Vise"
+	Rarity <= Rare
+	SetFontSize 40
+	SetTextColor 50 130 165 255          # TEXTCOLOR:	 ShaperElder
+	SetBorderColor 50 130 165 255        # BORDERCOLOR:	 ShaperElder
+	SetBackgroundColor 255 255 255 255   # BACKGROUND:	 T1 Global High Value Drop
+	PlayAlertSound 6 300                 # DROPSOUND:	 T1 Drop
+
+# Level-Dependent Expensive finds (80)
+
+Show # $Rare->Elder->T1 $x->ShaperElder
+	ElderItem True
+	ItemLevel >= 85
+	Class "Belts" "Rings" "Amulets"
+	Rarity <= Rare
+	SetFontSize 40
+	SetTextColor 50 130 165 255          # TEXTCOLOR:	 ShaperElder
+	SetBorderColor 50 130 165 255        # BORDERCOLOR:	 ShaperElder
+	SetBackgroundColor 255 255 255 255   # BACKGROUND:	 T1 Global High Value Drop
+	PlayAlertSound 6 300                 # DROPSOUND:	 T1 Drop
+
+Show # $Rare->Elder->T1 $x->ShaperElder
+	ElderItem True
+	ItemLevel >= 82
+	BaseType "Bone Helmet" "Two-Stone Ring" "Diamond Ring" "Two-Toned Boots" "Gripped Gloves" "Fingerless Silk Gloves" "Spiked Gloves"
+	Rarity <= Rare
+	SetFontSize 40
+	SetTextColor 50 130 165 255          # TEXTCOLOR:	 ShaperElder
+	SetBorderColor 50 130 165 255        # BORDERCOLOR:	 ShaperElder
+	SetBackgroundColor 255 255 255 255   # BACKGROUND:	 T1 Global High Value Drop
+	PlayAlertSound 6 300                 # DROPSOUND:	 T1 Drop
+
+# Level-Dependent Expensive finds (84)
+
+Show # $Rare->Elder->T1 $x->ShaperElder
+	ElderItem True
+	ItemLevel >= 85
+	BaseType "Glorious Plate" "Colossal Tower Shield" "Pinnacle Tower Shield" "Crusader Buckler" "Eclipse Staff" "Vaal Axe" "Jewelled Foil" "Assassin's Garb" "Coronal Maul" "Ambusher" "Lion Pelt" "Hubris Circlet" "Royal Burgonet" "Eternal Burgonet" "Astral Plate" "Titan Gauntlets" "Sorcerer Gloves" "Slink Gloves" "Harmonic Spirit Shield" "Titanium Spirit Shield"
+	Rarity <= Rare
+	SetFontSize 40
+	SetTextColor 50 130 165 255          # TEXTCOLOR:	 ShaperElder
+	SetBorderColor 50 130 165 255        # BORDERCOLOR:	 ShaperElder
+	SetBackgroundColor 255 255 255 255   # BACKGROUND:	 T1 Global High Value Drop
+	PlayAlertSound 3 300                 # DROPSOUND:	 Uniques
+
+#------------------------------------
+#   [0403] Elder Item Layers - T2
+#------------------------------------
+
+Show # $Rare->Elder->T2 $x->ShaperElder
+	ElderItem True
+	Class "Amulets" "Rings" "Belts"
+	Rarity <= Rare
+	SetFontSize 40
+	SetTextColor 255 255 255 255         # TEXTCOLOR:	 Normal Items: Strong Highlight
+	SetBorderColor 25 235 25 255         # BORDERCOLOR:	 Rares - Size - Tiny, special base
+	SetBackgroundColor 20 110 220        # BACKGROUND:	 ShaperElder80
+	PlayAlertSound 3 300                 # DROPSOUND:	 Uniques
+
+Show # $Rare->Elder->T2 $x->ShaperElder
+	ElderItem True
+	ItemLevel >= 83
+	DropLevel >= 62
+	Class "Two Hand Maces" "Two Hand Axes" "Two Hand Swords" "Bows" "One Hand Swords" "One Hand Maces" "One Hand Axes" "Wand" "Sceptre" "Staves" "Claws" "Body Armour" "Gloves" "Boots" "Helmets" "Quivers" "Daggers" "Shields"
+	Rarity <= Rare
+	SetFontSize 40
+	SetTextColor 255 255 255 255         # TEXTCOLOR:	 Normal Items: Strong Highlight
+	SetBorderColor 255 255 255 255       # BORDERCOLOR:	 Cosmetic: Highlight good drops
+	SetBackgroundColor 20 110 220        # BACKGROUND:	 ShaperElder80
+	PlayAlertSound 3 300                 # DROPSOUND:	 Uniques
+
+#------------------------------------
+#   [0404] Elder Item Layers - T3
+#------------------------------------
+
+Show # $Rare->Elder->T3 $x->ShaperElder
+	ElderItem True
+	Rarity <= Rare
+	SetFontSize 40
+	SetTextColor 255 255 255 255         # TEXTCOLOR:	 Normal Items: Strong Highlight
+	SetBorderColor 255 255 255 255       # BORDERCOLOR:	 Cosmetic: Highlight good drops
+	SetBackgroundColor 50 130 165        # BACKGROUND:	 ShaperElder
+
+
+
+
+
+
+
 	
 	
 Show # $EGC->84 $x->Abyss->Jewel $Jewels->Rare
@@ -361,7 +608,7 @@ Show # T2 - These uniques usually are worth ~0.5-1 ex at the start of the league
 	SetBorderColor 0 0 0 255
 	SetBackgroundColor 200 96 37 255
 	SetFontSize 42
-	PlayAlertSound 6 300
+	PlayAlertSound 5 200
 
 Show #T2.5 - Fated Uniques. Note: does not apply to every variation of the basetype. Example: The blackheart unique iron ring has a fated version, the le-heup-of-all iron ring unique on the other hand not.
 	BaseType "Iron Ring" "Coral Ring" "Jade Amulet" "Plate Vest" "Ornate Sword" "Scholar Boots" "Iron Staff" "Spiraled Wand" "Sledgehammer" "Long Bow" "Crude Bow" "Royal Bow" "Woodsplitter" "Jade Hatchet" "Painted Buckler" "Plank Kite Shield" "War Buckler" "Gilded Sallet" "Iron Hat" "Vine Circlet" "Goathide Gloves" "Coral Amulet" "Fire Arrow Quiver" "Serrated Arrow Quiver" "Death Bow" 
@@ -574,7 +821,7 @@ Show
 #EXCEPTIONS - Trash-tier cards.
 Hide #%H3
 	Class "Divination"
-	BaseType "Carrion Crow" "Light and Truth" "Other Cheek" "Hermit" "King's Blade" "Prosperity" "Metalsmith's Gift" "The Lover" "Thunderous Skies" "The Feast" "The Throne" "The Twins" "Flora's Gift" "The Lunaris Priestess" "The Scarred Meadow"
+	BaseType "Carrion Crow" "Light and Truth" "Other Cheek" "Hermit" "King's Blade" "Prosperity" "Metalsmith's Gift" "The Lover" "Thunderous Skies" "The Feast" "The Throne" "The Twins" "Flora's Gift" "The Lunaris Priestess" "The Scarred Meadow" "The Incantation"
 	SetTextColor 0 0 0
 	SetBorderColor 0 0 0
 	SetBackgroundColor 175 215 230 180

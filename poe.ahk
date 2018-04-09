@@ -265,7 +265,7 @@ $x::FastLogOut()
 ;;$F5::switchGems([{ "srcX" : 1697, "srcY" : 618, "dstX": 1587 , "dstY": 425}])
 ;; $F5::switchGems([{ "srcX" : 1486, "srcY" : 371, "dstX": 1613 , "dstY":  359}, { "srcX" : 1486, "srcY" : 426, "dstX": 1561 , "dstY":  358}, { "srcX" : 1877, "srcY" : 647, "dstX": 1593 , "dstY":  520}])
 ;$F5::switchGems([{ "srcX" : 1432, "srcY" : 422, "dstX": 1561 , "dstY":  306}, { "srcX" : 1486, "srcY" : 372, "dstX": 1561 , "dstY":  358}])
-$F5::switchGems([{ "srcX" : 1744, "srcY" : 618, "dstX": 1587 , "dstY":  425}], false) ;onslaught
+$F5::switchGems([{ "srcX" : 1840, "srcY" : 778, "dstX": 1587 , "dstY":  307}], false) ;onslaught
 ;$F5::switchGems([{ "srcX" : 1855, "srcY" : 726, "dstX": 1587 , "dstY":  314}], true) ; body armour
 ;;$f5::TurnOffBloodRage()
 $F6::getPrice()
@@ -351,6 +351,7 @@ RunWaitOne(command) {
 
 
 getPrice() {
+
 	clip_path :=  A_ScriptDir "\clip.txt"
 	FileDelete, %clip_path%
 	ClipWait

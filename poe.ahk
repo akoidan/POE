@@ -251,7 +251,13 @@ setGemPrice() {
 	}
 }
 
+MakeSound() {
+    Sleep, 7000
+    SoundPlay, %A_ScriptDir%\beep.mp3
+}
 
+$~1::MakeSound()
+$~2::MakeSound()
 $F1::OpenHideout()
 $d::DrinkFlask()
 $F4::OpenPortal()

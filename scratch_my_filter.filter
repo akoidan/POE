@@ -935,13 +935,24 @@ Hide #%H3
 
 Show # Maps:T16
 	Class Maps
-	BaseType "Forge of the Phoenix Map" "Maze of the Minotaur Map" "Lair of the Hydra Map" "Pit of the Chimera Map" "Vaal Temple Map"
+	DropLevel 83
 	SetTextColor 100 0 122 255
 	SetBorderColor 100 0 255 255
 	SetBackgroundColor 255 255 255 255
 	SetFontSize 45
 	PlayAlertSound 4 300
 
+Show # Maps:T16
+	Class Maps
+	BaseType "Strand Map"
+	ElderMap True
+	SetTextColor 100 0 122 255
+	SetBorderColor 100 0 255 255
+	SetBackgroundColor 255 255 255 255
+	SetFontSize 45
+	PlayAlertSound 4 300
+
+	
 ### T15 ###
 
 Show # Maps:T15
@@ -953,6 +964,17 @@ Show # Maps:T15
 	SetFontSize 45
 	PlayAlertSound 4 300
 
+	
+Show
+	Class Maps
+	ShapedMap True
+	DropLevel >= 77
+	SetTextColor 100 0 122 255
+	SetBorderColor 100 0 255 255
+	SetBackgroundColor 255 255 255 255
+	SetFontSize 45
+	PlayAlertSound 4 300
+	
 ### T14-T11 ###
 
 Show # Maps:T14
@@ -963,10 +985,30 @@ Show # Maps:T14
 	SetBackgroundColor 200 200 200 255
 	SetFontSize 44
 	PlayAlertSound 4 300
-
+	
+Show
+	Class Maps
+	ShapedMap True
+	DropLevel >= 76
+	SetTextColor 0 0 0 255
+	SetBorderColor 0 0 0 255
+	SetBackgroundColor 200 200 200 255
+	SetFontSize 44
+	PlayAlertSound 4 300
+	
 Show # Maps:T13
 	Class Maps
 	DropLevel >= 80
+	SetTextColor 0 0 0 255
+	SetBorderColor 0 0 0 255
+	SetBackgroundColor 200 200 200 255
+	SetFontSize 43
+	PlayAlertSound 4 300
+	
+Show
+	Class Maps
+	ShapedMap True
+	DropLevel >= 75
 	SetTextColor 0 0 0 255
 	SetBorderColor 0 0 0 255
 	SetBackgroundColor 200 200 200 255
@@ -981,6 +1023,16 @@ Show # Maps:T12
 	SetBackgroundColor 200 200 200 255
 	SetFontSize 40
 	PlayAlertSound 4 300
+	
+Show
+	Class Maps
+	ShapedMap True
+	DropLevel >= 74
+	SetTextColor 0 0 0 255
+	SetBorderColor 0 0 0 255
+	SetBackgroundColor 200 200 200 255
+	SetFontSize 40
+	PlayAlertSound 4 300
 
 Show # Maps:T11
 	Class Maps
@@ -990,18 +1042,26 @@ Show # Maps:T11
 	SetBackgroundColor 200 200 200 255
 	SetFontSize 36
 	PlayAlertSound 4 300
+	
+Show
+	Class Maps
+	ShapedMap True
+	DropLevel >= 73
+	SetTextColor 0 0 0 255
+	SetBorderColor 0 0 0 255
+	SetBackgroundColor 200 200 200 255
+	SetFontSize 36
+	PlayAlertSound 4 300
 
 	
 ### T10-T6 ###
 
-Show
-	Class Maps 
-	BaseType "Shaped Primordial Pool" "Shaped Burial Chambers"
-	SetTextColor 0 0 0 255
-	SetBorderColor 0 0 0 255
-	SetBackgroundColor 255 255 255 255
-	SetFontSize 30
-	PlayAlertSound 1 150
+Show # Shaped
+	Class Maps
+	ShapedMap True
+	SetBackgroundColor 0 0 0 255
+	SetFontSize 39
+
 
 Show # Maps:T10
 	Class Maps

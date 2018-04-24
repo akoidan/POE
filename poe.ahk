@@ -260,7 +260,8 @@ $F3::FastLogOut()
 $F4::OpenPortal()
 ;; $F5::switchGems([{ "srcX" : 1486, "srcY" : 371, "dstX": 1613 , "dstY":  359}, { "srcX" : 1486, "srcY" : 426, "dstX": 1561 , "dstY":  358}, { "srcX" : 1877, "srcY" : 647, "dstX": 1593 , "dstY":  520}])
 ;$F5::switchGems([{ "srcX" : 1432, "srcY" : 422, "dstX": 1561 , "dstY":  306}, { "srcX" : 1486, "srcY" : 372, "dstX": 1561 , "dstY":  358}])
-$F5::switchGems([{ "srcX" : 1840, "srcY" : 778, "dstX": 1587 , "dstY":  307}], false) ;onslaught
+;; 
+$F5::switchGems([ { "srcX" : 1866, "srcY" : 648, "dstX": 1458 , "dstY":  352}, { "srcX" : 1854, "srcY" : 747, "dstX": 1712 , "dstY":  390},  { "srcX" : 1860, "srcY" : 827, "dstX": 1598 , "dstY":  427}, { "dstX" : 1694, "dstY" : 239, "srcX": 1780 , "srcY":  614}], false) ;onslaught
 ;$F5::switchGems([{ "srcX" : 1855, "srcY" : 726, "dstX": 1587 , "dstY":  314}], true) ; body armour
 ;;$f5::TurnOffBloodRage()
 $F6::getPrice()
@@ -485,11 +486,11 @@ switchGems(coordinates, isM2) {
 			Click right %srcX%, %srcY%
 		}
 		
-		Sleep 10
+		Sleep 20
 		Click left, %dstX%, %dstY%
-		Sleep 10
+		Sleep 20
 		Click left, %srcX%, %srcY%
-		Sleep 10
+		Sleep 20
 	}
 	
 	if (closeInvAfter) {
@@ -532,7 +533,7 @@ OpenPortal(){
 	MouseGetPos, xpos, ypox
 	BlockInput On
 	closeInvAfter := OpenInventory()
-	Click right 1824,613
+	Click right 1770,667
 	Click left 630, 450
 	BlockInput Off
 	return

@@ -37,8 +37,8 @@ class ImageHandler(tornado.web.RequestHandler):
             found = True
         else:
             print("image file doesn't exist nor it's not an image")
-            url_1 = "http://www.poelab.com/wp-content/uploads/%Y/%m/%Y-%m-%d_uber.jpg"
-            url_2 = "http://www.poelab.com/wp-content/uploads/%Y/%m/%Y-%m-%d_uber-1.jpg"
+            url_1 = "https://www.poelab.com/wp-content/labfiles/%Y-%m-%d_uber.jpg"
+            url_2 = "https://www.poelab.com/wp-content/labfiles/%Y-%m-%d_uber-1.jpg"
             found = self.wget(now, path, url_1) or self.wget(now, path, url_2)
         if found:
             self.redirect('/' + file_name)

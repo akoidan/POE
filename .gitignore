@@ -1,4 +1,5 @@
 .idea/
+lab/.venv
 dist
 __pycache__
 DailyDealCache/

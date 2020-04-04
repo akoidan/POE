@@ -1,4 +1,5 @@
 .idea/
+lab/.venv
 dist
 __pycache__
 DailyDealCache/
@@ -18,3 +19,4 @@ node_modules
 .~lock.maps3.ods#
 credentials.py
 package-lock.json
+Output.html

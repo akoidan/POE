@@ -1,7 +1,7 @@
 [Unit]
     Description=Tornado supervisor
 [Service]
-    ExecStart=/srv/http/autohotkey/lab/tornado_server.py
+    ExecStart=/srv/http/autohotkey/lab/.venv/bin/python /srv/http/autohotkey/lab/tornado_server.py
     SuccessExitStatus=30
     ExecReload=/bin/kill -HUP $MAINPID
     KillSignal=SIGINT

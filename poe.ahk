@@ -66,7 +66,7 @@ printMessage() {
 
 	price_path := "empty"
 	for index, element in o { 
-		p :=  "D:\Downloads\buyItemsList" element ".txt"
+		p :=  UserProfile "\Downloads\buyItemsList" element ".txt"
 		if (FileExist(p)) {
 			if (price_path = "empty") {
 				price_path := p
@@ -261,7 +261,7 @@ $F4::OpenPortal()
 ;; $F5::switchGems([{ "srcX" : 1486, "srcY" : 371, "dstX": 1613 , "dstY":  359}, { "srcX" : 1486, "srcY" : 426, "dstX": 1561 , "dstY":  358}, { "srcX" : 1877, "srcY" : 647, "dstX": 1593 , "dstY":  520}])
 ;$F5::switchGems([{ "srcX" : 1432, "srcY" : 422, "dstX": 1561 , "dstY":  306}, { "srcX" : 1486, "srcY" : 372, "dstX": 1561 , "dstY":  358}])
 ;; 
-$F5::switchGems([ { "srcX" : 1866, "srcY" : 648, "dstX": 1458 , "dstY":  352}, { "srcX" : 1854, "srcY" : 747, "dstX": 1712 , "dstY":  390},  { "srcX" : 1860, "srcY" : 827, "dstX": 1598 , "dstY":  427}, { "dstX" : 1694, "dstY" : 239, "srcX": 1780 , "srcY":  614}], false) ;onslaught
+$F5::switchGems([ { "srcX" : 1866, "srcY" : 648, "dstX": 1458 , "dstY":  352}, { "srcX" : 1854, "srcY" : 747, "dstX": 1712 , "dstY":  390},  { "srcX" : 1860, "srcY" : 827, "dstX": 1598 , "dstY":  427}, { "dstX" : 1694, "dstY" : 239, "srcX": 1780 , "srcY":  614}, { "dstX" : 1484, "dstY" : 304, "srcX": 1776 , "srcY":  714}, { "dstX" : 1694, "dstY" : 306, "srcX": 1776 , "srcY":  767}], false) ;onslaught
 ;$F5::switchGems([{ "srcX" : 1855, "srcY" : 726, "dstX": 1587 , "dstY":  314}], true) ; body armour
 ;;$f5::TurnOffBloodRage()
 $F6::getPrice()
@@ -551,6 +551,7 @@ DrinkTwoFirstFlask() {
 
 
 DrinkFlask() {
+	Send {1}
 	Send {2}
 	Send {3}
 	Send {4}

@@ -76,7 +76,6 @@ printMessage() {
 		}
 	}
 	if (price_path != UserProfile "\Downloads\buyItemsList.txt" and price_path != "empty") {
-			MsgBox, %price_path%
 		FileMove, %price_path%,  %UserProfile%\Downloads\buyItemsList.txt
 		price_path := UserProfile "\Downloads\buyItemsList.txt"
 	}

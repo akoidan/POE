@@ -255,19 +255,19 @@ setGemPrice() {
 
 
 $F1::OpenHideout()
-$F2::DrinkFlask()
-$F3::FastLogOut()
-$F4::OpenPortal()
+;$F2::DrinkFlask()
+;$F3::FastLogOut()
+;$F4::OpenPortal()
 ;; $F5::switchGems([{ "srcX" : 1486, "srcY" : 371, "dstX": 1613 , "dstY":  359}, { "srcX" : 1486, "srcY" : 426, "dstX": 1561 , "dstY":  358}, { "srcX" : 1877, "srcY" : 647, "dstX": 1593 , "dstY":  520}])
 ;$F5::switchGems([{ "srcX" : 1432, "srcY" : 422, "dstX": 1561 , "dstY":  306}, { "srcX" : 1486, "srcY" : 372, "dstX": 1561 , "dstY":  358}])
 ;; 
-$F5::switchGems([ { "srcX" : 1866, "srcY" : 648, "dstX": 1458 , "dstY":  352}, { "srcX" : 1854, "srcY" : 747, "dstX": 1712 , "dstY":  390},  { "srcX" : 1860, "srcY" : 827, "dstX": 1598 , "dstY":  427}, { "dstX" : 1694, "dstY" : 239, "srcX": 1780 , "srcY":  614}, { "dstX" : 1484, "dstY" : 304, "srcX": 1776 , "srcY":  714}, { "dstX" : 1694, "dstY" : 306, "srcX": 1776 , "srcY":  767}], false) ;onslaught
+;$F5::switchGems([ { "srcX" : 1866, "srcY" : 648, "dstX": 1458 , "dstY":  352}, { "srcX" : 1854, "srcY" : 747, "dstX": 1712 , "dstY":  390},  { "srcX" : 1860, "srcY" : 827, "dstX": 1598 , "dstY":  427}, { "dstX" : 1694, "dstY" : 239, "srcX": 1780 , "srcY":  614}, { "dstX" : 1484, "dstY" : 304, "srcX": 1776 , "srcY":  714}, { "dstX" : 1694, "dstY" : 306, "srcX": 1776 , "srcY":  767}], false) ;onslaught
 ;$F5::switchGems([{ "srcX" : 1855, "srcY" : 726, "dstX": 1587 , "dstY":  314}], true) ; body armour
 ;;$f5::TurnOffBloodRage()
-$F6::getPrice()
+;$F6::getPrice()
 $F7::printMessage()
 $f8::reloadScript()
-$F12::switchGems([{ "srcX" : 1887, "srcY" : 662, "dstX": 1617 , "dstY":  358},{ "srcX" : 1887, "srcY" : 721, "dstX": 1617 , "dstY":  306}, { "srcX" : 1887, "srcY" : 767, "dstX": 1554 , "dstY":  306}], false) ;; barrage to vaal siphon
+;$F12::switchGems([{ "srcX" : 1887, "srcY" : 662, "dstX": 1617 , "dstY":  358},{ "srcX" : 1887, "srcY" : 721, "dstX": 1617 , "dstY":  306}, { "srcX" : 1887, "srcY" : 767, "dstX": 1554 , "dstY":  306}], false) ;; barrage to vaal siphon
 ~o::turnPringOff()
 
 reloadScript() {

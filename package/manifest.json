@@ -2,7 +2,7 @@
   "name": "PoE trade ahk",
   "author": "Andrew Koidan, https://github.com/Deathangel908",
   "description": "Path Of Exile extension for poe.trade to scream pm",
-  "version": "1.6",
+  "version": "1.7",
   "manifest_version": 2,
   "permissions": [
     "storage"

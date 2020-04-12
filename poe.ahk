@@ -255,7 +255,7 @@ setGemPrice() {
 
 
 $F1::OpenHideout()
-;$F2::DrinkFlask()
+$F2::DrinkFlask()
 ;$F3::FastLogOut()
 ;$F4::OpenPortal()
 ;; $F5::switchGems([{ "srcX" : 1486, "srcY" : 371, "dstX": 1613 , "dstY":  359}, { "srcX" : 1486, "srcY" : 426, "dstX": 1561 , "dstY":  358}, { "srcX" : 1877, "srcY" : 647, "dstX": 1593 , "dstY":  520}])
@@ -551,7 +551,6 @@ DrinkTwoFirstFlask() {
 
 
 DrinkFlask() {
-	Send {1}
 	Send {2}
 	Send {3}
 	Send {4}

@@ -1,5 +1,12 @@
 import FileSaver from 'file-saver'
 import PoeItem from "./PoeItem";
+
+import notable from '../utils/cluster_jewels/notable';
+import minor from '../utils/cluster_jewels/minor';
+import keystones from '../utils/cluster_jewels/keystones';
+
+var clusterJewels = Object.assign({}, notable, minor, keystones)
+
 function getDefaultOffer(userText) {
   return function (element) {
     return whisperMessage(element) + ' ' + userText;
@@ -166,6 +173,13 @@ function poeClip() {
     let a = document.createElement('a');
     li.appendChild(a);
     e.querySelector('.requirements .proplist').appendChild(li);
+    var clusterMods = e.querySelectorAll('li[data-name*="Added Passive Skill is"]');
+    clusterMods.forEach(clusterMode => {
+      let match = /#\w Added Passive Skill is (.*)/.exec(clusterMode.getAttribute('data-name'));
+      if (match && clusterJewels[match[1]]) {
+        clusterMode.title = clusterJewels[match[1]];
+      }
+    })
     a.innerText = 'Copy';
     a.onclick = () => {
       let poeObject = new PoeItem(e);

@@ -655,7 +655,7 @@ Show
 	SetFontSize 39
 	
 Show
-    BaseType "Master Cartographer's Sextant" "Unshaping Orb" "Cartographer's Seal" "Stacked Deck" "Harbinger's Orb"
+    BaseType "Awakened Sextant" "Unshaping Orb" "Cartographer's Seal" "Stacked Deck" "Harbinger's Orb"
     SetTextColor 255 0 0
     SetBorderColor 255 0 0
     SetBackgroundColor 0 0 0
@@ -663,7 +663,7 @@ Show
     PlayAlertSound 1 250
    
 Show
-    BaseType "Journeyman Cartographer's Sextant"
+    BaseType "Simple Sextant"
     SetTextColor 255 140 0
     SetBorderColor 255 140 0
     SetBackgroundColor 0 0 0
@@ -671,7 +671,7 @@ Show
     PlayAlertSound 1 250
    
 Show
-    BaseType "Apprentice Cartographer's Sextant"
+    BaseType "Prime Sextant"
     SetTextColor 255 255 255
     SetBorderColor 255 255 255
     SetBackgroundColor 0 0 0

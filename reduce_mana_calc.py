@@ -1,10 +1,5 @@
 import math
 
-TREE_MR = 0.46+0.02+0.06 +0.15
-BM_LVL = None
-ENL_LVL = None
-MORTAL_CONVICTION = True
-BASE_RESERV = (1 - TREE_MR)
 ENL_LEVELS = {
 	None: 1,
 	1: 1,
@@ -22,13 +17,20 @@ BM_LEVELS = {
 
 
 def ca(base_m):
-	less_mana_res = 1
-	if MORTAL_CONVICTION:
-		less_mana_res = 0.5
-	res = math.ceil(math.floor(base_m * ENL_LEVELS[ENL_LVL] * BM_LEVELS[BM_LVL]) * BASE_RESERV * less_mana_res)
+	res = math.ceil(math.floor(base_m * ENL_LEVELS[ENL_LVL] * BM_LEVELS[BM_LVL]) * BASE_RESERV)
 	print("{} = {}".format(base_m, res))
 	return res
 
+
+
+
+BM_LVL = None
+ENL_LVL = 3
+
+amu_mf = 5
+TREE_MR = (13 + 6 + 2 + 4 + 1 + 14 + 1 + 1 + 4 + 8 + amu_mf+1) / 100
+
+BASE_RESERV = (1 - TREE_MR)
 
 print(ca(35))
 

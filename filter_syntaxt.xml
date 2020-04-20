@@ -25,7 +25,7 @@
             <Keywords name="Folders in comment, middle"></Keywords>
             <Keywords name="Folders in comment, close"></Keywords>
             <Keywords name="Keywords1">Class BaseType Height Width Rarity ItemLevel DropLevel Quality LinkedSockets Sockets SocketGroup</Keywords>
-            <Keywords name="Keywords2">SetTextColor SetBorderColor SetBackgroundColor SetFontSize PlayAlertSound</Keywords>
+            <Keywords name="Keywords2">SetTextColor SetBorderColor SetBackgroundColor SetFontSize PlayAlertSound PlayEffect MinimapIcon</Keywords>
             <Keywords name="Keywords3">Show Hide</Keywords>
             <Keywords name="Keywords4"></Keywords>
             <Keywords name="Keywords5"></Keywords>

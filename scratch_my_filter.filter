@@ -10,12 +10,6 @@ Show
 	SetBorderColor 25 180 25
 
 
-
-
-
-
-
-
 Show # $Rare->Shaper->T1 $x->ShaperElder
 	ShaperItem True
 	ItemLevel >= 84
@@ -647,7 +641,7 @@ Show
 
 Show
 	Class "Currency"
-	BaseType "Regal Orb" "Glassblower's Bauble" "Orb of Regret" "Stacked Deck" "Chaos Orb" "Blessed Orb" "Gemcutter's Prism" "Orb of Fusing" "Orb of Scouring" "Orb of Alchemy" "Orb of Chance" "Vaal Orb" "Cartographer's Chisel" "Silver Coin" "Harbinger's Orb" "Necromancy Net"
+	BaseType "Regal Orb" "Glassblower's Bauble" "Orb of Regret" "Stacked Deck" "Chaos Orb" "Gemcutter's Prism" "Orb of Fusing" "Orb of Scouring" "Orb of Alchemy" "Orb of Alteration" "Orb of Chance" "Vaal Orb" "Cartographer's Chisel" "Silver Coin" "Harbinger's Orb" "Necromancy Net"
 	SetBackgroundColor 213 159 15
 	SetTextColor 0 0 0
 	SetBorderColor 0 0 0
@@ -681,7 +675,7 @@ Show
 
 Show
 	Class "Currency"
-	BaseType "Orb of Alteration" "Chromatic Orb"  "Perandus Coin" "Jeweller's Orb"
+	BaseType "Chromatic Orb"  "Perandus Coin" "Jeweller's Orb"  "Blessed Orb" 
 	SetTextColor 190 178 135 255
 	SetBorderColor 190 178 135 135 
 	SetFontSize 37
@@ -935,204 +929,12 @@ Hide #%H3
 
 Show # Maps:T16
 	Class Maps
-	DropLevel 83
 	SetTextColor 100 0 122 255
 	SetBorderColor 100 0 255 255
 	SetBackgroundColor 255 255 255 255
 	SetFontSize 45
 	PlayAlertSound 4 300
-
-Show # Maps:T16
-	Class Maps
-	BaseType "Strand Map"
-	ElderMap True
-	SetTextColor 100 0 122 255
-	SetBorderColor 100 0 255 255
-	SetBackgroundColor 255 255 255 255
-	SetFontSize 45
-	PlayAlertSound 4 300
-
-	
-### T15 ###
-
-Show # Maps:T15
-	Class Maps
-	DropLevel >= 82
-	SetTextColor 0 0 0 255
-	SetBorderColor 0 0 0 255
-	SetBackgroundColor 255 255 255 255
-	SetFontSize 45
-	PlayAlertSound 4 300
-
-	
-Show
-	Class Maps
-	ShapedMap True
-	DropLevel >= 77
-	SetTextColor 100 0 122 255
-	SetBorderColor 100 0 255 255
-	SetBackgroundColor 255 255 255 255
-	SetFontSize 45
-	PlayAlertSound 4 300
-	
-### T14-T11 ###
-
-Show # Maps:T14
-	Class Maps
-	DropLevel >= 81
-	SetTextColor 0 0 0 255
-	SetBorderColor 0 0 0 255
-	SetBackgroundColor 200 200 200 255
-	SetFontSize 44
-	PlayAlertSound 4 300
-	
-Show
-	Class Maps
-	ShapedMap True
-	DropLevel >= 76
-	SetTextColor 0 0 0 255
-	SetBorderColor 0 0 0 255
-	SetBackgroundColor 200 200 200 255
-	SetFontSize 44
-	PlayAlertSound 4 300
-	
-Show # Maps:T13
-	Class Maps
-	DropLevel >= 80
-	SetTextColor 0 0 0 255
-	SetBorderColor 0 0 0 255
-	SetBackgroundColor 200 200 200 255
-	SetFontSize 43
-	PlayAlertSound 4 300
-	
-Show
-	Class Maps
-	ShapedMap True
-	DropLevel >= 75
-	SetTextColor 0 0 0 255
-	SetBorderColor 0 0 0 255
-	SetBackgroundColor 200 200 200 255
-	SetFontSize 43
-	PlayAlertSound 4 300
-
-Show # Maps:T12
-	Class Maps
-	DropLevel >= 79
-	SetTextColor 0 0 0 255
-	SetBorderColor 0 0 0 255
-	SetBackgroundColor 200 200 200 255
-	SetFontSize 40
-	PlayAlertSound 4 300
-	
-Show
-	Class Maps
-	ShapedMap True
-	DropLevel >= 74
-	SetTextColor 0 0 0 255
-	SetBorderColor 0 0 0 255
-	SetBackgroundColor 200 200 200 255
-	SetFontSize 40
-	PlayAlertSound 4 300
-
-Show # Maps:T11
-	Class Maps
-	DropLevel >= 78
-	SetTextColor 0 0 0 255
-	SetBorderColor 0 0 0 255
-	SetBackgroundColor 200 200 200 255
-	SetFontSize 36
-	PlayAlertSound 4 300
-	
-Show
-	Class Maps
-	ShapedMap True
-	DropLevel >= 73
-	SetTextColor 0 0 0 255
-	SetBorderColor 0 0 0 255
-	SetBackgroundColor 200 200 200 255
-	SetFontSize 36
-	PlayAlertSound 4 300
-
-	
-### T10-T6 ###
-
-Show # Shaped
-	Class Maps
-	ShapedMap True
-	SetBackgroundColor 0 0 0 255
-	SetFontSize 39
-
-
-Show # Maps:T10
-	Class Maps
-	DropLevel >= 77
-	SetBackgroundColor 0 0 0 255
-	SetFontSize 39
-
-Show # Maps:T9
-	Class Maps
-	DropLevel >= 76
-	SetBackgroundColor 0 0 0 255
-	SetFontSize 39
-
-Show # Maps:T8
-	Class Maps
-	DropLevel >= 75
-	SetBackgroundColor 0 0 0 255
-	SetFontSize 38
-
-Show # Maps:T7
-	Class Maps
-	DropLevel >= 74
-	SetBackgroundColor 0 0 0 255
-	SetFontSize 38
-
-Show # Maps:T6
-	Class Maps
-	DropLevel >= 73
-	SetBackgroundColor 0 0 0 255
-	SetFontSize 38
-
-### T5-T2 ###
-
-Show # Maps:T5 %H3
-	Class Maps
-	DropLevel >= 72
-	SetBackgroundColor 0 0 0 180
-	SetFontSize 36
-
-Show # Maps:T4 %H3
-	Class Maps
-	DropLevel >= 71
-	SetBackgroundColor 0 0 0 180
-	SetFontSize 36
-
-Show # Maps:T3 %H3
-	Class Maps
-	DropLevel >= 70
-	SetBackgroundColor 0 0 0 180
-	SetFontSize 36
-
-Show # Maps:T2 %H3
-	Class Maps
-	DropLevel = 69
-	SetBackgroundColor 0 0 0 180
-	SetFontSize 35
-
-### T1 ###
-
-Show # Maps:T1 %H3
-	Class Maps
-	DropLevel < 69
-	SetBackgroundColor 0 0 0 180
-	SetFontSize 35
-
-### Safetyline ###
-
-Show # Maps:SAFE
-	Class Maps
-	SetFontSize 42
-	PlayAlertSound 4 300
+	PlayEffect White
 
 ##################################################
 #################### Fragments ###################

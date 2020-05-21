@@ -1,37 +1,131 @@
-global chrNum := 1
+#MaxThreadsPerHotkey 10
 
-Loop {
-	if (not isPoeClosed()) {
-		if (isLowHp()) {
-			send {1}
-		}
-		Sleep, 100
-	}
-}
+~2::DrinkFlask()
+$F1::OpenHideout()
+$F2::SwitchDrinkFlaskStatus()
+$F3::FastLogOut()
+$F4::OpenPortal()
+$F5::startCheckLowLife()
+
+;$F5::switchGems([{ "srcX" : 1855, "srcY" : 726, "dstX": 1587 , "dstY":  314}], true) ; body armour
+$F7::startStopPrintMessage()
+$f8::reloadScript()
 
 global debugInited := false
 global Debug
 global charActive := false
-global winX 
+global winX
 global winY
 global winWidth := 0
 global winHeight
+global drinkFlaskIsActive := true
 global printScreamMessage := false
+global removeFriend := false
 global printScreamMessageInited := false
-global printMessageFromJs := true
+global printMessageIsRunning
+global chrNum := 1
+global checkLowLifeStatus := true
+
+
+translateCoordinatesFrom( ByRef x,  ByRef  y  ) {
+	activeMonitorInfo( width , height )
+	x := Round(width * x / 2560)
+	y := Round(height * y / 1440)
+}
+
+SwitchDrinkFlaskStatus() {
+  drinkFlaskIsActive := !drinkFlaskIsActive
+}
+
+startStopPrintMessage() {
+	if (printMessageIsRunning) {
+		printMessageIsRunning := false
+	} else {
+		printMessage()
+	}
+}
+
+activeMonitorInfo(ByRef Width,  ByRef  Height  ) { ; retrieves the size of the monitor, the mouse is on
+	CoordMode, Mouse, Screen
+	MouseGetPos, mouseX , mouseY
+	SysGet, monCount, MonitorCount
+	Loop %monCount%
+    { 	SysGet, curMon, Monitor, %a_index%
+        if ( mouseX >= curMonLeft and mouseX <= curMonRight and mouseY >= curMonTop and mouseY <= curMonBottom )
+            {
+				Height := curMonBottom - curMonTop
+				Width  := curMonRight  - curMonLeft
+				return
+			}
+    }
+}
+
+startCheckLowLife() {
+	if (checkLowLifeStatus) {
+		checkLowLifeStatus := false
+	} else {
+		checkLowLife()
+	}
+	
+}
+checkLowLife() {
+	
+	MsgBox, "checkLowLife is running"
+	checkLowLifeStatus := true
+	
+	Loop {
+	
+		if (not isPoeClosed()) {
+			if (not checkLowLifeStatus) {
+				MsgBox, "Exiting from checking low life"
+				return
+			}
+			if (isLowHp()) {
+				send {1}
+				Sleep, 300
+			}
+			Sleep, 100
+		}
+	}
+}
+
+
+getColorRgb(foundColor) {
+	Red:="0x" SubStr(foundColor,3,2) ;substr is to get the piece
+	Red:=Red+0 ;add 0 is to convert it to the current number format
+	Green:="0x" SubStr(foundColor,5,2)
+	Green:=Green+0
+	Blue:="0x" SubStr(foundColor,7,2)
+	Blue:= Blue+0
+	difference := 2
+	summ := Blue + Red + Green
+	if (Blue / difference > Red and Blue / difference > Green) {
+	   return "b"
+	} else if (Green / difference > Red and Green / difference > Blue) {
+		return "g"
+	} else if (Red / difference > Blue and Red / difference > Green) {
+		return "r"
+	} else if ( summ > Red * 2 and summ > Blue * 2 and summ > Green * 2 and summ / 6 < Red and summ / 6 < Blue and summ / 6 < Green)  {
+		return "black" 
+	} else {
+	    return "unknown"
+	}
+
+}
 
 isLowHp() {
-	PixelGetColor, flaskColor, 332, 1057, rgb
-	Red:="0x" SubStr(flaskColor,3,2) ;substr is to get the piece
-	Red:=Red+0 ;add 0 is to convert it to the current number format
-	Green:="0x" SubStr(flaskColor,5,2)
-	Green:=Green+0
-	Blue:="0x" SubStr(flaskColor,7,2)
-	Blue:= Blue+0
-	if (Red > 105 and Red < 114 and Green > 22  and Green < 25 and Blue > 2 and Blue < 5 ) {
-		PixelGetColor, lowHpColor, 124, 1005
-		f := getColor(lowHpColor)
-		return f != "r" 
+	x := 434
+	y := 1410
+	translateCoordinatesFrom(x,y)
+	PixelGetColor, flaskColor, x, y, rgb
+	flaskHue := getColorRgb(flaskColor)
+	if (flaskHue = "r" ) {
+		x := 165
+		y := 1345
+		translateCoordinatesFrom(x,y)
+		PixelGetColor, lowHpColor, x, y
+		lifeHue := getColor(lowHpColor)
+		return lifeHue != "r" 
 	} else {
 		return false
 	}
@@ -49,12 +143,7 @@ PrintLol() {
   	}
 }
 
-turnPringOff() {
-	global printMessageFromJs := true
-}
-
 printMessage() {
-	 
 	o := Object()
 	o.Insert(" (6)")
 	o.Insert(" (5)")
@@ -80,22 +169,30 @@ printMessage() {
 		price_path := UserProfile "\Downloads\buyItemsList.txt"
 	}
 	
-	global printMessageFromJs := false
+	printMessageIsRunning := true
 	Loop, read, %price_path%
 	{
 		Loop, parse, A_LoopReadLine, %A_Tab%
 		{
-			if printMessageFromJs
+			if not printMessageIsRunning
 				Goto, MyLabel
 			send {Enter}
 			sleep 100
-			send, %A_LoopField%
+			
+			; get utf8 encoding
+			vSize := StrPut(A_LoopField, "CP0")
+			VarSetCapacity(vUtf8, vSize)
+			vSize := StrPut(A_LoopField, &vUtf8, vSize, "CP0")
+			StrGet(&vUtf8, "UTF-8")
+		    send %  StrGet(&vUtf8, "UTF-8")
+			
 			send {Enter}
 			sleep 100
 		}
 	}
-	FileDelete, %price_path%
+	;FileDelete, %price_path%
 	MyLabel:
+	printMessageIsRunning := false
 	sleep 1
 }
 
@@ -234,7 +331,6 @@ DebugAppend(Data) {
 	GuiControl,, Debug, %Data%`r`n
 }
 
-
 setGemPrice() {
 	clip_path :=  A_ScriptDir "\clip.txt"
 	FileDelete, %clip_path%
@@ -252,37 +348,9 @@ setGemPrice() {
 }
 
 
-
-
-$F1::OpenHideout()
-$F2::DrinkFlask()
-;$F3::FastLogOut()
-;$F4::OpenPortal()
-;; $F5::switchGems([{ "srcX" : 1486, "srcY" : 371, "dstX": 1613 , "dstY":  359}, { "srcX" : 1486, "srcY" : 426, "dstX": 1561 , "dstY":  358}, { "srcX" : 1877, "srcY" : 647, "dstX": 1593 , "dstY":  520}])
-;$F5::switchGems([{ "srcX" : 1432, "srcY" : 422, "dstX": 1561 , "dstY":  306}, { "srcX" : 1486, "srcY" : 372, "dstX": 1561 , "dstY":  358}])
-;; 
-;$F5::switchGems([ { "srcX" : 1866, "srcY" : 648, "dstX": 1458 , "dstY":  352}, { "srcX" : 1854, "srcY" : 747, "dstX": 1712 , "dstY":  390},  { "srcX" : 1860, "srcY" : 827, "dstX": 1598 , "dstY":  427}, { "dstX" : 1694, "dstY" : 239, "srcX": 1780 , "srcY":  614}, { "dstX" : 1484, "dstY" : 304, "srcX": 1776 , "srcY":  714}, { "dstX" : 1694, "dstY" : 306, "srcX": 1776 , "srcY":  767}], false) ;onslaught
-;$F5::switchGems([{ "srcX" : 1855, "srcY" : 726, "dstX": 1587 , "dstY":  314}], true) ; body armour
-;;$f5::TurnOffBloodRage()
-;$F6::getPrice()
-$F7::printMessage()
-$f8::reloadScript()
-;$F12::switchGems([{ "srcX" : 1887, "srcY" : 662, "dstX": 1617 , "dstY":  358},{ "srcX" : 1887, "srcY" : 721, "dstX": 1617 , "dstY":  306}, { "srcX" : 1887, "srcY" : 767, "dstX": 1554 , "dstY":  306}], false) ;; barrage to vaal siphon
-~o::turnPringOff()
-
 reloadScript() {
 	Reload
 }
-
-	
-testLol() {
-	send "{f}asdas a"
-}	
-
-;;$f9::setGemPrice() 
-
-;$`::PhaseRun()
-;$A::IceCrash()
 
 lol() {
 	HWND := WinExist()
@@ -406,32 +474,18 @@ PhaseRun() {
 	}
 }
 
-Remaining() {
-	if (isPoeClosed()) {
-		send {f1}
-		return
-	}
-	BlockInput On
-	Send {Enter}
-	Sleep 1
-	Send /remaining
-	Send {Enter}
-	BlockInput Off
-	return
-}
 
 FastLogOut(){
-	if (isPoeClosed()) {
-		send {F3}
-		return
-	}
 	BlockInput On
 	SetDefaultMouseSpeed 0
 	sendinput {esc}
 	sleep 50
-	MouseClick, left, 959, 432, 1, 1
-	sleep 100
-	MouseClick, left, 959, 432, 1, 1
+	x := 1288
+	y := 577
+	translateCoordinatesFrom(x, y)
+	MouseClick, left, x, y, 1, 1
+	;sleep 100
+	;MouseClick, left, 959, 432, 1, 1
 	BlockInput Off
 	return
 }
@@ -526,34 +580,27 @@ TurnOffBloodRage() {
 
 
 OpenPortal(){
-	if (isPoeClosed()) {
-		send {f4}
-		return
-	}
 	MouseGetPos, xpos, ypox
 	BlockInput On
 	closeInvAfter := OpenInventory()
-	Click right 1770,667
-	Click left 630, 450
+	x := 2500
+	y := 820
+	translateCoordinatesFrom(x, y)
+	Click right %x%, %y%
+	x := 836
+	y := 551
+	Click left %x%, %y%
 	BlockInput Off
 	return
 }
 
-DrinkTwoFirstFlask() {
-	if (isPoeClosed()) {
-		send {f1}
+DrinkFlask() {
+    if (not drinkFlaskIsActive) {
+		;send {f1}
 		return
 	}
-	Send {3}
-	Send {4}
-	Send {5}
+	send {6}
+	send {7}
+	Send {8}
+	Send {9}
 }
-
-
-DrinkFlask() {
-	Send {2}
-	Send {3}
-	Send {4}
-	Send {5}
-}
-

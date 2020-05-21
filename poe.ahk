@@ -6,7 +6,7 @@ $F2::SwitchDrinkFlaskStatus()
 $F3::FastLogOut()
 $F4::OpenPortal()
 $F5::startCheckLowLife()
-
+$F6::turnOnAuras()
 ;$F5::switchGems([{ "srcX" : 1855, "srcY" : 726, "dstX": 1587 , "dstY":  314}], true) ; body armour
 $F7::startStopPrintMessage()
 $f8::reloadScript()
@@ -29,8 +29,20 @@ global checkLowLifeStatus := true
 
 translateCoordinatesFrom( ByRef x,  ByRef  y  ) {
 	activeMonitorInfo( width , height )
-	x := Round(width * x / 2560)
-	y := Round(height * y / 1440)
+	translateCoordinatesFromWithHeightAndWidth(x, y, width, height)
+}
+
+translateXFrom(x, width) {
+   return Round(width * x / 2560)
+}
+
+translateYFrom(y, height) {
+   return Round(height * y / 1440)
+}
+
+translateCoordinatesFromWithHeightAndWidth( ByRef x,  ByRef  y , width , height ) {
+	x := translateXFrom(x, width)
+	y := translateYFrom(y, height)
 }
 
 SwitchDrinkFlaskStatus() {
@@ -72,6 +84,11 @@ checkLowLife() {
 	
 	MsgBox, "checkLowLife is running"
 	checkLowLifeStatus := true
+
+    width := 0
+    height := 0
+	activeMonitorInfo( width , height )
+	translateCoordinatesFromWithHeightAndWidth(x, y, width, height)
 	
 	Loop {
 	
@@ -80,7 +97,7 @@ checkLowLife() {
 				MsgBox, "Exiting from checking low life"
 				return
 			}
-			if (isLowHp()) {
+			if (isLowHp(width, height)) {
 				send {1}
 				Sleep, 300
 			}
@@ -113,7 +130,7 @@ getColorRgb(foundColor) {
 
 }
 
-isLowHp() {
+isLowHp(width, height) {
 	x := 434
 	y := 1410
 	translateCoordinatesFrom(x,y)
@@ -122,7 +139,7 @@ isLowHp() {
 	if (flaskHue = "r" ) {
 		x := 165
 		y := 1345
-		translateCoordinatesFrom(x,y)
+		translateCoordinatesFromWithHeightAndWidth(x,y, width, height)
 		PixelGetColor, lowHpColor, x, y
 		lifeHue := getColor(lowHpColor)
 		return lifeHue != "r" 
@@ -347,6 +364,38 @@ setGemPrice() {
 	}
 }
 
+turnOnAuras() {
+    width := 0
+    height := 0
+	activeMonitorInfo( width , height )
+
+    xCoord := [translateXFrom(1921, width), translateXFrom(2012, width), translateXFrom(2098, width)]
+	yStart := translateYFrom(420, height)
+	yDiff := translateYFrom(79, height)
+	
+	qX := 1923
+	qy := 1395
+
+	translateCoordinatesFromWithHeightAndWidth(qX, qY, width, height)
+
+	MouseGetPos, xpos, ypox
+	BlockInput On
+	
+	Loop, 11 {
+	    currentYIndex := A_index - 1
+        for i, xCurrent in xCoord {
+            yCurrent := currentYIndex * yDiff + yStart
+			Sleep 50 
+			Click left %qx%, %qy%
+			Sleep 50
+			Click left %xCurrent%, %yCurrent%
+			Sleep 20
+			Send {q}			
+     	}
+    }
+	MouseMove xpos, ypox 
+	BlockInput Off
+}
 
 reloadScript() {
 	Reload
